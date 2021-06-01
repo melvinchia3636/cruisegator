@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@types/mapbox-gl": "^2.1.2",
+    "mapbox-gl": "^2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -34,5 +36,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.0.15",
+    "@types/react": "^17.0.8",
+    "@types/react-bootstrap": "^0.32.25",
+    "@types/react-dom": "^17.0.5",
+    "@types/react-router": "^5.1.14",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.9",
+    "awesome-typescript-loader": "^5.2.1",
+    "source-map-loader": "^3.0.0",
+    "typescript": "^4.3.2"
   }
 }

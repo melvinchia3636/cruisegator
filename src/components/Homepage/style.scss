@@ -1,0 +1,93 @@
+.top-logo {
+	height: 35vw
+}
+
+@media (max-width: 768px) {
+	.top {
+		height: 100vh
+	}
+}
+
+.btn {
+	padding: .6em 3.5em;
+	width: min-content;
+	font-family: Poppins;
+}
+
+p {
+	color: #808080 !important
+}
+
+.header {
+	font-weight: 200;
+	line-height: 1.1em;
+}
+
+h2 {
+	font-family: Poppins;
+	font-size: 1.8em
+}
+
+.seperator {
+	height: 3px;
+	width: 100px
+}
+
+.icon {
+	stroke-width: 1;
+	width: 4em;
+	height: 4em
+}
+
+.w-grid {
+	grid-template-columns: repeat(3, 33.3333333%);
+}
+
+.bg-fade {
+	background: linear-gradient(to bottom, #fff, #f8f9fa)
+}
+
+h3 {
+	text-overflow:ellipsis;
+	overflow:hidden;
+	display: -webkit-box !important;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+}
+
+.news p {
+	text-overflow:ellipsis;
+	overflow:hidden;
+	display: -webkit-box !important;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+}
+
+@media (min-width: 0) {
+	.d-grid {
+		grid-template-columns: auto;
+		grid-gap: 2em
+	}
+
+	.top-logo {
+		display: none
+	}
+
+	.header {
+		font-size: 3em !important
+	}
+}
+
+@media (min-width: 576px) {
+	.header {
+		font-size: 4em !important
+	}
+}
+
+@media (min-width: 992px) {
+	.d-grid {
+		grid-template-columns: repeat(3, auto);
+	}
+}

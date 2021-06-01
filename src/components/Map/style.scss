@@ -1,0 +1,22 @@
+.map nav {
+	position: relative !important;
+}
+
+.map-container {
+	height: calc(100vh - 86px)
+}
+
+
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-attrib {
+	display: none !important
+}
+
+.longlat {
+	position: absolute;
+	top: 95vh;
+	left: 50%;
+	color: white;
+	transform: translate(-50%, -50%);
+	font-family: 'Consolas'
+}

@@ -9,14 +9,12 @@ import './style.scss';
 //TODO: logitravel.co.uk
 
 const Top = (): JSX.Element => {
-	var title:string;
 	var subtitle:string;
-	title = 'Enjoy your life\non cruiseship';
 	subtitle = 'Find the deck plans, data, schedules, and all the goodies about your desired cruiseship here at Cruisegator.';
 	return (
 		<Container fluid className='d-flex vh-100 flex-xl-row flex-sm-column justify-content-between p-0 align-items-end'>
 			<div className='h-100 d-flex justify-content-center align-items-left flex-column px-2 px-sm-5 mx-5'>
-				<h1 className='header m-0 text-primary'>{title}</h1>
+				<h1 className='header m-0 text-primary fw-lighter lh-sm'>Enjoy your life<br />on cruiseship</h1>
 				<p className='fs-5 fw-lighter lh-sm my-4'>{subtitle}</p>
 				<Button className="text-nowrap rounded-pill fs-5 mt-3 px-5 py-2" href="#">Explore Database</Button>
 			</div>
@@ -52,7 +50,7 @@ const Middle = (): JSX.Element => {
 			<div className='d-grid justify-content-center align-items-baseline mx-sm-5 mt-5 w-grid px-sm-5 pt-5'>
 				{content.map(([Icon, title, desc]) => (
 					<div className='mx-4'>
-						<Icon size='4em' stroke-width='1' color='rgba(0, 85, 185, 1)' />
+						<Icon size='4em' stroke-width='1' className='text-primary' />
 						<h2 className='fw-light mt-4'>{title}</h2>
 						<p className='fs-5 fw-lighter lh-sm pt-2'>{desc}</p>
 					</div>

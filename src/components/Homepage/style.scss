@@ -2,25 +2,8 @@
 	height: 35vw
 }
 
-@media (max-width: 768px) {
-	.top {
-		height: 100vh
-	}
-}
-
-.btn {
-	padding: .6em 3.5em;
-	width: min-content;
-	font-family: Poppins;
-}
-
 p {
 	color: #808080 !important
-}
-
-.header {
-	font-weight: 200;
-	line-height: 1.1em;
 }
 
 h2 {
@@ -65,19 +48,17 @@ h3 {
 	white-space: normal;
 }
 
-@media (min-width: 0) {
-	.d-grid {
-		grid-template-columns: auto;
-		grid-gap: 2em
-	}
+.d-grid {
+	grid-template-columns: auto;
+	grid-gap: 2em
+}
 
-	.top-logo {
-		display: none
-	}
+.top-logo {
+	display: none
+}
 
-	.header {
-		font-size: 3em !important
-	}
+.header {
+	font-size: 3em !important
 }
 
 @media (min-width: 576px) {

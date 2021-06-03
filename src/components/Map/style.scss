@@ -1,9 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
 .map nav {
 	position: relative !important;
-}
-
-.map-container {
-	height: calc(100vh - 86px)
 }
 
 
@@ -14,9 +12,41 @@
 
 .longlat {
 	position: absolute;
-	top: 95vh;
+	bottom: 10px;
+	z-index: 9999;
 	left: 50%;
 	color: white;
 	transform: translate(-50%, -50%);
-	font-family: 'Consolas'
+	font-family: 'Roboto Mono';
+	background: rgba(0, 0, 0, .3);
+	border-radius: 5px;
+}
+
+.ci {
+	width: 1.2em;
+	height: 1.2em;
+}
+
+.cin{
+	width: .7em;
+	height: .7em;
+}
+
+.nc {
+	height: calc(100% - .5em)
+}
+
+.border-primary {
+	border-style: solid
+}
+
+.border-1 {
+	border-width: 1.5px !important
+}
+
+.scrollbar {
+	&-track, &-thumb {
+		width: 4px !important;
+		border-radius: 50em !important
+	}
 }

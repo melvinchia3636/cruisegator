@@ -1,6 +1,6 @@
 nav {
 	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-	transition: all 0.5s;
+	transition: all 0.2s;
 
 	a {
 		color: #808080 !important;
@@ -30,19 +30,23 @@ nav {
 	}
 
 	& .collapse.show {
-		animation: Expand 0.5s linear 0s forwards
+		animation: Expand 0.8s cubic-bezier(0, 0, 0.08, 0.88) 0s forwards;
+		height: 100vh
 	}
 	& .collapse.hide {
-		animation: Collapse 0.5s linear 0s forwards
+		animation: Collapse 0.5s cubic-bezier(0, 0, 0.08, 0.88) 0s forwards;
+		display: initial;
+		margin: 0 !important;
+		padding: 0 !important
 	}
 }
 
 @keyframes Expand {
 	0% {
-		height: 0vh
+		height: 0vh;
 	}
 	100% {
-		height: 100vh
+		height: 100vh;
 	}
 }
 
@@ -51,7 +55,7 @@ nav {
 		height: 100vh
 	}
 	100% {
-		height: 86px
+		height: 0;
 	}
 }
 
@@ -70,9 +74,8 @@ nav {
 
 .btn {
 	color: white !important;
-	padding: .6em 3.5em;
+	padding: .6em 2.5em !important;
 	width: min-content;
-	font-family: Poppins;
 }
 
 footer {

@@ -44,22 +44,23 @@ class Nav extends React.Component<INavProps, INavState> {
 	}
 
 	resize() {
-		this.setState({hideNav: window.innerWidth <= 960});
+		console.log(this.state.hideNav)
+		this.setState({hideNav: window.innerWidth <= 1200});
 	}	
 
 	render() {
 		return (
-			<Navbar expand="lg" className={[`bg-white fixed-top px-2 px-sm-5 align-items-start align-items-lg-center py-${this.state.isToggleOn&&this.state.hideNav ? 5 : 2} justify-content-lg-between`, !this.state.isToggleOn ? 'flex-nowrap ' : '', this.state.isToggleOn ? 'expand' : ''].join(' ')}>
+			<Navbar expand="xl" className={[`bg-white fixed-top px-4 align-items-start align-items-lg-center py-${this.state.isToggleOn&&this.state.hideNav ? 5 : 1} justify-content-lg-between`, this.state.isToggleOn ? 'expand' : ''].join(' ')}>
 				<div className='d-flex'>
 					<button className="navbar-toggler border-0" type="button" onClick={this.navToggleCallback.bind(this)} data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
 					<a href='/home'><img src={Logo} height='70' /></a>
 				</div>
-				<div className={"collapse navbar-collapse justify-content-end mt-lg-0 pt-lg-0 pt-5 mt-lg-0 mt-5"+(this.state.isDone?(this.state.isToggleOn?' show':' hide'):'')} id="navbarNavAltMarkup">
+				<div className={"collapse navbar-collapse justify-content-end mt-lg-0 pt-lg-0 pt-5 mt-lg-0 mt-5 overflow-hidden"+(this.state.isDone&&this.state.hideNav?(this.state.isToggleOn?' show':' hide'):'')} id="navbarNavAltMarkup">
 					<div className="navbar-nav align-items-center">
 						{this.navitem.map(([text, link]) => <a className="nav-link mx-lg-3 my-3 my-lg-0" href={link}>{text}</a>)}
-						<a className="btn btn-primary mx-4 text-nowrap rounded-pill px-4 py-2 mx-lg-3 my-3" href="#">Register</a>
+						<a className="btn btn-primary mx-4 text-nowrap rounded-pill mx-lg-3 my-3" href="#">Get Started</a>
 					</div>
 				</div>
 			</Navbar>

@@ -148,6 +148,11 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 		})
 	}
 
+	toggleSidebar() {
+		this.setState({sidebarOpened: !this.state.sidebarOpened});
+		(this.state.map || new mapboxgl.Map()).resize()
+	}
+
 	componentDidMount() {
 		window.scrollTo(0, 0);
 		const { lng, lat, zoom } = this.state;
@@ -256,18 +261,29 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 		return (
 			<React.Fragment>
 				<div className='d-flex'>
-					<div className='bg-white position-relative' style={{'zIndex': this.state.height, 'height': this.state.height}}>
-						<Scrollbar className='nc m-3' alwaysShowTracks={true} style={{'height': this.state.height-40}}>
+					
+					<div ref={this.mapContainer} className="map-container w-100" style={{
+						position: 'absolute',
+						top: 78,
+						bottom: 0,
+						width: '100vw',
+						height: this.state.height,
+						zIndex: 1
+					}}>
+						<div className='longlat text-nowrap py-1 px-2'>Lon:{lng.toFixed(4)} | Lat:{lat.toFixed(4)} | Zoom:{zoom}</div>
+					</div>
+					<div className={'sb bg-white position-relative '+(this.state.sidebarOpened ? 'sb-expand' : 'sb-collapse')} style={{'zIndex': 1020, marginTop: 78}}>
+						<Scrollbar className='nc m-3 overflow-hidden' alwaysShowTracks={true} style={{'height': this.state.height-30}}>
 							<div className='w-100 overflow-auto h-100'>{
 								names.map(([index, id, name]) => 
-								<div className='d-flex mb-2 align-items-center text-nowrap me-3' style={{
+								<div className='d-flex mb-2 align-items-center text-nowrap me-3 overflow-hidden' style={{
 									fontFamily: 'Public Sans',
 									fontSize: 14
 								}}>
 									<button id={index.toString()} className='p-0 border-0 d-flex align-items-center justify-content-center bg-white' onClick={() => {
 										this.toggleSelector(index as number)
 									}}><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="1.2em" height="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-										{this.state.names[this.state.names.findIndex(e=>e[0] == index)][3] ? <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z" fill="rgba(0, 85, 185, 1)"/> : <path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm1-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="rgba(0, 85, 185, 1)"/>}
+										{this.state.names[this.state.names.findIndex(e=>e[0] == index)][3] ? <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z" fill="rgba(0, 85, 185, 1)"/> : <path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm1-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />}
 									</svg>
 									</button>
 									<span style={{background: (([r, g, b, a]) => `rgba(${r}, ${g}, ${b}, ${a})`)(colors[Math.log2(id as number)][1])}} className='d-block ci ms-3 me-2 rounded-circle'></span>
@@ -275,10 +291,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 								</div>)
 							}</div>
 						</Scrollbar>
-						<button className='position-absolute top-50 translate-middle-y p-0 py-3 border-0 bg-white rounded-end' style={{left: '98%'}}><Icon icon={arrowLeftSLine} color='#606060' width='1.2em' height='1.2em'/></button>
-					</div>
-					<div ref={this.mapContainer} className="map-container w-100" style={{'height': this.state.height}}>
-						<div className='longlat text-nowrap py-1 px-2'>Lon:{lng.toFixed(4)} | Lat:{lat.toFixed(4)} | Zoom:{zoom}</div>
+						<button className='position-absolute translate-middle-y p-0 py-3 border-0 bg-white rounded-end' style={{left: '98%', top: '45%'}} onClick={this.toggleSidebar.bind(this)}><Icon icon={arrowLeftSLine} color='#606060' width='1.2em' height='1.2em'/></button>
 					</div>
 				</div>
 			</React.Fragment>

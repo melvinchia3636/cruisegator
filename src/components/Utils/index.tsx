@@ -4,6 +4,7 @@ import { Logo, SearchIcon, Youtube, Twitter, Pinterest, Instagram, Facebook, Log
 import './style.scss';
 
 interface INavProps {
+	className: string
 }
 
 interface INavState {
@@ -50,7 +51,7 @@ class Nav extends React.Component<INavProps, INavState> {
 
 	render() {
 		return (
-			<Navbar expand="xl" className={[`bg-white fixed-top px-4 align-items-start align-items-lg-center py-${this.state.isToggleOn&&this.state.hideNav ? 5 : 1} justify-content-lg-between`, this.state.isToggleOn ? 'expand' : ''].join(' ')}>
+			<Navbar expand="xl" className={[`bg-white fixed-top px-4 align-items-start align-items-lg-center py-${this.state.isToggleOn&&this.state.hideNav ? 5 : 1} justify-content-lg-between`, this.state.isToggleOn ? 'expand' : '', this.props.className].join(' ')}>
 				<div className='d-flex'>
 					<button className="navbar-toggler border-0" type="button" onClick={this.navToggleCallback.bind(this)} data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>

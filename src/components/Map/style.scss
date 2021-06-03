@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
-.map nav {
-	position: relative !important;
-}
-
-
 .mapboxgl-ctrl-logo,
 .mapboxgl-ctrl-attrib {
 	display: none !important
@@ -12,19 +7,19 @@
 
 .longlat {
 	position: absolute;
-	bottom: 10px;
+	bottom: 0em;
 	z-index: 9999;
 	left: 50%;
 	color: white;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -100%);
 	font-family: 'Roboto Mono';
 	background: rgba(0, 0, 0, .3);
 	border-radius: 5px;
 }
 
 .ci {
-	width: 1.2em;
-	height: 1.2em;
+	min-width: 1.2em;
+	min-height: 1.2em;
 }
 
 .cin{
@@ -48,5 +43,35 @@
 	&-track, &-thumb {
 		width: 4px !important;
 		border-radius: 50em !important
+	}
+}
+
+.sb {
+	&-expand {
+		animation: sbExpand 0.8s cubic-bezier(0,-0.05, 0.03, 1.01) 0s forwards
+	}
+
+	&-collapse {
+		animation: sbCollapse 0.8s cubic-bezier(0,-0.05, 0.03, 1.01) 0s forwards
+	}
+}
+
+@keyframes sbExpand {
+	0% {
+		width: 0%;
+	}
+
+	100% {
+		width: 20em
+	}
+}
+
+@keyframes sbCollapse {
+	0% {
+		width: 20em
+	}
+
+	100% {
+		width: 0%
 	}
 }

@@ -1,0 +1,52 @@
+.database {
+
+	& .seperator {
+		height: 4px;
+		width: 80px
+	}
+
+	& h1 {
+		font-family: 'Poppins'
+	}
+
+	& input {
+		font-family: 'Public Sans'
+	}
+
+	& .d-grid {
+		grid-template-columns: repeat(2, auto);
+
+		& > div {
+			height: 12em;
+			display: grid;
+			grid-template-columns: 30% 70%;
+
+			& > div {
+				
+				& h3 {
+					font-family: 'Poppins' !important;
+					font-size: 1.4em
+				}
+	
+				& .st {
+					font-size: .9em;
+				}
+
+				& > div  > p {
+					color: rgba(0, 0, 0, 0.7) !important;
+					font-size: .9em
+				}
+				
+				& span {
+					width: .6em;
+					height: .6em;
+					margin-left: .3em
+				}
+			}
+
+			& img {
+				object-fit: cover
+			}
+		}
+	}
+}

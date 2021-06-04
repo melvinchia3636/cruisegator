@@ -7,6 +7,7 @@ import { Nav, Footer } from './components/Utils';
 import Error404 from './components/Error';
 import Database from './components/Database';
 import Map from './components/Map';
+import Ship from './components/Ship'
 
 import './style.scss'
 
@@ -31,6 +32,7 @@ export default function App(): JSX.Element {
 						<Route exact path='/home'><Homepage/></Route>
 						<Route exact path='/database'><Database/></Route>
 						<Route path='/map'><Map/></Route>
+						<Route path='/ship/:id'><Ship/></Route>
 						<Route><Error404/></Route>
 					</Switch>
 				</Route>

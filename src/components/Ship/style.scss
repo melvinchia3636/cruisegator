@@ -1,0 +1,71 @@
+.ship {
+	
+	& .sidebar {
+		box-shadow: 4px 0 4px -4px rgba(0, 0, 0, 0.3);
+
+		& a {
+			font-family: 'Poppins';
+			padding-right: 6em;
+			font-weight: 500;
+			padding-top: 1.5em;
+			padding-bottom: 1.5em;
+			transition: all 0.3s;
+			cursor: pointer;
+
+			&:hover {
+				background: rgba(0, 0, 0, 0.1)
+			}
+		}
+	}
+
+	& h1 {
+		font-family: 'Poppins';
+		font-size: 2.4em;
+	}
+
+	& .seperator {
+		height: 4px
+	}
+
+	& span {
+		width: .7em;
+		height: .7em;
+		margin-left: .4em
+	}
+
+	& h2 {
+		color: #666666;
+		margin-bottom: .6em
+	}
+
+	& h3 {
+		font-family: 'Poppins';
+		color: #202020
+	}
+
+	& h6 {
+		margin-bottom: .3em;
+	}
+
+	& .img {
+		& .bd {
+			width: 3em;
+			height: 3em;
+
+			&:first-child {
+				margin-left: -3px
+			}
+
+			&:last-child {
+				margin-top: calc(-3em + 2.5px);
+				float: right;
+				margin-right: -2.5px
+			}
+		}
+
+		& .i {
+			margin-top: calc(-3em + 3px);
+			z-index: 9999
+		}
+	}
+}

@@ -32,7 +32,7 @@ export default function App(): JSX.Element {
 						<Route exact path='/home'><Homepage/></Route>
 						<Route exact path='/database'><Database/></Route>
 						<Route path='/map'><Map/></Route>
-						<Route path='/ship/:id'><Ship/></Route>
+						<Route path='/ship/:id' render={(props)=><Ship {...props.match.params}/>}></Route>
 						<Route><Error404/></Route>
 					</Switch>
 				</Route>

@@ -25,7 +25,12 @@
 				
 				& h3 {
 					font-family: 'Poppins' !important;
-					font-size: 1.4em
+					font-size: 1.4em;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display: block !important;
+					max-width: 350px
 				}
 	
 				& .st {

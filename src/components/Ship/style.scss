@@ -60,12 +60,21 @@
 
 	& h3 {
 		font-family: 'Poppins';
-		color: #202020
+		color: #202020;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: block !important;
+
+		&.loc {
+			max-width: 280px;
+		}
 	}
 
 	& h6 {
 		margin-bottom: .3em;
-		font-size: .6em
+		font-size: .9em;
+		white-space: nowrap;
 	}
 
 	& .img {

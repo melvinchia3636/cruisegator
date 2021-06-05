@@ -11,23 +11,31 @@
 			padding-bottom: 1.5em;
 			transition: all 0.3s;
 			cursor: pointer;
+			position: relative;
 
 			&:hover {
-				background: rgba(0, 0, 0, 0.05)
+				background: rgba(0, 0, 0, 0.05);
+				&:before {
+					height: 100%
+				}
 			}
 
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba(0, 85, 185, 1);
+				height: 0;
+				width: 4px;
+				transition: .3s
+			}
+			
 			&.active {
 				background: rgba(0, 0, 0, 0.05);
-				position: relative;
 
 				&:before {
-					content: '';
-					position: absolute;
-					top: 0;
-					left: 0;
-					background: rgba(0, 85, 185, 1);
-					height: 100%;
-					width: 4px
+					height: 100%
 				}
 			}
 		}

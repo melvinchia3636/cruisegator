@@ -1,8 +1,9 @@
 import './style.scss';
 import Icon from '@iconify/react';
+import { IconifyIcon } from '@iconify/types'
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 import appsList20Regular from '@iconify-icons/fluent/apps-list-20-regular';
 import settings28Regular from '@iconify-icons/fluent/settings-28-regular';
@@ -16,13 +17,30 @@ import anchorIcon from '@iconify/icons-simple-line-icons/anchor';
 import locationIcon from '@iconify/icons-carbon/location';
 import crossroadsIcon from '@iconify/icons-carbon/crossroads';
 import topSpeed24Regular from '@iconify-icons/fluent/top-speed-24-regular';
-import 'flag-icon-css/sass/flag-icon.scss'
+import 'flag-icon-css/sass/flag-icon.scss';
 
 interface ShipProps {
 	id: string
-}
+};
+
+interface RawJsonData {
+	widgets: {
+		shipNewsButton?: {
+			state: boolean
+		},
+		rating?: {
+			stars: number
+		},
+		shipCurrentPositionMap: {
+			lon: number,
+			lat: number
+		}
+	},
+	config: {}
+};
 
 interface ShipData {
+	is_new: boolean,
 	rating: number,
 	name: string,
 	company: string,
@@ -31,6 +49,25 @@ interface ShipData {
         icon: string;
         text: string[];
     }[]
+};
+
+function Sidebar( { activeTab = 0 } ): JSX.Element {
+	const options: [IconifyIcon, string, boolean?][] = [
+		[appsList20Regular, 'overview'],
+		[settings28Regular, 'specifications'],
+		[calendarLtr28Regular, 'itineraries'],
+		[layer20Regular, 'deck plans'],
+		[conferenceRoom28Regular, 'cabins'],
+		[news28Regular, 'news'],
+		[warning24Regular, 'accidents'],
+	]
+	options[activeTab].push(true)
+	
+	return (
+		<div className='d-flex flex-column justify-content-center fs-6 sidebar vh-100'>
+			{options.map(([icon, text, is_active]) => <a className={'text-uppercase text-decoration-none text-dark ps-5 d-flex align-items-center '+(is_active ? 'active': '')}><Icon icon={icon} width="28" className='me-3'/>{text}</a>)}
+		</div>
+	)
 }
 
 export default function Ship(props: ShipProps): JSX.Element {
@@ -38,19 +75,20 @@ export default function Ship(props: ShipProps): JSX.Element {
 	const mapContainer = useRef(null);
 	const map = useRef<mapboxgl.Map>();
 	const [data, setData] = useState<ShipData>();
+	const [activeTab, changeActiveTab] = useState< number>(0)
 
 	useEffect(() => {
 		const getData  = async () => {
-			const request = await axios.get('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships/'+props.id);
-			const rdata = request.data;
-			const dom_parser = new DOMParser();
-			const html = dom_parser.parseFromString(rdata, 'text/html');
-			const raw = (html.querySelectorAll('head script')[1].textContent?.match(/{.+}/) || ['{}'])[0].replaceAll('\'', '"')
-			const obj = eval('(' + raw + ')');
-			const json = JSON.parse(JSON.stringify(obj));
-			const result = {
-				is_new: json.widgets.shipNewsButton,
-				rating: json.widgets.rating.stars,
+			const request: AxiosResponse<any> = await axios.get('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships/'+props.id);
+			const rdata: string = request.data;
+			const dom_parser: DOMParser = new DOMParser();
+			const html: Document = dom_parser.parseFromString(rdata, 'text/html');
+			const raw: string = (html.querySelectorAll('head script')[1].textContent?.match(/{.+}/) || ['{}'])[0].replaceAll('\'', '"');
+			const obj: string = eval('(' + raw + ')');
+			const json: RawJsonData = JSON.parse(JSON.stringify(obj));
+			const result: ShipData = {
+				is_new: json.widgets?.shipNewsButton?.state || false,
+				rating: json.widgets.rating?.stars || 0,
 				name: html.querySelector('h1[itemprop="name"]')?.textContent || 'N/A',
 				company: html.querySelector('a.shipCompanyLink')?.textContent || 'N/A',
 				image: 'https://www.cruisemapper.com/'+(html.querySelector('img[itemprop="image"]') as HTMLImageElement)?.src.replace('http://localhost:3000', '') || '',
@@ -63,9 +101,13 @@ export default function Ship(props: ShipProps): JSX.Element {
 					}
 				})
 			};
+			const position:{
+				lon: number;
+				lat: number;
+			} = json.widgets.shipCurrentPositionMap;
+
 			setData(result);
 			if (map.current) return;
-			const position = json.widgets.shipCurrentPositionMap;
 
 			if (position) {
 				map.current = new mapboxgl.Map({
@@ -86,15 +128,7 @@ export default function Ship(props: ShipProps): JSX.Element {
 	}, [])
 	return (
 		<div className='w-100 py-5 vh-100 d-flex'>
-			<div className='d-flex flex-column justify-content-center fs-6 sidebar vh-100'>
-				<a className='text-uppercase text-decoration-none text-dark ps-5 d-flex align-items-center active'><Icon icon={appsList20Regular} width="28" className='me-3'/>overview</a>
-				<a className='text-uppercase text-decoration-none text-dark ps-5 d-flex align-items-center'><Icon icon={settings28Regular} width="28" className='me-3'/>specifications</a>
-				<a className='text-uppercase text-decoration-none text-dark ps-5 d-flex align-items-center'><Icon icon={calendarLtr28Regular} width="28" className='me-3'/>itineraries</a>
-				<a className='text-uppercase text-decoration-none text-dark ps-5 d-flex align-items-center'><Icon icon={layer20Regular} width="32" style={{marginRight: '.6em'}}/>deck plans</a>
-				<a className='text-uppercase text-decoration-none text-dark ps-5 d-flex align-items-center'><Icon icon={conferenceRoom28Regular} width="28" className='me-3'/>cabins</a>
-				<a className='text-uppercase text-decoration-none text-dark ps-5 d-flex align-items-center'><Icon icon={news28Regular} width="28" className='me-3'/>news</a>
-				<a className='text-uppercase text-decoration-none text-dark ps-5 d-flex align-items-center'><Icon icon={warning24Regular} width="28" className='me-3'/>accidents</a>
-			</div>
+			<Sidebar activeTab={activeTab}/>
 			<div className='p-5 w-100 vh-100 d-flex flex-column'>
 				{data ? <>
 					<div className='d-flex justify-content-between align-items-center'>

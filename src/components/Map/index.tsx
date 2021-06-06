@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import './style.scss'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl'
@@ -80,8 +80,8 @@ names = [
 	[1, "Other"]
 ]
 
-currentSelected = Array(46).fill(null).map((_, i)=>i)
-names = names.map((v, i) => [v[0]!=1?i+1:0, ...v, true])
+currentSelected = Array(46).fill(0).map((_, i)=>i)
+names = names.map((v, i) => [v[0]!==1?i+1:0, ...v, true])
 
 colors.sort((a, b) => a[0] - b[0])
 
@@ -127,7 +127,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 				'Accept': 'application/json; charset=UTF-8',
 			}
 		}).then(res => res.json()).then(data=>{
-			((this.state.map || new mapboxgl.Map).getSource('places') as mapboxgl.GeoJSONSource).setData({
+			((this.state.map as mapboxgl.Map).getSource('places') as mapboxgl.GeoJSONSource).setData({
 				'type': 'FeatureCollection',
 				'features': data.map((row:any) => {
 					return {
@@ -283,7 +283,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 									<button id={index.toString()} className='p-0 border-0 d-flex align-items-center justify-content-center bg-white' onClick={() => {
 										this.toggleSelector(index as number)
 									}}><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="1.2em" height="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-										{this.state.names[this.state.names.findIndex(e=>e[0] == index)][3] ? <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z" fill="rgba(0, 85, 185, 1)"/> : <path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm1-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />}
+										{this.state.names[this.state.names.findIndex(e=>e[0] === index)][3] ? <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z" fill="rgba(0, 85, 185, 1)"/> : <path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm1-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />}
 									</svg>
 									</button>
 									<span style={{background: (([r, g, b, a]) => `rgba(${r}, ${g}, ${b}, ${a})`)(colors[Math.log2(id as number)][1])}} className='d-block ci ms-3 me-2 rounded-circle'></span>

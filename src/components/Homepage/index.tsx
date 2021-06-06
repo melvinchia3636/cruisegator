@@ -14,11 +14,11 @@ const Top = (): JSX.Element => {
 	return (
 		<Container fluid className='d-flex vh-100 flex-xl-row flex-sm-column justify-content-between p-0 align-items-end'>
 			<div className='h-100 d-flex justify-content-center align-items-left flex-column px-2 px-sm-5 mx-5'>
-				<h1 className='header m-0 text-primary fw-lighter lh-sm'>Enjoy your life<br />on cruiseship</h1>
-				<p className='fs-5 fw-lighter lh-sm my-4'>{subtitle}</p>
+				<h1 className='header m-0 text-primary fw-lighter'>Enjoy your life<br />on cruiseship</h1>
+				<p className='fs-5 fw-light my-4'>{subtitle}</p>
 				<Button className="text-nowrap rounded-pill fs-5 mt-3 px-5 py-2" href="#">Explore Database</Button>
 			</div>
-			<img src={TopLogo} className='top-logo mt-xxl-0 mt-sm-5 d-sm-none d-xl-block' />
+			<img src={TopLogo} className='top-logo mt-xxl-0 mt-sm-5 d-sm-none d-xl-block' alt='logo'/>
 		</Container>
 	);
 }
@@ -93,7 +93,7 @@ const Bottom = (): JSX.Element => {
 			<div className='d-grid news justify-content-center mx-sm-5 mt-5 w-grid px-5 pt-5'>
 				{content.map(([picture, date, title, desc]) => (
 					<div className='mx-2 overflow-hidden rounded-3 bg-white shadow-sm'>
-						<img src={picture} className='w-100'/>
+						<img src={picture} className='w-100' alt={title}/>
 						<div className='p-4'>
 							<p className='m-0 fw-normal mb-2'>{date.toLocaleString('en-GB', date_option)}</p>
 							<h3>{title}</h3>

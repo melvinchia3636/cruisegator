@@ -1,16 +1,20 @@
 import mapboxgl from 'mapbox-gl';
 import Icon from '@iconify/react';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import axios, { AxiosResponse } from 'axios'
+import { connect } from "react-redux";
 
 import briefcaseLine from '@iconify/icons-clarity/briefcase-line';
 import anchorIcon from '@iconify/icons-simple-line-icons/anchor';
 import locationIcon from '@iconify/icons-carbon/location';
 import crossroadsIcon from '@iconify/icons-carbon/crossroads';
 import topSpeed24Regular from '@iconify-icons/fluent/top-speed-24-regular';
+import { setOverviewData } from 'state_manage/actions';
 
 interface ShipProps {
-	id: string
+	id: string,
+	overview_data: ShipData;
+	setOverviewData: any
 };
 
 interface RawJsonData {
@@ -58,6 +62,16 @@ interface ShipData extends HomeportProps, RatingProps {
 	}
 };
 
+const mapStateToProps = (state: any) => {
+	return { overview_data: state.overview_data };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		setOverviewData: (data: any) => dispatch(setOverviewData(data))
+	}
+}
+
 const Rating: React.FC<RatingProps> = ( { rating } ): JSX.Element => {
 	return (
 		<div className='d-flex' style={{height: 'min-content'}}>
@@ -88,11 +102,11 @@ const Homeport: React.FC<HomeportProps> = ( { homeports } ): JSX.Element => {
 	)
 }
 
-const Overview: React.FC<ShipProps> = ( { id } ) => {
+const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, setOverviewData } ) => {
 	mapboxgl.accessToken = 'pk.eyJ1IjoicmVkYXhlIiwiYSI6ImNrOWk3am0zYjB4dGIzZGtmenl3cmw1ZmMifQ.mwTbGVSSSuBpmCvOh6oCxw';
 	const mapContainer = useRef(null);
 	const map = useRef<mapboxgl.Map>();
-	const [data, setData] = useState<ShipData>();
+	const data = overview_data
 	console.log('test')
 
 	useEffect(() => {
@@ -107,8 +121,9 @@ const Overview: React.FC<ShipProps> = ( { id } ) => {
 			const dom_parser: DOMParser = new DOMParser();
 			const html: Document = dom_parser.parseFromString(rdata, 'text/html');
 			const raw: string = (html.querySelectorAll('head script')[1].textContent?.match(/{.+}/) || ['{}'])[0].replaceAll('\'', '"');
-			const obj: string = eval('(' + raw + ')');
-			const json: RawJsonData = JSON.parse(JSON.stringify(obj));
+			const parser = require('really-relaxed-json').createParser();
+			const obj: string = parser.stringToJson(raw);
+			const json: RawJsonData = JSON.parse(obj);
 			const position_info: string = (html.querySelector('.currentItineraryInfo')?.textContent || '').replace(/\s+/gm, ' ');
 			const currentLocation: string[] = position_info.match(/current location is at (.*?)\(/) || [];
 			const currentCoordinates: string[] = position_info.match(/\(coordinates\s*((?:\d|\.|-)+\s*[N|E|S|W]\s*\/\s*(?:\d|\.|-)+\s*[N|E|S|W])\)/) || [];
@@ -150,7 +165,7 @@ const Overview: React.FC<ShipProps> = ( { id } ) => {
 				lat: number;
 			} = json.widgets.shipCurrentPositionMap;
 
-			setData(result);
+			setOverviewData(result);
 			if (map.current) return;
 
 			if (position) {
@@ -169,10 +184,11 @@ const Overview: React.FC<ShipProps> = ( { id } ) => {
 			}
 		}
 		getData();
-	}, [])
+	}, [id, setOverviewData])
+
 	return (
 		<div className='p-5 w-100 vh-100 d-flex flex-column'>
-			{data ? <>
+			{JSON.stringify(data) !== '{}' ? <>
 				<div className='d-flex justify-content-between align-items-center'>
 					<div>
 						<h1 className='text-uppercase mt-4'>{data.name}</h1>
@@ -190,7 +206,7 @@ const Overview: React.FC<ShipProps> = ( { id } ) => {
 					</div>
 					<div className='h-100 position-relative img'>
 						<div className='bd bg-primary'></div>
-						<div className='p-1 bg-white i position-relative'><img src={data.image} className='' height="260"></img></div>
+						<div className='p-1 bg-white i position-relative'><img src={data.image} className='' height="260" alt={data.name}></img></div>
 						<div className='bd bg-primary position-relative'></div>
 					</div>
 				</div>
@@ -213,7 +229,7 @@ const Overview: React.FC<ShipProps> = ( { id } ) => {
 								<h2 className='fs-5 fw-normal'><Icon icon={topSpeed24Regular} style={{fontSize: '24px'}} className='me-2'/>Speed</h2>
 								<div className='d-flex align-items-end'>
 									<h3 className='fs-4 fw-normal m-0'>{data.speed.knot}</h3>
-									<h6 className='ms-2 mb-1'>({data.speed.kmph != 'N/A' ? (data.speed.kmph as string[]).join(' / ') : data.speed.kmph})</h6>
+									<h6 className='ms-2 mb-1'>({data.speed.kmph !== 'N/A' ? (data.speed.kmph as string[]).join(' / ') : data.speed.kmph})</h6>
 								</div>
 							</div>
 						</div>
@@ -223,5 +239,7 @@ const Overview: React.FC<ShipProps> = ( { id } ) => {
 		</div>
 	)
 }
+
+const Overview = connect(mapStateToProps, mapDispatchToProps)(ConnectedOverview)
 
 export default Overview

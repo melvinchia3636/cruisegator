@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import { Logo, SearchIcon, Youtube, Twitter, Pinterest, Instagram, Facebook, LogoLight } from './assets';
+import { Logo, Youtube, Twitter, Pinterest, Instagram, Facebook, LogoLight } from './assets';
 import './style.scss';
 
 interface INavProps {
@@ -56,12 +56,12 @@ class Nav extends React.Component<INavProps, INavState> {
 					<button className="navbar-toggler border-0" type="button" onClick={this.navToggleCallback.bind(this)} data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
-					<a href='/home'><img src={Logo} height='70' /></a>
+					<a href='/home'><img src={Logo} height='70' alt='logo'/></a>
 				</div>
 				<div className={"collapse navbar-collapse justify-content-end mt-lg-0 pt-lg-0 pt-5 mt-lg-0 mt-5 overflow-hidden"+(this.state.isDone&&this.state.hideNav?(this.state.isToggleOn?' show':' hide'):'')} id="navbarNavAltMarkup">
 					<div className="navbar-nav align-items-center">
 						{this.navitem.map(([text, link]) => <a className="nav-link mx-lg-3 my-3 my-lg-0" href={link}>{text}</a>)}
-						<a className="btn btn-primary mx-4 text-nowrap rounded-pill mx-lg-3 my-3" href="#">Get Started</a>
+						<a className="btn btn-primary mx-4 text-nowrap rounded-pill mx-lg-3 my-3" href="/">Get Started</a>
 					</div>
 				</div>
 			</Navbar>
@@ -92,9 +92,9 @@ const Footer = (): JSX.Element => {
 		<footer className='w-100 pt-5 pb-2 d-flex flex-column justify-content-center align-items-center'>
 			<div className='d-flex flex-lg-row flex-column justify-content-center align-items-center w-100'>
 				<div className='d-flex flex-column align-items-center me-lg-5 pe-lg-5 my-lg-0 my-5'>
-					<img src={LogoLight}/>
+					<img src={LogoLight} alt='logo'/>
 					<div className='d-flex justify-content-between mt-4'>
-						{social_media_icon.map(([icon, link])=><a className='mx-3' href={link}><img src={icon}/></a>)}
+						{social_media_icon.map(([icon, link])=><a className='mx-3' href={link}><img src={icon} alt={link}/></a>)}
 					</div>
 				</div>
 				<div className='d-grid nav-link fw-lighter me-lg-5 pe-lg-5 my-lg-0 my-5 text-nowrap'>

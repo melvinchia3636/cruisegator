@@ -3,7 +3,8 @@
 }
 
 p {
-	color: #808080 !important
+	color: #808080 !important;
+	font-family: Poppins;
 }
 
 h2 {
@@ -58,7 +59,8 @@ h3 {
 }
 
 .header {
-	font-size: 3em !important
+	font-size: 2.6em !important;
+	line-height: 1.2em
 }
 
 @media (min-width: 576px) {

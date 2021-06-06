@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 
@@ -19,8 +18,8 @@ export default function App(): JSX.Element {
 		<>
 			<Nav className={pagename}/>
 			<main className={'container-fluid p-0 overflow-hidden '+pathname[pathname.length-1]} style={{
-				height: pagename=='map'?window.innerHeight:'auto', 
-				minHeight: pagename=='map'?'auto':'100vh'
+				height: pagename==='map'?window.innerHeight:'auto', 
+				minHeight: pagename==='map'?'auto':'100vh'
 			}}>
 				<Route>
 					<Switch>
@@ -33,7 +32,7 @@ export default function App(): JSX.Element {
 					</Switch>
 				</Route>
 			</main>
-			{!(pagename=='map')?<Footer />:''}
+			{!(pagename==='map')?<Footer />:''}
 		</>
 	);
 }

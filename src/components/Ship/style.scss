@@ -3,7 +3,7 @@
 	& .sidebar {
 		box-shadow: 4px 0 4px -4px rgba(0, 0, 0, 0.3);
 
-		& a {
+		& button {
 			font-family: 'Poppins';
 			padding-right: 6em;
 			font-weight: 500;
@@ -14,7 +14,7 @@
 			position: relative;
 
 			&:hover {
-				background: rgba(0, 0, 0, 0.05);
+				background: rgba(0, 0, 0, 0.05) !important;
 				&:before {
 					height: 100%
 				}
@@ -32,7 +32,7 @@
 			}
 			
 			&.active {
-				background: rgba(0, 0, 0, 0.05);
+				background: rgba(0, 0, 0, 0.05) !important;
 
 				&:before {
 					height: 100%

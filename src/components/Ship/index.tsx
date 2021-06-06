@@ -13,6 +13,7 @@ import news28Regular from '@iconify-icons/fluent/news-28-regular';
 import warning24Regular from '@iconify-icons/fluent/warning-24-regular';
 import layer20Regular from '@iconify-icons/fluent/layer-20-regular';
 import 'flag-icon-css/sass/flag-icon.scss';
+
 import Overview from './overview';
 
 interface SidebarProps {
@@ -40,8 +41,6 @@ const mapDispatchToProps = (dispatch: any) => {
 
 const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab } ): JSX.Element => {
 
-	console.log(changeTab)
-
 	const options: [IconifyIcon, string, boolean?][] = [
 		[appsList20Regular, 'overview'],
 		[settings28Regular, 'specifications'],
@@ -57,10 +56,10 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab } ): 
 		<div className='d-flex flex-column justify-content-center fs-6 sidebar vh-100'>
 			{options.map(
 				([icon, text, is_active], index) => 
-				<a className={'text-uppercase text-decoration-none text-dark ps-5 d-flex align-items-center '+(is_active ? 'active': '')} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || '0'))}}>
+				<button className={'text-uppercase bg-white border-0 text-dark ps-5 d-flex align-items-center '+(is_active ? 'active': '')} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || '0'))}}>
 					<Icon icon={icon} width="28" className='me-3'/>
 					{text}
-				</a>)}
+				</button>)}
 		</div>
 	)
 }

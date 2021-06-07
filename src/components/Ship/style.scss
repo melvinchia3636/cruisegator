@@ -1,11 +1,20 @@
 .ship {
+
+	& > div > div:not(.sidebar) {
+		margin-left: 25%
+	}
+
+	& + footer {
+		width: 75% !important;
+		margin-left: 25%
+	}
 	
 	& .sidebar {
 		box-shadow: 4px 0 4px -4px rgba(0, 0, 0, 0.3);
+		width: 25%;
 
 		& button {
 			font-family: 'Poppins';
-			padding-right: 6em;
 			font-weight: 500;
 			padding-top: 1.5em;
 			padding-bottom: 1.5em;
@@ -117,5 +126,28 @@
 
 	& .shadow {
 		box-shadow: 2px 2px 6px rgba(0, 0, 0, .3) !important
+	}
+
+	& .st {
+		& > div {
+			border-bottom: 2px solid #eeeeee;
+	
+			& > div {
+				&:first-child {
+					color: #555555;
+					font-size: 1.1em;
+					padding-left: 1em;
+				}
+				&:last-child {
+					color: #141414;
+					font-size: 1.1em;
+					padding-right: 1em
+				}
+			}
+		}
+	
+		& * {
+			font-family: 'Poppins';
+		}
 	}
 }

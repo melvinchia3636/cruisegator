@@ -15,6 +15,7 @@ import layer20Regular from '@iconify-icons/fluent/layer-20-regular';
 import 'flag-icon-css/sass/flag-icon.scss';
 
 import Overview from './overview';
+import Specifications from './specifications';
 
 interface SidebarProps {
 	active_tab: number;
@@ -53,7 +54,7 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab } ): 
 	options[active_tab].push(true)
 	
 	return (
-		<div className='d-flex flex-column justify-content-center fs-6 sidebar vh-100'>
+		<div className='d-flex flex-column justify-content-center fs-6 sidebar vh-100 position-fixed'>
 			{options.map(
 				([icon, text, is_active], index) => 
 				<button className={'text-uppercase bg-white border-0 text-dark ps-5 d-flex align-items-center '+(is_active ? 'active': '')} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || '0'))}}>
@@ -66,13 +67,9 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab } ): 
 
 const Sidebar = connect(null, mapDispatchToProps)(ConnectedSidebar)
 
-const Specifications: React.FC<ShipProps> = (): JSX.Element => {
-	return <h1 className='pt-5 ps-4'>Specifications</h1>
-}
-
 const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, ...props}): JSX.Element => {
 	return (
-		<div className='w-100 py-5 vh-100 d-flex'>
+		<div className='w-100 py-5 d-flex pb-0'>
 			<Sidebar active_tab={active_tab}/>
 			{(()=>{
 				let tab: JSX.Element

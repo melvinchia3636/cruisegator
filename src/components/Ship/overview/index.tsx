@@ -1,6 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import Icon from '@iconify/react';
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios, { AxiosResponse } from 'axios'
 import { connect } from "react-redux";
 
@@ -59,8 +59,19 @@ interface ShipData extends HomeportProps, RatingProps {
 	speed: {
 		knot: string,
 		kmph: string[] | string
+	},
+	position: {
+		lon: number;
+		lat: number;
 	}
 };
+
+interface MapProps {
+	position: {
+		lon: number,
+		lat: number
+	}
+}
 
 const mapStateToProps = (state: any) => {
 	return { overview_data: state.overview_data };
@@ -102,10 +113,46 @@ const Homeport: React.FC<HomeportProps> = ( { homeports } ): JSX.Element => {
 	)
 }
 
+class Map extends React.Component<MapProps> {
+
+	position: any;
+	map: any;
+	mapContainer: any;
+
+	constructor(props: MapProps) {
+		super(props)
+		mapboxgl.accessToken = 'pk.eyJ1IjoicmVkYXhlIiwiYSI6ImNrOWk3am0zYjB4dGIzZGtmenl3cmw1ZmMifQ.mwTbGVSSSuBpmCvOh6oCxw';
+		this.position = props.position;
+		this.mapContainer = React.createRef();
+	}
+
+	componentDidMount() {
+		console.log('fvjasoirgjisrj')
+		const position = this.position;
+
+		if (position) {
+
+			const map = new mapboxgl.Map({
+				container: this.mapContainer.current || '.map-container',
+				style: 'mapbox://styles/mapbox/streets-v11',
+				center: [position.lon, position.lat],
+				zoom: 3
+			});
+
+			map.on('load', function(){
+				new mapboxgl.Marker({ color: 'rgba(0, 85, 185, 1)' })
+				.setLngLat([position.lon, position.lat])
+				.addTo(map as mapboxgl.Map);
+			});
+		}
+	}
+
+	render() {
+		return <div ref={this.mapContainer} className="map-container shadow" style={{height: '85%', width: '100%'}}/>
+	}
+}
+
 const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, setOverviewData } ) => {
-	mapboxgl.accessToken = 'pk.eyJ1IjoicmVkYXhlIiwiYSI6ImNrOWk3am0zYjB4dGIzZGtmenl3cmw1ZmMifQ.mwTbGVSSSuBpmCvOh6oCxw';
-	const mapContainer = useRef(null);
-	const map = useRef<mapboxgl.Map>();
 	const data = overview_data
 	console.log('test')
 
@@ -158,30 +205,11 @@ const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, setOvervie
 				speed: {
 					knot: speed_kn[speed_kn.length-1] || 'N/A',
 					kmph: kmph.length > 0 ? kmph : 'N/A'
-				}
+				},
+				position: json.widgets.shipCurrentPositionMap
 			};
-			const position:{
-				lon: number;
-				lat: number;
-			} = json.widgets.shipCurrentPositionMap;
 
 			setOverviewData(result);
-			if (map.current) return;
-
-			if (position) {
-				map.current = new mapboxgl.Map({
-					container: mapContainer.current || '',
-					style: 'mapbox://styles/mapbox/streets-v11',
-					center: [position.lon, position.lat],
-					zoom: 3
-				});
-
-				map.current.on('load', function(){
-					new mapboxgl.Marker({ color: 'rgba(0, 85, 185, 1)' })
-					.setLngLat([position.lon, position.lat])
-					.addTo(map.current as mapboxgl.Map);
-				});
-			}
 		}
 		getData();
 	}, [id, setOverviewData])
@@ -211,7 +239,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, setOvervie
 					</div>
 				</div>
 				<div className='d-flex h-100 mt-5 w-100'>
-					<div ref={mapContainer} className="map-container shadow" style={{height: '85%', width: '100%'}} />
+					<Map position={data.position}/>
 					<div className='ms-5 d-flex flex-column justify-content-center w-100' style={{height: '85%'}}>
 						<div className='w-100'>
 							<div className='d-flex w-100 justify-content-between'><h2 className='fs-5 fw-normal'><Icon icon={locationIcon} style={{fontSize: '24px'}} className='me-2'/>Current location</h2><p className='float-end d-flex align-items-center'><span className={'d-block rounded-pill bd-0 me-2 stat bg-'+data.last_ais_report.status}></span>{data.last_ais_report.text}</p></div>

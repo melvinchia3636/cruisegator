@@ -9,7 +9,7 @@ import './style.scss';
 //TODO: logitravel.co.uk
 
 const Top = (): JSX.Element => {
-	var subtitle:string;
+	var subtitle: string;
 	subtitle = 'Find the deck plans, data, schedules, and all the goodies about your desired cruiseship here at Cruisegator.';
 	return (
 		<Container fluid className='d-flex vh-100 flex-xl-row flex-sm-column justify-content-between p-0 align-items-end'>
@@ -18,7 +18,7 @@ const Top = (): JSX.Element => {
 				<p className='fs-5 fw-light my-4'>{subtitle}</p>
 				<Button className="text-nowrap rounded-pill fs-5 mt-3 px-5 py-2" href="#">Explore Database</Button>
 			</div>
-			<img src={TopLogo} className='top-logo mt-xxl-0 mt-sm-5 d-sm-none d-xl-block' alt='logo'/>
+			<img src={TopLogo} className='top-logo mt-xxl-0 mt-sm-5 d-sm-none d-xl-block' alt='logo' />
 		</Container>
 	);
 }
@@ -93,7 +93,7 @@ const Bottom = (): JSX.Element => {
 			<div className='d-grid news justify-content-center mx-sm-5 mt-5 w-grid px-5 pt-5'>
 				{content.map(([picture, date, title, desc]) => (
 					<div className='mx-2 overflow-hidden rounded-3 bg-white shadow-sm'>
-						<img src={picture} className='w-100' alt={title}/>
+						<img src={picture} className='w-100' alt={title} />
 						<div className='p-4'>
 							<p className='m-0 fw-normal mb-2'>{date.toLocaleString('en-GB', date_option)}</p>
 							<h3>{title}</h3>
@@ -106,12 +106,12 @@ const Bottom = (): JSX.Element => {
 	);
 }
 
-export default function Homepage(): JSX.Element { 
+export default function Homepage(): JSX.Element {
 	return (
 		<React.Fragment>
-			<Top/>
-			<Middle/>
-			<Bottom/>
+			<Top />
+			<Middle />
+			<Bottom />
 		</React.Fragment>
 	)
 };

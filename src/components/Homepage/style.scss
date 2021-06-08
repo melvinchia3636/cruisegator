@@ -9,7 +9,7 @@ p {
 
 h2 {
 	font-family: Poppins;
-	font-size: 1.8em
+	font-size: 1.8em;
 }
 
 .seperator {
@@ -61,6 +61,14 @@ h3 {
 .header {
 	font-size: 2.6em !important;
 	line-height: 1.2em
+}
+
+.btn {
+	font-family: 'Poppins';
+	
+	&.px-5 {
+		font-size: 1.5em !important
+	}
 }
 
 @media (min-width: 576px) {

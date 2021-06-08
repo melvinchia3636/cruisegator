@@ -2,8 +2,10 @@ import './style.scss';
 import Icon from '@iconify/react';
 import { IconifyIcon } from '@iconify/types'
 import { RouteComponentProps } from 'react-router-dom'
-import { changeTab } from  '../../state_manage/actions'
+import { changeTab, setShiprawData } from  '../../state_manage/actions'
 import { connect } from "react-redux";
+import axios, { AxiosResponse } from 'axios';
+import { useEffect } from 'react';
 
 import appsList20Regular from '@iconify-icons/fluent/apps-list-20-regular';
 import settings28Regular from '@iconify-icons/fluent/settings-28-regular';
@@ -22,21 +24,28 @@ interface SidebarProps {
 	changeTab: any
 }
 
-interface ShipProps {
-	id: string
-};
-
-interface ShipRouteProps extends RouteComponentProps<ShipProps> {
-
+interface ShipRouteProps extends RouteComponentProps {
+	id: string;
+	shipraw_data: Document;
+	setShiprawData: any
 }
 
 const mapStateToProps = (state: any) => {
-	return { active_tab: state.current_tab };
+	return {
+		active_tab: state.current_tab,
+		shipraw_data: state.shipraw_data
+	};
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const SidebarMapDispatchToProps = (dispatch: any) => {
 	return {
 		changeTab: (newtab: number) => dispatch(changeTab(newtab))
+	}
+}
+
+const MainMapDispatchToProps = (dispatch: any) => {
+	return {
+		setShiprawData: (shipraw_data: Document) => dispatch(setShiprawData(shipraw_data))
 	}
 }
 
@@ -65,17 +74,30 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab } ): 
 	)
 }
 
-const Sidebar = connect(null, mapDispatchToProps)(ConnectedSidebar)
+const Sidebar = connect(null, SidebarMapDispatchToProps)(ConnectedSidebar)
 
-const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, ...props}): JSX.Element => {
+const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, shipraw_data, setShiprawData, ...props}): JSX.Element => {
+	const id: string = props.match.params.id
+	useEffect(() => {
+		const fetchRawData = async () => {
+			const request: AxiosResponse<any> = await axios.get('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships/'+id);
+			const rdata: string = request.data;
+			const dom_parser: DOMParser = new DOMParser();
+			const html: Document = dom_parser.parseFromString(rdata, 'text/html');
+			setShiprawData(html)
+		};
+
+		fetchRawData()
+	}, [])
+
 	return (
 		<div className='w-100 py-5 d-flex pb-0'>
 			<Sidebar active_tab={active_tab}/>
 			{(()=>{
 				let tab: JSX.Element
 				switch (active_tab) {
-					case 0: tab = <Overview id={props.match.params.id}/>; break;
-					case 1: tab = <Specifications id={props.match.params.id}/>; break;
+					case 0: tab = <Overview id={id}/>; break;
+					case 1: tab = <Specifications id={id}/>; break;
 					default: tab = <></>
 				}
 				return tab
@@ -84,6 +106,6 @@ const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, ...props}): JS
 	)
 }
 
-const Ship = connect(mapStateToProps)(ConnectedShip);
+const Ship = connect(mapStateToProps, MainMapDispatchToProps)(ConnectedShip);
 
 export default Ship;

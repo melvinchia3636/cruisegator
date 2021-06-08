@@ -14,9 +14,9 @@ const Top = (): JSX.Element => {
 	return (
 		<Container fluid className='d-flex vh-100 flex-xl-row flex-sm-column justify-content-between p-0 align-items-end'>
 			<div className='h-100 d-flex justify-content-center align-items-left flex-column px-2 px-sm-5 mx-5'>
-				<h1 className='header m-0 text-primary fw-lighter'>Enjoy your life<br />on cruiseship</h1>
+				<h1 className='header m-0 text-primary fw-normal'>Enjoy your life<br />on cruiseship</h1>
 				<p className='fs-5 fw-light my-4'>{subtitle}</p>
-				<Button className="text-nowrap rounded-pill fs-5 mt-3 px-5 py-2" href="#">Explore Database</Button>
+				<Button className="text-nowrap rounded-pill mt-3 px-5 py-2" href="#">Explore Database</Button>
 			</div>
 			<img src={TopLogo} className='top-logo mt-xxl-0 mt-sm-5 d-sm-none d-xl-block' alt='logo' />
 		</Container>
@@ -45,14 +45,14 @@ const Middle = (): JSX.Element => {
 
 	return (
 		<Container fluid className='bg-light d-flex flex-column justify-content-center align-items-center p-5 mt-sm-0'>
-			<h1 className='fw-lighter text-center text-nowrap'>Why Choose Cruisegator?</h1>
+			<h1 className='fw-normal text-center text-nowrap'>Why Choose Cruisegator?</h1>
 			<div className='seperator mt-3 btn-primary'></div>
 			<div className='d-grid justify-content-center align-items-baseline mx-sm-5 mt-5 w-grid px-sm-5 pt-5'>
 				{content.map(([Icon, title, desc]) => (
 					<div className='mx-4'>
 						<Icon size='4em' stroke-width='1' className='text-primary' />
-						<h2 className='fw-light mt-4'>{title}</h2>
-						<p className='fs-5 fw-lighter lh-sm pt-2'>{desc}</p>
+						<h2 className='mt-4 fw-light'>{title}</h2>
+						<p className='fs-5 lh-sm pt-2'>{desc}</p>
 					</div>
 				))}
 			</div>
@@ -88,7 +88,7 @@ const Bottom = (): JSX.Element => {
 	}
 	return (
 		<div className='fluid-container d-flex flex-column justify-content-center align-items-center bg-fade mb-0 py-5'>
-			<h1 className='fw-lighter text-nowrap'>Latest News</h1>
+			<h1 className='fw-normal text-nowrap'>Latest News</h1>
 			<div className='seperator mt-3 btn-primary'></div>
 			<div className='d-grid news justify-content-center mx-sm-5 mt-5 w-grid px-5 pt-5'>
 				{content.map(([picture, date, title, desc]) => (
@@ -96,7 +96,7 @@ const Bottom = (): JSX.Element => {
 						<img src={picture} className='w-100' alt={title} />
 						<div className='p-4'>
 							<p className='m-0 fw-normal mb-2'>{date.toLocaleString('en-GB', date_option)}</p>
-							<h3>{title}</h3>
+							<h3 className='pb-1'>{title}</h3>
 							<p className='mt-2'>{desc}</p>
 						</div>
 					</div>

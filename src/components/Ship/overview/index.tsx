@@ -1,8 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import Icon from '@iconify/react';
-import React, { useEffect } from 'react';
-import axios, { AxiosResponse } from 'axios'
 import { connect } from "react-redux";
+import React from 'react'
 
 import briefcaseLine from '@iconify/icons-clarity/briefcase-line';
 import anchorIcon from '@iconify/icons-simple-line-icons/anchor';
@@ -13,6 +12,7 @@ import { setOverviewData } from 'state_manage/actions';
 
 interface ShipProps {
 	id: string,
+	shipraw_data: Document,
 	overview_data: ShipData;
 	setOverviewData: any
 };
@@ -74,7 +74,10 @@ interface MapProps {
 }
 
 const mapStateToProps = (state: any) => {
-	return { overview_data: state.overview_data };
+	return {
+		overview_data: state.overview_data,
+		shipraw_data: state.shipraw_data
+	};
 };
 
 const mapDispatchToProps = (dispatch: any) => {
@@ -123,21 +126,23 @@ class Map extends React.Component<MapProps> {
 		super(props)
 		mapboxgl.accessToken = 'pk.eyJ1IjoicmVkYXhlIiwiYSI6ImNrOWk3am0zYjB4dGIzZGtmenl3cmw1ZmMifQ.mwTbGVSSSuBpmCvOh6oCxw';
 		this.position = props.position;
+		if (this.mapContainer) return
 		this.mapContainer = React.createRef();
 	}
 
 	componentDidMount() {
-		console.log('fvjasoirgjisrj')
 		const position = this.position;
 
 		if (position) {
-
-			const map = new mapboxgl.Map({
+			if (this.map) return
+			this.map = new mapboxgl.Map({
 				container: this.mapContainer.current || '.map-container',
 				style: 'mapbox://styles/mapbox/streets-v11',
 				center: [position.lon, position.lat],
 				zoom: 3
 			});
+
+			const map = this.map
 
 			map.on('load', function(){
 				new mapboxgl.Marker({ color: 'rgba(0, 85, 185, 1)' })
@@ -152,68 +157,62 @@ class Map extends React.Component<MapProps> {
 	}
 }
 
-const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, setOverviewData } ) => {
+const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, shipraw_data, setOverviewData } ) => {
 	const data = overview_data
-	console.log('test')
 
-	useEffect(() => {
-		const getData  = async () => {
-			const check_status = ( text: string ): 'success' | 'warning' | 'danger' => {
-				if (text.includes('minute') || text.includes('second')) return 'success';
-				if (text.includes('hour')) return 'warning';
-				return 'danger'
-			}
-			const request: AxiosResponse<any> = await axios.get('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships/'+id);
-			const rdata: string = request.data;
-			const dom_parser: DOMParser = new DOMParser();
-			const html: Document = dom_parser.parseFromString(rdata, 'text/html');
-			const raw: string = (html.querySelectorAll('head script')[1].textContent?.match(/{.+}/) || ['{}'])[0].replaceAll('\'', '"');
-			const parser = require('really-relaxed-json').createParser();
-			const obj: string = parser.stringToJson(raw);
-			const json: RawJsonData = JSON.parse(obj);
-			const position_info: string = (html.querySelector('.currentItineraryInfo')?.textContent || '').replace(/\s+/gm, ' ');
-			const currentLocation: string[] = position_info.match(/current location is at (.*?)\(/) || [];
-			const currentCoordinates: string[] = position_info.match(/\(coordinates\s*((?:\d|\.|-)+\s*[N|E|S|W]\s*\/\s*(?:\d|\.|-)+\s*[N|E|S|W])\)/) || [];
-			const destination: string[] = position_info.match(/en route to (.*?)\./) || [];
-			const last_ais_report: string[] = position_info.match(/The AIS position was reported (.*?)\./) || [];
-			const speed_kn: string[] = position_info.match(/speed of ([\d.]*?\s*kn)/) || [];
-			const speed_mkph: string[] = position_info.match(/\(([\d.]*?\s*kph)\s*\/\s*([\d.]*?\s*mph)\)/) || [];
-			const ais_report: string = last_ais_report[last_ais_report.length-1] || 'N/A';
-			const kmph: string[] = speed_mkph.slice(1, speed_mkph.length)
-			
-			const result: ShipData = {
-				is_new: json.widgets?.shipNewsButton?.state || false,
-				rating: json.widgets.rating?.stars || 0,
-				name: html.querySelector('h1[itemprop="name"]')?.textContent || 'N/A',
-				company: html.querySelector('a.shipCompanyLink')?.textContent || 'N/A',
-				image: 'https://www.cruisemapper.com/'+(html.querySelector('img[itemprop="image"]') as HTMLImageElement)?.src.replace('http://localhost:3000', '') || '',
-				homeports: [...html.querySelectorAll('.homeports a')].map(e => {
-					const content = e.textContent || '';
-					const bracket = content.match(/\(.*?\)/) || []
-					return {
-						icon: e.querySelector('span')?.classList.value || '',
-						text: [bracket[bracket.length-1], content.split('(')[0]]
-					}
-				}),
-				location: currentLocation[currentLocation.length-1] || 'N/A',
-				coordinates: currentCoordinates[currentCoordinates.length-1] || 'N/A',
-				destination: destination[destination.length-1] || 'N/A',
-				last_ais_report: {
-					text: ais_report,
-					status: check_status(ais_report),
-				},
-				speed: {
-					knot: speed_kn[speed_kn.length-1] || 'N/A',
-					kmph: kmph.length > 0 ? kmph : 'N/A'
-				},
-				position: json.widgets.shipCurrentPositionMap
-			};
-
-			setOverviewData(result);
+	const getData  = async () => {
+		const check_status = ( text: string ): 'success' | 'warning' | 'danger' => {
+			if (text.includes('minute') || text.includes('second')) return 'success';
+			if (text.includes('hour')) return 'warning';
+			return 'danger'
 		}
-		getData();
-	}, [id, setOverviewData])
+		if (JSON.stringify(overview_data) !== '{}') return
+		const html: Document = shipraw_data
+		const raw: string = (html.querySelectorAll('head script')[1].textContent?.match(/{.+}/) || ['{}'])[0].replaceAll('\'', '"');
+		const parser = require('really-relaxed-json').createParser();
+		const obj: string = parser.stringToJson(raw);
+		const json: RawJsonData = JSON.parse(obj);
+		const position_info: string = (html.querySelector('.currentItineraryInfo')?.textContent || '').replace(/\s+/gm, ' ');
+		const currentLocation: string[] = position_info.match(/current location is at (.*?)\(/) || [];
+		const currentCoordinates: string[] = position_info.match(/\(coordinates\s*((?:\d|\.|-)+\s*[N|E|S|W]\s*\/\s*(?:\d|\.|-)+\s*[N|E|S|W])\)/) || [];
+		const destination: string[] = position_info.match(/en route to (.*?)\./) || [];
+		const last_ais_report: string[] = position_info.match(/The AIS position was reported (.*?)\./) || [];
+		const speed_kn: string[] = position_info.match(/speed of ([\d.]*?\s*kn)/) || [];
+		const speed_mkph: string[] = position_info.match(/\(([\d.]*?\s*kph)\s*\/\s*([\d.]*?\s*mph)\)/) || [];
+		const ais_report: string = last_ais_report[last_ais_report.length-1] || 'N/A';
+		const kmph: string[] = speed_mkph.slice(1, speed_mkph.length)
+		
+		const result: ShipData = {
+			is_new: json.widgets?.shipNewsButton?.state || false,
+			rating: json.widgets.rating?.stars || 0,
+			name: html.querySelector('h1[itemprop="name"]')?.textContent || 'N/A',
+			company: html.querySelector('a.shipCompanyLink')?.textContent || 'N/A',
+			image: 'https://www.cruisemapper.com/'+(html.querySelector('img[itemprop="image"]') as HTMLImageElement)?.src.replace('http://localhost:3000', '') || '',
+			homeports: [...html.querySelectorAll('.homeports a')].map(e => {
+				const content = e.textContent || '';
+				const bracket = content.match(/\(.*?\)/) || []
+				return {
+					icon: e.querySelector('span')?.classList.value || '',
+					text: [bracket[bracket.length-1], content.split('(')[0]]
+				}
+			}),
+			location: currentLocation[currentLocation.length-1] || 'N/A',
+			coordinates: currentCoordinates[currentCoordinates.length-1] || 'N/A',
+			destination: destination[destination.length-1] || 'N/A',
+			last_ais_report: {
+				text: ais_report,
+				status: check_status(ais_report),
+			},
+			speed: {
+				knot: speed_kn[speed_kn.length-1] || 'N/A',
+				kmph: kmph.length > 0 ? kmph : 'N/A'
+			},
+			position: json.widgets.shipCurrentPositionMap
+		};
 
+		setOverviewData(result);
+	}
+	if (shipraw_data || '' !== '') getData();
 	return (
 		<div className='p-5 w-100 vh-100 d-flex flex-column'>
 			{JSON.stringify(data) !== '{}' ? <>

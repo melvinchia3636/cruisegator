@@ -54,7 +54,7 @@ export default function Database(): JSX.Element {
 	return (
 		<div className='w-100 p-5'>
 			<div className='w-100 d-flex align-items-center justify-content-center flex-column'>
-				<h1 className='fw-lighter text-center text-nowrap' style={{marginTop: '2em'}}>Cruiseship Database</h1>
+				<h1 className='fw-light text-center text-nowrap' style={{marginTop: '2em'}}>Cruiseship Database</h1>
 				<div className='seperator mt-2 btn-primary mb-5'></div>
 				<div className='w-50 d-flex rounded-pill align-items-center px-3' style={{boxShadow: '0 0 2px rgba(0, 0, 0, 0.7)'}}>
 					<Icon icon={baselineSearch} width="24" color="#808080"/>
@@ -67,14 +67,7 @@ export default function Database(): JSX.Element {
 					<a href={'/ship/'+e.link}><img src={e.image} className='mw-100' height='192' width='400' alt={e.name}/></a>
 					<div className='d-flex flex-column mx-3 justify-content-center'>
 						<div className='w-100 d-flex justify-content-between align-items-center'>
-							<a href={'/ship/'+e.link} className='text-decoration-none'><h3 className='text-primary fw-bold mb-0'>{e.name}</h3></a>
-							{/*<div className='d-flex' style={{height: 'min-content'}}>
-								<span className='border border-primary d-block border-2 rounded-pill bg-primary'></span>
-								<span className='border border-primary d-block border-2 rounded-pill bg-primary'></span>
-								<span className='border border-primary d-block border-2 rounded-pill bg-primary'></span>
-								<span className='border border-primary d-block border-2 rounded-pill bg-primary'></span>
-								<span className='border border-primary d-block border-2 rounded-pill'></span>
-							</div>*/}
+							<a href={'/ship/'+e.link} className='text-decoration-none'><h3 className='text-primary fw-medium mb-0'>{e.name}</h3></a>
 						</div>
 						<p className='st fw-normal mb-0'>{e.lines}</p>
 						<div className='mt-3'>

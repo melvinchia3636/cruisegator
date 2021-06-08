@@ -1,12 +1,39 @@
+import { connect } from "react-redux";
 import settings28Regular from '@iconify-icons/fluent/settings-28-regular';
 import Icon from '@iconify/react';
 import info24Regular from '@iconify-icons/fluent/info-24-regular';
+import { setSpecificationData } from "state_manage/actions";
 
 interface SpecificationsProps {
 	id: string;
+	shipraw_data: Document,
+	specification_data: string[],
+	setSpecificationData: any
 }
 
-const Specifications: React.FC<SpecificationsProps> = ({ id }): JSX.Element => {
+const mapStateToProps = (state: any) => {
+	return {
+		shipraw_data: state.shipraw_data,
+		specification_data: state.specification_data
+	}
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		setSpecificationData: (specification_data: string[]) => dispatch(setSpecificationData(specification_data))
+	}
+}
+
+const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, shipraw_data, specification_data, setSpecificationData }): JSX.Element => {
+	const getData  = async () => {
+		if (specification_data.length > 0) return
+		const html: Document = shipraw_data
+		setSpecificationData(Array.from(html.querySelectorAll('.specificationTable')).map(e => Array.from(e.querySelectorAll('tr')).map(e => e.querySelectorAll('td'))).flat().map(e => Array.from(e).map(e => e.textContent?.trim())))
+	};
+
+	if (shipraw_data.toString() !== '') getData();
+	console.log(specification_data)
+
 	return (
 		<div className='p-5 w-100 d-flex flex-column'>
 			<div className='mb-5'>
@@ -19,46 +46,12 @@ const Specifications: React.FC<SpecificationsProps> = ({ id }): JSX.Element => {
 					<h2 className="fs-3 fw-normal m-0 text-primary text-up">Ship Specifications</h2>
 				</div>
 				<div className='st'>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Year built</div>
-						<div>2021</div>
-					</div>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Builder</div>
-						<div>Meyer Werft (Papenburg, Germany)</div>
-					</div>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Class</div>
-						<div>Quantum-Ultra</div>
-					</div>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Building cost</div>
-						<div>EUR 750 million (USD 940 million)</div>
-					</div>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Owner</div>
-						<div>Royal Caribbean Cruises Ltd</div>
-					</div>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Operator</div>
-						<div>Royal Caribbean International</div>
-					</div>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Speed</div>
-						<div>22 kn / 41 kph / 25 mph</div>
-					</div>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Length(LOA)</div>
-						<div>347 m / 1138 ft</div>
-					</div>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Beam(width)</div>
-						<div>49 m / 161 ft</div>
-					</div>
-					<div className="d-flex justify-content-between align-items-center py-3">
-						<div>Gross Tonnage</div>
-						<div>169300 gt</div>
-					</div>
+					{specification_data.length > 0 ? specification_data.map(([k, v]) => 
+						<div className="d-flex justify-content-between align-items-center py-3">
+							<div>{k}</div>
+							<div>{v}</div>
+						</div>
+					) : ''}
 				</div>
 			</div>
 			<div>
@@ -112,5 +105,7 @@ const Specifications: React.FC<SpecificationsProps> = ({ id }): JSX.Element => {
 		</div>
 	)
 }
+
+const Specifications = connect(mapStateToProps, mapDispatchToProps)(ConnectedSpecifications)
 
 export default Specifications

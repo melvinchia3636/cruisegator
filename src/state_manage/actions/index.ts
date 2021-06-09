@@ -4,7 +4,7 @@ export function changeTab(payload: number) {
 	return { type: constants.CHANGE_TAB, payload }
 };
 
-export function setShiprawData(payload: Document) {
+export function setShiprawData(payload: Document[]) {
 	return {type: constants.SET_SHIPRAW_DATA, payload}
 }
 

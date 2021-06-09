@@ -26,7 +26,7 @@ interface SidebarProps {
 
 interface ShipRouteProps extends RouteComponentProps {
 	id: string;
-	shipraw_data: Document;
+	shipraw_data: Document[];
 	setShiprawData: any
 }
 
@@ -45,7 +45,7 @@ const SidebarMapDispatchToProps = (dispatch: any) => {
 
 const MainMapDispatchToProps = (dispatch: any) => {
 	return {
-		setShiprawData: (shipraw_data: Document) => dispatch(setShiprawData(shipraw_data))
+		setShiprawData: (shipraw_data: Document[]) => dispatch(setShiprawData(shipraw_data))
 	}
 }
 
@@ -78,17 +78,26 @@ const Sidebar = connect(null, SidebarMapDispatchToProps)(ConnectedSidebar)
 
 const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, shipraw_data, setShiprawData, ...props}): JSX.Element => {
 	const id: string = props.match.params.id
+	const url_to_fetch: string[] = ['https://www.cruisemapper.com/ships/'+id]
 	useEffect(() => {
 		const fetchRawData = async () => {
-			const request: AxiosResponse<any> = await axios.get('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships/'+id);
-			const rdata: string = request.data;
 			const dom_parser: DOMParser = new DOMParser();
-			const html: Document = dom_parser.parseFromString(rdata, 'text/html');
-			setShiprawData(html)
+			const request_promise: Promise<AxiosResponse<any>>[] = url_to_fetch.map(async url => await axios({
+				method: 'GET',
+				url: 'https://codeblog-corsanywhere.herokuapp.com/'+url, 
+				headers: {
+					'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+				}
+			}))
+
+			const requests = await Promise.all(request_promise)
+			const rdata: string[] = requests.map(r => r.data);
+			const htmls: Document[] = rdata.map(d => dom_parser.parseFromString(d, 'text/html'));
+			setShiprawData(htmls)
 		};
 
 		fetchRawData()
-	}, [])
+	}, [setShiprawData, url_to_fetch])
 
 	return (
 		<div className='w-100 py-5 d-flex pb-0'>

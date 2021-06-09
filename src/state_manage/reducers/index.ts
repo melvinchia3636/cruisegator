@@ -4,7 +4,7 @@ const initialState = {
 	current_tab: 0,
 	shipraw_data: '',
 	overview_data: {},
-	specification_data: []
+	specification_data: {}
 };
   
 function Reducer(state = initialState, action: any) {

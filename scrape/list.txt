@@ -1,0 +1,7 @@
+[
+    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/radiance-of-the-seas/",
+    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/explorer-of-the-seas/",
+    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/enchantment-of-the-seas/",
+    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/rhapsody-of-the-seas/",
+    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/grandeur-of-the-seas/"
+]

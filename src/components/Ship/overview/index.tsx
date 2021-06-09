@@ -12,7 +12,7 @@ import { setOverviewData } from 'state_manage/actions';
 
 interface ShipProps {
 	id: string,
-	shipraw_data: Document,
+	shipraw_data: Document[],
 	overview_data: ShipData;
 	setOverviewData: any
 };
@@ -167,7 +167,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, shipraw_da
 			return 'danger'
 		}
 		if (JSON.stringify(overview_data) !== '{}') return
-		const html: Document = shipraw_data
+		const html: Document = shipraw_data[0]
 		const raw: string = (html.querySelectorAll('head script')[1].textContent?.match(/{.+}/) || ['{}'])[0].replaceAll('\'', '"');
 		const parser = require('really-relaxed-json').createParser();
 		const obj: string = parser.stringToJson(raw);
@@ -212,7 +212,8 @@ const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, shipraw_da
 
 		setOverviewData(result);
 	}
-	if (shipraw_data || '' !== '') getData();
+	if (!shipraw_data) getData();
+	
 	return (
 		<div className='p-5 w-100 vh-100 d-flex flex-column'>
 			{JSON.stringify(data) !== '{}' ? <>

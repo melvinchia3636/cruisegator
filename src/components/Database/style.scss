@@ -5,57 +5,19 @@
 		width: 80px
 	}
 
+	& p span {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: calc(100% - 2.5rem)
+	}
+
 	& h1 {
 		font-family: 'Poppins'
 	}
 
 	& input {
 		font-family: 'Public Sans'
-	}
-
-	& .d-grid {
-		grid-template-columns: repeat(2, auto);
-
-		& > div {
-			height: 12em;
-			display: grid;
-			grid-template-columns: 40% 60%;
-
-			& > div {
-				
-				& h3 {
-					font-family: 'Poppins' !important;
-					font-size: 1.4em;
-					white-space: nowrap;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					display: block !important;
-					max-width: 350px
-				}
-	
-				& .st {
-					font-size: .9em;
-				}
-
-				& > div  > p {
-					color: rgba(0, 0, 0, 0.7) !important;
-					font-size: .9em;
-					white-space: nowrap;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					max-width: 100%;
-					display: block !important
-				}
-			}
-
-			& img {
-				object-fit: fill
-			}
-		}
-
-		& h5 {
-			font-family: 'Poppins'
-		}
 	}
 
 	& .pg {

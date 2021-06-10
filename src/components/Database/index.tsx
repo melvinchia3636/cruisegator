@@ -52,8 +52,8 @@ export default function Database(): JSX.Element {
 	}, [page_num])
 
 	return (
-		<div className='w-100 p-20'>
-			<div className='w-100 flex items-center justify-center flex-col mt-16'>
+		<div className='w-full p-20'>
+			<div className='w-full flex items-center justify-center flex-col mt-16'>
 			<h1 className='fw-normal text-center text-nowrap text-5xl'>Cruiseship Database</h1>
 			<div className='w-20 h-1 mt-6 bg-blue-800'></div>
 				<div className='w-3/4 flex rounded-full items-center px-3 my-10' style={{boxShadow: '0 0 2px rgba(0, 0, 0, 0.7)'}}>
@@ -61,17 +61,17 @@ export default function Database(): JSX.Element {
 					<input type='text' placeholder='Search for cruiseships in database' className='w-full p-2 border-0 rounded-full'></input>
 				</div>
 			</div>
-			<div className='w-100 grid grid-cols-2 mt-5 position-relative gap-8'>
+			<div className='w-full grid grid-cols-2 mt-5 position-relative gap-8'>
 				{data.length > 1 ? data.map(e =>
-				<div className='w-100 overflow-hidden grid rounded-xl shadow-md' style={{gridTemplateColumns: '40% 60%'}}>
+				<div className='w-full overflow-hidden grid rounded-xl shadow-md' style={{gridTemplateColumns: '40% 60%'}}>
 					<a href={'/ship/'+e.link}><img src={e.image} className='w-full object-cover h-full' alt={e.name}/></a>
 					<div className='flex flex-col mx-6 justify-center py-3'>
-						<div className='w-100 flex justify-between align-center'>
+						<div className='w-full flex justify-between align-center'>
 							<a href={'/ship/'+e.link} className='text-decoration-none'><h3 className='text-blue-800 font-medium font-poppins mb-0 text-2xl'>{e.name}</h3></a>
 						</div>
 						<p className='st fw-normal mb-0'>{e.lines}</p>
 						<div className='mt-3'>
-							<p className='m-0 mb-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={calendarMonthOutline}/>{e.cruise}</p>
+							<p className='m-0 mb-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={calendarMonthOutline}/><span>{e.cruise}</span></p>
 							<p className='m-0 my-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={clockTimeEightOutline}/>{e.year}</p>
 							<p className='m-0 my-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={timerSand}/>{e.age}</p>
 							<p className='m-0 mt-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={accountGroupOutline}/>{e.passenger}</p>
@@ -81,7 +81,7 @@ export default function Database(): JSX.Element {
 					<h5 className='text-center position-absolute start-50 translate-middle-x'>No data to be shown</h5> : '')
 				}
 			</div>
-			{data.length > 1 ? <div className='w-100 flex justify-center mt-12 pg'>
+			{data.length > 1 ? <div className='w-full flex justify-center mt-12 pg'>
 				<div className='flex font-bold items-center text-gray-500'>
 					{Array(2).fill(0).map((_, i) => i).reverse().map(i => {
 						if (page_num-i-1 > 0) return <a className='flex items-center justify-center' href={`/database?page=${page_num-i-1}`}>{page_num-i-1}</a>

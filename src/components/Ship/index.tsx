@@ -14,6 +14,7 @@ import calendarLtr28Regular from '@iconify-icons/fluent/calendar-ltr-28-regular'
 import news28Regular from '@iconify-icons/fluent/news-28-regular';
 import warning24Regular from '@iconify-icons/fluent/warning-24-regular';
 import layer20Regular from '@iconify-icons/fluent/layer-20-regular';
+import imageMultiple20Regular from '@iconify-icons/fluent/image-multiple-20-regular';
 import 'flag-icon-css/sass/flag-icon.scss';
 
 import Overview from './overview';
@@ -59,15 +60,16 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab } ): 
 		[conferenceRoom28Regular, 'cabins'],
 		[news28Regular, 'news'],
 		[warning24Regular, 'accidents'],
+		[imageMultiple20Regular, 'gallery']
 	]
 	options[active_tab].push(true)
 	
 	return (
-		<div className='d-flex flex-column justify-content-center fs-6 sidebar vh-100 position-fixed'>
+		<div className='flex flex-col justify-end text-xl sidebar h-screen fixed pb-8'>
 			{options.map(
 				([icon, text, is_active], index) => 
-				<button className={'text-uppercase bg-white border-0 text-dark ps-5 d-flex align-items-center '+(is_active ? 'active': '')} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || '0'))}}>
-					<Icon icon={icon} width="28" className='me-3'/>
+				<button className={'uppercase bg-white border-0 pl-20 flex items-center '+(is_active ? 'active': '')} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || '0'))}}>
+					<Icon icon={icon} width="28" className='mr-3'/>
 					{text}
 				</button>)}
 		</div>
@@ -100,7 +102,7 @@ const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, shipraw_data, 
 	}, [])
 
 	return (
-		<div className='w-100 py-5 d-flex pb-0'>
+		<div className='w-full py-5 flex pb-0'>
 			<Sidebar active_tab={active_tab}/>
 			{(()=>{
 				let tab: JSX.Element

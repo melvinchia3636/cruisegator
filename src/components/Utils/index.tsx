@@ -57,12 +57,10 @@ class Nav extends React.Component<INavProps, INavState> {
 					</button>
 					<a href='/home'><img src={Logo} alt='logo' className='h-20'/></a>
 				</div>
-				<div className={"collapse navbar-collapse justify-content-end overflow-hidden"+(this.state.isDone&&this.state.hideNav?(this.state.isToggleOn?' show':' hide'):'')} id="navbarNavAltMarkup">
-					<div className="flex items-center">
+				<div className="flex items-center">
 						{this.navitem.map(([text, link]) => <a className="mx-6 text-md" href={link}>{text}</a>)}
-						<a className="btn bg-blue-800 whitespace-nowrap rounded-full py-3 ml-4" href="/">Get Started</a>
+						<a className="btn bg-blue-800 whitespace-nowrap rounded-full py-3 ml-4 mr-8" href="/">Get Started</a>
 					</div>
-				</div>
 			</nav>
 		);
 	}

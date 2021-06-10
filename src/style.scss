@@ -12,3 +12,7 @@ html, body {
 	position: relative;
 	font-family: Public Sans !important;
 }
+
+button:is(:focus, :active) {
+	outline: none !important
+}

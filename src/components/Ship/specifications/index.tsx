@@ -45,14 +45,14 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, shipraw_da
 		let result: JSX.Element = <></>;
 		switch (typeof value) {
 			case 'number': result = <span>{value}</span>; break;
-			case 'boolean': result = <span className={'border border-primary d-block border-2 rounded-pill '+(value ? 'bg-primary' : '')}></span>
+			case 'boolean': result = <span className={'border-blue-800 block border-2 rounded-full '+(value ? 'bg-blue-800' : '')}></span>
 		};
 		return result;
 	}
 
-	const getMoreInfo = (id: string): object => {
+	const getMoreInfo = (id: string, company: string): object => {
 		let result: object;
-		switch (overview_data.company) {
+		switch (company) {
 			case 'Royal Caribbean': {
 				const data = require('./data/royal_caribbean.ts').default;
 				result = data[id]; break;
@@ -67,8 +67,9 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, shipraw_da
 		const [html]: Document[] = shipraw_data
 		const specification_data_current: string[][] = Array.from(html.querySelectorAll('.specificationTable')).map(e => Array.from(e.querySelectorAll('tr')).map(e => e.querySelectorAll('td'))).flat().map(e => Array.from(e).map(e => e.textContent?.trim() || ''))
 		const splitted_id: string[] = id.split('-');
-		const splitted_id_nonum: string = splitted_id.slice(0, splitted_id.length-1).join(' ');
-		const more_info: object = getMoreInfo(splitted_id_nonum);
+		const splitted_id_nonum: string = splitted_id.slice(0, splitted_id.length-1).join(' ')
+		const company: string = html.querySelector('a.shipCompanyLink')?.textContent || 'N/A'
+		const more_info: object = getMoreInfo(splitted_id_nonum, company);
 		const result = {
 			specification_data: specification_data_current,
 			...more_info
@@ -76,22 +77,22 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, shipraw_da
 		setSpecificationData(result)
 	};
 
-	getData();
+	if (shipraw_data[0]) getData();
 
 	return (
-		<div className='p-5 w-100 d-flex flex-column'>
-			<div className='mb-5'>
-				<h1 className='text-uppercase mt-4'>Specifications</h1>
-				<div className='seperator btn-primary'></div>
+		<div className='p-20 w-full flex flex-col'>
+			<div className='mb-10'>
+				<h1 className='uppercase mt-10'>Specifications</h1>
+				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
 			<div style={{ marginBottom: '6rem' }} className='mt-4'>
-				<div className="d-flex align-items-center mb-4">
-					<Icon icon={settings28Regular} width='32' className='me-2' color='rgba(0, 85, 185, 1)'/>
-					<h2 className="fs-3 fw-normal m-0 text-primary text-up">Ship Specifications</h2>
+				<div className="flex items-center mb-4">
+					<Icon icon={settings28Regular} width='32' className='mr-2 text-blue-800'/>
+					<h2 className="text-2xl fw-normal m-0 text-primary text-up text-blue-800">Ship Specifications</h2>
 				</div>
 				<div className='st'>
 					{JSON.stringify(specification_data) !== '{}' ? specification_data.specification_data.map(([k, v]) => 
-						<div className="d-flex justify-content-between align-items-center py-3">
+						<div className="flex justify-between items-center py-3">
 							<div>{k}</div>
 							<div>{v}</div>
 						</div>
@@ -99,13 +100,13 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, shipraw_da
 				</div>
 			</div>
 			<div style={{ marginBottom: '6rem' }}>
-				<div className="d-flex align-items-center mb-4">
-					<Icon icon={info24Regular} width='32' className='me-2' color='rgba(0, 85, 185, 1)'/>
-					<h2 className="fs-3 fw-normal m-0 text-primary text-up">Service Informations</h2>
+				<div className="flex items-center mb-4">
+					<Icon icon={info24Regular} width='32' className='mr-2 text-blue-800'/>
+					<h2 className="text-2xl fw-normal m-0 text-primary text-up text-blue-800">Service Informations</h2>
 				</div>
 				<div className='st'>
 					{specification_data.service_info ? objectMap(specification_data.service_info, (k: string, v: boolean | number) => 
-						<div className="d-flex justify-content-between align-items-center py-3">
+						<div className="flex justify-between items-center py-3">
 							<div>{k}</div>
 							<div>{getServiceInfoComponent(v)}</div>
 						</div>
@@ -113,15 +114,15 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, shipraw_da
 				</div>
 			</div>
 			<div>
-				<div className="d-flex align-items-center mb-4">
-					<Icon icon={searchVisual24Regular} width='32' className='me-2' color='rgba(0, 85, 185, 1)'/>
-					<h2 className="fs-3 fw-normal m-0 text-primary text-up">Interesting Facts</h2>
+				<div className="flex items-center mb-4">
+					<Icon icon={searchVisual24Regular} width='32' className='mr-2 text-blue-800'/>
+					<h2 className="text-2xl fw-normal m-0 text-primary text-up text-blue-800">Interesting Facts</h2>
 				</div>
 				<div className='st'>
 					{specification_data.interesting_fact ? objectMap(specification_data.interesting_fact, (k: string, v: object) => 
-						<><h3 className="fs-4 fw-normal m-0 text-dark text-up mb-2 mt-5">{k}</h3>
+						<><h3 className="text-2xl mb-2 mt-10">{k}</h3>
 						{objectMap(v, (k: string, v: boolean | number) => 
-							<div className="d-flex justify-content-between align-items-center py-3">
+							<div className="flex justify-between items-center py-3">
 								<div>{k}</div>
 								<div>{getServiceInfoComponent(v)}</div>
 							</div>

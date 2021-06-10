@@ -78,7 +78,7 @@ nav {
 }
 
 footer {
-	background: rgba(0, 85, 185, 1);
+	background: rgba(30, 64, 175, 1);
 
 	& img {
 		object-fit:fill
@@ -90,13 +90,13 @@ footer {
 
 input {
 	&[type="submit"] {
-		color: #136AD0;
+		color: rgb(50, 87, 206);
 	}
 	&[type="email"] {
-		background: #136AD0;
+		background: rgb(50, 87, 206);
 		color: white !important;
 		&:focus {
-			background: #136AD0;
+			background: rgb(50, 87, 206);
 			color: white !important;
 		}
 	}

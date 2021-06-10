@@ -212,7 +212,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, shipraw_da
 
 		setOverviewData(result);
 	}
-	if (!shipraw_data) getData();
+	if (shipraw_data[0]) getData();
 	
 	return (
 		<div className='p-5 w-100 vh-100 d-flex flex-column'>

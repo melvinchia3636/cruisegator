@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
 import { Logo, Youtube, Twitter, Pinterest, Instagram, Facebook, LogoLight } from './assets';
 import './style.scss';
 
@@ -51,20 +50,20 @@ class Nav extends React.Component<INavProps, INavState> {
 
 	render() {
 		return (
-			<Navbar expand="xl" className={[`bg-white fixed-top px-4 align-items-start align-items-lg-center py-${this.state.isToggleOn&&this.state.hideNav ? 5 : 1} justify-content-lg-between`, this.state.isToggleOn ? 'expand' : '', this.props.className].join(' ')}>
-				<div className='d-flex'>
+			<nav className={[`flex z-50 bg-white fixed px-12 items-center w-screen py-${this.state.isToggleOn&&this.state.hideNav ? 5 : 1} justify-between`, this.state.isToggleOn ? 'expand' : '', this.props.className].join(' ')}>
+				<div className='flex'>
 					<button className="navbar-toggler border-0" type="button" onClick={this.navToggleCallback.bind(this)} data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
-					<a href='/home'><img src={Logo} height='70' alt='logo'/></a>
+					<a href='/home'><img src={Logo} alt='logo' className='h-20'/></a>
 				</div>
-				<div className={"collapse navbar-collapse justify-content-end mt-lg-0 pt-lg-0 pt-5 mt-lg-0 mt-5 overflow-hidden"+(this.state.isDone&&this.state.hideNav?(this.state.isToggleOn?' show':' hide'):'')} id="navbarNavAltMarkup">
-					<div className="navbar-nav align-items-center">
-						{this.navitem.map(([text, link]) => <a className="nav-link mx-lg-3 my-3 my-lg-0" href={link}>{text}</a>)}
-						<a className="btn btn-primary mx-4 text-nowrap rounded-pill mx-lg-3 my-3" href="/">Get Started</a>
+				<div className={"collapse navbar-collapse justify-content-end overflow-hidden"+(this.state.isDone&&this.state.hideNav?(this.state.isToggleOn?' show':' hide'):'')} id="navbarNavAltMarkup">
+					<div className="flex items-center">
+						{this.navitem.map(([text, link]) => <a className="mx-6 text-md" href={link}>{text}</a>)}
+						<a className="btn bg-blue-800 whitespace-nowrap rounded-full py-3 ml-4" href="/">Get Started</a>
 					</div>
 				</div>
-			</Navbar>
+			</nav>
 		);
 	}
 }
@@ -89,24 +88,24 @@ const Footer = (): JSX.Element => {
 		['Privacy Policy', '/']
 	]
 	return (
-		<footer className='w-100 pt-5 pb-2 d-flex flex-column justify-content-center align-items-center'>
-			<div className='d-flex flex-lg-row flex-column justify-content-center align-items-center w-100'>
-				<div className='d-flex flex-column align-items-center me-lg-5 pe-lg-5 my-lg-0 my-5'>
+		<footer className='w-100 pt-5 pb-2 flex flex-col justify-center items-center'>
+			<div className='flex flex-column justify-center items-center w-100'>
+				<div className='flex flex-col items-center mr-20'>
 					<img src={LogoLight} alt='logo'/>
-					<div className='d-flex justify-content-between mt-4'>
+					<div className='flex justify-between mt-8'>
 						{social_media_icon.map(([icon, link])=><a className='mx-3' href={link}><img src={icon} alt={link}/></a>)}
 					</div>
 				</div>
-				<div className='d-grid nav-link fw-lighter me-lg-5 pe-lg-5 my-lg-0 my-5 text-nowrap'>
-					{nav_link.map(([text, href]) => <a href={href} className='text-white text-decoration-none'>{text}</a>)}
+				<div className='grid nav-link fw-lighter mr-20 my-8 text-nowrap'>
+					{nav_link.map(([text, href]) => <a href={href} className='text-white'>{text}</a>)}
 				</div>
-				<form className='my-lg-0 my-5'>
-					<p className='fw-light text-light fs-5'>Get Updated</p>
-					<input className='form-control mb-3 border-0 fw-lighter' type='email' name='email' placeholder='Email Address'/>
-					<input className='form-control border-0' type='submit' name='submit' value='Subscribe'/>
+				<form className='w-64'>
+					<p className='fw-light text-white text-xl mb-4'>Get Updated</p>
+					<input className='mb-3 border-0 fw-lighter block w-full px-4 py-2' type='email' name='email' placeholder='Email Address'/>
+					<input className='border-0 block w-full px-4 py-2' type='submit' name='submit' value='Subscribe'/>
 				</form>
 			</div>
-			<p className='text-light fw-lighter m-0 mt-5'>Copyright © Cruisegator 2021. All rights reserved</p>
+			<p className='text-gray-300 fw-lighter text-sm m-0 mt-5'>Copyright © Cruisegator 2021. All rights reserved</p>
 		</footer>
 	)
 }

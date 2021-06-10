@@ -3,7 +3,7 @@
 }
 
 p {
-	color: #808080 !important;
+	color: #808080;
 	font-family: Poppins;
 }
 
@@ -52,10 +52,6 @@ h3 {
 .d-grid {
 	grid-template-columns: auto;
 	grid-gap: 2em
-}
-
-.top-logo {
-	display: none
 }
 
 .header {

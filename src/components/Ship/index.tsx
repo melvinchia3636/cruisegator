@@ -97,7 +97,7 @@ const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, shipraw_data, 
 		};
 
 		fetchRawData()
-	}, [setShiprawData, url_to_fetch])
+	}, [])
 
 	return (
 		<div className='w-100 py-5 d-flex pb-0'>

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.2",
     "@iconify-icons/bx": "^1.1.0",
     "@iconify-icons/fluent": "^1.1.17",
     "@iconify-icons/ic": "^1.1.5",
@@ -36,9 +37,9 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -67,9 +68,12 @@
     "@types/react-router": "^5.1.14",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.9",
+    "autoprefixer": "^9.8.6",
     "awesome-typescript-loader": "^5.2.1",
+    "postcss": "^7.0.35",
     "prettier": "2.3.1",
     "source-map-loader": "^3.0.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4",
     "typescript": "^4.3.2"
   }
 }

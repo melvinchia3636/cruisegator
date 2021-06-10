@@ -8,6 +8,7 @@ import Database from './components/Database';
 import Map from './components/Map';
 import Ship from './components/Ship'
 
+import "tailwindcss/tailwind.css"
 import './style.scss'
 
 export default function App(): JSX.Element {

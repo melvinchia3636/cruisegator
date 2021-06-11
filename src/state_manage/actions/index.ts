@@ -15,3 +15,7 @@ export function setOverviewData(payload: any) {
 export function setSpecificationData(payload: any) {
 	return {type: constants.SET_SPECIFICATION_DATA, payload}
 }
+
+export function setItinerariesData(payload: any) {
+	return {type: constants.SET_ITINERARIES_DATA, payload}
+}

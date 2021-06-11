@@ -50,7 +50,7 @@ class Nav extends React.Component<INavProps, INavState> {
 
 	render() {
 		return (
-			<nav className={[`flex z-50 bg-white fixed px-12 items-center w-screen py-${this.state.isToggleOn&&this.state.hideNav ? 5 : 1} justify-between`, this.state.isToggleOn ? 'expand' : '', this.props.className].join(' ')}>
+			<nav className={[`flex z-50 bg-white fixed pl-4 pr-10 items-center w-screen py-${this.state.isToggleOn&&this.state.hideNav ? 5 : 1} justify-between`, this.state.isToggleOn ? 'expand' : '', this.props.className].join(' ')}>
 				<div className='flex'>
 					<button className="navbar-toggler border-0" type="button" onClick={this.navToggleCallback.bind(this)} data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
@@ -59,7 +59,7 @@ class Nav extends React.Component<INavProps, INavState> {
 				</div>
 				<div className="flex items-center">
 						{this.navitem.map(([text, link]) => <a className="mx-6 text-md" href={link}>{text}</a>)}
-						<a className="btn bg-blue-800 whitespace-nowrap rounded-full py-3 ml-4 mr-8" href="/">Get Started</a>
+						<a className="btn bg-blue-800 whitespace-nowrap rounded-full py-3 ml-4" href="/">Get Started</a>
 					</div>
 			</nav>
 		);

@@ -4,6 +4,7 @@ import { IconifyIcon } from '@iconify/types'
 import { RouteComponentProps } from 'react-router-dom'
 import { changeTab, setShiprawData } from  '../../state_manage/actions'
 import { connect } from "react-redux";
+import { Dispatch } from 'redux'
 import axios, { AxiosResponse } from 'axios';
 import { useEffect } from 'react';
 
@@ -19,32 +20,34 @@ import 'flag-icon-css/sass/flag-icon.scss';
 
 import Overview from './overview';
 import Specifications from './specifications';
+import Itinerariess from './itineraries';
+
+import { StateProps } from '../../state_manage/interface'
 
 interface SidebarProps {
 	active_tab: number;
-	changeTab: any
+	changeTab: (newtab: number) => any
 }
 
 interface ShipRouteProps extends RouteComponentProps {
-	id: string;
 	shipraw_data: Document[];
-	setShiprawData: any
+	setShiprawData: (shipraw_data: Document[]) => any
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: StateProps) => {
 	return {
 		active_tab: state.current_tab,
 		shipraw_data: state.shipraw_data
 	};
 };
 
-const SidebarMapDispatchToProps = (dispatch: any) => {
+const SidebarMapDispatchToProps = (dispatch: Dispatch) => {
 	return {
 		changeTab: (newtab: number) => dispatch(changeTab(newtab))
 	}
 }
 
-const MainMapDispatchToProps = (dispatch: any) => {
+const MainMapDispatchToProps = (dispatch: Dispatch) => {
 	return {
 		setShiprawData: (shipraw_data: Document[]) => dispatch(setShiprawData(shipraw_data))
 	}
@@ -59,7 +62,7 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab } ): 
 		[layer20Regular, 'deck plans'],
 		[conferenceRoom28Regular, 'cabins'],
 		[news28Regular, 'news'],
-		[warning24Regular, 'accidents'],
+		[warning24Regular, 'reviews'],
 		[imageMultiple20Regular, 'gallery']
 	]
 	options[active_tab].push(true)
@@ -80,8 +83,11 @@ const Sidebar = connect(null, SidebarMapDispatchToProps)(ConnectedSidebar)
 
 const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, shipraw_data, setShiprawData, ...props}): JSX.Element => {
 	const id: string = props.match.params.id
-	const url_to_fetch: string[] = ['https://www.cruisemapper.com/ships/'+id]
 	useEffect(() => {
+		const url_to_fetch: string[] = [
+			'https://www.cruisemapper.com/ships/'+id, 
+			'https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?cl=32'
+		]
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();
 			const request_promise: Promise<AxiosResponse<any>>[] = url_to_fetch.map(async url => await axios({
@@ -99,7 +105,7 @@ const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, shipraw_data, 
 		};
 
 		fetchRawData()
-	}, [])
+	}, [setShiprawData, id])
 
 	return (
 		<div className='w-full py-5 flex pb-0'>
@@ -107,8 +113,9 @@ const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, shipraw_data, 
 			{(()=>{
 				let tab: JSX.Element
 				switch (active_tab) {
-					case 0: tab = <Overview id={id}/>; break;
+					case 0: tab = <Overview/>; break;
 					case 1: tab = <Specifications id={id}/>; break;
+					case 2: tab = <Itinerariess id={id}/>; break
 					default: tab = <></>
 				}
 				return tab

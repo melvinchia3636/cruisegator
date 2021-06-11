@@ -3,42 +3,20 @@ import Icon from '@iconify/react';
 import settings28Regular from '@iconify-icons/fluent/settings-28-regular';
 import searchVisual24Regular from '@iconify-icons/fluent/search-visual-24-regular';
 import info24Regular from '@iconify-icons/fluent/info-24-regular';
-import { setSpecificationData } from "state_manage/actions";
+import { getData } from './scrape'
+import { SpecificationsProps } from './interface'
+import { StateProps } from '../../../state_manage/interface'
 
-interface SpecificationsProps {
-	id: string;
-	shipraw_data: Document[];
-	overview_data: any;
-	specification_data: {
-		specification_data: string[],
-		service_info: object,
-		interesting_fact: object
-	},
-	setSpecificationData: any
-}
-
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: StateProps) => {
 	return {
-		shipraw_data: state.shipraw_data,
-		specification_data: state.specification_data,
-		overview_data: state.overview_data
+		specification_data: state.specification_data
 	}
 }
 
-const mapDispatchToProps = (dispatch: any) => {
-	return {
-		setSpecificationData: (specification_data: {
-			specifications_data: string[],
-			service_info: any[],
-			interesting_fact: object
-		}) => dispatch(setSpecificationData(specification_data))
-	}
-}
-
-const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, shipraw_data, overview_data, specification_data, setSpecificationData }): JSX.Element => {
+const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specification_data }): JSX.Element => {
 	const objectMap = (obj: Object, fn: Function) =>
 		Object.entries(obj).map(
-			([k, v], i) => fn(k, v)
+			([k, v]) => fn(k, v)
 		);
 
 	const getServiceInfoComponent = (value: number | boolean): JSX.Element => {
@@ -49,35 +27,8 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, shipraw_da
 		};
 		return result;
 	}
-
-	const getMoreInfo = (id: string, company: string): object => {
-		let result: object;
-		switch (company) {
-			case 'Royal Caribbean': {
-				const data = require('./data/royal_caribbean.ts').default;
-				result = data[id]; break;
-			};
-			default: result = {};
-		}
-		return result;
-	};
-	
-	const getData  = async () => {
-		if (JSON.stringify(specification_data) !== '{}') return
-		const [html]: Document[] = shipraw_data
-		const specification_data_current: string[][] = Array.from(html.querySelectorAll('.specificationTable')).map(e => Array.from(e.querySelectorAll('tr')).map(e => e.querySelectorAll('td'))).flat().map(e => Array.from(e).map(e => e.textContent?.trim() || ''))
-		const splitted_id: string[] = id.split('-');
-		const splitted_id_nonum: string = splitted_id.slice(0, splitted_id.length-1).join(' ')
-		const company: string = html.querySelector('a.shipCompanyLink')?.textContent || 'N/A'
-		const more_info: object = getMoreInfo(splitted_id_nonum, company);
-		const result = {
-			specification_data: specification_data_current,
-			...more_info
-		}
-		setSpecificationData(result)
-	};
-
-	if (shipraw_data[0]) getData();
+	console.log(specification_data)
+	if (!specification_data.specification_data.length) getData(id);
 
 	return (
 		<div className='p-20 w-full flex flex-col'>
@@ -134,6 +85,6 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, shipraw_da
 	)
 }
 
-const Specifications = connect(mapStateToProps, mapDispatchToProps)(ConnectedSpecifications)
+const Specifications = connect(mapStateToProps)(ConnectedSpecifications)
 
 export default Specifications

@@ -21,7 +21,7 @@ export default function Database(): JSX.Element {
 				let result: any[] = [];
 
 				for (let i = page_num*2-1; i <= page_num*2; i++) {
-					const request = await axios.get('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?page='+i).catch(err => null)
+					const request = await axios.get('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?line=Royal_Caribbean&page='+i).catch(err => null)
 					if (request && request.status === 404) break
 					const data = await request && request?.data
 					const dom_parser = new DOMParser()
@@ -43,7 +43,7 @@ export default function Database(): JSX.Element {
 
 				let local_exist: boolean[] = []
 				for (let i = 0; i <= 1; i++) {
-					const request = await axios.get('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?page='+((page_num+i)*2)).catch(err => {throw err})
+					const request = await axios.get('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?line=Royal_Caribbean&page='+((page_num+i)*2)).catch(err => {throw err})
 					local_exist.push(request ? request.status !== 404 : false)
 				}
 				setExist(local_exist)

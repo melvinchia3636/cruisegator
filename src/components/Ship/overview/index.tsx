@@ -9,71 +9,12 @@ import locationIcon from '@iconify/icons-carbon/location';
 import crossroadsIcon from '@iconify/icons-carbon/crossroads';
 import topSpeed24Regular from '@iconify-icons/fluent/top-speed-24-regular';
 import { setOverviewData } from 'state_manage/actions';
+import { getData } from './scrape'
 
-interface ShipProps {
-	id: string,
-	shipraw_data: Document[],
-	overview_data: ShipData;
-	setOverviewData: any
-};
+import { ShipProps, MapProps, RatingProps, HomeportProps } from './interface'
+import { StateProps } from '../../../state_manage/interface'
 
-interface RawJsonData {
-	widgets: {
-		shipNewsButton?: {
-			state: boolean
-		},
-		rating?: {
-			stars: number
-		},
-		shipCurrentPositionMap: {
-			lon: number,
-			lat: number
-		}
-	},
-	config: {}
-};
-
-interface RatingProps {
-	rating: number
-}
-
-interface HomeportProps {
-	homeports: {
-        icon: string;
-        text: string[];
-    }[]
-}
-
-interface ShipData extends HomeportProps, RatingProps {
-	is_new: boolean,
-	name: string,
-	company: string,
-	image: string,
-	location: string,
-	coordinates: string,
-	destination: string,
-	last_ais_report: {
-		status: 'green' | 'yellow' | 'red',
-		text: string
-	},
-	speed: {
-		knot: string,
-		kmph: string[] | string
-	},
-	position: {
-		lon: number;
-		lat: number;
-	}
-};
-
-interface MapProps {
-	position: {
-		lon: number,
-		lat: number
-	}
-}
-
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: StateProps) => {
 	return {
 		overview_data: state.overview_data,
 		shipraw_data: state.shipraw_data
@@ -157,66 +98,14 @@ class Map extends React.Component<MapProps> {
 	}
 }
 
-const ConnectedOverview: React.FC<ShipProps> = ( { id, overview_data, shipraw_data, setOverviewData } ) => {
+const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data } ) => {
 	const data = overview_data
 
-	const getData  = async () => {
-		const check_status = ( text: string ): 'green' | 'yellow' | 'red' => {
-			if (text.includes('minute') || text.includes('second')) return 'green';
-			if (text.includes('hour')) return 'yellow';
-			return 'red'
-		}
-		if (JSON.stringify(overview_data) !== '{}') return
-		const html: Document = shipraw_data[0]
-		const raw: string = (html.querySelectorAll('head script')[1].textContent?.match(/{.+}/) || ['{}'])[0].replaceAll('\'', '"');
-		const parser = require('really-relaxed-json').createParser();
-		const obj: string = parser.stringToJson(raw);
-		const json: RawJsonData = JSON.parse(obj);
-		const position_info: string = (html.querySelector('.currentItineraryInfo')?.textContent || '').replace(/\s+/gm, ' ');
-		const currentLocation: string[] = position_info.match(/current location is at (.*?)\(/) || [];
-		const currentCoordinates: string[] = position_info.match(/\(coordinates\s*((?:\d|\.|-)+\s*[N|E|S|W]\s*\/\s*(?:\d|\.|-)+\s*[N|E|S|W])\)/) || [];
-		const destination: string[] = position_info.match(/en route to (.*?)\./) || [];
-		const last_ais_report: string[] = position_info.match(/The AIS position was reported (.*?)\./) || [];
-		const speed_kn: string[] = position_info.match(/speed of ([\d.]*?\s*kn)/) || [];
-		const speed_mkph: string[] = position_info.match(/\(([\d.]*?\s*kph)\s*\/\s*([\d.]*?\s*mph)\)/) || [];
-		const ais_report: string = last_ais_report[last_ais_report.length-1] || 'N/A';
-		const kmph: string[] = speed_mkph.slice(1, speed_mkph.length)
-		
-		const result: ShipData = {
-			is_new: json.widgets?.shipNewsButton?.state || false,
-			rating: json.widgets.rating?.stars || 0,
-			name: html.querySelector('h1[itemprop="name"]')?.textContent || 'N/A',
-			company: html.querySelector('a.shipCompanyLink')?.textContent || 'N/A',
-			image: 'https://www.cruisemapper.com/'+(html.querySelector('img[itemprop="image"]') as HTMLImageElement)?.src.replace('http://localhost:3000', '') || '',
-			homeports: [...html.querySelectorAll('.homeports a')].map(e => {
-				const content = e.textContent || '';
-				const bracket = content.match(/\(.*?\)/) || []
-				return {
-					icon: e.querySelector('span')?.classList.value || '',
-					text: [bracket[bracket.length-1], content.split('(')[0]]
-				}
-			}),
-			location: currentLocation[currentLocation.length-1] || 'N/A',
-			coordinates: currentCoordinates[currentCoordinates.length-1] || 'N/A',
-			destination: destination[destination.length-1] || 'N/A',
-			last_ais_report: {
-				text: ais_report,
-				status: check_status(ais_report),
-			},
-			speed: {
-				knot: speed_kn[speed_kn.length-1] || 'N/A',
-				kmph: kmph.length > 0 ? kmph : 'N/A'
-			},
-			position: json.widgets.shipCurrentPositionMap
-		};
-
-		setOverviewData(result);
-	}
-	if (shipraw_data[0]) getData();
+	if (shipraw_data[0].querySelector('body')) getData();
 	
 	return (
 		<div className='p-20 w-full h-screen flex flex-col overview'>
-			{JSON.stringify(data) !== '{}' ? <>
+			{data.name ? <>
 				<div className='flex justify-between items-center'>
 					<div>
 						<h1 className='uppercase mt-10'>{data.name}</h1>

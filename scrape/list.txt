@@ -1,7 +1,20 @@
-[
-    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/radiance-of-the-seas/",
-    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/explorer-of-the-seas/",
-    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/enchantment-of-the-seas/",
-    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/rhapsody-of-the-seas/",
-    "https://logitravel.co.uk/cruises/cruise-lines/royal-caribbean/ships/grandeur-of-the-seas/"
-]
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-world-europa/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-seashore/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-virtuosa/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-bellissima/  
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-grandiosa/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-seaview/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-seaside/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-meraviglia/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-divina/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-preziosa/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-magnifica/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-splendida/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-fantasia/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-poesia/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-orchestra/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-musica/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-armonia/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-opera/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-lirica/
+https://www.logitravel.co.uk/cruises/cruise-lines/msc-cruises/ships/msc-sinfonia/

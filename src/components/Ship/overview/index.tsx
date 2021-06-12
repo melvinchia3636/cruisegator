@@ -30,8 +30,8 @@ const mapDispatchToProps = (dispatch: any) => {
 const Rating: React.FC<RatingProps> = ( { rating } ): JSX.Element => {
 	return (
 		<div className='flex' >
-			{[...Array(rating)].map(()=><span className='border-blue-800 block border-2 rounded-full bg-blue-800 mx-1'></span>)}
-			{[...Array(5-(rating || 5))].map(()=><span className='border-blue-800 border-2 block rounded-full mx-1'></span>)}
+			{[...Array(rating)].map(()=><span className='border-blue-800 block border-2 rounded-full bg-blue-800 mx-1' key={Math.random()}></span>)}
+			{[...Array(5-(rating || 5))].map(()=><span className='border-blue-800 border-2 block rounded-full mx-1' key={Math.random()}></span>)}
 		</div>
 	)
 }
@@ -43,7 +43,7 @@ const Homeport: React.FC<HomeportProps> = ( { homeports } ): JSX.Element => {
 			{homeports.length > 0 ? 
 				homeports.slice(0, 2).map(
 					({icon, text}) => 
-					<div className='flex items-end mb-2'>
+					<div className='flex items-end mb-2' key={text[0]}>
 						<div className='flex items-center'>
 							<span className={icon}></span>
 							<h3 className='text-2xl flex items-end m-0'>{text[1]}</h3>

@@ -68,18 +68,16 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab } ): 
 	options[active_tab].push(true)
 	
 	return (
-		<div className='flex flex-col justify-end text-xl sidebar h-screen fixed pb-8'>
+		<div className='flex flex-col justify-end text-xl sidebar h-screen fixed pb-9'>
 			{options.map(
 				([icon, text, is_active], index) => 
-				<button className={'uppercase bg-white border-0 pl-20 flex items-center '+(is_active ? 'active': '')} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || '0'))}}>
+				<button className={'uppercase bg-white border-0 pl-20 flex items-center text-lg '+(is_active ? 'active': '')} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || '0'))}}>
 					<Icon icon={icon} width="28" className='mr-3'/>
 					{text}
 				</button>)}
 		</div>
 	)
 }
-
-const Sidebar = connect(null, SidebarMapDispatchToProps)(ConnectedSidebar)
 
 const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, shipraw_data, setShiprawData, ...props}): JSX.Element => {
 	const id: string = props.match.params.id
@@ -124,6 +122,7 @@ const ConnectedShip: React.FC<ShipRouteProps|any> = ({active_tab, shipraw_data, 
 	)
 }
 
+const Sidebar = connect(null, SidebarMapDispatchToProps)(ConnectedSidebar)
 const Ship = connect(mapStateToProps, MainMapDispatchToProps)(ConnectedShip);
 
 export default Ship;

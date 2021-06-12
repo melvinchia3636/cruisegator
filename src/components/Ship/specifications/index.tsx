@@ -6,14 +6,16 @@ import info24Regular from '@iconify-icons/fluent/info-24-regular';
 import { getData } from './scrape'
 import { SpecificationsProps } from './interface'
 import { StateProps } from '../../../state_manage/interface'
+import { useEffect } from "react";
 
 const mapStateToProps = (state: StateProps) => {
 	return {
-		specification_data: state.specification_data
+		specification_data: state.specification_data,
+		shipraw_data: state.shipraw_data,
 	}
 }
 
-const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specification_data }): JSX.Element => {
+const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specification_data, shipraw_data }): JSX.Element => {
 	const objectMap = (obj: Object, fn: Function) =>
 		Object.entries(obj).map(
 			([k, v]) => fn(k, v)
@@ -27,8 +29,10 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 		};
 		return result;
 	}
-	console.log(specification_data)
-	if (!specification_data.specification_data.length) getData(id);
+
+	useEffect(() => {
+		getData(id);
+	}, [shipraw_data, id])
 
 	return (
 		<div className='p-20 w-full flex flex-col'>

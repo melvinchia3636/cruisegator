@@ -30,7 +30,7 @@ const getData  = async () => {
 		rating: json.widgets.rating?.stars || 0,
 		name: html.querySelector('h1[itemprop="name"]')?.textContent || 'N/A',
 		company: html.querySelector('a.shipCompanyLink')?.textContent || 'N/A',
-		image: 'https://www.cruisemapper.com/'+(html.querySelector('img[itemprop="image"]') as HTMLImageElement)?.src.replace('http://localhost:3000', '') || '',
+		image: 'https://www.cruisemapper.com/'+(html.querySelector('img[itemprop="image"]') as HTMLImageElement)?.src.replace(window.origin, '') || '',
 		homeports: [...html.querySelectorAll('.homeports a')].map(e => {
 			const content = e.textContent || '';
 			const bracket = content.match(/\(.*?\)/) || []

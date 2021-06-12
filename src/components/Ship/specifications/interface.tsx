@@ -4,10 +4,11 @@ export interface MoreInfoData {
 }
 
 export interface SpecificationData extends MoreInfoData {
-	specification_data: string[][]
+	specification_data: string[][],
 }
 
 export interface SpecificationsProps {
 	id: string;
-	specification_data: SpecificationData
+	specification_data: SpecificationData;
+	shipraw_data: any
 }

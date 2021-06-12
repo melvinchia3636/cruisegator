@@ -9,6 +9,11 @@ const getMoreInfo = (id: string, company: string): MoreInfoData => {
 			const data = require('./data/royal_caribbean.ts').default;
 			result = data[id]; break;
 		};
+		case 'MSC Cruises': {
+			const data = require('./data/msc.ts').default;
+			console.log(id)
+			result = data[id]; break;
+		};
 		default: result = {
 			service_info: [],
 			interesting_fact: []
@@ -20,6 +25,7 @@ const getMoreInfo = (id: string, company: string): MoreInfoData => {
 const getData  = ( id: string ) => {
 	const { shipraw_data } = store.getState()
 	const html: Document = shipraw_data[0]
+	console.log(html)
 	if (!html.querySelector('body')) return
 	const specification_data_current: string[][] = Array.from(html.querySelectorAll('.specificationTable')).map(e => Array.from(e.querySelectorAll('tr')).map(e => e.querySelectorAll('td'))).flat().map(e => Array.from(e).map(e => e.textContent?.trim() || ''))
 	const splitted_id: string[] = id.split('-');

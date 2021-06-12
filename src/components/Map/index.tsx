@@ -1,12 +1,18 @@
 import React from 'react';
 import './style.scss'
 import 'mapbox-gl/dist/mapbox-gl.css';
-import mapboxgl from 'mapbox-gl'
 import Scrollbar from 'react-smooth-scrollbar';
 
 import { Icon } from '@iconify/react';
 import arrowLeftSLine from '@iconify-icons/ri/arrow-left-s-line';
 
+// @ts-ignore
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
+
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+mapboxgl.workerClass = MapboxWorker;
 
 const circles = Array(13).fill(null).map((_, i) => require(`./assets/circle/circle${Math.pow(2, i)}.png`).default)
 const arrows = Array(13).fill(null).map((_, i) => require(`./assets/arrow/arrow${Math.pow(2, i)}.png`).default)
@@ -178,7 +184,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 					for (let sets of [arrows, circles]) {
 						for (let icon of sets) map.loadImage(
 							'./'+icon,
-							function(error, image) {
+							function(error: any, image: any) {
 								var i: any
 								i = image
 								if (error) throw error;
@@ -246,7 +252,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 				});
 			}
 		)
-		map.on('mousemove', (e) => {
+		map.on('mousemove', (e: any) => {
 			this.setState({...e.lngLat});
 		});
 		map.on('move', () => {

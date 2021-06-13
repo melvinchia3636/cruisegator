@@ -21,6 +21,7 @@ import "flag-icon-css/sass/flag-icon.scss";
 import Overview from "./overview";
 import Specifications from "./specifications";
 import Itinerariess from "./itineraries";
+import Cabin from "./cabins";
 
 import { StateProps } from "../../state_manage/interface";
 
@@ -91,7 +92,8 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 	useEffect(() => {
 		const url_to_fetch: string[] = [
 			"https://www.cruisemapper.com/ships/"+id, 
-			"https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?cl=32"
+			"https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?cl=32",
+			"https://www.cruisedeckplans.com/DP/deckplans/Quantum-of-the-Seas"
 		];
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();
@@ -121,6 +123,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 				case 0: tab = <Overview/>; break;
 				case 1: tab = <Specifications id={id}/>; break;
 				case 2: tab = <Itinerariess id={id}/>; break;
+				case 3: tab = <Cabin id={id}/>; break;
 				default: tab = <></>;
 				}
 				return tab;

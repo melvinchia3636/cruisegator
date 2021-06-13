@@ -1,19 +1,19 @@
-import { connect } from "react-redux";
-import { getData } from "./scrape";
-import { CabinProps } from "./interface";
-import { StateProps } from "../../../state_manage/interface";
 import React from "react";
+import { CabinsProps } from "./interface";
+import { StateProps } from "state_manage/interface";
+import { getData } from "./scrape";
+import { connect } from "react-redux";
 
 const mapStateToProps = (state: StateProps) => {
 	return {
-		itineraries_data: state.itineraries_data,
+		cabins_data: state.cabins_data,
 		shipraw_data: state.shipraw_data
 	};
 };
 
-const ConnectedItinerariess: React.FC<CabinProps> = ({ itineraries_data, shipraw_data }: CabinProps): JSX.Element => {
+const ConnectedItinerariess: React.FC<CabinsProps> = ({ id, cabins_data, shipraw_data }: CabinsProps): JSX.Element => {
 
-	if (JSON.stringify(itineraries_data) === "{}" && shipraw_data[1]) getData();
+	if (JSON.stringify(cabins_data) === "{}" && shipraw_data[2]) getData();
 
 	return (
 		<div className='p-20 w-full flex flex-col'>
@@ -23,7 +23,7 @@ const ConnectedItinerariess: React.FC<CabinProps> = ({ itineraries_data, shipraw
 			</div>
 			<pre>
 				<code>
-					{JSON.stringify(itineraries_data, null, 4)}
+					{JSON.stringify(cabins_data, null, 4)}
 				</code>
 			</pre>
 		</div>

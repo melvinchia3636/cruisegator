@@ -17,7 +17,7 @@ export interface Itinerary {
 	port: string;
 }
 
-export interface ItinerariessProps {
+export interface CabinProps {
 	id: string;
 	itineraries_data: ItinerariesData[],
 	shipraw_data: Document[]

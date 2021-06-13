@@ -37,3 +37,7 @@ export function setItinerariesData(payload: ItinerariesData[]): {
 } {
 	return {type: constants.SET_ITINERARIES_DATA, payload};
 }
+
+export function setCabinsData(payload: any) {
+	return {type: constants.SET_CABINS_DATA, payload};
+}

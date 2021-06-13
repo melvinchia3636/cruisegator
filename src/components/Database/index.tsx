@@ -60,7 +60,7 @@ export default function Database(): JSX.Element {
 
 			const local_exist: boolean[] = [];
 			for (let i = 0; i <= 1; i++) {
-				const request = await axios.get("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?page="+((page_num+i)*2)).catch(err => {throw err;});
+				const request = await axios.get("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?page="+((page_num+i)*2+1)).catch(err => {throw err;});
 				local_exist.push(request ? request.status !== 404 : false);
 			}
 			setExist(local_exist);
@@ -88,7 +88,7 @@ export default function Database(): JSX.Element {
 							</div>
 							<p className='st fw-normal mb-0'>{e.lines}</p>
 							<div className='mt-3'>
-								<p className='m-0 mb-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={calendarMonthOutline}/><span className='whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[calc(100%+2.5rem)]'>{e.cruise}</span></p>
+								<p className='m-0 mb-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={calendarMonthOutline}/><span className='whitespace-nowrap overflow-hidden overflow-ellipsis w-11/12'>{e.cruise}</span></p>
 								<p className='m-0 my-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={clockTimeEightOutline}/>{e.year}</p>
 								<p className='m-0 my-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={timerSand}/>{e.age}</p>
 								<p className='m-0 mt-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={accountGroupOutline}/>{e.passenger}</p>
@@ -101,12 +101,12 @@ export default function Database(): JSX.Element {
 			{data.length > 1 ? <div className='w-full flex justify-center mt-12 pg'>
 				<div className='flex font-bold items-center text-gray-500 font-poppins'>
 					{Array(2).fill(0).map((_, i) => i).reverse().map(i => {
-						if (page_num-i-1 > 0) return <a className='mx-2 flex items-center justify-center w-10 h-10' href={`/database?page=${page_num-i-1}`}>{page_num-i-1}</a>;
+						if (page_num-i-1 > 0) return <a className='mx-2 flex items-center justify-center w-10 h-10' href={`/database?page=${page_num-i-1}`} key={page_num-i-1}>{page_num-i-1}</a>;
 						return "";
 					})}
-					<a className='mx-4 bg-blue-800 text-white flex items-center justify-center rounded-full w-10 h-10' href={`/database?page=${page_num}`}>{page_num}</a>
+					<a className='mx-4 bg-blue-800 text-white flex items-center justify-center rounded-full w-10 h-10' href={`/database?page=${page_num}`} key={page_num}>{page_num}</a>
 					{Array(2).fill(0).map((_, i) => {
-						if ((exist || [0, 0])[i]) return <a className='mx-2 flex items-center justify-center w-10 h-10' href={`/database?page=${page_num+i+1}`}>{page_num+i+1}</a>;
+						if ((exist || [0, 0])[i]) return <a className='mx-2 flex items-center justify-center w-10 h-10' href={`/database?page=${page_num+i+1}`} key={page_num+i+1}></a>;
 						return "";
 					})}
 				</div>

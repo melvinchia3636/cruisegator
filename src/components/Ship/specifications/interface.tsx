@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-types */
 export interface MoreInfoData {
 	service_info: object,
 	interesting_fact: object

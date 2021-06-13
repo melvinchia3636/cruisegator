@@ -11,8 +11,10 @@ export interface RawJsonData {
 			lat: number
 		}
 	},
-	config: {}
-};
+	config: {
+
+	}
+}
 
 export interface RatingProps {
 	rating: number
@@ -28,7 +30,7 @@ export interface HomeportProps {
 export interface ShipProps {
 	shipraw_data: Document[];
 	overview_data: OverviewData;
-};
+}
 
 export interface OverviewData extends HomeportProps, RatingProps {
 	is_new: boolean,
@@ -39,7 +41,7 @@ export interface OverviewData extends HomeportProps, RatingProps {
 	coordinates: string,
 	destination: string,
 	last_ais_report: {
-		status: 'green' | 'yellow' | 'red',
+		status: "green" | "yellow" | "red",
 		text: string
 	},
 	speed: {
@@ -50,7 +52,7 @@ export interface OverviewData extends HomeportProps, RatingProps {
 		lon: number;
 		lat: number;
 	}
-};
+}
 
 export interface MapProps {
 	position: {

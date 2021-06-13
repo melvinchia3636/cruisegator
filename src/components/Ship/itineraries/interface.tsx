@@ -1,14 +1,24 @@
-export interface MoreInfoData {
-	service_info: object,
-	interesting_fact: object
+export interface ItinerariesData {
+	id:            number;
+	title:         string;
+	length:        number;
+	departurePort: DeparturePort;
+	itinerary:     Itinerary[];
+	sailings:      string[];
 }
 
-export interface ItinerariesData extends MoreInfoData {
-	itineraries_data: string[][]
+export interface DeparturePort {
+	image: string;
+	name:  string;
+}
+
+export interface Itinerary {
+	day:  number;
+	port: string;
 }
 
 export interface ItinerariessProps {
 	id: string;
-	itineraries_data: ItinerariesData,
-	shipraw_data: any
+	itineraries_data: ItinerariesData[],
+	shipraw_data: Document[]
 }

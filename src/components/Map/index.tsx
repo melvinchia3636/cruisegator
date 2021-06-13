@@ -1,27 +1,25 @@
-import React from 'react';
-import './style.scss'
-import 'mapbox-gl/dist/mapbox-gl.css';
-import Scrollbar from 'react-smooth-scrollbar';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import React from "react";
+import "./style.scss";
+import "mapbox-gl/dist/mapbox-gl.css";
+import Scrollbar from "react-smooth-scrollbar";
 
-import { Icon } from '@iconify/react';
-import arrowLeftSLine from '@iconify-icons/ri/arrow-left-s-line';
+import { Icon } from "@iconify/react";
+import arrowLeftSLine from "@iconify-icons/ri/arrow-left-s-line";
 
+
+// eslint-disable-next-line
 // @ts-ignore
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
-
+import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
+import mapboxgl from "mapbox-gl";
 // @ts-ignore
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 mapboxgl.workerClass = MapboxWorker;
 
-const circles = Array(13).fill(null).map((_, i) => require(`./assets/circle/circle${Math.pow(2, i)}.png`).default)
-const arrows = Array(13).fill(null).map((_, i) => require(`./assets/arrow/arrow${Math.pow(2, i)}.png`).default)
+const circles = Array(13).fill(null).map((_, i) => require(`./assets/circle/circle${Math.pow(2, i)}.png`).default);
+const arrows = Array(13).fill(null).map((_, i) => require(`./assets/arrow/arrow${Math.pow(2, i)}.png`).default);
 
-let colors: [number, number[]][]
-let names: (number | string | boolean)[][]
-let currentSelected: (number | boolean)[]
-
-colors = [
+const colors: [number, number[]][] = [
 	[1, [197, 181, 174, 255]],
 	[2, [224, 77, 126, 255]],
 	[4, [204, 212, 95, 255]],
@@ -35,7 +33,9 @@ colors = [
 	[1024, [67, 182, 200, 255]],
 	[2048, [247, 176, 202, 255]],
 	[4096, [126, 146, 157, 255]],
-]
+];
+let names: (number | string | boolean)[][];
+let currentSelected: (number | boolean)[];
 
 names = [
 	[2, "Carnival Cruise Line"],
@@ -84,14 +84,14 @@ names = [
 	[2048, "Ferries"],
 	[4096, "Icebreakers"],
 	[1, "Other"]
-]
+];
 
-currentSelected = Array(46).fill(0).map((_, i)=>i)
-names = names.map((v, i) => [v[0]!==1?i+1:0, ...v, true])
+currentSelected = Array(46).fill(0).map((_, i)=>i);
+names = names.map((v, i) => [v[0]!==1?i+1:0, ...v, true]);
 
-colors.sort((a, b) => a[0] - b[0])
+colors.sort((a, b) => a[0] - b[0]);
 
-mapboxgl.accessToken = 'pk.eyJ1IjoicmVkYXhlIiwiYSI6ImNrOWk3am0zYjB4dGIzZGtmenl3cmw1ZmMifQ.mwTbGVSSSuBpmCvOh6oCxw';
+mapboxgl.accessToken = "pk.eyJ1IjoicmVkYXhlIiwiYSI6ImNrOWk3am0zYjB4dGIzZGtmenl3cmw1ZmMifQ.mwTbGVSSSuBpmCvOh6oCxw";
 
 interface IMapState {
 	lng: number;
@@ -103,7 +103,9 @@ interface IMapState {
 	sidebarOpened: boolean
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface IMapProps {
+
 }
 
 export default class Map extends React.Component<IMapProps, IMapState> {
@@ -121,183 +123,180 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 		this.mapContainer = React.createRef();
 	}
 
-	toggleSelector(index: number) {
-		let newNames = this.state.names
-		index = index-1<0?names.length-1:index-1
-		newNames[index][3] = !this.state.names[index][3]
-		this.setState({'names': newNames})
-		currentSelected = newNames.filter(e => e[3]).map(e => e[0]) as (number | boolean)[]
-		fetch('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/map/ships.json?minLat=-90&maxLat=90&minLon=-180&maxLon=180&filter='+encodeURIComponent(currentSelected.join(',')), {
+	toggleSelector(index: number): void {
+		const newNames = this.state.names;
+		index = index-1<0?names.length-1:index-1;
+		newNames[index][3] = !this.state.names[index][3];
+		this.setState({"names": newNames});
+		currentSelected = newNames.filter(e => e[3]).map(e => e[0]) as (number | boolean)[];
+		fetch("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/map/ships.json?minLat=-90&maxLat=90&minLon=-180&maxLon=180&filter="+encodeURIComponent(currentSelected.join(",")), {
 			headers: {
-				'X-Requested-With': 'XMLHttpRequest',
-				'Accept': 'application/json; charset=UTF-8',
+				"X-Requested-With": "XMLHttpRequest",
+				"Accept": "application/json; charset=UTF-8",
 			}
 		}).then(res => res.json()).then(data=>{
-			((this.state.map as mapboxgl.Map).getSource('places') as mapboxgl.GeoJSONSource).setData({
-				'type': 'FeatureCollection',
-				'features': data.map((row:any) => {
+			((this.state.map as mapboxgl.Map).getSource("places") as mapboxgl.GeoJSONSource).setData({
+				"type": "FeatureCollection",
+				"features": data.map((row:any) => {
 					return {
-						'type': 'Feature',
-						'properties': {  
-							'description': `<strong>${row.hover}</strong><p style='margin: 0'>${row.ship_line_title}</p>`,
-							'value': parseInt(row.icon),
-							'rotation': parseInt(row.heading),
-							'icon': (row.sog <= 1 ? 'circle' : 'arrow')+row.icon
+						"type": "Feature",
+						"properties": {  
+							"description": `<strong>${row.hover}</strong><p style='margin: 0'>${row.ship_line_title}</p>`,
+							"value": parseInt(row.icon),
+							"rotation": parseInt(row.heading),
+							"icon": (row.sog <= 1 ? "circle" : "arrow")+row.icon
 						},
-						'geometry': {
-							'type': 'Point',
-							'coordinates': [parseFloat(row.lon), parseFloat(row.lat)]
+						"geometry": {
+							"type": "Point",
+							"coordinates": [parseFloat(row.lon), parseFloat(row.lat)]
 						}
-					}
+					};
 				})
-			})
-		})
+			});
+		});
 	}
 
-	toggleSidebar() {
+	toggleSidebar(): void {
 		this.setState({sidebarOpened: !this.state.sidebarOpened});
-		(this.state.map || new mapboxgl.Map()).resize()
+		(this.state.map || new mapboxgl.Map()).resize();
 	}
 
-	componentDidMount() {
+	componentDidMount(): void {
 		window.scrollTo(0, 0);
 		const { lng, lat, zoom } = this.state;
 		const map = new mapboxgl.Map({
-			container: this.mapContainer.current || '',
-			style: 'mapbox://styles/redaxe/ckpds90od199z17o8k97ertk3',
+			container: this.mapContainer.current || "",
+			style: "mapbox://styles/redaxe/ckpds90od199z17o8k97ertk3",
 			center: [lng, lat],
 			zoom: zoom
 		});
 		map.dragRotate.disable();
 		map.touchZoomRotate.disableRotation();
-		this.setState({map: map})
+		this.setState({map: map});
 		
-		map.on('load', function() {
-			fetch('https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/map/ships.json?minLat=-90&maxLat=90&minLon=-180&maxLon=180&filter='+encodeURIComponent(currentSelected.join(',')), {
+		map.on("load", function() {
+			fetch("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/map/ships.json?minLat=-90&maxLat=90&minLon=-180&maxLon=180&filter="+encodeURIComponent(currentSelected.join(",")), {
 				headers: {
-					'X-Requested-With': 'XMLHttpRequest',
-					'Accept': 'application/json; charset=UTF-8',
+					"X-Requested-With": "XMLHttpRequest",
+					"Accept": "application/json; charset=UTF-8",
 				}
-			})
-      		.then(res => res.json()).then(
+			}).then(res => res.json()).then(
 				data => {
-					for (let sets of [arrows, circles]) {
-						for (let icon of sets) map.loadImage(
-							'./'+icon,
-							function(error: any, image: any) {
-								var i: any
-								i = image
+					for (const sets of [arrows, circles]) {
+						for (const icon of sets) map.loadImage(
+							"./"+icon,
+							function(error, image) {
 								if (error) throw error;
-								let name = icon.match(/.+\/(.*?)\./)
-								map.addImage(name[name.length-1], i);
+								const name = icon.match(/.+\/(.*?)\./);
+								map.addImage(name[name.length-1], image as HTMLImageElement);
 							}
 						);
 					}
-					map.addSource('places', {
-						'type': 'geojson',
-						'data': {
-							'type': 'FeatureCollection',
-							'features': data.map((row:any) => {
+					map.addSource("places", {
+						"type": "geojson",
+						"data": {
+							"type": "FeatureCollection",
+							"features": data.map((row: any) => {
 								return {
-									'type': 'Feature',
-									'properties': {  
-										'description': `<strong>${row.hover}</strong><p style='margin: 0'>${row.ship_line_title}</p>`,
-										'value': parseInt(row.icon),
-										'rotation': parseInt(row.heading),
-										'icon': (row.sog <= 1 ? 'circle' : 'arrow')+row.icon
+									"type": "Feature",
+									"properties": {  
+										"description": `<strong>${row.hover}</strong><p style='margin: 0'>${row.ship_line_title}</p>`,
+										"value": parseInt(row.icon),
+										"rotation": parseInt(row.heading),
+										"icon": (row.sog <= 1 ? "circle" : "arrow")+row.icon
 									},
-									'geometry': {
-										'type': 'Point',
-										'coordinates': [parseFloat(row.lon), parseFloat(row.lat)]
+									"geometry": {
+										"type": "Point",
+										"coordinates": [parseFloat(row.lon), parseFloat(row.lat)]
 									}
-								}
+								};
 							})
 						}
 					});
 					// Add a layer showing the places.
 					map.addLayer({
-						'id': 'places',
-						'type': "symbol",
-						'source': 'places',
-						'layout': {
-							'icon-rotate': ['get', 'rotation'],
-							'icon-ignore-placement': true,
-							'icon-image': ['get', 'icon'],
-							'icon-size': 0.03,
-							'icon-padding': 0,
-							'icon-anchor': 'center'
+						"id": "places",
+						"type": "symbol",
+						"source": "places",
+						"layout": {
+							"icon-rotate": ["get", "rotation"],
+							"icon-ignore-placement": true,
+							"icon-image": ["get", "icon"],
+							"icon-size": 0.03,
+							"icon-padding": 0,
+							"icon-anchor": "center"
 						},
-						'paint': {
+						"paint": {
 							"icon-color": {
-								'property': 'value',
-								'stops': colors.map(([i, c]) => [i, (([r, g, b, a]) => `rgba(${r}, ${g}, ${b}, ${a})`)(c)])
+								"property": "value",
+								"stops": colors.map(([i, c]) => [i, (([r, g, b, a]) => `rgba(${r}, ${g}, ${b}, ${a})`)(c)])
 							},
-							'icon-halo-width': 0
+							"icon-halo-width": 0
 						}
 					});
-					var popup = new mapboxgl.Popup({
+					const popup = new mapboxgl.Popup({
 						closeButton: false,
 						closeOnClick: false
 					});
-					map.on('mouseenter', 'places', function(e:any) {
-						map.getCanvas().style.cursor = 'pointer';
-						var coordinates = e.features[0].geometry.coordinates.slice();
-						var description = e.features[0].properties.description;
+					map.on("mouseenter", "places", (e: any) => {
+						map.getCanvas().style.cursor = "pointer";
+						const coordinates = e.features[0].geometry.coordinates.slice();
+						const description = e.features[0].properties.description;
 						popup.setLngLat(coordinates).setHTML(description).addTo(map);
 					});
-					map.on('mouseleave', 'places', function() {
-						map.getCanvas().style.cursor = '';
+					map.on("mouseleave", "places", function() {
+						map.getCanvas().style.cursor = "";
 						popup.remove();
 					});
 				});
-			}
-		)
-		map.on('mousemove', (e: any) => {
+		}
+		);
+		map.on("mousemove", (e: any) => {
 			this.setState({...e.lngLat});
 		});
-		map.on('move', () => {
+		map.on("move", () => {
 			this.setState({
 				zoom: parseFloat(map.getZoom().toFixed(2))
-			})
-		})
+			});
+		});
 	}
 
-	render() {
-		const { lng, lat, zoom } = this.state
+	render(): JSX.Element{
+		const { lng, lat, zoom } = this.state;
 		return (
 			<React.Fragment>
 				<div className='flex'>
 					
 					<div ref={this.mapContainer} className="map-container w-full" style={{
-						position: 'absolute',
+						position: "absolute",
 						top: 88,
 						bottom: 0,
 					}}>
 						<div className='longlat whitespace-nowrap py-1 px-2'>Lon:{lng.toFixed(4)} | Lat:{lat.toFixed(4)} | Zoom:{zoom}</div>
 					</div>
-					<div className={'sb bg-white relative '+(this.state.sidebarOpened ? 'sb-expand' : 'sb-collapse')} style={{'zIndex': 30, marginTop: 88}}>
-						<Scrollbar className='nc m-3 overflow-hidden' alwaysShowTracks={true} style={{'height': this.state.height-30}}>
+					<div className={"sb bg-white relative "+(this.state.sidebarOpened ? "sb-expand" : "sb-collapse")} style={{"zIndex": 30, marginTop: 88}}>
+						<Scrollbar className='nc m-3 overflow-hidden' alwaysShowTracks={true} style={{"height": this.state.height-30}}>
 							<div className='w-100 overflow-auto h-100 bg-whtie'>{
 								names.map(([index, id, name]) => 
-								<div className='flex mb-2 items-center whitespace-nowrap mr-3 overflow-hidden' style={{
-									fontFamily: 'Public Sans',
-									fontSize: 14
-								}}>
-									<button id={index.toString()} className='p-0 border-0 flex items-center justify-center bg-white' onClick={() => {
-										this.toggleSelector(index as number)
-									}}><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="1.2em" height="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-										{this.state.names[this.state.names.findIndex(e=>e[0] === index)][3] ? <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z" fill="rgba(0, 85, 185, 1)"/> : <path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm1-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />}
-									</svg>
-									</button>
-									<span style={{background: (([r, g, b, a]) => `rgba(${r}, ${g}, ${b}, ${a})`)(colors[Math.log2(id as number)][1])}} className='block ci ml-3 mr-2 rounded-full'></span>
-									{name}
-								</div>)
+									<div className='flex mb-2 items-center whitespace-nowrap mr-3 overflow-hidden' key={Math.random()} style={{
+										fontFamily: "Public Sans",
+										fontSize: 14
+									}}>
+										<button id={index.toString()} className='p-0 border-0 flex items-center justify-center bg-white' onClick={() => {
+											this.toggleSelector(index as number);
+										}}><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="1.2em" height="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+												{this.state.names[this.state.names.findIndex(e=>e[0] === index)][3] ? <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 0 1-1.41 0L5.71 12.7a.996.996 0 1 1 1.41-1.41L10 14.17l6.88-6.88a.996.996 0 1 1 1.41 1.41l-7.58 7.59z" fill="rgba(0, 85, 185, 1)"/> : <path d="M18 19H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm1-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />}
+											</svg>
+										</button>
+										<span style={{background: (([r, g, b, a]) => `rgba(${r}, ${g}, ${b}, ${a})`)(colors[Math.log2(id as number)][1])}} className='block ci ml-3 mr-2 rounded-full'></span>
+										{name}
+									</div>)
 							}</div>
 						</Scrollbar>
-						<button className='absolute translate-middle-y p-0 py-3 border-0 bg-white rounded-end' style={{left: '98%', top: '45%'}} onClick={this.toggleSidebar.bind(this)}><Icon icon={arrowLeftSLine} color='#606060' width='1.2em' height='1.2em'/></button>
+						<button className='absolute translate-middle-y p-0 py-3 border-0 bg-white rounded-end' style={{left: "98%", top: "45%"}} onClick={this.toggleSidebar.bind(this)}><Icon icon={arrowLeftSLine} color='#606060' width='1.2em' height='1.2em'/></button>
 					</div>
 				</div>
 			</React.Fragment>
-		)
+		);
 	}
 }

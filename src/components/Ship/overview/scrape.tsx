@@ -16,7 +16,7 @@ const getData  = (): void => {
 	const obj: string = parser.stringToJson(raw);
 	const json: RawJsonData = JSON.parse(obj);
 	const position_info: string = (html.querySelector(".currentItineraryInfo")?.textContent || "").replace(/\s+/gm, " ");
-	const currentLocation: string[] = position_info.match(/current location is at (.*?)\(/) || [];
+	const currentLocation: string[] = position_info.match(/location is|was at (.*?)\(/) || [];
 	const currentCoordinates: string[] = position_info.match(/\(coordinates\s*((?:\d|\.|-)+\s*[N|E|S|W]\s*\/\s*(?:\d|\.|-)+\s*[N|E|S|W])\)/) || [];
 	const destination: string[] = position_info.match(/en route to (.*?)\./) || [];
 	const last_ais_report: string[] = position_info.match(/The AIS position was reported (.*?)\./) || [];

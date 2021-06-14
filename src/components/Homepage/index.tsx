@@ -6,9 +6,12 @@ const Top = (): JSX.Element => {
 	return (
 		<div className='flex h-screen flex-row justify-between items-end bg-gradient-to-b from-gray-50 to-white'>
 			<div className='h-full flex justify-center items-left flex-col px-12 mx-5'>
-				<h1 className='text-7xl m-0 font-poppins text-blue-800 leading-tight flex items-center'>Cruiseship<span className='text-3xl ml-6 mt-4 text-gray-700'>/ˈkruːzˌʃɪp/</span></h1>
-				<p className='text-xl font-light mb-8 mt-2'><i className='text-gray-700 font-normal'>noun</i>. &nbsp; A luxury vessel that is used to take passengers on a pleasure voyage in a journey that is as much a part of the experience as the various destinations on the way.</p>
-				<a className="btn whitespace-nowrap rounded-full mt-3 px-5 py-2 text-2xl bg-blue-800 font-poppins" href="/database">Explore Database</a>
+				<h1 className='text-6xl m-0 font-poppins text-blue-800 leading-tight flex items-center font-medium'>Cruiseship<span className='text-3xl ml-6 mt-4 text-gray-700 font-normal'>/ˈkruːzˌʃɪp/</span></h1>
+				<p className='text-xl mb-8 mt-4 font-poppins'><i className='text-gray-700 font-normal'>noun</i>. &nbsp; A luxury vessel that is used to take passengers on a pleasure voyage in a journey that is as much a part of the experience as the various destinations on the way.</p>
+				<div className="mt-6 ">
+					<a className="btn whitespace-nowrap rounded-full px-5 py-2 text-xl bg-blue-800 font-poppins text-white" href="/database">GET ONBOARD NOW</a>
+					<a className='btn whitespace-nowrap rounded-full px-5 py-2 text-xl border-blue-800 text-blue-800 border-2 font-poppins ml-4 font-medium'>LEARN MORE</a>
+				</div>
 			</div>
 			<img src={TopLogo} className='h-4/6 mt-xxl-0 mt-sm-5 d-sm-none d-xl-block' alt='logo' />
 		</div>
@@ -36,14 +39,14 @@ const Middle = (): JSX.Element => {
 
 	return (
 		<div className='bg-gray-50 flex flex-col justify-center items-center p-12 pt-20'>
-			<h1 className='text-center text-5xl text-gray-900'>Why Choose Cruisegator?</h1>
+			<h1 className='text-center text-5xl text-gray-900 font-poppins'>Why Choose Us?</h1>
 			<div className='w-20 h-1 mt-6 bg-blue-800'></div>
 			<div className='grid grid-cols-3 justify-center items-baseline px-20 gap-x-5 py-20'>
 				{content.map(([Icon, title, desc]) => (
 					<div className='mx-4' key={title as string}>
 						<Icon size='4em' stroke-width='1' className='text-blue-800' />
-						<h2 className='mt-4 fw-light text-3xl'>{title}</h2>
-						<p className='text-lg leading-snug pt-3 font-poppins'>{desc}</p>
+						<h2 className='mt-4 font- text-3xl font-poppins'>{title}</h2>
+						<p className='text-lg leading-snug pt-3 font-poppins text-gray-500'>{desc}</p>
 					</div>
 				))}
 			</div>
@@ -74,7 +77,7 @@ const Bottom = (): JSX.Element => {
 	];
 	return (
 		<div className='flex flex-col justify-center items-center bg-gradient-to-b to-gray-50 from-white py-20'>
-			<h1 className='text-center text-5xl text-gray-900'>Latest News</h1>
+			<h1 className='text-center text-5xl text-gray-900 font-poppins'>Latest News</h1>
 			<div className='w-20 h-1 mt-6 bg-blue-800'></div>
 			<div className='grid grid-cols-3 justify-center mt-5 w-grid px-36 pt-12 gap-x-4'>
 				{content.map(([picture, date, title, desc]) => (
@@ -84,7 +87,7 @@ const Bottom = (): JSX.Element => {
 							<p className='m-0 font-poppins'>{date.toLocaleString("en-GB", {
 								dateStyle: "full"
 							})}</p>
-							<h3 className='mb-4 mt-2 text-3xl'>{title}</h3>
+							<h3 className='mb-4 mt-2 text-3xl font-poppins font-medium text-blue-800'>{title}</h3>
 							<p className='mt-2 font-poppins'>{desc}</p>
 						</div>
 					</div>

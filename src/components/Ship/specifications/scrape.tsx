@@ -13,6 +13,10 @@ const getMoreInfo = (id: string, company: string): MoreInfoData => {
 		const data = require("./data/msc.ts").default;
 		result = data[id]; break;
 	}
+	case "Celebrity Cruises": {
+		const data = require("./data/celebrity.ts").default;
+		result = data[id]; break;
+	}
 	default: result = {
 		service_info: [],
 		interesting_fact: []

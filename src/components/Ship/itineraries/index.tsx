@@ -18,7 +18,7 @@ const ConnectedItinerariess: React.FC<CabinProps> = ({ itineraries_data, shipraw
 	return (
 		<div className='p-20 w-full flex flex-col'>
 			<div className='mb-10'>
-				<h1 className='uppercase mt-10'>Itinerariess</h1>
+				<h1 className='uppercase mt-10'>Itineraries</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
 			<pre>

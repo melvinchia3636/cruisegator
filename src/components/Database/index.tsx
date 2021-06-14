@@ -106,7 +106,7 @@ export default function Database(): JSX.Element {
 					})}
 					<a className='mx-4 bg-blue-800 text-white flex items-center justify-center rounded-full w-10 h-10' href={`/database?page=${page_num}`} key={page_num}>{page_num}</a>
 					{Array(2).fill(0).map((_, i) => {
-						if ((exist || [0, 0])[i]) return <a className='mx-2 flex items-center justify-center w-10 h-10' href={`/database?page=${page_num+i+1}`} key={page_num+i+1}></a>;
+						if ((exist || [0, 0])[i]) return <a className='mx-2 flex items-center justify-center w-10 h-10' href={`/database?page=${page_num+i+1}`} key={page_num+i+1}>{page_num+i+1}</a>;
 						return "";
 					})}
 				</div>

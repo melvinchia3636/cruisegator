@@ -123,7 +123,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 				case 0: tab = <Overview/>; break;
 				case 1: tab = <Specifications id={id}/>; break;
 				case 2: tab = <Itinerariess id={id}/>; break;
-				case 3: tab = <Cabin id={id}/>; break;
+				case 4: tab = <Cabin id={id}/>; break;
 				default: tab = <></>;
 				}
 				return tab;

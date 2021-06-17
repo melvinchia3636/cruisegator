@@ -41,3 +41,11 @@ p {
 		@include ellipsisText(4)
 	}
 }
+
+* {
+	font-family: Poppins !important;
+}
+
+code {
+	font-family: Hermit !important;
+}

@@ -12,8 +12,7 @@ import appsList20Regular from "@iconify-icons/fluent/apps-list-20-regular";
 import settings28Regular from "@iconify-icons/fluent/settings-28-regular";
 import conferenceRoom28Regular from "@iconify-icons/fluent/conference-room-28-regular";
 import calendarLtr28Regular from "@iconify-icons/fluent/calendar-ltr-28-regular";
-import news28Regular from "@iconify-icons/fluent/news-28-regular";
-import warning24Regular from "@iconify-icons/fluent/warning-24-regular";
+import commentMultiple20Regular from "@iconify-icons/fluent/comment-multiple-20-regular";
 import layer20Regular from "@iconify-icons/fluent/layer-20-regular";
 import imageMultiple20Regular from "@iconify-icons/fluent/image-multiple-20-regular";
 import "flag-icon-css/sass/flag-icon.scss";
@@ -69,14 +68,13 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab }: Si
 		[calendarLtr28Regular, "itineraries"],
 		[layer20Regular, "deck plans"],
 		[conferenceRoom28Regular, "cabins"],
-		[news28Regular, "news"],
-		[warning24Regular, "reviews"],
+		[commentMultiple20Regular, "reviews"],
 		[imageMultiple20Regular, "gallery"]
 	];
 	options[active_tab].push(true);
 	
 	return (
-		<div className='flex flex-col justify-end text-xl sidebar h-screen fixed pb-9'>
+		<div className='flex flex-col justify-end text-xl sidebar h-screen fixed pb-24'>
 			{options.map(
 				([icon, text, is_active], index) => 
 					<button key={text} className={"uppercase bg-white border-0 pl-20 flex items-center text-lg "+(is_active ? "active": "")} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || "0"));}}>

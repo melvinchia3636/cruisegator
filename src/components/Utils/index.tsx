@@ -94,7 +94,7 @@ const Footer = (): JSX.Element => {
 				</div>
 				<form className="w-64">
 					<p className="fw-light text-white text-xl mb-4">Get Updated</p>
-					<input className="mb-3 border-0 fw-lighter block w-full px-4 py-2 bg-blue-700 text-white placeholder-blue-300 rounded-sm" type="email" name="email" placeholder="Email Address"/>
+					<input className="mb-3 border-0 fw-lighter block w-full px-4 py-2 bg-blue-600 text-white placeholder-blue-300 rounded-sm" type="email" name="email" placeholder="Email Address"/>
 					<input className="border-0 block w-full px-4 py-2 text-blue-800 font-poppins rounded-sm" type="submit" name="submit" value="Subscribe"/>
 				</form>
 			</div>

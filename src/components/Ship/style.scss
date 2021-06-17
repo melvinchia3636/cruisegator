@@ -63,6 +63,11 @@
 		width: .8em;
 		height: .8em;
 
+		&.ctg {
+			width: min-content;
+			height: auto
+		}
+
 		&.stat {
 			width: .5em;
 			height: .5em

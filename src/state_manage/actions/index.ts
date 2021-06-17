@@ -2,6 +2,7 @@ import * as constants from "../constants";
 import { OverviewData } from "components/Ship/overview/interface";
 import { SpecificationData } from "components/Ship/specifications/interface";
 import { ItinerariesData } from "components/Ship/itineraries/interface";
+import { CabinsData } from "components/Ship/cabins/interface";
 
 export function changeTab(payload: number): {
     type: string;
@@ -38,6 +39,9 @@ export function setItinerariesData(payload: ItinerariesData[]): {
 	return {type: constants.SET_ITINERARIES_DATA, payload};
 }
 
-export function setCabinsData(payload: any):any {
+export function setCabinsData(payload: CabinsData[]): {
+    type: string;
+    payload: CabinsData[];
+} {
 	return {type: constants.SET_CABINS_DATA, payload};
 }

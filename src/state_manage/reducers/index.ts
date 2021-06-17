@@ -34,7 +34,7 @@ const initialState: StateProps = {
 		specification_data: []
 	},
 	itineraries_data: {},
-	cabins_data: {},
+	cabins_data: [],
 };
   
 function Reducer(state = initialState, action: AnyAction): StateProps {

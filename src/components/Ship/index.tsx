@@ -87,11 +87,13 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab }: Si
 
 const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ...props}: ShipRouteProps): JSX.Element => {
 	const id = props.match.params.id;
+	const splitted_id: string[] = id.split("-");
+	const splitted_id_nonum: string = splitted_id.slice(0, splitted_id.length-1).join(" ").replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()).split(" ").join("-");
 	useEffect(() => {
 		const url_to_fetch: string[] = [
 			"https://www.cruisemapper.com/ships/"+id, 
 			"https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?cl=32",
-			"https://www.cruisedeckplans.com/DP/deckplans/Quantum-of-the-Seas"
+			"https://www.cruisedeckplans.com/DP/deckplans/"+splitted_id_nonum
 		];
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();
@@ -121,7 +123,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 				case 0: tab = <Overview/>; break;
 				case 1: tab = <Specifications id={id}/>; break;
 				case 2: tab = <Itinerariess id={id}/>; break;
-				case 4: tab = <Cabin id={id}/>; break;
+				case 4: tab = <Cabin id={splitted_id_nonum}/>; break;
 				default: tab = <></>;
 				}
 				return tab;

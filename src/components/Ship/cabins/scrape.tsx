@@ -13,7 +13,8 @@ const getData  = (): void => {
 		const result: ChildNode[] = [];
 		while (e.nodeName !== "H4") {
 			if (e.nodeName !== "#comment") result.push(e);
-			e = e.nextSibling || new HTMLElement;
+			if (!e.nextSibling) break;
+			e = e.nextSibling;
 		}
 		return result;
 	};
@@ -38,7 +39,8 @@ const getData  = (): void => {
 			categories: Array.from(e.querySelectorAll(".col-xs-2 > p > a")).map(e => {
 				return {
 					name: e.textContent || "",
-					description: e.getAttribute("title")?.replace(/Category .*?:/, "").trim() || ""
+					description: e.getAttribute("title")?.replace(/Category .*?:/, "").trim() || "",
+					background: e.parentElement?.style.backgroundImage || ""
 				};
 			}),
 			...metadata,

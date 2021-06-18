@@ -28,6 +28,7 @@ export interface Metadata {
 export interface Category {
 	name:        string;
 	description: string;
+	background: string;
 }
 
 export interface Diagram {

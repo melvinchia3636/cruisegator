@@ -50,15 +50,15 @@ const getData  = (): void => {
 			},
 			image: Array.from(e.querySelectorAll("img")).map(e => "https://www.cruisedeckplans.com/DP"+e.src.replace(window.origin, "")).filter(e => e.includes("cabinpics")),
 			location: Array.from(details.querySelectorAll("p[style~='float:left']")).map(e => {return {
-				deck: e.textContent?.replace("-", "").trim() || "", 
-				categories: getCategories([e.nextElementSibling]).map(e => e.textContent || "")
+				deck: e.textContent?.replace(/-\s+$/, "").trim() || "", 
+				categories: getCategories([e.nextElementSibling]).map(e => { return {name: e.textContent || "", background: (e as HTMLElement).style.backgroundImage || ""};})
 			};}),
 			features: details.querySelector("div[style~='background-color:#E1F0FF']")?.innerHTML?.split("<br>").map(e => e.trim().replace(/^-\s+/, "").replace(/\.$/, "")).filter(e => e) || [],
 			important_size_info: Array.from(details.querySelectorAll("h4")).filter(e => e.textContent?.toLowerCase() === "important size information").map(e => e.nextElementSibling?.textContent)[0] || "",
-			perks: perks?.textContent?.trim() || "",
+			perks: perks?.textContent?.replace(/\/\s+$/, "") || "",
 			others: getOthers(perks?.nextSibling as ChildNode).map(e => {return {
-				type: e.nodeName,
-				content: e.textContent?.trim() || ""
+				type: e.textContent?.trim().slice(0, 4) === "NOTE" ? "NOTE" : e.nodeName,
+				content: e.textContent?.trim() !== "/" ? e.textContent?.trim() || "" : ""
 			};}).filter(e => e.content)
 		};
 	})));

@@ -28,6 +28,7 @@
     "browserslist": "^4.16.6",
     "feather-icons": "^4.28.0",
     "flag-icon-css": "^3.5.0",
+    "framer-motion": "^4.1.17",
     "mapbox-gl": "^1.13.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

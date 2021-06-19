@@ -88,11 +88,10 @@
 
 	& h3 {
 		font-family: 'Poppins';
-		color: #202020;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		display: block !important;
+		display: block;
 
 		&.loc {
 			max-width: 280px;

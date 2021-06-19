@@ -14,6 +14,8 @@ export interface CabinsData extends Metadata {
 	important_size_info:  string;
 	perks:                string;
 	others:               Other[];
+	state?:		          any;
+	setState?: 			  any;
 }
 
 export interface Metadata {
@@ -38,7 +40,12 @@ export interface Diagram {
 
 export interface Location {
 	deck:       string;
-	categories: string[];
+	categories: LocationCategory[];
+}
+
+export interface LocationCategory {
+	name: string;
+	background: any
 }
 
 export interface Other {

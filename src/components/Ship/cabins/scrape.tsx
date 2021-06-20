@@ -20,7 +20,7 @@ const getData  = (): void => {
 	};
 	const { shipraw_data } = store.getState();
 	const html: Document = shipraw_data[2];
-	store.dispatch(setCabinsData(Array.from(html.querySelectorAll(".portlet-body .portlet")).map(e => {
+	store.dispatch(setCabinsData(Array.from(html.querySelectorAll(".portlet-body .portlet.box")).map(e => {
 		e.nextElementSibling;
 		const metavalue: string[] = e.querySelector("#catcontent-main span")?.textContent?.match(/Sleeps up to:\s*(\d+)\s+(\d+)\s*Staterooms\s+Cabin:\s*(\d+)\s+sqft\s*\((\d+)\s*m2\)\s+(?:Balcony:\s*(\d+)\s*sqft.\((\d+)\s*m2\)|)/)?.slice(1) || [];
 		const metakey: string[] = [
@@ -55,9 +55,9 @@ const getData  = (): void => {
 			};}),
 			features: details.querySelector("div[style~='background-color:#E1F0FF']")?.innerHTML?.split("<br>").map(e => e.trim().replace(/^-\s+/, "").replace(/\.$/, "")).filter(e => e) || [],
 			important_size_info: Array.from(details.querySelectorAll("h4")).filter(e => e.textContent?.toLowerCase() === "important size information").map(e => e.nextElementSibling?.textContent)[0] || "",
-			perks: perks?.textContent?.replace(/\/\s+$/, "") || "",
+			perks: perks?.textContent?.replace(/\/\s+$/, "").split("/").map(e => e.trim()).filter(e => e) || [],
 			others: getOthers(perks?.nextSibling as ChildNode).map(e => {return {
-				type: e.textContent?.trim().slice(0, 4) === "NOTE" ? "NOTE" : e.nodeName,
+				type: ["NOTE", "IMPORTANT NOTE"].includes(e.textContent?.split(":")[0] || "") ? "NOTE" : e.nodeName,
 				content: e.textContent?.trim() !== "/" ? e.textContent?.trim() || "" : ""
 			};}).filter(e => e.content)
 		};

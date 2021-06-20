@@ -20,11 +20,12 @@ const mapStateToProps = (state: StateProps) => {
 
 const ConnectedItinerariess: React.FC<CabinsProps> = ({ cabins_data, shipraw_data }: CabinsProps): JSX.Element => {
 
-	if (cabins_data.length === 0 && shipraw_data[2]) {
+	if (cabins_data.length === 0 && shipraw_data[2] && shipraw_data[2].querySelector("p")?.textContent !== "none") {
 		getData();
 	}
 	const data = cabins_data;
 	data.forEach(e => [e.state, e.setState] = useState(0));
+	console.log(data);
 
 	return (
 		<div className='p-20 w-full flex flex-col'>
@@ -32,7 +33,7 @@ const ConnectedItinerariess: React.FC<CabinsProps> = ({ cabins_data, shipraw_dat
 				<h1 className='uppercase mt-10'>Staterooms and Suites</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
-			{data.map((e, i) => <div key={i}className="w-100 p-8 pb-4 my-3 flex flex-col justify-center" style={{boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.3)"}}>
+			{data ? data.map((e, i) => <div key={i}className="w-100 p-8 pb-4 my-3 flex flex-col justify-center" style={{boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.3)"}}>
 				<div className="flex items-center">
 					<LazyLoad 
 						height={100}
@@ -72,7 +73,7 @@ const ConnectedItinerariess: React.FC<CabinsProps> = ({ cabins_data, shipraw_dat
 						</div>
 					</div>
 				</div>
-				<div className={"overflow-hidden transition-all duration-300"} style={{height: data[i].state}}>
+				<div className={"overflow-hidden transition-all duration-300 mb-10"} style={{height: data[i].state}}>
 					<div className={"w-100 p-8 pb-4 mt-3 mb-12 flex flex-col justify-center"} id={"c-"+i}>
 						<div className="text-blue-800 flex items-center" style={{ fontSize: "1.8rem" }}><Icon icon={ Location28Regular } className="mr-2" width={32} style={{ stroke: "rgba(0, 85, 185, 1)", strokeWidth: "0.5px" }}/><h3>Stateroom Location</h3></div>
 						<div className="grid gap-y-8 gap-x-16 mt-8" style={{ gridTemplateColumns: "repeat(2, min-content)" }}>
@@ -82,36 +83,54 @@ const ConnectedItinerariess: React.FC<CabinsProps> = ({ cabins_data, shipraw_dat
 							</>)}
 						</div>
 						<div className="text-blue-800 flex items-center mt-20" style={{ fontSize: "1.8rem" }}><ThumbsUp size={28} className="mr-2"/><h3>Features</h3></div>
-						<ul className="mt-6 text-lg">
-							{e.features.map(e => <li key={Math.random()} className="border-b-2 p-3 text-gray-600">{e}</li>)}
-						</ul>
+						<div className="mt-6 text-lg flex flex-wrap">
+							{e.features.sort((a,b) => a.length - b.length).map(e => {
+								if (e.split(":")[0].includes("NOTE")) return (
+									<div className="text-lg my-4 bg-blue-100 w-full text-blue-800 rounded-lg flex overflow-hidden">
+										<div className="bg-blue-800 w-2 h-100"></div>
+										<div className="p-6">
+											<div className="font-bold mb-3 text-xl">NOTE</div>
+											{e.split(":")[1]}
+										</div>
+									</div>
+								);
+								return (
+									<div key={Math.random()} className="bg-gray-100 text-gray-600 m-1 rounded-md overflow-hidden">
+										<div className="px-3 py-2 lb" style={{ borderLeft: "4.5px solid rgba(0, 85, 185, 1)" }}>{e}</div>
+									</div>
+								);
+							})}
+						</div>
 						<div className="text-blue-800 flex items-center mt-20" style={{ fontSize: "1.8rem" }}><Icon icon={ Resize20Regular } className="mr-2" width={32} style={{ stroke: "rgba(0, 85, 185, 1)", strokeWidth: "0.5px" }}/><h3>Size Information</h3></div>
 						<p className="mt-6 text-lg text-gray-600">{e.important_size_info || "N/A"}</p>
 						<div className="text-blue-800 flex items-center mt-20" style={{ fontSize: "1.8rem" }}><Icon icon={ BookStar24Regular } className="mr-2" width={32} style={{ stroke: "rgba(0, 85, 185, 1)", strokeWidth: "0.2px" }}/><h3>Perks</h3></div>
-						<p className="mt-6 text-lg text-gray-600">{e.perks}</p>
+						<div className="mt-6 text-lg flex flex-wrap">
+							{e.perks.length > 0 ? e.perks.sort((a,b) => a.length - b.length).map(e => <div key={Math.random()} className="bg-gray-100 text-gray-600 m-1 rounded-md overflow-hidden">
+								<div className="px-3 py-2 lb" style={{ borderLeft: "4.5px solid rgba(0, 85, 185, 1)" }}>{e}</div>
+							</div>) : <p>N/A</p>}
+						</div>
 						{e.others.map(({ type, content }) => {
 							content = content.replace(/^:/, "");
 							let result: JSX.Element;
 							switch (type) {
 							case "B": result = <p className="text-gray-800 text-lg font-medium my-4">{content}</p>; break;
 							case "I": result = <p className="text-gray-800 text-lg font-medium my-4 italic">{content}</p>; break;
-							case "U": result = <p>{content}</p>; break; //TODO: yeah baby
+							case "U": result = <h3 className='uppercase text-xl font-medium mt-4 pl-2'  style={{ borderLeft: "4px solid rgba(0, 85, 185, 1)" }}>{content}</h3>; break;
 							case "NOTE": result = 
-									<div className="text-lg my-4 bg-blue-100 text-blue-800 rounded-lg flex overflow-hidden">
-										<div className="bg-blue-800 w-2 h-100"></div>
-										<div className="p-6">
-											<div className="font-bold mb-3 text-xl">NOTE</div>
-											{content.slice(5, content.length).replace(/\/$/, "")}
-										</div>
-									</div>; break;
+								<div className="rounded-md overflow-hidden my-4">
+									<div className="p-6 lb bg-blue-100 text-blue-800" style={{ borderLeft: "4.5px solid rgba(0, 85, 185, 1)" }}>
+										<div className="font-bold mb-3 text-xl">NOTE</div>
+										{content.slice(5, content.length).replace(/\/$/, "")}
+									</div>
+								</div>; break;
 							default: result = <p className="text-gray-600 text-lg my-4">{content}</p>;
 							}
 							return result;
 						})}
 					</div> 
 				</div>
-				<button className="flex flex-col items-center text-medium text-center text-gray-600" onClick={() => data[i].setState(data[i].state ? 0 : document.querySelector("#c-"+i)?.clientHeight)}>More Details<ChevronDown width={18} style={{marginTop: -5}}/></button>
-			</div>)}
+				<button className="flex flex-col items-center text-medium text-center text-gray-600" onClick={() => data[i].setState(data[i].state ? 0 : document.querySelector("#c-"+i)?.clientHeight)}>{(data[i].state ? "Hide" : "More") + " Details"}<ChevronDown width={18} style={{marginTop: -5}} className={"transition-all transform " + (data[i].state ? "rotate-180" : "")}/></button>
+			</div>) : ""}
 		</div>
 	);
 };

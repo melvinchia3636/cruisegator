@@ -74,10 +74,10 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab }: Si
 	options[active_tab].push(true);
 	
 	return (
-		<div className='flex flex-col justify-end text-xl sidebar h-screen fixed pb-24'>
+		<div className='flex flex-col justify-end text-xl sidebar h-screen fixed pb-32'>
 			{options.map(
 				([icon, text, is_active], index) => 
-					<button key={text} className={"uppercase bg-white border-0 pl-20 flex items-center text-lg "+(is_active ? "active": "")} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || "0"));}}>
+					<button key={text} className={"transition-all duration-300 relative uppercase bg-white border-0 pl-20 flex items-center text-lg font-medium py-6 "+(is_active ? "active": "")} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || "0"));}}>
 						<Icon icon={icon} width="28" className='mr-3'/>
 						{text}
 					</button>)}
@@ -97,16 +97,16 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 		];
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();
-			const request_promise: Promise<AxiosResponse<string>>[] = url_to_fetch.map(async url => await axios({
+			const request_promise: Promise<void | AxiosResponse<string>>[] = url_to_fetch.map(async url => await axios({
 				method: "GET",
 				url: "https://codeblog-corsanywhere.herokuapp.com/"+url, 
 				headers: {
 					"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
 				}
-			}));
+			}).catch(err => console.log(err)));
 
 			const requests = await Promise.all(request_promise);
-			const rdata: string[] = requests.map(r => r.data);
+			const rdata: string[] = requests.map(r => r ? r.data : "<p>none</p>");
 			const htmls: Document[] = rdata.map(d => dom_parser.parseFromString(d, "text/html"));
 			setShiprawData(htmls);
 		};

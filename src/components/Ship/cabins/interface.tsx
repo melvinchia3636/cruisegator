@@ -12,7 +12,7 @@ export interface CabinsData extends Metadata {
 	location:             Location[];
 	features:             string[];
 	important_size_info:  string;
-	perks:                string;
+	perks:                string[];
 	others:               Other[];
 	state?:		          any;
 	setState?: 			  any;

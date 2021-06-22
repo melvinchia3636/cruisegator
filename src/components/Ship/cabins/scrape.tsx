@@ -53,9 +53,9 @@ const getData  = (): void => {
 				deck: e.textContent?.replace(/-\s+$/, "").trim() || "", 
 				categories: getCategories([e.nextElementSibling]).map(e => { return {name: e.textContent || "", background: (e as HTMLElement).style.backgroundImage || ""};})
 			};}),
-			features: details.querySelector("div[style~='background-color:#E1F0FF']")?.innerHTML?.split("<br>").map(e => e.trim().replace(/^-\s+/, "").replace(/\.$/, "")).filter(e => e) || [],
+			features: details.querySelector("div[style~='background-color:#E1F0FF']")?.innerHTML?.split("<br>").map(e => e.trim().replace(/^-\s+/, "").replace(/\.$/, "").replaceAll("&amp;", "&")).filter(e => e) || [],
 			important_size_info: Array.from(details.querySelectorAll("h4")).filter(e => e.textContent?.toLowerCase() === "important size information").map(e => e.nextElementSibling?.textContent)[0] || "",
-			perks: perks?.textContent?.replace(/\/\s+$/, "").split("/").map(e => e.trim()).filter(e => e) || [],
+			perks: perks?.textContent?.replace(/\/\s+$/, "").replaceAll("&amp;", "&").split("/").map(e => e.trim()).filter(e => e) || [],
 			others: getOthers(perks?.nextSibling as ChildNode).map(e => {return {
 				type: ["NOTE", "IMPORTANT NOTE"].includes(e.textContent?.split(":")[0] || "") ? "NOTE" : e.nodeName,
 				content: e.textContent?.trim() !== "/" ? e.textContent?.trim() || "" : ""

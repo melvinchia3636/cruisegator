@@ -17,7 +17,7 @@ const getData  = (): void => {
 			const sailings = inner_messy_data[e.sailings.id].results.map(({ id }: any) => inner_messy_data[id].departureDate);
 			return {
 				id: e.id,
-				title: e.title,
+				title: e.title.replace(/^\d*?\s.*?N.*?\s/, ""),
 				length: e.length,
 				departurePort: {
 					image: departurePort.imageUrl,

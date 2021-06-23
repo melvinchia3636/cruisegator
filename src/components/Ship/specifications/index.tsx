@@ -47,10 +47,10 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 					<h2 className="text-2xl fw-normal m-0 text-primary text-up text-blue-800">Ship Specifications</h2>
 				</div>
 				<div className='st'>
-					{JSON.stringify(specification_data) !== "{}" ? specification_data.specification_data.map(([k, v]) => 
+					{JSON.stringify(specification_data) !== "{}" ? Object.keys(specification_data.specification_data).map((k: string) => 
 						<div className="flex justify-between items-center py-3" key={k}>
 							<div>{k}</div>
-							<div>{v}</div>
+							<div>{k === "Sister-ships" ? specification_data.specification_data[k].split(",").map((v: string) => <div className="text-right" key={k}>{v}</div>) : specification_data.specification_data[k]}</div>
 						</div>
 					) : ""}
 				</div>

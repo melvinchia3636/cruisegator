@@ -29,7 +29,7 @@ const getData  = ( id: string ): void => {
 	const { shipraw_data } = store.getState();
 	const html: Document = shipraw_data[0];
 	if (!html.querySelector("body")) return;
-	const specification_data_current: string[][] = Array.from(html.querySelectorAll(".specificationTable")).map(e => Array.from(e.querySelectorAll("tr")).map(e => e.querySelectorAll("td"))).flat().map(e => Array.from(e).map(e => e.textContent?.trim() || ""));
+	const specification_data_current: {[key: string]: string} = Object.fromEntries(Array.from(html.querySelectorAll(".specificationTable")).map(e => Array.from(e.querySelectorAll("tr")).map(e => e.querySelectorAll("td"))).flat().map(e => Array.from(e).map(e => e.textContent?.trim() || "")));
 	const splitted_id: string[] = id.split("-");
 	const splitted_id_nonum: string = splitted_id.slice(0, splitted_id.length-1).join(" ").replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 	const company: string = html.querySelector("a.shipCompanyLink")?.textContent || "N/A";

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /* eslint-disable @typescript-eslint/ban-types */
 export interface MoreInfoData {
 	service_info: object,
@@ -6,7 +6,7 @@ export interface MoreInfoData {
 }
 
 export interface SpecificationData extends MoreInfoData {
-	specification_data: string[][],
+	specification_data: {[key: string]: string},
 }
 
 export interface SpecificationsProps {

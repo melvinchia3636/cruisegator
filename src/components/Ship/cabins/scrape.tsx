@@ -48,7 +48,7 @@ const getData  = (): void => {
 				full: "https://www.cruisedeckplans.com"+(e.querySelector("img")?.parentElement as unknown as HTMLAnchorElement)?.href.replace(window.origin, "") || "",
 				thumb: "https://www.cruisedeckplans.com"+e.querySelector("img")?.src.replace(window.origin, "") || ""
 			},
-			image: Array.from(e.querySelectorAll("img")).map(e => "https://www.cruisedeckplans.com/DP"+e.src.replace(window.origin, "")).filter(e => e.includes("cabinpics")),
+			image: Array.from(e.querySelectorAll("img")).map(e => "https://www.cruisedeckplans.com/DP"+e.src.replace(window.origin, "").replace(/^\/ship/, "")).filter(e => e.includes("cabinpics")),
 			location: Array.from(details.querySelectorAll("p[style~='float:left']")).map(e => {return {
 				deck: e.textContent?.replace(/-\s+$/, "").trim() || "", 
 				categories: getCategories([e.nextElementSibling]).map(e => { return {name: e.textContent || "", background: (e as HTMLElement).style.backgroundImage || ""};})

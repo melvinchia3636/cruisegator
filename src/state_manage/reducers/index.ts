@@ -31,9 +31,9 @@ const initialState: StateProps = {
 	specification_data: {
 		service_info: {},
 		interesting_fact: {},
-		specification_data: []
+		specification_data: {}
 	},
-	itineraries_data: {},
+	itineraries_data: [],
 	cabins_data: [],
 };
   

@@ -183,6 +183,7 @@ const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, shipraw_data }: C
 	}
 	const data = cabins_data;
 	data.forEach(e => [e.state, e.setState] = useState(0));
+	console.log(cabins_data);
 
 	return (
 		<div className='p-20 w-full flex flex-col'>

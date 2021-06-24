@@ -47,8 +47,8 @@
 	}
 
 	& span {
-		width: .8em;
-		height: .8em;
+		width: .88em;
+		height: .88em;
 
 		&.ctg {
 			width: min-content;
@@ -141,4 +141,18 @@
 			}
 		}
 	}
+}
+
+span.it:not(:first-child) {
+	z-index: 30
+}
+
+.itc div:first-child span.it::before {
+	content: "";
+	width: 2px;
+	transform: translate(-50%, 98%);
+	background: rgba(0, 85, 185, 1);
+	position: absolute;
+	left: 50%;
+	bottom: 0
 }

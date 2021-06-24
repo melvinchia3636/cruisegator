@@ -156,7 +156,7 @@ const MoreDetails: React.FC<{ e: CabinsData, i: number }> = ({ e, i }: { e: Cabi
 };
 
 const CabinCard: React.FC<{e: CabinsData, i: number}> = ({e, i}: {e: CabinsData, i: number}): JSX.Element => {
-	return <div key={i}className="w-100 p-8 pb-4 my-3 flex flex-col justify-center" style={{boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.3)"}}>
+	return <div key={i} className="w-100 p-8 pb-4 my-3 flex flex-col justify-center" style={{boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.3)"}}>
 		<div className="flex items-center">
 			<CabinDiagram diagram={e.diagram}/>
 			<div className="flex h-100 ml-12">
@@ -183,7 +183,6 @@ const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, shipraw_data }: C
 	}
 	const data = cabins_data;
 	data.forEach(e => [e.state, e.setState] = useState(0));
-	console.log(cabins_data);
 
 	return (
 		<div className='p-20 w-full flex flex-col'>

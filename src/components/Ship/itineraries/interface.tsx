@@ -5,6 +5,8 @@ export interface ItinerariesData {
 	departurePort: DeparturePort;
 	itinerary:     Itinerary[];
 	sailings:      string[];
+	state?:	  	   any,
+	setState?: 	   any
 }
 
 export interface DeparturePort {

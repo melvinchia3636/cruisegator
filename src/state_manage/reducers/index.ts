@@ -35,6 +35,7 @@ const initialState: StateProps = {
 	},
 	itineraries_data: [],
 	cabins_data: [],
+	gallery_data: []
 };
   
 function Reducer(state = initialState, action: AnyAction): StateProps {
@@ -66,6 +67,11 @@ function Reducer(state = initialState, action: AnyAction): StateProps {
 	if (action.type === constants.SET_CABINS_DATA) {
 		return Object.assign({}, state, {
 			cabins_data: action.payload
+		});
+	}
+	if (action.type === constants.SET_GALLERY_DATA) {
+		return Object.assign({}, state, {
+			gallery_data: action.payload
 		});
 	}
 	return state;

@@ -21,7 +21,7 @@ import Overview from "./overview";
 import Specifications from "./specifications";
 import Itinerariess from "./itineraries";
 import Cabin from "./cabins";
-import { getItiID } from "./itineraries/scrape";
+import Gallery from "./gallery";
 
 import { StateProps } from "../../state_manage/interface";
 
@@ -41,6 +41,23 @@ interface ShipRouteProps extends RouteComponentProps<{id: string}> {
 		payload: Document[];
 	}
 }
+
+const getItiID = (id: string): {id: number, name: string}|undefined => {
+	const ids = require("./id.json");
+	const id2 = id.toLowerCase();
+
+	const result = ids.filter((e: {id: number, name: string}) => {
+		const id1 = e.name.toLowerCase();
+		return id2.includes(id1) || id1.includes(id2);
+	});
+	if (result.length <= 1) return result[0];
+
+	const result2 = result.map((e: any) => {
+		const id3 = id2.split(" ");
+		return id3.map(i => e.name.toLowerCase().split(" ").includes(i)).filter((e: boolean) => e).length;
+	});
+	return result[result2.indexOf(Math.max(...result2))];
+};
 
 const mapStateToProps = (state: StateProps) => {
 	return {
@@ -93,12 +110,14 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 	useEffect(() => {
 		//const text_data = require("./itineraries/test2.json");
 		//console.log(text_data.filter((e: string) => !e.includes("icebreaker")).map((e: any) => [e, getItiID(e)]).filter((e: any) => !e).length);
-		const ItiID = getItiID(splitted_id_nonum);
-		console.log(ItiID);
+		const cruiseCriticID = getItiID(splitted_id_nonum);
+		const ItiID: number | undefined = cruiseCriticID?.id;
+		const cruiseCriticName: string | undefined = cruiseCriticID?.name?.replace(/\(|\)/g, "").replaceAll(" ", "-").toLowerCase();
 		const url_to_fetch: string[] = [
 			"https://www.cruisemapper.com/ships/"+id, 
 			ItiID ? "https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?shipID="+ItiID : "",
-			"https://www.cruisedeckplans.com/DP/deckplans/"+splitted_id_nonum.split(" ").join("-")
+			"https://www.cruisedeckplans.com/DP/deckplans/"+splitted_id_nonum.split(" ").join("-"),
+			`https://www.cruisecritic.com/photos/ships/${cruiseCriticName}-${ItiID}`
 		];
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();
@@ -117,7 +136,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 		};
 
 		fetchRawData();
-	}, [setShiprawData, id]);
+	}, []);
 
 	return (
 		<div className='w-full py-5 flex pb-0'>
@@ -129,6 +148,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 				case 1: tab = <Specifications id={id}/>; break;
 				case 2: tab = <Itinerariess id={id}/>; break;
 				case 4: tab = <Cabin id={splitted_id_nonum}/>; break;
+				case 6: tab = <Gallery id={id}/>; break;
 				default: tab = <></>;
 				}
 				return tab;

@@ -113,11 +113,10 @@ const Features: React.FC<{ features: CabinsData["features"] }> = ({ features }: 
 		<div className="mt-6 text-lg flex flex-wrap">
 			{features.sort((a,b) => a.length - b.length).map((e, i) => {
 				if (e.split(":")[0].includes("NOTE")) return (
-					<div className="text-lg my-4 bg-blue-100 w-full text-blue-800 rounded-lg flex overflow-hidden">
-						<div className="bg-blue-800 w-2 h-100"></div>
-						<div className="p-6">
+					<div className="rounded-md overflow-hidden my-4 w-full">
+						<div className="p-6 lb bg-blue-100 text-blue-800" style={{ borderLeft: "4.5px solid rgba(0, 85, 185, 1)" }}>
 							<div className="font-bold mb-3 text-xl">NOTE</div>
-							{e.split(":")[1]}
+							{e.split(":")[1].trim().replace(/^(.)/, e => e.toUpperCase())+"."}
 						</div>
 					</div>
 				);

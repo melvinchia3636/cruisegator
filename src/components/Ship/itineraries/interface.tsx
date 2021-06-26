@@ -21,6 +21,6 @@ export interface Itinerary {
 
 export interface CabinProps {
 	id: string;
-	itineraries_data: ItinerariesData[],
+	itineraries_data: ItinerariesData[] | "no data",
 	shipraw_data: Document[]
 }

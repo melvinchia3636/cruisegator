@@ -2,6 +2,34 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import store from "../../../state_manage/store";
 import { setItinerariesData } from "state_manage/actions";
+import { string } from "prop-types";
+
+declare global {
+	interface ArrayConstructor {
+		lastElement(arr: any[]) : any;
+	}
+}
+
+Array.lastElement = (arr: any[]) => {
+	return arr[arr.length-1];
+};
+
+const getItiID = (id: string): number|undefined => {
+	const ids = require("./test.json");
+	const id2 = id.toLowerCase();
+
+	const result = ids.filter((e: {id: string, name: string}) => {
+		const id1 = e.name.toLowerCase();
+		return id2.includes(id1) || id1.includes(id2);
+	});
+	if (result.length <= 1) return result[0]?.id;
+
+	const result2 = result.map((e: any) => {
+		const id3 = id2.split(" ");
+		return id3.map(i => e.name.toLowerCase().split(" ").includes(i)).filter((e: boolean) => e).length;
+	});
+	return result[result2.indexOf(Math.max(...result2))]?.id;
+};
 
 const getData  = (): void => {
 	const { shipraw_data } = store.getState();
@@ -27,8 +55,8 @@ const getData  = (): void => {
 				sailings
 			};
 		});
-		store.dispatch(setItinerariesData(itineraries_data));
+		store.dispatch(setItinerariesData(itineraries_data.length > 0 ? itineraries_data : "no data"));
 	}
 };
 
-export { getData };
+export { getData, getItiID };

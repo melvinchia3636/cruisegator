@@ -15,6 +15,12 @@ import { ShipProps, MapProps, RatingProps, HomeportProps, OverviewData } from ".
 import { StateProps } from "../../../state_manage/interface";
 import { Dispatch } from "redux";
 
+const colorMap = {
+	red: "#EF4444",
+	yellow: "#F59E0B",
+	green: "#10B981"
+};
+
 const mapStateToProps = (state: StateProps) => {
 	return {
 		overview_data: state.overview_data,
@@ -121,7 +127,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data }
 					<div>
 						<div>
 							<h2 className='text-xl flex items-center'><Icon icon={briefcaseLine} style={{fontSize: "24px"}} className='mr-2'/>Cruise line</h2>
-							<h3 className='text-3xl'>{data.company}</h3>
+							<h3 className='text-3xl overflow-ellipsis overflow-hidden max-w-xl !block pr-5'>{data.company}</h3>
 						</div>
 						<Homeport homeports={data.homeports}/>
 					</div>
@@ -135,7 +141,16 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data }
 					<Map position={data.position}/>
 					<div className='ml-10 flex flex-col justify-center w-1/2'>
 						<div className='w-full'>
-							<div className='flex w-full justify-between clc'><h2 className='text-xl flex items-center cl'><Icon icon={locationIcon} style={{fontSize: "24px"}} className='mr-2'/>Current location</h2><p className='float-end flex items-center'><span className={`block rounded-full bd-0 mr-2 stat bg-${data.last_ais_report.status}-500`}></span>{data.last_ais_report.text}</p></div>
+							<div className='flex w-full justify-between clc'>
+								<h2 className='text-xl flex items-center cl'>
+									<Icon icon={locationIcon} style={{fontSize: "24px"}} className='mr-2'/>
+									Current location
+								</h2>
+								<p className='float-end flex items-center'>
+									<span className='block rounded-full bd-0 mr-2 stat' style={{backgroundColor: colorMap[data.last_ais_report.status]}}></span>
+									{data.last_ais_report.text}
+								</p>
+							</div>
 							<div className='flex items-end'>
 								<h3 className='text-3xl m-0 loc'>{data.location} </h3>
 								<h6 className='ml-2 font-poppins'>({data.coordinates})</h6>

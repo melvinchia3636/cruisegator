@@ -14,8 +14,8 @@ const mapStateToProps = (state: StateProps) => {
 
 const ConnectedItinerariess: React.FC<CabinProps> = ({ itineraries_data, shipraw_data }: CabinProps): JSX.Element => {
 
-	if (itineraries_data.length == 0 && shipraw_data[1]) getData();
-	const data = itineraries_data;
+	if (itineraries_data.length == 0 && shipraw_data[1] && shipraw_data[1].querySelector("p")?.textContent !== "none") getData();
+	const data = itineraries_data === "no data" ? [] : itineraries_data;
 	data.forEach(e => [e.state, e.setState] = useState(0));
 
 	return (
@@ -24,7 +24,7 @@ const ConnectedItinerariess: React.FC<CabinProps> = ({ itineraries_data, shipraw
 				<h1 className='uppercase mt-10'>Itineraries</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
-			{itineraries_data.map((e, index) => <div key={e.id} className="w-full bg-white my-4 rounded-lg overflow-hidden" style={{ boxShadow: "0 0 8px rgba(0, 0, 0, 0.3)" }}>
+			{data.map((e, index) => <div key={e.id} className="w-full bg-white my-4 rounded-lg overflow-hidden" style={{ boxShadow: "0 0 8px rgba(0, 0, 0, 0.3)" }}>
 				<div className="border-r-8 border-blue-800">
 					<div className="grid items-center grid-cols-[35%,60%,5%]">
 						<img src={e.departurePort.image} className="object-cover h-56"/>

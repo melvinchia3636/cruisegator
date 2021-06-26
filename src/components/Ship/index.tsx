@@ -21,6 +21,7 @@ import Overview from "./overview";
 import Specifications from "./specifications";
 import Itinerariess from "./itineraries";
 import Cabin from "./cabins";
+import { getItiID } from "./itineraries/scrape";
 
 import { StateProps } from "../../state_manage/interface";
 
@@ -88,12 +89,16 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab }: Si
 const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ...props}: ShipRouteProps): JSX.Element => {
 	const id = props.match.params.id;
 	const splitted_id: string[] = id.split("-");
-	const splitted_id_nonum: string = splitted_id.slice(0, splitted_id.length-1).join(" ").replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()).split(" ").join("-");
+	const splitted_id_nonum: string = splitted_id.slice(0, splitted_id.length-1).join(" ").replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 	useEffect(() => {
+		//const text_data = require("./itineraries/test2.json");
+		//console.log(text_data.filter((e: string) => !e.includes("icebreaker")).map((e: any) => [e, getItiID(e)]).filter((e: any) => !e).length);
+		const ItiID = getItiID(splitted_id_nonum);
+		console.log(ItiID);
 		const url_to_fetch: string[] = [
 			"https://www.cruisemapper.com/ships/"+id, 
-			"https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?cl=32",
-			"https://www.cruisedeckplans.com/DP/deckplans/"+splitted_id_nonum
+			ItiID ? "https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?shipID="+ItiID : "",
+			"https://www.cruisedeckplans.com/DP/deckplans/"+splitted_id_nonum.split(" ").join("-")
 		];
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();

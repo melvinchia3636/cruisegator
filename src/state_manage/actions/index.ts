@@ -32,9 +32,9 @@ export function setSpecificationData(payload: SpecificationData): {
 	return {type: constants.SET_SPECIFICATION_DATA, payload};
 }
 
-export function setItinerariesData(payload: ItinerariesData[]): {
+export function setItinerariesData(payload: ItinerariesData[] | "no data"): {
     type: string;
-    payload: ItinerariesData[];
+    payload: ItinerariesData[] | "no data";
 } {
 	return {type: constants.SET_ITINERARIES_DATA, payload};
 }

@@ -107,17 +107,18 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 	const id = props.match.params.id;
 	const splitted_id: string[] = id.split("-");
 	const splitted_id_nonum: string = splitted_id.slice(0, splitted_id.length-1).join(" ").replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+	const cruiseCriticID = getItiID(splitted_id_nonum);
+	const ItiID: number | undefined = cruiseCriticID?.id;
+	const cruiseCriticName: string | undefined = cruiseCriticID?.name?.replace(/\(|\)/g, "").replaceAll(" ", "-").toLowerCase();
+	const cruiseCriticURI = `${cruiseCriticName}-${ItiID}`;
 	useEffect(() => {
 		//const text_data = require("./itineraries/test2.json");
 		//console.log(text_data.filter((e: string) => !e.includes("icebreaker")).map((e: any) => [e, getItiID(e)]).filter((e: any) => !e).length);
-		const cruiseCriticID = getItiID(splitted_id_nonum);
-		const ItiID: number | undefined = cruiseCriticID?.id;
-		const cruiseCriticName: string | undefined = cruiseCriticID?.name?.replace(/\(|\)/g, "").replaceAll(" ", "-").toLowerCase();
 		const url_to_fetch: string[] = [
 			"https://www.cruisemapper.com/ships/"+id, 
 			ItiID ? "https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?shipID="+ItiID : "",
 			"https://www.cruisedeckplans.com/DP/deckplans/"+splitted_id_nonum.split(" ").join("-"),
-			`https://www.cruisecritic.com/photos/ships/${cruiseCriticName}-${ItiID}`
+			`https://www.cruisecritic.com/photos/ships/${cruiseCriticURI}`
 		];
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();
@@ -148,7 +149,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 				case 1: tab = <Specifications id={id}/>; break;
 				case 2: tab = <Itinerariess id={id}/>; break;
 				case 4: tab = <Cabin id={splitted_id_nonum}/>; break;
-				case 6: tab = <Gallery id={id}/>; break;
+				case 6: tab = <Gallery id={id} ccid={cruiseCriticURI}/>; break;
 				default: tab = <></>;
 				}
 				return tab;

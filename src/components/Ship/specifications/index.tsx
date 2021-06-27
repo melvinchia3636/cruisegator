@@ -26,7 +26,7 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 		let result: JSX.Element = <></>;
 		switch (typeof value) {
 		case "number": result = <span>{value}</span>; break;
-		case "boolean": result = <span className={"border-blue-800 block border-2 rounded-full "+(value ? "bg-blue-800" : "")}></span>;
+		case "boolean": result = <span className={"border-blue-800 !w-[0.83rem] !h-[0.83rem] !block border-2 rounded-full "+(value ? "bg-blue-800" : "")}></span>;
 		}
 		return result;
 	};

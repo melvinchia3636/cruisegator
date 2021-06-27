@@ -1,5 +1,6 @@
 export interface GalleryProps {
 	id: string;
+	ccid: string;
 	shipraw_data: Document[],
 	gallery_data: GalleryData[] | "no data"
 }

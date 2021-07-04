@@ -11,5 +11,6 @@ export interface StateProps {
 	specification_data: SpecificationData,
 	itineraries_data: ItinerariesData[] | "no data",
 	cabins_data: CabinsData[],
-	gallery_data: GalleryData[]
+	gallery_data: GalleryData[],
+	deck_plans_data: any
 }

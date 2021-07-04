@@ -1,16 +1,21 @@
 .ship {
 
-	& > div > div:not(.sidebar) {
-		margin-left: 25%
-	}
-
 	& + footer {
 		margin-left: 25%
 	}
 	
 	& .sidebar {
 		box-shadow: 4px 0 4px -4px rgba(0, 0, 0, 0.3);
-		width: 25%;
+
+		& a:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: -4px;
+			width: 4px;
+			height: 100%;
+			background: white
+		}
 
 		& button {
 

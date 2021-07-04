@@ -17,6 +17,14 @@ html, body {
 	outline: none !important
 }
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 .btn {
 	padding: .6em 2.5em;
 	width: min-content;

@@ -38,7 +38,7 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 	return (
 		<div className='p-20 w-full flex flex-col'>
 			<div className='mb-10'>
-				<h1 className='uppercase mt-10'>Specifications</h1>
+				<h1 className='uppercase'>Specifications</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
 			<div style={{ marginBottom: "6rem" }} className='mt-4'>

@@ -186,7 +186,7 @@ const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, shipraw_data }: C
 	return (
 		<div className='p-20 w-full flex flex-col'>
 			<div className='mb-10'>
-				<h1 className='uppercase mt-10'>Staterooms and Suites</h1>
+				<h1 className='uppercase'>Staterooms and Suites</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
 			{data ? data.map((e, i) => <CabinCard e={e} i={i} key={i}/>) : ""}

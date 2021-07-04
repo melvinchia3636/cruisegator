@@ -6,8 +6,9 @@ import { changeTab, setShiprawData } from  "../../state_manage/actions";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import axios, { AxiosResponse } from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
+import { ChevronRight } from "react-feather";
 import appsList20Regular from "@iconify-icons/fluent/apps-list-20-regular";
 import settings28Regular from "@iconify-icons/fluent/settings-28-regular";
 import conferenceRoom28Regular from "@iconify-icons/fluent/conference-room-28-regular";
@@ -22,6 +23,7 @@ import Specifications from "./specifications";
 import Itinerariess from "./itineraries";
 import Cabin from "./cabins";
 import Gallery from "./gallery";
+import DeckPlans from "./deckplans";
 
 import { StateProps } from "../../state_manage/interface";
 
@@ -30,7 +32,9 @@ interface SidebarProps {
 	changeTab: (newtab: number) => {
 		type: string;
 		payload: number;
-	}
+	},
+	isToggleOn: any,
+	setToggleOn: any
 }
 
 interface ShipRouteProps extends RouteComponentProps<{id: string}> {
@@ -78,7 +82,7 @@ const MainMapDispatchToProps = (dispatch: Dispatch) => {
 	};
 };
 
-const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab }: SidebarProps ): JSX.Element => {
+const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab, isToggleOn, setToggleOn }: SidebarProps ): JSX.Element => {
 
 	const options: [IconifyIcon, string, boolean?][] = [
 		[appsList20Regular, "overview"],
@@ -89,21 +93,40 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab }: Si
 		[commentMultiple20Regular, "reviews"],
 		[imageMultiple20Regular, "gallery"]
 	];
+
+	useEffect(() => {
+		window.onresize = () => {
+			if (window.innerWidth >= 1280) {
+				setToggleOn(true);
+				return;
+			}
+			setToggleOn(false);
+		};
+	}, []);
+
 	options[active_tab].push(true);
 	
 	return (
-		<div className='flex flex-col justify-end text-xl sidebar h-screen fixed pb-32'>
-			{options.map(
-				([icon, text, is_active], index) => 
-					<button key={text} className={"transition-all duration-300 relative uppercase bg-white border-0 pl-20 flex items-center text-lg font-medium py-6 "+(is_active ? "active": "")} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || "0"));}}>
-						<Icon icon={icon} width="28" className='mr-3'/>
-						{text}
-					</button>)}
+		<div className={`flex flex-col justify-center text-xl ${isToggleOn ? "w-[350px] xl:w-1/4" : "!w-0"} transition-all duration-500 bg-white z-[10] xl:w-1/4 sidebar h-full fixed`}>
+			<a className="absolute cursor-pointer xl:hidden bg-white top-50 right-0 transform -translate-y-1/2 translate-x-full py-6 rounded-r-md" style={{boxShadow: "0 0 4px rgba(0, 0, 0, 0.3), -6px 0 4px #FFFFFF"}} onClick={() => setToggleOn(!isToggleOn)}>
+				<ChevronRight />
+			</a>
+			<div className="overflow-hidden">
+				{options.map(
+					([icon, text, is_active], index) => 
+						<button key={text} className={"w-full transition-all duration-300 relative uppercase bg-white border-0 pl-20 flex items-center text-lg font-medium py-6 whitespace-nowrap "+(is_active ? "active": "")} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || "0"));}}>
+							<Icon icon={icon} width="28" className='mr-3 min-w-[28px]'/>
+							{text}
+						</button>
+				)}
+			</div>
 		</div>
 	);
 };
 
 const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ...props}: ShipRouteProps): JSX.Element => {
+	const [isToggleOn, setToggleOn] = useState(true);
+	
 	const id = props.match.params.id;
 	const splitted_id: string[] = id.split("-");
 	const splitted_id_nonum: string = splitted_id.slice(0, splitted_id.length-1).join(" ").replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
@@ -118,7 +141,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 			"https://www.cruisemapper.com/ships/"+id, 
 			ItiID ? "https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?shipID="+ItiID : "",
 			"https://www.cruisedeckplans.com/DP/deckplans/"+splitted_id_nonum.split(" ").join("-"),
-			`https://www.cruisecritic.com/photos/ships/${cruiseCriticURI}`
+			`https://www.cruisecritic.com/photos/ships/${cruiseCriticURI}`,
 		];
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();
@@ -140,20 +163,23 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 	}, []);
 
 	return (
-		<div className='w-full py-5 flex pb-0'>
-			<Sidebar active_tab={active_tab}/>
-			{(()=>{
-				let tab: JSX.Element;
-				switch (active_tab) {
-				case 0: tab = <Overview/>; break;
-				case 1: tab = <Specifications id={id}/>; break;
-				case 2: tab = <Itinerariess id={id}/>; break;
-				case 4: tab = <Cabin id={splitted_id_nonum}/>; break;
-				case 6: tab = <Gallery id={id} ccid={cruiseCriticURI}/>; break;
-				default: tab = <></>;
-				}
-				return tab;
-			})()}
+		<div className='w-full py-16 flex pb-0'>
+			<Sidebar active_tab={active_tab} isToggleOn={isToggleOn} setToggleOn={setToggleOn}/>
+			<div className={"w-full min-h-screen transition-all duration-500 overflow-hidden "+(isToggleOn ? "xl:ml-[25%]" : "ml-0")}>
+				{(()=>{
+					let tab: JSX.Element;
+					switch (active_tab) {
+					case 0: tab = <Overview/>; break;
+					case 1: tab = <Specifications id={id}/>; break;
+					case 2: tab = <Itinerariess id={id}/>; break;
+					case 3: tab = <DeckPlans id={splitted_id_nonum}/>; break;
+					case 4: tab = <Cabin id={splitted_id_nonum}/>; break;
+					case 6: tab = <Gallery id={id} ccid={cruiseCriticURI}/>; break;
+					default: tab = <></>;
+					}
+					return tab;
+				})()}
+			</div>
 		</div>
 	);
 };

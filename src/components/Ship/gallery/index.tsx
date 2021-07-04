@@ -59,7 +59,7 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, shipraw_data, 
 	return (
 		<div className='p-20 w-full flex flex-col'>
 			<div className='mb-10'>
-				<h1 className='uppercase mt-10'>Photos & Images</h1>
+				<h1 className='uppercase'>Photos & Images</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
 			<div>
@@ -110,6 +110,8 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, shipraw_data, 
 										id="panorama"
 										className="!w-[75vw] !h-[75vh]"
 										autoLoad={true}
+										type="cubemap"
+										cubeMap={imageURL[currentImageIndex].url}
 									/>; 
 									ReactPannellum.addScene("Scene"+image.id, {
 										type: "cubemap",
@@ -126,6 +128,11 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, shipraw_data, 
 					<p className="text-white mt-4">{currentImageIndex+1} - {imageURL.length}</p>
 				</>: ""}
 			</div> : ""}
+			<ReactPannellum
+				id="panorama"
+				className="hidden"
+				autoLoad={true}
+			/>
 		</div>
 	);
 };

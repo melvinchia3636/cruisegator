@@ -53,3 +53,10 @@ export function setGalleryData(payload: GalleryData[] | "no data"): {
 } {
 	return {type: constants.SET_GALLERY_DATA, payload};
 }
+
+export function setDeckPlansData(payload: any): {
+    type: string;
+    payload: any
+} {
+	return {type: constants.SET_DECK_PLANS_DATA, payload};
+}

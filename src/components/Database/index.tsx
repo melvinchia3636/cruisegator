@@ -69,20 +69,20 @@ export default function Database(): JSX.Element {
 	}, [page_num]);
 
 	return (
-		<div className='w-full p-20'>
+		<div className='w-full py-16 px-4 sm:px-16'>
 			<div className='w-full flex items-center justify-center flex-col mt-16'>
-				<h1 className='fw-normal text-center text-nowrap text-5xl font-poppins'>Cruiseship Database</h1>
-				<div className='w-20 h-1 mt-6 bg-blue-800'></div>
-				<div className='w-1/2 flex rounded-full items-center px-3 my-10' style={{boxShadow: "0 0 2px rgba(0, 0, 0, 0.7)"}}>
+				<h1 className='fw-normal text-center text-3xl sm:text-5xl font-poppins'>Cruiseship Database</h1>
+				<div className='w-20 h-1 mt-3 sm:mt-6 bg-blue-800'></div>
+				<div className='w-full sm:w-1/2 flex rounded-full items-center px-3 my-10' style={{boxShadow: "0 0 2px rgba(0, 0, 0, 0.7)"}}>
 					<Icon icon={baselineSearch} width="24" color="#808080"/>
 					<input type='text' placeholder='Search for cruiseships in database' className='w-full p-2 border-0 rounded-full'></input>
 				</div>
 			</div>
-			<div className='w-full grid grid-cols-2 mt-5 position-relative gap-8'>
+			<div className='w-full grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(550px,1fr))] mt-5 position-relative gap-8 auto-rows-fr'>
 				{loaded ? (data.length > 1 ? data.map(e =>
-					<div className='w-full overflow-hidden grid rounded-xl shadow-md' style={{gridTemplateColumns: "40% 60%"}} key={e.name}>
+					<div className='w-full overflow-hidden grid rounded-xl shadow-md grid-rows-[200px,auto] sm:grid-cols-[40%,60%]' key={e.name}>
 						<a href={"/ship/"+e.link}><img src={e.image || ""} className='w-full object-cover h-full' alt={e.name || ""}/></a>
-						<div className='flex flex-col mx-6 justify-center py-3'>
+						<div className='flex flex-col mx-6 justify-center py-6 sm:py-3'>
 							<div className='w-full flex justify-between align-center'>
 								<a href={"/ship/"+e.link} className='text-decoration-none'><h3 className='text-blue-800 font-medium font-poppins mb-0 text-2xl'>{e.name}</h3></a>
 							</div>

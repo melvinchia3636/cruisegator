@@ -47,17 +47,17 @@ const CabinCategories: React.FC<{ categories: CabinsData["categories"] }> = ({ c
 };
 
 const CabinImages: React.FC<{ image: CabinsData["image"] }> = ({ image }: { image: CabinsData["image"]}) => {
-	return <div className="pl-20">
+	return <div className="md:pl-20 flex flex-col sm:flex-row md:flex-col items-center justify-center mt-6 md:mt-0">
 		{image.map(e => 
 			<LazyLoad 
 				debounce={10}
 				placeholder={<img src="https://via.placeholder.com/169x128/FFFFFF/666666?text=%20"/>}
-				style={{width: "169px"}}
+				style={{width: "100%"}}
 				key={e}
 			>
-				<img src={e} className="w-full py-2"/>
+				<img src={e} className="w-full p-2"/>
 			</LazyLoad>)}
-		<img src="https://via.placeholder.com/169x128" key="placeholder" className="py-2"/>
+		<img src="https://via.placeholder.com/500x300" key="placeholder" className="p-2"/>
 	</div>;
 };
 
@@ -79,8 +79,8 @@ const OtherData: React.FC<{ others: CabinsData["others"] }> = ({ others }: { oth
 		content = content.replace(/^:/, "");
 		let result: JSX.Element;
 		switch (type) {
-		case "B": result = <p className="text-gray-800 text-lg font-medium my-4">{content}</p>; break;
-		case "I": result = <p className="text-gray-800 text-lg font-medium my-4 italic">{content}</p>; break;
+		case "B": result = <p className="text-gray-800 text-md md:text-lg font-medium my-4">{content}</p>; break;
+		case "I": result = <p className="text-gray-800 text-md md:text-lg font-medium my-4 italic">{content}</p>; break;
 		case "U": result = <h3 className='uppercase text-xl font-medium mt-4 pl-2'  style={{ borderLeft: "4px solid rgba(0, 85, 185, 1)" }}>{content}</h3>; break;
 		case "NOTE": result = 
 				<div className="rounded-md overflow-hidden my-4">
@@ -89,7 +89,7 @@ const OtherData: React.FC<{ others: CabinsData["others"] }> = ({ others }: { oth
 						{content.slice(5, content.length).replace(/\/$/, "")}
 					</div>
 				</div>; break;
-		default: result = <p className="text-gray-600 text-lg my-4">{content}</p>;
+		default: result = <p className="text-gray-600 text-md md:text-lg my-4">{content}</p>;
 		}
 		return result;
 	})}</>;
@@ -97,11 +97,11 @@ const OtherData: React.FC<{ others: CabinsData["others"] }> = ({ others }: { oth
 
 const Location: React.FC<{ location: CabinsData["location"] }> = ({ location }: { location: CabinsData["location"] }) => {
 	return <>
-		<div className="text-blue-800 flex items-center" style={{ fontSize: "1.8rem" }}><Icon icon={ Location28Regular } className="mr-2" width={32} style={{ stroke: "rgba(0, 85, 185, 1)", strokeWidth: "0.5px" }}/><h3>Stateroom Location</h3></div>
-		<div className="grid gap-y-8 gap-x-16 mt-8" style={{ gridTemplateColumns: "repeat(2, min-content)" }}>
+		<div className="text-blue-800 flex items-center text-[1.5em]"><Icon icon={ Location28Regular } className="mr-2" width={32} style={{ stroke: "rgba(0, 85, 185, 1)", strokeWidth: "0.5px" }}/><h3>Stateroom Location</h3></div>
+		<div className="grid gap-y-8 gap-x-16 mt-8 grid-cols-[repeat(2,auto)]">
 			{location.map(({ deck, categories }) => <>
 				<h4 className="whitespace-nowrap text-lg text-gray-600">{deck}</h4>
-				<div>{categories.map(e => <span key={e.name} style={{background: e.background?.replace("..", "https://www.cruisedeckplans.com/DP") }} className="ctg px-5 mr-2 mb-2 text-white rounded-full whitespace-nowrap py-1 shadow-inner text-sm">{e.name}</span>)}</div>
+				<div className="flex flex-wrap">{categories.map(e => <span key={e.name} style={{background: e.background?.replace("..", "https://www.cruisedeckplans.com/DP") }} className="ctg px-5 mr-1 mb-1 text-white rounded-full whitespace-nowrap py-1 shadow-inner text-sm">{e.name}</span>)}</div>
 			</>)}
 		</div>
 	</>;
@@ -109,8 +109,8 @@ const Location: React.FC<{ location: CabinsData["location"] }> = ({ location }: 
 
 const Features: React.FC<{ features: CabinsData["features"] }> = ({ features }: { features: CabinsData["features"]}) => {
 	return <>
-		<div className="text-blue-800 flex items-center mt-20" style={{ fontSize: "1.8rem" }}><ThumbsUp size={28} className="mr-2"/><h3>Features</h3></div>
-		<div className="mt-6 text-lg flex flex-wrap">
+		<div className="text-blue-800 flex items-center mt-20 text-[1.5em]"><ThumbsUp size={28} className="mr-2"/><h3>Features</h3></div>
+		<div className="mt-6 text-md md:text-lg flex flex-wrap">
 			{features.sort((a,b) => a.length - b.length).map((e, i) => {
 				if (e.split(":")[0].includes("NOTE")) return (
 					<div className="rounded-md overflow-hidden my-4 w-full">
@@ -128,15 +128,15 @@ const Features: React.FC<{ features: CabinsData["features"] }> = ({ features }: 
 
 const SizeInfo: React.FC<{ size_info: CabinsData["important_size_info"] }> = ({ size_info }: { size_info: CabinsData["important_size_info"] }) => {
 	return <>
-		<div className="text-blue-800 flex items-center mt-20" style={{ fontSize: "1.8rem" }}><Icon icon={ Resize20Regular } className="mr-2" width={32} style={{ stroke: "rgba(0, 85, 185, 1)", strokeWidth: "0.5px" }}/><h3>Size Information</h3></div>
+		<div className="text-blue-800 flex items-center mt-20 text-[1.5em]"><Icon icon={ Resize20Regular } className="mr-2" width={32} style={{ stroke: "rgba(0, 85, 185, 1)", strokeWidth: "0.5px" }}/><h3>Size Information</h3></div>
 		<p className="mt-6 text-lg text-gray-600">{size_info || "N/A"}</p>
 	</>;
 };
 
 const Perks: React.FC<{ perks: CabinsData["perks"] }> = ({ perks: perks }: { perks: CabinsData["perks"] }) => {
 	return <>
-		<div className="text-blue-800 flex items-center mt-20" style={{ fontSize: "1.8rem" }}><Icon icon={ BookStar24Regular } className="mr-2" width={32} style={{ stroke: "rgba(0, 85, 185, 1)", strokeWidth: "0.2px" }}/><h3>Perks</h3></div>
-		<div className="mt-6 text-lg flex flex-wrap">
+		<div className="text-blue-800 flex items-center mt-20 text-[1.5em]"><Icon icon={ BookStar24Regular } className="mr-2" width={32} style={{ stroke: "rgba(0, 85, 185, 1)", strokeWidth: "0.2px" }}/><h3>Perks</h3></div>
+		<div className="mt-6 text-md md:text-lg flex flex-wrap">
 			{perks.length > 0 ? perks.sort((a,b) => a.length - b.length).map((e, i) => <ListItem str={e} key={i}/>) : <p>N/A</p>}
 		</div>
 	</>;
@@ -144,7 +144,7 @@ const Perks: React.FC<{ perks: CabinsData["perks"] }> = ({ perks: perks }: { per
 
 const MoreDetails: React.FC<{ e: CabinsData, i: number }> = ({ e, i }: { e: CabinsData, i: number }): JSX.Element => {
 	return <div className={"overflow-hidden transition-all duration-300 mb-10"} style={{height: e.state}}>
-		<div className={"w-100 p-8 pb-4 mt-3 mb-12 flex flex-col justify-center"} id={"c-"+i}>
+		<div className="w-100 p-4 pt-8 md:p-8 mt-3 mb-12 flex flex-col justify-center" id={"c-"+i}>
 			<Location location={e.location}/>
 			<Features features={e.features}/>
 			<SizeInfo size_info={ e.important_size_info }/>
@@ -155,11 +155,11 @@ const MoreDetails: React.FC<{ e: CabinsData, i: number }> = ({ e, i }: { e: Cabi
 };
 
 const CabinCard: React.FC<{e: CabinsData, i: number}> = ({e, i}: {e: CabinsData, i: number}): JSX.Element => {
-	return <div key={i} className="w-100 p-8 pb-4 my-3 flex flex-col justify-center" style={{boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.3)"}}>
-		<div className="flex items-center">
+	return <div key={i} className="w-100 pb-4 my-3 flex flex-col justify-center rounded-xl" style={{boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.3)"}}>
+		<div className="flex flex-col lg:flex-row items-center p-8">
 			<CabinDiagram diagram={e.diagram}/>
-			<div className="flex h-100 ml-12">
-				<div className="flex items-start h-100 flex-col justify-start ml-12 pt-5">
+			<div className="flex flex-col md:flex-row h-100 lg:ml-12 mt-6 lg:mt-0">
+				<div className="flex items-start h-100 flex-col justify-start lg:ml-12 pt-5">
 					<h2 className="font-medium text-3xl text-blue-800">{e.name}</h2>
 					<CabinCategories categories={ e.categories }/> 
 					<MetaTable e={e}/>
@@ -184,9 +184,9 @@ const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, shipraw_data }: C
 	data.forEach(e => [e.state, e.setState] = useState(0));
 
 	return (
-		<div className='p-20 w-full flex flex-col'>
+		<div className='p-10 md:p-20 w-full flex flex-col'>
 			<div className='mb-10'>
-				<h1 className='uppercase'>Staterooms and Suites</h1>
+				<h1 className='uppercase !text-4xl pt-6'>Staterooms and Suites</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
 			{data ? data.map((e, i) => <CabinCard e={e} i={i} key={i}/>) : ""}

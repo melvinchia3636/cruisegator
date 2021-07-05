@@ -54,21 +54,20 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, shipraw_data, 
 	}
 
 	const data = gallery_data === "no data" ? [] : gallery_data;
-	const panorama = useRef();
 
 	return (
-		<div className='p-20 w-full flex flex-col'>
+		<div className='p-10 md:p-20 w-full flex flex-col'>
 			<div className='mb-10'>
-				<h1 className='uppercase'>Photos & Images</h1>
+				<h1 className='uppercase !text-4xl pt-6'>Photos & Images</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
 			<div>
 				{data.map((e: GalleryData) => <div key={e.name} className="mb-24">
 					<div className="flex items-center mb-5">
 						{IconMap[e.name]}
-						<h2 className="text-blue-800 text-[1.8em] font-medium ml-3">{e.name}</h2>
+						<h2 className="text-blue-800 text-[1.8em] font-medium ml-3 leading-tight">{e.name}</h2>
 					</div>
-					<div className="grid grid-cols-3 gap-4">
+					<div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4">
 						{e.list.map(e => 
 							<div key={e?.id} className="rounded-lg overflow-hidden relative" onMouseEnter={e => null} onMouseLeave={() => null}>
 								<LazyLoad 

@@ -133,16 +133,8 @@
 			border-bottom: 2px solid #eeeeee;
 	
 			& > div {
-				&:first-child {
-					color: #555555;
-					font-size: 1.1em;
-					padding-left: 1em;
-				}
-				&:last-child {
-					color: #141414;
-					font-size: 1.1em;
-					padding-right: 1em
-				}
+				color: #555555;
+				font-size: 1.1em;
 			}
 		}
 	}

@@ -22,7 +22,7 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 			([k, v]) => fn(k, v)
 		);
 
-	const getServiceInfoComponent = (value: number | boolean): JSX.Element => {
+	const getInfoComponent = (value: number | boolean): JSX.Element => {
 		let result: JSX.Element = <></>;
 		switch (typeof value) {
 		case "number": result = <span>{value}</span>; break;
@@ -36,7 +36,7 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 	}, [shipraw_data, id]);
 
 	return (
-		<div className='p-20 w-full flex flex-col'>
+		<div className='p-10 md:p-20 w-full flex flex-col'>
 			<div className='mb-10'>
 				<h1 className='uppercase'>Specifications</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
@@ -48,9 +48,9 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 				</div>
 				<div className='st'>
 					{JSON.stringify(specification_data) !== "{}" ? Object.keys(specification_data.specification_data).map((k: string) => 
-						<div className="flex justify-between items-center py-3" key={k}>
-							<div>{k}</div>
-							<div>{k === "Sister-ships" ? specification_data.specification_data[k].split(",").map((v: string) => <div className="text-right" key={k}>{v}</div>) : specification_data.specification_data[k]}</div>
+						<div className="flex justify-between items-center py-3 px-1" key={k}>
+							<div className="mr-6">{k}</div>
+							<div className="text-right">{k === "Sister-ships" ? specification_data.specification_data[k].split(",").map((v: string) => <div key={k}>{v}</div>) : specification_data.specification_data[k]}</div>
 						</div>
 					) : ""}
 				</div>
@@ -62,9 +62,9 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 				</div>
 				<div className='st'>
 					{specification_data.service_info ? objectMap(specification_data.service_info, (k: string, v: boolean | number) => 
-						<div className="flex justify-between items-center py-3">
-							<div>{k}</div>
-							<div>{getServiceInfoComponent(v)}</div>
+						<div className="flex justify-between items-center py-3 px-1">
+							<div className="mr-6">{k}</div>
+							{getInfoComponent(v)}
 						</div>
 					) : ""}
 				</div>
@@ -78,9 +78,9 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 					{specification_data.interesting_fact ? objectMap(specification_data.interesting_fact, (k: string, v: object) => 
 						<><h3 className="text-2xl mb-2 mt-10">{k}</h3>
 							{objectMap(v, (k: string, v: boolean | number) => 
-								<div className="flex justify-between items-center py-3">
-									<div>{k}</div>
-									<div>{getServiceInfoComponent(v)}</div>
+								<div className="flex justify-between items-center py-3 px-1">
+									<div className="mr-6">{k}</div>
+									{getInfoComponent(v)}
 								</div>
 							)}</>
 					) : ""}

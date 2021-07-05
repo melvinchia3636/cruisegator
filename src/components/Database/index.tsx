@@ -88,7 +88,7 @@ export default function Database(): JSX.Element {
 							</div>
 							<p className='st fw-normal mb-0'>{e.lines}</p>
 							<div className='mt-3'>
-								<p className='m-0 mb-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={calendarMonthOutline}/><span className='whitespace-nowrap overflow-hidden overflow-ellipsis w-11/12'>{e.cruise}</span></p>
+								<p className='m-0 mb-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={calendarMonthOutline}/><span className='whitespace-nowrap overflow-hidden overflow-ellipsis w-10/12 sm:w-11/12'>{e.cruise}</span></p>
 								<p className='m-0 my-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={clockTimeEightOutline}/>{e.year}</p>
 								<p className='m-0 my-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={timerSand}/>{e.age}</p>
 								<p className='m-0 mt-2 flex align-center'><Icon width="18" className="mr-4 mt-0.5" color="rgba(0, 85, 185, 1)" icon={accountGroupOutline}/>{e.passenger}</p>

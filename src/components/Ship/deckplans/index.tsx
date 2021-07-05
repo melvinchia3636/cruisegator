@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useState, useRef } from "react";
-import { GalleryData, GalleryProps } from "./interface";
+import React from "react";
 import { StateProps } from "state_manage/interface";
 import { getData } from "./scrape";
 import { connect } from "react-redux";

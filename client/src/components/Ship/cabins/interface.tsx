@@ -1,7 +1,7 @@
 export interface CabinsProps {
 	id: string;
-	shipraw_data: Document[],
-	cabins_data: CabinsData[]
+	cabins_data: CabinsData[],
+	setCabinsData: any
 }
 
 export interface CabinsData extends Metadata {

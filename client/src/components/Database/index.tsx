@@ -30,32 +30,10 @@ export default function Database(): JSX.Element {
 
 	useEffect(() => {
 		async function fetchData() {
-			const result: CruiseShipQuery[][] = [];
-
-			for (let i = page_num*2-1; i <= page_num*2; i++) {
-				const request = await axios.get("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?page="+i).catch(() => null);
-				if (request && request.status === 404) break;
-				const data = await request && request?.data;
-				const dom_parser = new DOMParser();
-				const html = dom_parser.parseFromString(data, "text/html");
-				result.push(Array.from(html.querySelector(".shipList")?.querySelectorAll(".shipListItem") || []).map(data => {
-					const raw = data.querySelectorAll("table td:last-child");
-					const second = Array(2).fill(0).map((_, i) => (raw[i].textContent || "/").split("/").map(e => e.trim())).flat();
-					return {
-						link: (()=>{const a=data.querySelector("a")?.href.split("/") as string[]; return a[a.length-1];})(),
-						image: "https://www.cruisemapper.com/"+data.querySelector("img")?.src.replace(window.origin, ""),
-						name: data.querySelector("a[rel=\"bookmark\"]")?.textContent,
-						lines: data.querySelector(".labelCategory")?.textContent,
-						cruise: data.querySelector(".cruiseTitle")?.textContent,
-						...Object.fromEntries((["year", "age", "passenger"]).map((e, i) => [e, second[i]])) as {
-							year:      string | null | undefined;
-							age:       string | null | undefined;
-							passenger: string | null | undefined;
-						}
-					};
-				}));
-			}
-			await setData(result.flat());
+			const request = await axios.get("http://192.168.1.198:3001/database/list/"+page_num).catch(() => null);
+			const data = await request && request?.data;
+			
+			setData(data);
 			setLoaded(true);
 
 			const local_exist: boolean[] = [];

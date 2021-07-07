@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { GalleryData, GalleryProps } from "./interface";
 import { StateProps } from "state_manage/interface";
-import { getData, fetchImageData } from "./scrape";
 import { connect } from "react-redux";
 import LazyLoad from "react-lazyload";
 import { Icon } from "@iconify/react";
@@ -18,11 +17,19 @@ import outlineAnchor from "@iconify/icons-ic/outline-anchor";
 import { ChevronLeft, ChevronRight } from "react-feather";
 // @ts-ignore
 import ReactPannellum from "react-pannellum";
+import { Dispatch } from "redux";
+import { setGalleryData } from "state_manage/actions";
 
 const mapStateToProps = (state: StateProps) => {
 	return {
 		gallery_data: state.gallery_data,
 		shipraw_data: state.shipraw_data
+	};
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+	return {
+		setGalleryData: (data: GalleryData[]) => dispatch(setGalleryData(data))
 	};
 };
 
@@ -37,20 +44,23 @@ const IconMap: {[key: string]: JSX.Element} = {
 	"Ports": <Icon icon={outlineAnchor} width={30} className="text-blue-800"/>,
 };
 
-const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, shipraw_data, ccid }: GalleryProps): JSX.Element => {
+const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalleryData }: GalleryProps): JSX.Element => {
 
 	const [imageURL, setImageURL] = useState<{ url: string | string[]; id: number; type: any; }[]>([]);
 	const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 	const [showImage, setShowImage] = useState<boolean>(false);
 
 	const fetchAndShowImage = async (name: string, album_id: number, image_id: number): Promise<void> => {
-		const response = await axios(`https://codeblog-corsanywhere.herokuapp.com/https://www.cruisecritic.com/photos/ships/${ccid}/${name}-${album_id}/${name}--v${image_id}`).catch(err => console.log(err));
-		if (response) setImageURL(fetchImageData(response.data));
-		return;
+		const request = await axios.get(`http://192.168.1.198:3001/ship/gallery/image/${ccid}/${name}-${album_id}/${name}--v${image_id}`).catch(() => null);
+		const data = request && request?.data;
+		setImageURL(data || {});
 	};
 
-	if (gallery_data.length === 0 && shipraw_data[3] && shipraw_data[3].querySelector("p")?.textContent !== "none") {
-		getData();
+	if (gallery_data.length === 0) {
+		axios.get("http://192.168.1.198:3001/ship/gallery/index/"+ccid).then(res => {
+			const data = res && res?.data;
+			setGalleryData(data || {});
+		}).catch(() => null);
 	}
 
 	const data = gallery_data === "no data" ? [] : gallery_data;
@@ -69,7 +79,7 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, shipraw_data, 
 					</div>
 					<div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4">
 						{e.list.map(e => 
-							<div key={e?.id} className="rounded-lg overflow-hidden relative" onMouseEnter={e => null} onMouseLeave={() => null}>
+							<div key={e?.id} className="rounded-lg overflow-hidden relative">
 								<LazyLoad 
 									debounce={300}
 									placeholder={<img src="https://via.placeholder.com/1000x800/BBBBBB/666666?text=%20"/>}
@@ -136,6 +146,6 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, shipraw_data, 
 	);
 };
 
-const gallery = connect(mapStateToProps)(ConnectedGallery);
+const gallery = connect(mapStateToProps, mapDispatchToProps)(ConnectedGallery);
 
 export default gallery;

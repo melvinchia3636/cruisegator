@@ -11,9 +11,9 @@ const mapStateToProps = (state: StateProps) => {
 	};
 };
 
-const ConnectedDeckPlans: React.FC<any> = ({ deck_plans_data, shipraw_data, id }: any): JSX.Element => {
+const ConnectedDeckPlans: React.FC<any> = ({ deck_plans_data, id }: any): JSX.Element => {
 	
-	if (JSON.stringify(deck_plans_data) === "{}" && shipraw_data[2] && shipraw_data[2].querySelector("p")?.textContent !== "none") {
+	if (JSON.stringify(deck_plans_data) === "{}") {
 		getData(id.split(" ").join("-"));
 	}
 

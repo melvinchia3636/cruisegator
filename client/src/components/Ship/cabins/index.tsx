@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { CabinsProps, CabinsData } from "./interface";
 import { StateProps } from "state_manage/interface";
-import { getData } from "./scrape";
 import { connect } from "react-redux";
 import { ChevronDown } from "react-feather";
 import LazyLoad from "react-lazyload";
@@ -10,11 +9,20 @@ import Resize20Regular from "@iconify-icons/fluent/resize-20-regular";
 import BookStar24Regular from "@iconify-icons/fluent/book-star-24-regular";
 import Icon from "@iconify/react";
 import { ThumbsUp } from "react-feather";
+import axios from "axios";
+import { Dispatch } from "redux";
+import { setCabinsData } from "state_manage/actions";
 
 const mapStateToProps = (state: StateProps) => {
 	return {
 		cabins_data: state.cabins_data,
 		shipraw_data: state.shipraw_data
+	};
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+	return {
+		setCabinsData: (data: CabinsData[]) => dispatch(setCabinsData(data))
 	};
 };
 
@@ -26,12 +34,11 @@ const ListItem: React.FC<{str: string}> = ({ str }: { str: string }): JSX.Elemen
 
 const CabinDiagram: React.FC<{ diagram: CabinsData["diagram"] }> = ({ diagram }: { diagram: CabinsData["diagram"]}): JSX.Element => {
 	return <LazyLoad 
-		height={100}
 		debounce={10}
 		placeholder={<img src="https://via.placeholder.com/250x150/FFFFFF/666666?text=%20"/>}
-		style={{width: "250px"}}
+		style={{ width: "50%" }}
 	>
-		<img src={diagram.thumb} onError={(e)=>{
+		<img src={diagram.thumb} className="w-full" onError={(e)=>{
 			(e.target as HTMLImageElement).onerror = null; 
 			(e.target as HTMLImageElement).src="https://via.placeholder.com/250x150/FFFFFF/666666?text=N/A";
 		}}/>
@@ -143,7 +150,7 @@ const Perks: React.FC<{ perks: CabinsData["perks"] }> = ({ perks: perks }: { per
 };
 
 const MoreDetails: React.FC<{ e: CabinsData, i: number }> = ({ e, i }: { e: CabinsData, i: number }): JSX.Element => {
-	return <div className={"overflow-hidden transition-all duration-300 mb-10"} style={{height: e.state}}>
+	return <div className="overflow-hidden transition-all duration-300 mb-10 md:mb-0" style={{height: e.state}}>
 		<div className="w-100 p-4 pt-8 md:p-8 mt-3 mb-12 flex flex-col justify-center" id={"c-"+i}>
 			<Location location={e.location}/>
 			<Features features={e.features}/>
@@ -158,7 +165,7 @@ const CabinCard: React.FC<{e: CabinsData, i: number}> = ({e, i}: {e: CabinsData,
 	return <div key={i} className="w-100 pb-4 my-3 flex flex-col justify-center rounded-xl" style={{boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.3)"}}>
 		<div className="flex flex-col lg:flex-row items-center p-8">
 			<CabinDiagram diagram={e.diagram}/>
-			<div className="flex flex-col md:flex-row h-100 lg:ml-12 mt-6 lg:mt-0">
+			<div className="flex flex-col md:flex-row h-100 mt-6 lg:mt-0">
 				<div className="flex items-start h-100 flex-col justify-start lg:ml-12 pt-5">
 					<h2 className="font-medium text-3xl text-blue-800">{e.name}</h2>
 					<CabinCategories categories={ e.categories }/> 
@@ -175,10 +182,13 @@ const CabinCard: React.FC<{e: CabinsData, i: number}> = ({e, i}: {e: CabinsData,
 	</div>;
 };
 
-const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, shipraw_data }: CabinsProps): JSX.Element => {
+const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, id, setCabinsData }: CabinsProps): JSX.Element => {
 
-	if (cabins_data.length === 0 && shipraw_data[2] && shipraw_data[2].querySelector("p")?.textContent !== "none") {
-		getData();
+	if (cabins_data.length === 0) {
+		axios.get("http://192.168.1.198:3001/ship/cabins/"+id).catch(() => null).then(res => {
+			const data = res && res?.data;
+			setCabinsData(data);
+		}).catch(() => null);
 	}
 	const data = cabins_data;
 	data.forEach(e => [e.state, e.setState] = useState(0));
@@ -194,6 +204,6 @@ const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, shipraw_data }: C
 	);
 };
 
-const Cabins = connect(mapStateToProps)(ConnectedCabins);
+const Cabins = connect(mapStateToProps, mapDispatchToProps)(ConnectedCabins);
 
 export default Cabins;

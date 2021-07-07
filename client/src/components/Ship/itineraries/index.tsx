@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { getData } from "./scrape";
-import { CabinProps } from "./interface";
+import { ItinerariesProps } from "./interface";
 import { StateProps } from "../../../state_manage/interface";
 import React, { useState } from "react";
 import { ChevronDown } from "react-feather";
@@ -12,11 +12,12 @@ const mapStateToProps = (state: StateProps) => {
 	};
 };
 
-const ConnectedItinerariess: React.FC<CabinProps> = ({ itineraries_data, shipraw_data }: CabinProps): JSX.Element => {
+const ConnectedItinerariess: React.FC<ItinerariesProps> = ({ itineraries_data, id }: ItinerariesProps): JSX.Element => {
 
-	if (itineraries_data.length == 0 && shipraw_data[1] && shipraw_data[1].querySelector("p")?.textContent !== "none") getData();
+	if (itineraries_data.length == 0) getData(id);
 	const data = itineraries_data === "no data" ? [] : itineraries_data;
 	data.forEach(e => [e.state, e.setState] = useState(0));
+	console.log(data);
 
 	return (
 		<div className='p-10 sm:p-20 overflow-hidden flex flex-col'>

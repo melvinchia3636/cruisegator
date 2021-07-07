@@ -19,8 +19,7 @@ export interface Itinerary {
 	port: string;
 }
 
-export interface CabinProps {
-	id: string;
-	itineraries_data: ItinerariesData[] | "no data",
-	shipraw_data: Document[]
+export interface ItinerariesProps {
+	id: number | undefined;
+	itineraries_data: ItinerariesData[] | "no data"
 }

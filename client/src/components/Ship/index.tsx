@@ -138,10 +138,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 		//const text_data = require("./itineraries/test2.json");
 		//console.log(text_data.filter((e: string) => !e.includes("icebreaker")).map((e: any) => [e, getItiID(e)]).filter((e: any) => !e).length);
 		const url_to_fetch: string[] = [
-			"https://www.cruisemapper.com/ships/"+id, 
-			ItiID ? "https://www.cruisecritic.com/cruiseto/cruiseitineraries.cfm?shipID="+ItiID : "",
-			"https://www.cruisedeckplans.com/DP/deckplans/"+splitted_id_nonum.split(" ").join("-"),
-			`https://www.cruisecritic.com/photos/ships/${cruiseCriticURI}`,
+			"https://www.cruisemapper.com/ships/"+id
 		];
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();
@@ -171,7 +168,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 					switch (active_tab) {
 					case 0: tab = <Overview/>; break;
 					case 1: tab = <Specifications id={id}/>; break;
-					case 2: tab = <Itinerariess id={id}/>; break;
+					case 2: tab = <Itinerariess id={ItiID}/>; break;
 					case 3: tab = <DeckPlans id={splitted_id_nonum}/>; break;
 					case 4: tab = <Cabin id={splitted_id_nonum}/>; break;
 					case 6: tab = <Gallery id={id} ccid={cruiseCriticURI}/>; break;

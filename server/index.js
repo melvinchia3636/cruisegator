@@ -1,0 +1,25 @@
+const express = require('express');
+const cors = require('cors');
+
+const CabinsData = require('./api/cabins');
+const DatabaseList = require('./api/database');
+const GalleryData = require('./api/gallery');
+const ItinerariesData = require('./api/itineraries');
+const SpecificationsData = require('./api/spec');
+
+const app = express()
+app.use(cors({
+  origin: '*'
+}));
+const port = 3001;
+
+app.get('/database/list/:page', DatabaseList);
+app.get('/ship/cabins/:id', CabinsData);
+app.get('/ship/gallery/index/:id', GalleryData.getIndexData);
+app.get('/ship/gallery/image/:id/:album_id/:image_id', GalleryData.getImageData);
+app.get('/ship/itineraries/:id', ItinerariesData);
+app.get('/ship/specifications/:id', SpecificationsData);
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});

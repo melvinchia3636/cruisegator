@@ -11,7 +11,6 @@ const app = express()
 app.use(cors({
   origin: '*'
 }));
-const port = 3001;
 
 app.get('/database/list/:page', DatabaseList);
 app.get('/ship/cabins/:id', CabinsData);
@@ -20,6 +19,4 @@ app.get('/ship/gallery/image/:id/:album_id/:image_id', GalleryData.getImageData)
 app.get('/ship/itineraries/:id', ItinerariesData);
 app.get('/ship/specifications/:id', SpecificationsData);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+app.listen(3001, () => console.log('Hell yeah'));

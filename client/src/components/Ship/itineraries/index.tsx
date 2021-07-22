@@ -17,10 +17,9 @@ const ConnectedItinerariess: React.FC<ItinerariesProps> = ({ itineraries_data, i
 	if (itineraries_data.length == 0) getData(id);
 	const data = itineraries_data === "no data" ? [] : itineraries_data;
 	data.forEach(e => [e.state, e.setState] = useState(0));
-	console.log(data);
 
 	return (
-		<div className='p-10 sm:p-20 overflow-hidden flex flex-col'>
+		<div className='p-10 sm:p-20 !pt-32 overflow-hidden flex flex-col'>
 			<div className='mb-10'>
 				<h1 className='uppercase'>Itineraries</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>

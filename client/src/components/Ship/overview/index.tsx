@@ -114,11 +114,11 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data }
 	if (shipraw_data[0].querySelector("body")) getData();
 	
 	return (
-		<div className='px-20 py-10 w-full h-screen overflow-hidden flex flex-col overview ml-1/4'>
+		<div className='p-20 w-full h-screen overflow-hidden flex flex-col overview ml-1/4'>
 			{data.name ? <>
-				<div className='flex justify-between items-center'>
+				<div className='flex justify-between items-center mt-10'>
 					<div>
-						<h1 className='uppercase mt-10 whitespace-nowrap'>{data.name}</h1>
+						<h1 className='uppercase whitespace-nowrap'>{data.name}</h1>
 						<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 					</div>
 					<Rating rating={data.rating}/>
@@ -137,7 +137,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data }
 						<div className='bd bg-blue-800 relative'></div>
 					</div>
 				</div>
-				<div className='flex h-[30%] w-full mt-10'>
+				<div className='flex h-[40%] w-full mt-10'>
 					<Map position={data.position}/>
 					<div className='ml-10 flex flex-col justify-center w-1/2'>
 						<div className='w-full'>

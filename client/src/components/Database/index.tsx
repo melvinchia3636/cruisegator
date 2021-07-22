@@ -30,7 +30,7 @@ export default function Database(): JSX.Element {
 
 	useEffect(() => {
 		async function fetchData() {
-			const request = await axios.get("http://192.168.1.198:3001/database/list/"+page_num).catch(() => null);
+			const request = await axios.get("https://api.cruisegator.thecodeblog.net/database/list/"+page_num).catch(() => null);
 			const data = await request && request?.data;
 			
 			setData(data);
@@ -57,12 +57,12 @@ export default function Database(): JSX.Element {
 				</div>
 			</div>
 			<div className='w-full grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(550px,1fr))] mt-5 position-relative gap-8 auto-rows-fr'>
-				{loaded ? (data.length > 1 ? data.map(e =>
+				{loaded ? (data && data.length > 1 ? data.map(e =>
 					<div className='w-full overflow-hidden grid rounded-xl shadow-md grid-rows-[200px,auto] sm:grid-cols-[40%,60%]' key={e.name}>
 						<a href={"/ship/"+e.link}><img src={e.image || ""} className='w-full object-cover h-full' alt={e.name || ""}/></a>
 						<div className='flex flex-col mx-6 justify-center py-6 sm:py-3'>
 							<div className='w-full flex justify-between align-center'>
-								<a href={"/ship/"+e.link} className='text-decoration-none'><h3 className='text-blue-800 font-medium font-poppins mb-0 text-2xl'>{e.name}</h3></a>
+								<a href={"/ship/"+e.link} className='text-decoration-none'><h3 className='text-blue-800 font-medium font-poppins mb-0 text-2xl whitespace-nowrap'>{e.name}</h3></a>
 							</div>
 							<p className='st fw-normal mb-0'>{e.lines}</p>
 							<div className='mt-3'>
@@ -76,7 +76,7 @@ export default function Database(): JSX.Element {
 					<h5 className='text-center absolute left-1/2 transform -translate-x-1/2 font-poppins text-xl'>No data to be shown</h5> : "")) : ""
 				}
 			</div>
-			{data.length > 1 ? <div className='w-full flex justify-center mt-12 pg'>
+			{data && data.length > 1 ? <div className='w-full flex justify-center mt-12 pg'>
 				<div className='flex font-bold items-center text-gray-500 font-poppins'>
 					{Array(2).fill(0).map((_, i) => i).reverse().map(i => {
 						if (page_num-i-1 > 0) return <a className='mx-2 flex items-center justify-center w-10 h-10' href={`/database?page=${page_num-i-1}`} key={page_num-i-1}>{page_num-i-1}</a>;

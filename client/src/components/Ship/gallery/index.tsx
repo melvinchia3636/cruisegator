@@ -51,13 +51,13 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalle
 	const [showImage, setShowImage] = useState<boolean>(false);
 
 	const fetchAndShowImage = async (name: string, album_id: number, image_id: number): Promise<void> => {
-		const request = await axios.get(`http://192.168.1.198:3001/ship/gallery/image/${ccid}/${name}-${album_id}/${name}--v${image_id}`).catch(() => null);
+		const request = await axios.get(`https://api.cruisegator.thecodeblog.net/ship/gallery/image/${ccid}/${name}-${album_id}/${name}--v${image_id}`).catch(() => null);
 		const data = request && request?.data;
 		setImageURL(data || {});
 	};
 
 	if (gallery_data.length === 0) {
-		axios.get("http://192.168.1.198:3001/ship/gallery/index/"+ccid).then(res => {
+		axios.get("https://api.cruisegator.thecodeblog.net/ship/gallery/index/"+ccid).then(res => {
 			const data = res && res?.data;
 			setGalleryData(data || {});
 		}).catch(() => null);
@@ -66,9 +66,9 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalle
 	const data = gallery_data === "no data" ? [] : gallery_data;
 
 	return (
-		<div className='p-10 md:p-20 w-full flex flex-col'>
+		<div className='p-10 md:p-20 !pt-32 w-full flex flex-col'>
 			<div className='mb-10'>
-				<h1 className='uppercase !text-4xl pt-6'>Photos & Images</h1>
+				<h1 className='uppercase !text-[2.4em]'>Photos & Images</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
 			<div>

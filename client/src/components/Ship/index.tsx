@@ -160,9 +160,9 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ..
 	}, []);
 
 	return (
-		<div className='w-full py-16 flex pb-0'>
+		<div className='w-full flex pb-0'>
 			<Sidebar active_tab={active_tab} isToggleOn={isToggleOn} setToggleOn={setToggleOn}/>
-			<div className={"w-full min-h-screen transition-all duration-500 overflow-hidden "+(isToggleOn ? "xl:ml-[25%]" : "ml-0")}>
+			<div className={"w-full min-h-[90%] transition-all duration-500 overflow-hidden "+(isToggleOn ? "xl:ml-[25%]" : "ml-0")}>
 				{(()=>{
 					let tab: JSX.Element;
 					switch (active_tab) {

@@ -68,7 +68,7 @@ module.exports = {
 	},
 	getImageData: async (req, res) => {
 		const { id, album_id, image_id } = req.params;
-		const response = await axios(`https://codeblog-corsanywhere.herokuapp.com/https://www.cruisecritic.com/photos/ships/${id}/${album_id}/--v${image_id}`).catch(err => console.log(err));
+		const response = await axios(`https://codeblog-corsanywhere.herokuapp.com/https://www.cruisecritic.com/photos/ships/${id}/${album_id}/${image_id}`).catch(err => console.log(err));
 		if (response) {
 			res.send(fetchImageData(response.data));
 			return;

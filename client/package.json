@@ -1,5 +1,6 @@
 {
   "name": "cruisegator",
+  "homepage": "http://cruisegator.thecodeblog.net",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

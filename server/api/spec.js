@@ -44,5 +44,5 @@ module.exports = async (req, res) => {
 		specification_data: specification_data_current,
 		...more_info
 	};
-	store.dispatch(setSpecificationData(result));
+	res.send(result);
 }

@@ -4,10 +4,12 @@ import Icon from "@iconify/react";
 import settings28Regular from "@iconify-icons/fluent/settings-28-regular";
 import searchVisual24Regular from "@iconify-icons/fluent/search-visual-24-regular";
 import info24Regular from "@iconify-icons/fluent/info-24-regular";
-import { getData } from "./scrape";
-import { SpecificationsProps } from "./interface";
+import { SpecificationsProps, SpecificationData } from "./interface";
 import { StateProps } from "../../../state_manage/interface";
 import React, { useEffect } from "react";
+import axios from "axios";
+import { Dispatch } from "redux";
+import { setSpecificationData } from "state_manage/actions";
 
 const mapStateToProps = (state: StateProps) => {
 	return {
@@ -16,7 +18,13 @@ const mapStateToProps = (state: StateProps) => {
 	};
 };
 
-const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specification_data, shipraw_data }: SpecificationsProps): JSX.Element => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
+	return {
+		setSpecificationData: (data: SpecificationData) => dispatch(setSpecificationData(data))
+	};
+};
+
+const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specification_data, setSpecificationData }: SpecificationsProps): JSX.Element => {
 	const objectMap = (obj: Object, fn: Function) =>
 		Object.entries(obj).map(
 			([k, v]) => fn(k, v)
@@ -32,11 +40,14 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 	};
 
 	useEffect(() => {
-		getData(id);
-	}, [shipraw_data, id]);
+		axios.get("https://api.cruisegator.thecodeblog.net/ship/specifications/"+id).then(res => {
+			const data = res && res?.data;
+			setSpecificationData(data || {});
+		}).catch(() => null);
+	}, []);
 
 	return (
-		<div className='p-10 md:p-20 w-full flex flex-col'>
+		<div className='p-10 md:p-20 !pt-32 w-full flex flex-col'>
 			<div className='mb-10'>
 				<h1 className='uppercase'>Specifications</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
@@ -90,6 +101,6 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 	);
 };
 
-const Specifications = connect(mapStateToProps)(ConnectedSpecifications);
+const Specifications = connect(mapStateToProps, mapDispatchToProps)(ConnectedSpecifications);
 
 export default Specifications;

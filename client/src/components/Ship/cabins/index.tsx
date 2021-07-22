@@ -185,7 +185,7 @@ const CabinCard: React.FC<{e: CabinsData, i: number}> = ({e, i}: {e: CabinsData,
 const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, id, setCabinsData }: CabinsProps): JSX.Element => {
 
 	if (cabins_data.length === 0) {
-		axios.get("http://192.168.1.198:3001/ship/cabins/"+id).catch(() => null).then(res => {
+		axios.get("https://api.cruisegator.thecodeblog.net/ship/cabins/"+id).catch(() => null).then(res => {
 			const data = res && res?.data;
 			setCabinsData(data);
 		}).catch(() => null);
@@ -194,9 +194,9 @@ const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, id, setCabinsData
 	data.forEach(e => [e.state, e.setState] = useState(0));
 
 	return (
-		<div className='p-10 md:p-20 w-full flex flex-col'>
+		<div className='p-10 md:p-20 !pt-32 w-full flex flex-col'>
 			<div className='mb-10'>
-				<h1 className='uppercase !text-4xl pt-6'>Staterooms and Suites</h1>
+				<h1 className='uppercase !text-[2.4em]'>Staterooms and Suites</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
 			</div>
 			{data ? data.map((e, i) => <CabinCard e={e} i={i} key={i}/>) : ""}

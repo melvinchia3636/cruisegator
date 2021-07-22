@@ -12,5 +12,5 @@ export interface SpecificationData extends MoreInfoData {
 export interface SpecificationsProps {
 	id: string;
 	specification_data: SpecificationData;
-	shipraw_data: any
+	setSpecificationData: any
 }

@@ -16,7 +16,7 @@ Array.lastElement = (arr: any[]) => {
 };
 
 const getData  = (itiID: number | undefined): void => {
-	axios.get("http://192.168.1.198:3001/ship/itineraries/"+itiID).then(res => {
+	axios.get("https://api.cruisegator.thecodeblog.net/ship/itineraries/"+itiID).then(res => {
 		const data = res && res?.data;
 		store.dispatch(setItinerariesData(data.length > 0 ? data : "no data"));
 	}).catch(() => null);

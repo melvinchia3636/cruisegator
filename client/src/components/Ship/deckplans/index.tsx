@@ -18,7 +18,7 @@ const ConnectedDeckPlans: React.FC<any> = ({ deck_plans_data, id }: any): JSX.El
 	}
 
 	return (
-		<div className='p-20 w-full flex flex-col'>
+		<div className='p-20 !pt-32 w-full flex flex-col'>
 			<div className='mb-10'>
 				<h1 className='uppercase'>Deck Plans</h1>
 				<div className='w-20 h-1 mt-1 bg-blue-800'></div>

@@ -1,59 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@200;300;400;500&family=Poppins:wght@300;400;500;600&display=swap');
-
-$primary: rgba(0, 85, 185, 1);
-$success: rgb(0, 192, 0);
-
-html, body {
-	width: 100%;
-	min-height: -webkit-fill-available;
-	margin: 0;
-	padding: 0;
-	background: white;
-	position: relative;
-	font-family: Public Sans !important;
-}
-
-:is(button, input):is(:focus, :active) {
-	outline: none !important
-}
-
-input,
-textarea,
-button,
-select,
-a {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
-.btn {
-	padding: .6em 2.5em;
-	width: min-content;
-}
-
-@mixin ellipsisText($max_lines) {
-	text-overflow: ellipsis;
-	overflow: hidden;
-	display: -webkit-box !important;
-	-webkit-line-clamp: $max_lines;
-	-webkit-box-orient: vertical;
-}
-
-h3 {
-	@include ellipsisText(2)
-}
-
-p {
-	color: #808080;
-
-	.news & {
-		@include ellipsisText(4)
-	}
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 * {
-	font-family: Poppins !important;
+	color: #2A3036;
+	font-family: Poppins;
 }
 
-code {
-	font-family: Hermit !important;
+nav .active {
+	position: relative;
+
+	&:after {
+		content: "";
+		background: #4189DD;
+		width: 100%;
+		height: 3px;
+		bottom: -2.3rem;
+		left: 0;
+		position: absolute
+	}
 }

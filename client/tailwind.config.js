@@ -6,12 +6,19 @@ module.exports = {
 		extend: {
 			colors: {
 				blue: {
-					800: "#0055B9"
+					700: "#E3EAF2",
+					800: "#4189DD"
 				},
+				gray: {
+					500: "#8E959E"
+				}
 			}
 		},
 		fontFamily: {
 			"poppins": ["Poppins"]
+		},
+		boxShadow: {
+			"default": "0px 4px 4px rgba(0, 0, 0, 0.25)"
 		}
 	},
 	variants: {

@@ -1,111 +1,75 @@
 import React from "react";
-import { Compass, Database, Airplay } from "react-feather";
-import { TopLogo, Pic1, Pic2, Pic3 } from "./assets";
-
-const Top = (): JSX.Element => {
-	return (
-		<div className='flex h-screen flex-row justify-between items-end bg-gradient-to-b from-gray-50 to-white'>
-			<div className='h-full flex justify-center items-left flex-col md:px-12 mx-5'>
-				<div className="md:flex items-center">
-					<h1 className='text-6xl m-0 font-poppins text-blue-800 leading-tight flex items-center font-medium'>Cruiseship</h1>
-					<p className='text-3xl md:ml-6 mt-2 text-gray-700 font-normal'>/ˈkruːzˌʃɪp/</p>
-				</div>
-				<p className='text-xl mb-8 mt-4 font-poppins'><i className='text-gray-700 font-normal'>noun</i>. &nbsp; A luxury vessel that is used to take passengers on a pleasure voyage in a journey that is as much a part of the experience as the various destinations on the way.</p>
-				<div className="mt-6 flex flex-col items-center sm:flex-row ">
-					<a className="btn whitespace-nowrap rounded-full px-5 py-2 text-xl bg-blue-800 font-poppins text-white !w-full text-center sm:!w-auto" href="/database">GET ONBOARD NOW</a>
-					<a className='btn whitespace-nowrap rounded-full px-5 py-2 text-xl border-blue-800 text-blue-800 border-2 font-poppins sm:ml-4 mt-3 sm:mt-0 font-medium !w-full text-center sm:!w-auto'>LEARN MORE</a>
-				</div>
-			</div>
-			<img src={TopLogo} className='h-4/6 hidden xl:!block' alt='logo' />
-		</div>
-	);
-};
-
-const Middle = (): JSX.Element => {
-	const content = [
-		[
-			Compass,
-			"Realtime Data",
-			"Get the latest location and schedules of cruiseships all over around the world, with all the data getting refreshed constantly."
-		],
-		[
-			Database,
-			"Open Source",
-			"Get free access to all data forever without needing any payment. Source code of this website is available on github."
-		],
-		[
-			Airplay,
-			"Clean UI",
-			"Enjoy your time exploring on Cruisegator with it's clean, easy-to-use and nice looking webpage user-interface."
-		]
-	];
-
-	return (
-		<div className='bg-gray-50 flex flex-col justify-center items-center p-12 pt-20'>
-			<h1 className='text-center text-5xl text-gray-900 font-poppins'>Why Choose Us?</h1>
-			<div className='w-20 h-1 mt-6 bg-blue-800'></div>
-			<div className='grid grid-cols-[repeat(auto-fit,minmax(18em,1fr))] justify-center items-baseline px-20 gap-x-5 gap-y-8 py-20'>
-				{content.map(([Icon, title, desc]) => (
-					<div className='mx-4' key={title as string}>
-						<Icon size='4em' stroke-width='1' className='text-blue-800' />
-						<h2 className='mt-4 font- text-3xl font-poppins'>{title}</h2>
-						<p className='text-lg leading-snug pt-3 font-poppins text-gray-500'>{desc}</p>
-					</div>
-				))}
-			</div>
-		</div>
-	);
-};
-
-const Bottom = (): JSX.Element => {
-	const content: [string, Date, string, string][] = [
-		[
-			Pic1,
-			new Date(2021, 5, 26),
-			"Which Cruise Lines Have Restarted Cruising?",
-			"While the global COVID-19 pandemic has shut down most cruise lines since mid-March 2020, there are areas of the world where ships are restarting."
-		],
-		[
-			Pic2,
-			new Date(2021, 5, 25),
-			"More River Lines Announce European Restart Dates As American Travel Looks Possible For Summer",
-			"Five more river cruise lines have announced summer 2021 restart dates, as the European Union moves toward approving international travel for vaccinated Americans."
-		],
-		[
-			Pic3,
-			new Date(2021, 5, 24),
-			"Carnival Cruise Line Outlines its Health and Safety Protocols For Alaska Sailings",
-			"Carnival Cruise Line has outlined its COVID-19 health and safety protocols for its return to the seas, with new measures designed specifically for passengers on the line's upcoming Alaska sailings."
-		]
-	];
-	return (
-		<div className='flex flex-col justify-center items-center bg-gradient-to-b to-gray-50 from-white py-20'>
-			<h1 className='text-center text-5xl text-gray-900 font-poppins'>Latest News</h1>
-			<div className='w-20 h-1 mt-6 bg-blue-800'></div>
-			<div className='grid grid-cols-[repeat(auto-fit,minmax(18em,1fr))] justify-center items-center mt-5 w-grid px-12 xl:px-36 pt-12 gap-x-4 gap-y-8'>
-				{content.map(([picture, date, title, desc]) => (
-					<div className='mx-2 overflow-hidden rounded-lg bg-white shadow-md news' key={title}>
-						<img src={picture} className='w-full' alt={title} />
-						<div className='p-8'>
-							<p className='m-0 font-poppins'>{date.toLocaleString("en-GB", {
-								dateStyle: "full"
-							})}</p>
-							<h3 className='mb-4 mt-2 text-3xl font-poppins font-medium text-blue-800'>{title}</h3>
-							<p className='mt-2 font-poppins'>{desc}</p>
-						</div>
-					</div>
-				))}
-			</div>
-		</div>
-	);
-};
+import {TopLogo, FrontendIcon, BackendIcon} from "./assets";
 
 export default function Homepage(): JSX.Element {
 	return (
-		<React.Fragment>
-			<Top />
-			<Middle />
-			<Bottom />
-		</React.Fragment>
+		<>
+			<div className="mx-32 w-100 mt-16 flex justify-between relative">
+				<div className="w-min mr-44">
+					<h1 className="text-6xl font-semibold leading-[129%] w-min whitespace-nowrap mb-8 mt-8" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
+				Travel the world<br/>with <span className="text-blue-800">Cruiseship</span>.
+					</h1>
+					<p className="text-[1.4rem] w-full leading-[149%]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+					<a className="font-semibold text-2xl text-blue-800 flex items-center mt-20">Explore Database
+						<svg className="ml-4 mt-0.5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+							<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+						</svg>
+					</a>
+				</div>
+				<div className="relative">
+					<img src={TopLogo}/>
+					<div className="absolute -bottom-16 p-4 -right-8 w-44 h-44 bg-blue-800 text-white font-semibold text-3xl leading-[128%] shadow-default">
+					Quantum Of The Seas
+						<svg className="absolute right-4 bottom-4" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M4 12H20" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+							<path d="M13 5L20 12L13 19" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+						</svg>
+					</div>
+				</div>
+				<a className="absolute bottom-2 left-0 flex font-medium text-lg">
+					<svg className="mr-2 transform rotate-90" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+						<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+					</svg>
+                Scroll Down
+				</a>
+			</div>
+			<div className="mt-44 px-32 py-28 w-100 mb-32 bg-blue-700 flex justify-between items-center">
+				<div>
+					<p className="text-gray-500 font-semibold text-2xl mb-6 tracking-wider">GET INSPIRED</p>
+					<h2 className="font-semibold text-5xl leading-[129%] whitespace-nowrap">Ideas behind how<br/>this project was<br/>created</h2>
+				</div>
+				<div className="flex items-center">
+					<div className="flex">
+						<div className="bg-blue-800 rounded-full p-4 h-[min-content]" style={{boxShadow: "0px 0px 6px #4189DD"}}>
+							<svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M23.125 10.4062C23.7636 10.4062 24.2812 9.88858 24.2812 9.25C24.2812 8.61142 23.7636 8.09375 23.125 8.09375C22.4864 8.09375 21.9688 8.61142 21.9688 9.25C21.9688 9.88858 22.4864 10.4062 23.125 10.4062Z" fill="#F6F5F7"/>
+								<path d="M26.5938 10.4062C27.2323 10.4062 27.75 9.88858 27.75 9.25C27.75 8.61142 27.2323 8.09375 26.5938 8.09375C25.9552 8.09375 25.4375 8.61142 25.4375 9.25C25.4375 9.88858 25.9552 10.4062 26.5938 10.4062Z" fill="#F6F5F7"/>
+								<path d="M30.0625 10.4062C30.7011 10.4062 31.2188 9.88858 31.2188 9.25C31.2188 8.61142 30.7011 8.09375 30.0625 8.09375C29.4239 8.09375 28.9062 8.61142 28.9062 9.25C28.9062 9.88858 29.4239 10.4062 30.0625 10.4062Z" fill="#F6F5F7"/>
+								<path d="M32.375 4.625H4.625C4.01187 4.62561 3.42404 4.86945 2.99049 5.30299C2.55695 5.73654 2.31311 6.32437 2.3125 6.9375V30.0625C2.31311 30.6756 2.55695 31.2635 2.99049 31.697C3.42404 32.1306 4.01187 32.3744 4.625 32.375H32.375C32.9881 32.3744 33.576 32.1306 34.0095 31.697C34.4431 31.2635 34.6869 30.6756 34.6875 30.0625V6.9375C34.6869 6.32437 34.4431 5.73654 34.0095 5.30299C33.576 4.86945 32.9881 4.62561 32.375 4.625ZM32.375 6.9375V11.5625H4.625V6.9375H32.375ZM4.625 13.875H11.5625V30.0625H4.625V13.875ZM13.875 30.0625V13.875H32.375V30.0625H13.875Z" fill="#F6F5F7"/>
+							</svg>
+						</div>
+						<div className="ml-6 mt-4 mr-8">
+							<h2 className="font-medium text-4xl">UI Designing</h2>
+							<p className="text-xl mt-4 max-w-[18rem] leading-[153%]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+						</div>
+					</div>
+					<div className="flex">
+						<div className="bg-blue-800 rounded-full p-4 h-[min-content]" style={{boxShadow: "0px 0px 6px #4189DD"}}>
+							<svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M35.8437 18.5L27.7499 26.5938L26.1196 24.9634L32.5715 18.5L26.1196 12.0366L27.7499 10.4062L35.8437 18.5Z" fill="white"/>
+								<path d="M1.15625 18.5L9.25 10.4062L10.8803 12.0366L4.42844 18.5L10.8803 24.9634L9.25 26.5938L1.15625 18.5Z" fill="white"/>
+								<path d="M14.36 29.4659L20.3957 6.9375L22.6295 7.53644L16.5928 30.0625L14.36 29.4659Z" fill="white"/>
+							</svg>
+						</div>
+						<div className="ml-6 mt-4">
+							<h2 className="font-medium text-4xl">Code Writing</h2>
+							<p className="text-xl mt-4 max-w-[18rem] leading-[153%]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
 	);
 }

@@ -14,58 +14,17 @@ interface INavState {
 	isDone: boolean;
 }
 
-class Nav extends React.Component<INavProps, INavState> {
-	private navitem: string[][];
-
-	constructor(props: INavProps) {
-		super(props);
-		this.navitem = [
-			["Home", "/home"],
-			["Database", "/database"],
-			["News"],
-			["Map", "/map"],
-			["Donate"]
-		];
-		this.state = {
-			isToggleOn: false,
-			hideNav: false,
-			isDone: false
-		};
-	}
-
-	navToggleCallback(): void {
-		this.setState(prevState => ({
-			isToggleOn: !prevState.isToggleOn,
-			isDone: true
-		}));
-	}
-
-	componentDidMount(): void {
-		window.addEventListener("resize", this.resize.bind(this));
-		this.resize();
-	}
-
-	resize(): void {
-		this.setState({hideNav: window.innerWidth <= 1200});
-	}	
-
-	render(): JSX.Element {
-		return (
-			<nav className={[`flex overflow-hidden h-24 z-50 shadow bg-white fixed pl-4 pr-10 items-start xl:items-center transition-all duration-700 w-screen py-${this.state.isToggleOn&&this.state.hideNav ? 5 : 1} justify-between`, this.state.isToggleOn ? "expand flex-col !h-full" : "", this.props.className].join(" ")} style={{transitionTimingFunction: "cubic-bezier( 0.19, 1, 0.22, 1 )"}}>
-				<div className="flex items-center mt-1">
-					<button className="border-0 block xl:hidden" type="button" onClick={this.navToggleCallback.bind(this)}>
-						<Menu width={48} strokeWidth={2}/>
-					</button>
-					<a href="/home"><img src={Logo} alt="logo" className="h-20"/></a>
-				</div>
-				<div className={"items-center xl:flex " + (this.state.isToggleOn ? "flex flex-col h-full w-full items-center justify-between py-20" : "hidden")}>
-					{this.navitem.map(([text, link]) => <a className="mx-6 text-md text-gray-600 font-poppins" href={link} key={text}>{text}</a>)}
-					<a className="btn bg-blue-800 whitespace-nowrap rounded-full py-3 ml-4 font-poppins text-white" href="/">Get Started</a>
-				</div>
-			</nav>
-		);
-	}
-}
+const Nav: React.FC<INavProps> = (): JSX.Element => {
+	return <nav className="mx-32 py-6 flex items-center sticky top-0 left-0 justify-between z-[9999] bg-white border-gray-200 border-b-2">
+		<img src={Logo}/>
+		<div className="flex">
+			<a className="text-xl font-medium mx-12 active">Home</a>
+			<a className="text-xl font-medium mx-12">Database</a>
+			<a className="text-xl font-medium mx-12">Map</a>
+			<a className="text-xl font-medium mx-12">News</a>
+		</div>
+	</nav>;
+};
 
 const Footer = (): JSX.Element => {
 	const social_media_icon: string[][] = [

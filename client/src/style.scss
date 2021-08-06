@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+html, body, nav {
+	background: #f6f5f7
+}
+
 * {
 	color: #2A3036;
 	font-family: Poppins;
@@ -17,4 +21,129 @@ nav .active {
 		left: 0;
 		position: absolute
 	}
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	background: darken(#4189DD, 8%);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #4189DD;
+    color: #777;
+	cursor: pointer
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #4189DD;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 2s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+$letters: 20;
+
+.btn-anim2 {
+  padding: 18px;
+  width: 300px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+  transition: all .3s;
+  
+  span {
+	display: inline-block;
+    min-width: 0.30em;
+    text-transform: uppercase;
+    transition: .25s cubic-bezier(0.5,-1, 0.5, 2);
+    opacity: 0;
+	margin-left: 2px;
+	margin-right: 2px;
+    transform: translate(0,-20px);
+  }
+    
+  &:before {
+	content: attr(data-text);
+    position: absolute;
+	padding-top: 1px;
+    width: 100%;
+    left: 0;
+    transition: .25s cubic-bezier(0.5,-1, 0.5, 2);
+    text-transform: uppercase;
+    letter-spacing: 3.5px;
+    opacity: 1;
+    transform: translate(0,0px);
+  }
+    
+    
+  &:hover, &:focus {
+	background: darken(#4189DD, 8%);
+
+	&:before {
+		opacity: 0;
+		transform: translate(0, 20px) 
+	}
+  
+    span {
+		opacity: 1;
+		transform: translate(0, 0px)
+	}
+   
+    @for $i from 1 through $letters {
+		span:nth-child(#{$i}) {
+			transition-delay: 0.025s * $i
+		  }
+	}
+  }
+}
+
+textarea {
+    resize:none;
+}
+
+input, textarea {
+    &:is(:focus, :active) {
+        outline: none;
+        border: none
+    }
 }

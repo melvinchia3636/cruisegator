@@ -16,7 +16,11 @@ module.exports = {
 					200: "#C4CBD4", 
 					500: "#8E959E"
 				}
-			}
+			},
+			screens: {
+				"1170": "1170px",
+				"1396": "1396px",
+			},
 		},
 		fontFamily: {
 			"poppins": ["Poppins"]

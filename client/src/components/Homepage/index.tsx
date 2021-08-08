@@ -70,19 +70,19 @@ export default function Homepage(): JSX.Element {
 					</div>
 				</div>
 			</div>
-			<div className="px-32 py-28 w-100">
-				<h1 className="text-5xl font-semibold leading-[129%] whitespace-nowrap mb-8 mt-8 text-center" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
-					What makes this project<br/>so <span className="text-blue-800">interesting</span>?
+			<div className="px-8 md:px-32 py-28 pb-14 w-100">
+				<h1 className="text-4xl md:text-5xl font-semibold leading-[129%] xl:whitespace-nowrap mb-8 mt-8 text-center" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
+					What makes this project so <span className="text-blue-800">interesting</span>?
 				</h1>
-				<p className="text-center text-2xl mt-12">A not really small project made by a normal guy</p>
-				<div className="mt-24 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-x-16">
+				<p className="text-center text-xl md:text-2xl mt-6">A not really small project made by a normal guy... Yeah pretty normal</p>
+				<div className="mt-16 md:mt-24 grid gap-8 1396:gap-16" style={{gridTemplateColumns: "repeat(auto-fit,minmax(350px,1fr))"}}>
 					<div className="shadow-gridbox flex p-12 flex-col items-center justify-center">
 						<div className="bg-blue-600 rounded-full p-4 w-min">
 							<svg width="59" height="59" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M47.9375 3.6875H11.0625C10.0427 3.6875 9.21875 4.51143 9.21875 5.53125V53.4688C9.21875 54.4886 10.0427 55.3125 11.0625 55.3125H47.9375C48.9573 55.3125 49.7812 54.4886 49.7812 53.4688V5.53125C49.7812 4.51143 48.9573 3.6875 47.9375 3.6875ZM13.3672 7.83594H45.6328V19.8203H13.3672V7.83594ZM45.6328 35.4922H13.3672V23.5078H45.6328V35.4922ZM45.6328 51.1641H13.3672V39.1797H45.6328V51.1641ZM17.5156 13.8281C17.5156 14.4394 17.7584 15.0256 18.1907 15.4578C18.6229 15.89 19.2091 16.1328 19.8203 16.1328C20.4316 16.1328 21.0178 15.89 21.45 15.4578C21.8822 15.0256 22.125 14.4394 22.125 13.8281C22.125 13.2169 21.8822 12.6307 21.45 12.1985C21.0178 11.7663 20.4316 11.5234 19.8203 11.5234C19.2091 11.5234 18.6229 11.7663 18.1907 12.1985C17.7584 12.6307 17.5156 13.2169 17.5156 13.8281ZM17.5156 29.5C17.5156 30.1112 17.7584 30.6974 18.1907 31.1297C18.6229 31.5619 19.2091 31.8047 19.8203 31.8047C20.4316 31.8047 21.0178 31.5619 21.45 31.1297C21.8822 30.6974 22.125 30.1112 22.125 29.5C22.125 28.8888 21.8822 28.3026 21.45 27.8703C21.0178 27.4381 20.4316 27.1953 19.8203 27.1953C19.2091 27.1953 18.6229 27.4381 18.1907 27.8703C17.7584 28.3026 17.5156 28.8888 17.5156 29.5ZM17.5156 45.1719C17.5156 45.7831 17.7584 46.3693 18.1907 46.8015C18.6229 47.2337 19.2091 47.4766 19.8203 47.4766C20.4316 47.4766 21.0178 47.2337 21.45 46.8015C21.8822 46.3693 22.125 45.7831 22.125 45.1719C22.125 44.5606 21.8822 43.9744 21.45 43.5422C21.0178 43.11 20.4316 42.8672 19.8203 42.8672C19.2091 42.8672 18.6229 43.11 18.1907 43.5422C17.7584 43.9744 17.5156 44.5606 17.5156 45.1719Z" fill="#4189DD"/>
 							</svg>
 						</div>
-						<h2 className="font-medium mt-9 text-2xl">Well Managed Data</h2>
+						<h2 className="font-medium mt-9 text-2xl">Well Formed Data</h2>
 						<p className="mt-6 text-lg text-center">Presenting data scraped from other websites in a good way</p>
 					</div>
 					<div className="shadow-gridbox inline-flex p-12 flex-col items-center justify-center">
@@ -106,43 +106,56 @@ export default function Homepage(): JSX.Element {
 				</div>
 				<div className="flex justify-center mt-12"><a className="bg-blue-800 rounded-full text-white py-4 px-12 inline-block mt-8 font-medium tracking-[3.5px] uppercase btn-white btn btn-animated z-40 relative w-min whitespace-nowrap shadow-default"><span className="relative z-20 text-white text-lg">Explore Database</span></a></div>
 			</div>
-			<div className="px-32 py-28 pt-0 w-100">
-				<div className="flex justify-between items-center">
-					<img src={illu1}/>
-					<div className="ml-28">
-						<p className="text-blue-800 font-semibold text-xl mb-4">Mapbox GL</p>
-						<h2 className="text-[2.7rem] font-semibold leading-[129%]">Realtime updated<br/>cruiseship location map</h2>
-						<p className="text-xl mt-6">See the current location of all the ships over the whole world updating in realtime. World map powered by MapboxGL JS.</p>
-						<a className="font-semibold text-2xl text-blue-800 flex items-center mt-10">Explore map
-							<svg className="ml-4 mt-0.5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<div className="px-8 sm:px-16 md:px-32 pb-14 pt-0 w-100">
+				<div className="flex flex-col 1170:flex-row justify-between items-center mb-16 1170:gap-28">
+					<div className="w-full" style={{flexShrink: 1}}><img src={illu1} className="w-full"/></div>
+					<div>
+						<p className="text-blue-800 font-semibold text-lg xl:text-xl mb-4">Mapbox GL</p>
+						<h2 className="text-4xl xl:text-[2.7rem] font-semibold leading-[129%]">Realtime updated cruiseship location map</h2>
+						<p className="text-lg xl:text-xl mt-6">See the current location of all the ships over the whole world updating in realtime. World map powered by MapboxGL JS.</p>
+						<a className="font-semibold text-xl xl:text-2xl text-blue-800 flex items-center mt-10">Explore map
+							<svg className="ml-4 mt-0.5 hidden xl:block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+								<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+							</svg>
+							<svg className="ml-2 mt-0.5 block xl:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 								<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 							</svg>
 						</a>
 					</div>
 				</div>
-				<div className="flex justify-between items-center">
-					<div className="mr-28">
-						<p className="text-blue-800 font-semibold text-xl mb-4">Express JS</p>
-						<h2 className="text-[2.7rem] font-semibold leading-[129%]">REST API for everything<br/>you see here</h2>
-						<p className="text-xl mt-6">Use the data in our website for your own project. We allow you to legally scrape all the data you can see in our website.</p>
-						<a className="font-semibold text-2xl text-blue-800 flex items-center mt-10">Get started
-							<svg className="ml-4 mt-0.5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<div className="flex flex-col 1170:flex-row justify-between items-center mb-16 1170:gap-28">
+					<div className="w-full block 1170:hidden" style={{flexShrink: 1}}><img src={illu2}/></div>
+					<div>
+						<p className="text-blue-800 font-semibold text-lg xl:text-xl mb-4">Express JS</p>
+						<h2 className="text-4xl xl:text-[2.7rem] font-semibold leading-[129%]">REST API for everything you see here</h2>
+						<p className="text-lg xl:text-xl mt-6">Use the data in our website for your own project. We allow you to legally scrape all the data you can see in our website.</p>
+						<a className="font-semibold text-xl xl:text-2xl text-blue-800 flex items-center mt-10">Get started
+							<svg className="ml-4 mt-0.5 hidden xl:block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+								<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+							</svg>
+							<svg className="ml-2 mt-0.5 block xl:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 								<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 							</svg>
 						</a>
 					</div>
-					<img src={illu2}/>
+					<div className="w-full hidden 1170:flex" style={{flexShrink: 1}}><img src={illu2}/></div>
 				</div>
-				<div className="flex justify-between items-center">
-					<img src={illu3}/>
-					<div className="ml-28">
-						<p className="text-blue-800 font-semibold text-xl mb-4">React Redux</p>
-						<h2 className="text-[2.7rem] font-semibold leading-[129%]">Latest news of<br/>cruiseship insustries</h2>
-						<p className="text-xl mt-6">Check out the current trends in cruiseship industries so that you will not miss anything important about it.</p>
-						<a className="font-semibold text-2xl text-blue-800 flex items-center mt-10">Take a gander
-							<svg className="ml-4 mt-0.5" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<div className="flex flex-col 1170:flex-row justify-between items-center mb-16 1170:gap-28">
+					<div className="w-full" style={{flexShrink: 1}}><img src={illu3} className="w-full"/></div>
+					<div>
+						<p className="text-blue-800 font-semibold text-lg xl:text-xl mb-4">React Redux</p>
+						<h2 className="text-4xl xl:text-[2.7rem] font-semibold leading-[129%]">Latest news of cruiseship insustries</h2>
+						<p className="text-lg xl:text-xl mt-6">Check out the current trends in cruiseship industries so that you will not miss anything important about it.</p>
+						<a className="font-semibold text-xl xl:text-2xl text-blue-800 flex items-center mt-10">Take a gander
+							<svg className="ml-4 mt-0.5 hidden xl:block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+								<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+							</svg>
+							<svg className="ml-2 mt-0.5 block xl:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 								<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 							</svg>
@@ -150,21 +163,23 @@ export default function Homepage(): JSX.Element {
 					</div>
 				</div>
 			</div>
-			<div className="px-32 py-28 w-100 bg-blue-700 flex justify-between items-center">
-				<div className="w-min">
-					<h1 className="text-5xl font-semibold leading-[129%] w-min whitespace-nowrap mb-8 mt-8" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
+			<div className="px-8 sm:px-16 md:px-32 py-28 w-100 bg-blue-700 flex flex-col xl:flex-row justify-between items-center gap-24 2xl:gap-0">
+				<div className="flex flex-col items-center xl:items-start xl:w-6/12">
+					<h1 className="text-4xl xl:text-5xl font-semibold leading-[129%] mb-8 mt-8 text-center xl:text-left" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
 						<span className="text-blue-800">Technologies</span> used<br/>in this project
 					</h1>
-					<p className="text-xl w-full">A total of 4 different technologies and languages has been used for this project.</p>
+					<p className="text-xl text-center xl:text-left w-full xl:w-8/12">A total of 4 different technologies and languages has been used for this project.</p>
 					<a className='bg-blue-800 rounded-full text-white px-12 shadow-default inline-block mt-12 font-medium btn-anim2 whitespace-nowrap w-max' data-text="VIEW REPOSITORY" href="#contact">{"GOTO GITHUB".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</a>
 				</div>
-				<div className="grid grid-cols-2 items-center gap-4" style={{gridAutoRows: "1fr"}}>
-					<div className="shadow-gridbox rounded-[4px] bg-gray-100 p-6 h-full">
-						<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M28 23.0056C25.2472 23.0056 23.0055 25.2473 23.0055 28.0001C23.0055 30.7528 25.2472 32.9946 28 32.9946C30.7528 32.9946 32.9945 30.7528 32.9945 28.0001C32.9945 25.2473 30.7528 23.0056 28 23.0056ZM14.0175 37.9261L12.915 37.6531C4.711 35.5741 0 32.0566 0 27.9913C0 23.9261 4.71275 20.4086 12.915 18.3296L14.0175 18.0566L14.3273 19.1503C15.1595 22.0151 16.2235 24.8074 17.5088 27.4996L17.745 27.9913L17.5088 28.4918C16.2208 31.1828 15.1567 33.9753 14.3273 36.8411L14.0175 37.9261ZM12.4058 20.8811C6.1705 22.6311 2.34325 25.3191 2.34325 27.9913C2.34325 30.6636 6.17225 33.3411 12.4058 35.1016C13.1699 32.6737 14.0924 30.2985 15.1672 27.9913C14.0909 25.6848 13.1683 23.3095 12.4058 20.8811ZM41.9825 37.9261L41.6727 36.8323C40.842 33.9699 39.7779 31.1804 38.4913 28.4918L38.255 27.9913L38.4913 27.4908C39.7792 24.7998 40.8433 22.0073 41.6727 19.1416L41.9825 18.0566L43.085 18.3296C51.289 20.4086 56 23.9261 56 27.9913C56 32.0566 51.2873 35.5741 43.085 37.6531L41.9825 37.9261ZM40.8327 27.9913C41.9112 30.297 42.8338 32.6724 43.5942 35.1016C49.8382 33.3428 53.6567 30.6636 53.6567 27.9913C53.6567 25.3191 49.8277 22.6416 43.5942 20.8811C42.8283 23.3083 41.9059 25.6834 40.8327 27.9913ZM12.3865 20.8723L12.0767 19.7786C9.77025 11.6481 10.472 5.81531 14 3.78181C17.4632 1.78506 23.0142 4.14581 28.8382 10.1256L29.631 10.9376L28.8382 11.7496C26.77 13.9014 24.8802 16.2179 23.1875 18.6761L22.869 19.1223L22.3213 19.1678C19.3436 19.4028 16.3898 19.8786 13.489 20.5906L12.3865 20.8723ZM16.8158 5.40581C16.1875 5.40581 15.631 5.53356 15.1655 5.80656C12.8503 7.14706 12.4408 11.7951 14.035 18.0653C16.5225 17.5089 19.0438 17.116 21.5828 16.8893C23.0444 14.8075 24.6428 12.825 26.3673 10.9551C22.7308 7.40956 19.285 5.40406 16.8158 5.40406V5.40581ZM39.193 52.9096C39.1842 52.9096 39.1842 52.9096 39.193 52.9096C35.8662 52.9096 31.591 50.4123 27.1618 45.8553L26.369 45.0433L27.1618 44.2313C29.23 42.0795 31.1198 39.763 32.8125 37.3048L33.1222 36.8586L33.67 36.8043C36.6515 36.5772 39.6088 36.1013 42.511 35.3816L43.6135 35.1086L43.9233 36.2023C46.2298 44.3328 45.528 50.1568 42 52.1886C41.147 52.6788 40.1766 52.9274 39.193 52.9078V52.9096ZM29.631 45.0258C33.2675 48.5713 36.7132 50.5768 39.1825 50.5768H39.1912C39.8107 50.5768 40.3672 50.4403 40.8327 50.1761C43.148 48.8356 43.568 44.1876 41.9632 37.9173C39.4762 38.4743 36.9546 38.8643 34.4155 39.0846C32.9539 41.1692 31.3555 43.1546 29.631 45.0276V45.0258ZM43.6135 20.8723L42.511 20.5906C39.6067 19.881 36.6503 19.4052 33.67 19.1678L33.1222 19.1223L32.8125 18.6761C31.1198 16.2179 29.23 13.9014 27.1618 11.7496L26.369 10.9376L27.1618 10.1256C32.9857 4.14581 38.5368 1.78506 42 3.78181C45.528 5.81356 46.2298 11.6481 43.9233 19.7786L43.6135 20.8723ZM34.4173 16.8893C36.9562 17.1154 39.4776 17.5083 41.965 18.0653C43.5697 11.7951 43.1497 7.14531 40.8345 5.80656C38.528 4.47656 34.1898 6.51706 29.6328 10.9568C31.3525 12.8308 32.9506 14.8129 34.4173 16.8911V16.8893ZM16.8158 52.9096C15.8305 52.9271 14.8558 52.6821 14 52.1903C10.472 50.1586 9.77025 44.3328 12.0767 36.2041L12.3865 35.1103L13.489 35.3833C16.1875 36.0676 19.159 36.5401 22.3213 36.8061L22.869 36.8603L23.1787 37.3066C24.8715 39.7648 26.7613 42.0812 28.8295 44.2331L29.6222 45.0451L28.8295 45.8571C24.409 50.4141 20.1338 52.9113 16.8158 52.9113V52.9096ZM14.0367 37.9173C12.432 44.1876 12.852 48.8373 15.1672 50.1761C17.4737 51.4886 21.8032 49.4656 26.369 45.0258C24.6445 43.1528 23.0461 41.1675 21.5845 39.0828C19.0453 38.8632 16.5237 38.4732 14.0367 37.9156V37.9173ZM28 39.3838C26.0767 39.3838 24.108 39.3016 22.1305 39.1371L21.5828 39.0916L21.2642 38.6366C20.1472 37.0316 19.0981 35.3805 18.1195 33.6876C17.1389 31.9946 16.2298 30.2611 15.3947 28.4918L15.1585 27.9913L15.3947 27.4908C17.0678 23.953 19.031 20.5598 21.2642 17.3461L21.5828 16.8911L22.1305 16.8456C26.0366 16.5166 29.9634 16.5166 33.8695 16.8456L34.4173 16.8911L34.7358 17.3461C36.9719 20.558 38.9352 23.9514 40.6052 27.4908L40.8415 27.9913L40.6052 28.4918C38.9386 32.033 36.9751 35.4267 34.7358 38.6366L34.4173 39.0916L33.8695 39.1371C31.9173 39.3004 29.9591 39.3827 28 39.3838ZM22.8778 36.8498C26.3235 37.1141 29.6765 37.1141 33.131 36.8498C35.0576 34.0286 36.7698 31.0669 38.2533 27.9896C36.7761 24.9071 35.0605 21.9447 33.1222 19.1293C29.7125 18.8651 26.2875 18.8651 22.8778 19.1293C20.9381 21.9438 19.2225 24.9064 17.7467 27.9896C19.2306 31.0685 20.9459 34.0304 22.8778 36.8498Z" fill="#4189DD"/>
-						</svg>
-						<h2 className="font-medium text-3xl mt-4">React JS</h2>
-						<p className="text-lg mt-4 max-w-[18rem] leading-[153%]">A free and open-source front-end JavaScript library for building user interfaces or UI components</p>
+				<div className="grid w-full sm:w-auto sm:grid-cols-2 items-center gap-4 mt-4 xl:mt-0" style={{gridAutoRows: "1fr"}}>
+					<div className="shadow-gridbox rounded-[4px] bg-gray-100 p-6 h-full flex flex-col justify-between">
+						<div>
+							<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M28 23.0056C25.2472 23.0056 23.0055 25.2473 23.0055 28.0001C23.0055 30.7528 25.2472 32.9946 28 32.9946C30.7528 32.9946 32.9945 30.7528 32.9945 28.0001C32.9945 25.2473 30.7528 23.0056 28 23.0056ZM14.0175 37.9261L12.915 37.6531C4.711 35.5741 0 32.0566 0 27.9913C0 23.9261 4.71275 20.4086 12.915 18.3296L14.0175 18.0566L14.3273 19.1503C15.1595 22.0151 16.2235 24.8074 17.5088 27.4996L17.745 27.9913L17.5088 28.4918C16.2208 31.1828 15.1567 33.9753 14.3273 36.8411L14.0175 37.9261ZM12.4058 20.8811C6.1705 22.6311 2.34325 25.3191 2.34325 27.9913C2.34325 30.6636 6.17225 33.3411 12.4058 35.1016C13.1699 32.6737 14.0924 30.2985 15.1672 27.9913C14.0909 25.6848 13.1683 23.3095 12.4058 20.8811ZM41.9825 37.9261L41.6727 36.8323C40.842 33.9699 39.7779 31.1804 38.4913 28.4918L38.255 27.9913L38.4913 27.4908C39.7792 24.7998 40.8433 22.0073 41.6727 19.1416L41.9825 18.0566L43.085 18.3296C51.289 20.4086 56 23.9261 56 27.9913C56 32.0566 51.2873 35.5741 43.085 37.6531L41.9825 37.9261ZM40.8327 27.9913C41.9112 30.297 42.8338 32.6724 43.5942 35.1016C49.8382 33.3428 53.6567 30.6636 53.6567 27.9913C53.6567 25.3191 49.8277 22.6416 43.5942 20.8811C42.8283 23.3083 41.9059 25.6834 40.8327 27.9913ZM12.3865 20.8723L12.0767 19.7786C9.77025 11.6481 10.472 5.81531 14 3.78181C17.4632 1.78506 23.0142 4.14581 28.8382 10.1256L29.631 10.9376L28.8382 11.7496C26.77 13.9014 24.8802 16.2179 23.1875 18.6761L22.869 19.1223L22.3213 19.1678C19.3436 19.4028 16.3898 19.8786 13.489 20.5906L12.3865 20.8723ZM16.8158 5.40581C16.1875 5.40581 15.631 5.53356 15.1655 5.80656C12.8503 7.14706 12.4408 11.7951 14.035 18.0653C16.5225 17.5089 19.0438 17.116 21.5828 16.8893C23.0444 14.8075 24.6428 12.825 26.3673 10.9551C22.7308 7.40956 19.285 5.40406 16.8158 5.40406V5.40581ZM39.193 52.9096C39.1842 52.9096 39.1842 52.9096 39.193 52.9096C35.8662 52.9096 31.591 50.4123 27.1618 45.8553L26.369 45.0433L27.1618 44.2313C29.23 42.0795 31.1198 39.763 32.8125 37.3048L33.1222 36.8586L33.67 36.8043C36.6515 36.5772 39.6088 36.1013 42.511 35.3816L43.6135 35.1086L43.9233 36.2023C46.2298 44.3328 45.528 50.1568 42 52.1886C41.147 52.6788 40.1766 52.9274 39.193 52.9078V52.9096ZM29.631 45.0258C33.2675 48.5713 36.7132 50.5768 39.1825 50.5768H39.1912C39.8107 50.5768 40.3672 50.4403 40.8327 50.1761C43.148 48.8356 43.568 44.1876 41.9632 37.9173C39.4762 38.4743 36.9546 38.8643 34.4155 39.0846C32.9539 41.1692 31.3555 43.1546 29.631 45.0276V45.0258ZM43.6135 20.8723L42.511 20.5906C39.6067 19.881 36.6503 19.4052 33.67 19.1678L33.1222 19.1223L32.8125 18.6761C31.1198 16.2179 29.23 13.9014 27.1618 11.7496L26.369 10.9376L27.1618 10.1256C32.9857 4.14581 38.5368 1.78506 42 3.78181C45.528 5.81356 46.2298 11.6481 43.9233 19.7786L43.6135 20.8723ZM34.4173 16.8893C36.9562 17.1154 39.4776 17.5083 41.965 18.0653C43.5697 11.7951 43.1497 7.14531 40.8345 5.80656C38.528 4.47656 34.1898 6.51706 29.6328 10.9568C31.3525 12.8308 32.9506 14.8129 34.4173 16.8911V16.8893ZM16.8158 52.9096C15.8305 52.9271 14.8558 52.6821 14 52.1903C10.472 50.1586 9.77025 44.3328 12.0767 36.2041L12.3865 35.1103L13.489 35.3833C16.1875 36.0676 19.159 36.5401 22.3213 36.8061L22.869 36.8603L23.1787 37.3066C24.8715 39.7648 26.7613 42.0812 28.8295 44.2331L29.6222 45.0451L28.8295 45.8571C24.409 50.4141 20.1338 52.9113 16.8158 52.9113V52.9096ZM14.0367 37.9173C12.432 44.1876 12.852 48.8373 15.1672 50.1761C17.4737 51.4886 21.8032 49.4656 26.369 45.0258C24.6445 43.1528 23.0461 41.1675 21.5845 39.0828C19.0453 38.8632 16.5237 38.4732 14.0367 37.9156V37.9173ZM28 39.3838C26.0767 39.3838 24.108 39.3016 22.1305 39.1371L21.5828 39.0916L21.2642 38.6366C20.1472 37.0316 19.0981 35.3805 18.1195 33.6876C17.1389 31.9946 16.2298 30.2611 15.3947 28.4918L15.1585 27.9913L15.3947 27.4908C17.0678 23.953 19.031 20.5598 21.2642 17.3461L21.5828 16.8911L22.1305 16.8456C26.0366 16.5166 29.9634 16.5166 33.8695 16.8456L34.4173 16.8911L34.7358 17.3461C36.9719 20.558 38.9352 23.9514 40.6052 27.4908L40.8415 27.9913L40.6052 28.4918C38.9386 32.033 36.9751 35.4267 34.7358 38.6366L34.4173 39.0916L33.8695 39.1371C31.9173 39.3004 29.9591 39.3827 28 39.3838ZM22.8778 36.8498C26.3235 37.1141 29.6765 37.1141 33.131 36.8498C35.0576 34.0286 36.7698 31.0669 38.2533 27.9896C36.7761 24.9071 35.0605 21.9447 33.1222 19.1293C29.7125 18.8651 26.2875 18.8651 22.8778 19.1293C20.9381 21.9438 19.2225 24.9064 17.7467 27.9896C19.2306 31.0685 20.9459 34.0304 22.8778 36.8498Z" fill="#4189DD"/>
+							</svg>
+							<h2 className="font-medium text-3xl mt-4">React JS</h2>
+							<p className="text-lg mt-4 max-w-[18rem] leading-[153%]">A free and open-source front-end JavaScript library for building user interfaces or UI components</p>
+						</div>
 						<a className="text-blue-800 font-semibold mt-9 flex">LEARN MORE</a>
 					</div>
 					<div className="shadow-gridbox rounded-[4px] bg-gray-100 p-6 h-full flex flex-col justify-between">
@@ -207,7 +222,7 @@ export default function Homepage(): JSX.Element {
 					</div>
 				</div>
 			</div>
-			<div className="px-32 py-28 w-100">
+			<div className="px-8 sm:px-16 md:px-32 py-28 w-100">
 				<h1 className="text-5xl font-semibold leading-[129%] whitespace-nowrap mb-8 mt-8 text-center" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
 				Upgrade to <span className="text-blue-800">Premium</span> with<br/>affordable price
 				</h1>
@@ -296,9 +311,9 @@ export default function Homepage(): JSX.Element {
 					</div>
 				</div>
 			</div>
-			<div className="px-32 py-28 w-100 bg-blue-700 flex justify-between items-center">
-				<img src={img} className="w-full mr-32 rounded-tr-[5rem] rounded-bl-[5rem]"/>
-				<div className="w-min">
+			<div className="px-8 sm:px-16 md:px-32 1170:!px-32 py-28 w-100 bg-blue-700 flex flex-col lg:flex-row justify-between items-center gap-16 xl:gap-32">
+				<div className="w-full flex-shrink-[9999] md:h-[500px]"><img src={img} className="w-full h-full mr-32 rounded-tr-[3rem] rounded-bl-[3rem] md:rounded-tr-[5rem] md:rounded-bl-[5rem] sm:min-w-[300px]"/></div>
+				<div>
 					<svg width="64" height="54" viewBox="0 0 54 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g filter="url(#filter0_d)">
 							<path d="M7.90253 5.157C11.1284 1.73475 16.0098 0 22.4087 0H24.708V6.34275L22.8593 6.705C19.7093 7.3215 17.5181 8.53425 16.3455 10.314C15.7336 11.2728 15.3866 12.3706 15.3384 13.5H22.4087C23.0185 13.5 23.6033 13.7371 24.0345 14.159C24.4657 14.581 24.708 15.1533 24.708 15.75V31.5C24.708 33.9818 22.6455 36 20.1094 36H6.31373C5.70393 36 5.1191 35.7629 4.6879 35.341C4.2567 34.919 4.01446 34.3467 4.01446 33.75V22.5L4.02136 15.9323C4.00066 15.6825 3.5638 9.765 7.90253 5.157ZM45.4014 36H31.6058C30.996 36 30.4111 35.7629 29.9799 35.341C29.5487 34.919 29.3065 34.3467 29.3065 33.75V22.5L29.3134 15.9323C29.2927 15.6825 28.8558 9.765 33.1946 5.157C36.4205 1.73475 41.3018 0 47.7007 0H50V6.34275L48.1514 6.705C45.0014 7.3215 42.8102 8.53425 41.6375 10.314C41.0257 11.2728 40.6787 12.3706 40.6304 13.5H47.7007C48.3105 13.5 48.8954 13.7371 49.3266 14.159C49.7578 14.581 50 15.1533 50 15.75V31.5C50 33.9818 47.9375 36 45.4014 36Z" fill="#4189DD"/>
@@ -317,14 +332,14 @@ export default function Homepage(): JSX.Element {
 						</defs>
 					</svg>
 
-					<h1 className="text-5xl font-semibold leading-[129%] w-min whitespace-nowrap mb-8 mt-4" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
-						A place where you will<br/>never want to leave
+					<h1 className="text-4xl xl:text-5xl font-semibold !leading-[129%] mb-8 mt-4" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
+						A place where you will never want to leave
 					</h1>
-					<p className="text-xl w-full leading-[155.5%]">You can never doubt about the fact that most of the cruiseship are too luxury until you never wanna leave it. Tons of fancy facilities, lots of delicious foods... Aww damn that’s endless afterstate.</p>
+					<p className="text-lg xl:text-xl w-full">You can never doubt about the fact that most of the cruiseship are too luxury until you never wanna leave it. Tons of fancy facilities, lots of delicious foods... Aww damn that’s endless afterstate.</p>
 					<p className="font-semibold text-xl mt-8">Melvin Chia, Creator of Cruisegator</p>
 				</div>
 			</div>
-			<div className="px-32 py-28 w-100 flex justify-between">
+			<div className="px-16 md:px-32 py-28 w-100 flex justify-between">
 				<div className="bg-blue-800 shadow-default px-4 w-full rounded-lg contact relative z-10">
 					<div className="bg-[#FDFDFD] w-full h-[104%] absolute bottom-4 left-4 shadow-default rounded-lg p-12">
 						<form className="flex flex-col h-full">

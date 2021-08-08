@@ -71,7 +71,7 @@ export default function Homepage(): JSX.Element {
 				</div>
 			</div>
 			<div className="px-8 md:px-32 py-28 pb-14 w-100">
-				<h1 className="text-4xl md:text-5xl font-semibold leading-[129%] xl:whitespace-nowrap mb-8 mt-8 text-center" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
+				<h1 className="text-4xl md:text-5xl 2xl:px-72 font-semibold !leading-[129%] mb-8 mt-8 text-center" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
 					What makes this project so <span className="text-blue-800">interesting</span>?
 				</h1>
 				<p className="text-center text-xl md:text-2xl mt-6">A not really small project made by a normal guy... Yeah pretty normal</p>
@@ -106,8 +106,8 @@ export default function Homepage(): JSX.Element {
 				</div>
 				<div className="flex justify-center mt-12"><a className="bg-blue-800 rounded-full text-white py-4 px-12 inline-block mt-8 font-medium tracking-[3.5px] uppercase btn-white btn btn-animated z-40 relative w-min whitespace-nowrap shadow-default"><span className="relative z-20 text-white text-lg">Explore Database</span></a></div>
 			</div>
-			<div className="px-8 sm:px-16 md:px-32 pb-14 pt-0 w-100">
-				<div className="flex flex-col 1170:flex-row justify-between items-center mb-16 1170:gap-28">
+			<div className="px-8 sm:px-16 md:px-32 pb-14 pt-0 w-100 mt-12">
+				<div className="flex flex-col 1170:flex-row justify-between items-center mb-20 1170:gap-28">
 					<div className="w-full" style={{flexShrink: 1}}><img src={illu1} className="w-full"/></div>
 					<div>
 						<p className="text-blue-800 font-semibold text-lg xl:text-xl mb-4">Mapbox GL</p>
@@ -125,7 +125,7 @@ export default function Homepage(): JSX.Element {
 						</a>
 					</div>
 				</div>
-				<div className="flex flex-col 1170:flex-row justify-between items-center mb-16 1170:gap-28">
+				<div className="flex flex-col 1170:flex-row justify-between items-center mb-20 1170:gap-28">
 					<div className="w-full block 1170:hidden" style={{flexShrink: 1}}><img src={illu2}/></div>
 					<div>
 						<p className="text-blue-800 font-semibold text-lg xl:text-xl mb-4">Express JS</p>
@@ -165,11 +165,11 @@ export default function Homepage(): JSX.Element {
 			</div>
 			<div className="px-8 sm:px-16 md:px-32 py-28 w-100 bg-blue-700 flex flex-col xl:flex-row justify-between items-center gap-24 2xl:gap-0">
 				<div className="flex flex-col items-center xl:items-start xl:w-6/12">
-					<h1 className="text-4xl xl:text-5xl font-semibold leading-[129%] mb-8 mt-8 text-center xl:text-left" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
+					<h1 className="text-4xl xl:text-5xl font-semibold leading-[129%] mb-8 text-center xl:text-left" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
 						<span className="text-blue-800">Technologies</span> used<br/>in this project
 					</h1>
 					<p className="text-xl text-center xl:text-left w-full xl:w-8/12">A total of 4 different technologies and languages has been used for this project.</p>
-					<a className='bg-blue-800 rounded-full text-white px-12 shadow-default inline-block mt-12 font-medium btn-anim2 whitespace-nowrap w-max' data-text="VIEW REPOSITORY" href="#contact">{"GOTO GITHUB".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</a>
+					<a className='bg-blue-800 rounded-full text-white px-12 shadow-default inline-block mt-12 font-medium btn-anim2 whitespace-nowrap w-max' data-text="VIEW REPOSITORY" href="https://github.com/melvinchia3636/cruisegator">{"GOTO GITHUB".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</a>
 				</div>
 				<div className="grid w-full sm:w-auto sm:grid-cols-2 items-center gap-4 mt-4 xl:mt-0" style={{gridAutoRows: "1fr"}}>
 					<div className="shadow-gridbox rounded-[4px] bg-gray-100 p-6 h-full flex flex-col justify-between">
@@ -180,7 +180,7 @@ export default function Homepage(): JSX.Element {
 							<h2 className="font-medium text-3xl mt-4">React JS</h2>
 							<p className="text-lg mt-4 max-w-[18rem] leading-[153%]">A free and open-source front-end JavaScript library for building user interfaces or UI components</p>
 						</div>
-						<a className="text-blue-800 font-semibold mt-9 flex">LEARN MORE</a>
+						<a className="text-blue-800 font-semibold mt-9 flex" href="https://reactjs.org">LEARN MORE</a>
 					</div>
 					<div className="shadow-gridbox rounded-[4px] bg-gray-100 p-6 h-full flex flex-col justify-between">
 						<div>
@@ -197,7 +197,7 @@ export default function Homepage(): JSX.Element {
 							<h2 className="font-medium text-3xl mt-4">Express JS</h2>
 							<p className="text-lg mt-4 max-w-[18rem] leading-[153%]">A back end web application framework for Node.js, released as free and open-source software under the MIT License.</p>
 						</div>
-						<a className="text-blue-800 font-semibold mt-9 flex">LEARN MORE</a>
+						<a className="text-blue-800 font-semibold mt-9 flex" href="https://expressjs.com">LEARN MORE</a>
 					</div>
 					<div className="shadow-gridbox rounded-[4px] bg-gray-100 p-6 h-full flex flex-col justify-between">
 						<div>
@@ -208,7 +208,7 @@ export default function Homepage(): JSX.Element {
 							<h2 className="font-medium text-3xl mt-4">React Redux</h2>
 							<p className="text-lg mt-4 max-w-[18rem] leading-[153%]">An open-source JavaScript library for managing application state.</p>
 						</div>
-						<a className="text-blue-800 font-semibold mt-9 flex">LEARN MORE</a>
+						<a className="text-blue-800 font-semibold mt-9 flex" href="https://react-redux.js.org">LEARN MORE</a>
 					</div>
 					<div className="shadow-gridbox rounded-[4px] bg-gray-100 p-6 h-full flex flex-col justify-between">
 						<div>
@@ -218,17 +218,17 @@ export default function Homepage(): JSX.Element {
 							<h2 className="font-medium text-3xl mt-4">Typescript</h2>
 							<p className="text-lg mt-4 max-w-[18rem] leading-[153%]">A strict syntactical superset of JavaScript and adds optional static typing to the language.</p>
 						</div>
-						<a className="text-blue-800 font-semibold mt-9 flex">LEARN MORE</a>
+						<a className="text-blue-800 font-semibold mt-9 flex" href="https://www.typescriptlang.org">LEARN MORE</a>
 					</div>
 				</div>
 			</div>
 			<div className="px-8 sm:px-16 md:px-32 py-28 w-100">
-				<h1 className="text-5xl font-semibold leading-[129%] whitespace-nowrap mb-8 mt-8 text-center" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
-				Upgrade to <span className="text-blue-800">Premium</span> with<br/>affordable price
+				<h1 className="text-4xl md:text-5xl 2xl:px-72 font-semibold leading-[129%] mb-8 mt-8 text-center" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
+				Upgrade to <span className="text-blue-800">Premium</span> with affordable price
 				</h1>
-				<p className="text-center text-2xl mt-12">This is just a decoration. I don’t want your money.</p>
-				<div className="mt-24 flex items-center justify-center">
-					<div className=" rounded-l-lg p-6 w-96 shadow-default">
+				<p className="text-center text-xl md:text-2xl mt-12">This is just a decoration. I don’t want your money.</p>
+				<div className="mt-12 xl:mt-24 flex items-center justify-center flex-col xl:flex-row gap-6 xl:gap-0">
+					<div className="rounded-r-lg xl:rounded-r-none rounded-l-lg p-6 w-full xl:w-96 shadow-default">
 						<p className="font-medium text-2xl mt-4">Basic</p>
 						<h2 className="text-blue-800 font-semibold text-7xl my-6">$9 <span className="text-blue-800 text-2xl">/ month</span></h2>
 						<p className="text-lg">Wanna buy me a coffee in order for me to more projects?</p>
@@ -254,7 +254,7 @@ export default function Homepage(): JSX.Element {
 						</div>
 						<a className="w-full py-4 bg-blue-800 text-white rounded-lg flex justify-center text-center font-semibold text-xl white shadow-default">Get started</a>
 					</div>
-					<div className="bg-blue-800 rounded-lg p-6 w-[28rem] shadow-default">
+					<div className="bg-blue-800 rounded-lg p-6 w-full xl:w-[28rem] shadow-default">
 						<div className="flex justify-end">
 							<p className="block bg-white text-md px-8 py-2 rounded-full text-blue-800 font-semibold shadow-default">Popular</p>
 						</div>
@@ -268,7 +268,7 @@ export default function Homepage(): JSX.Element {
 								</svg>
 								Make friends with me
 							</p>
-							<p className="flex text-white items-center text-lg font-semibold py-4">
+							<p className="flex text-white items-center w-auto xl:text-lg font-semibold py-4">
 								<svg className="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M9.99997 15.586L6.70697 12.293L5.29297 13.707L9.99997 18.414L19.707 8.70697L18.293 7.29297L9.99997 15.586Z" fill="#F6F5F7"/>
 								</svg>
@@ -283,10 +283,10 @@ export default function Homepage(): JSX.Element {
 						</div>
 						<a className="w-full py-4 bg-white rounded-lg flex justify-center text-center font-semibold text-xl text-blue-800 shadow-default">Get started</a>
 					</div>
-					<div className=" rounded-r-lg p-6 w-96 shadow-default">
+					<div className="rounded-l-lg xl:rounded-l-none rounded-r-lg p-6 w-full xl:w-96 shadow-default">
 						<p className="font-medium text-2xl mt-4">Enterprise</p>
 						<h2 className="text-blue-800 font-semibold text-7xl my-6">$59 <span className="text-blue-800 text-2xl">/ month</span></h2>
-						<p className="text-lg">If you have too much money and don’t know how to spend it...</p>
+						<p className="text-lg">Are you still finding a way to spend your money? XD</p>
 						<div className="py-6">
 							<p className="flex text-blue-800 items-center text-lg font-semibold py-4">
 								<svg className="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -304,7 +304,7 @@ export default function Homepage(): JSX.Element {
 								<svg className="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M9.99997 15.586L6.70697 12.293L5.29297 13.707L9.99997 18.414L19.707 8.70697L18.293 7.29297L9.99997 15.586Z" fill="#4189DD"/>
 								</svg>
-								Some tutorials maybe
+								5 UI design service
 							</p>
 						</div>
 						<a className="w-full py-4 bg-blue-800 text-white rounded-lg flex justify-center text-center font-semibold text-xl white shadow-default">Get started</a>
@@ -335,29 +335,35 @@ export default function Homepage(): JSX.Element {
 					<h1 className="text-4xl xl:text-5xl font-semibold !leading-[129%] mb-8 mt-4" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
 						A place where you will never want to leave
 					</h1>
-					<p className="text-lg xl:text-xl w-full">You can never doubt about the fact that most of the cruiseship are too luxury until you never wanna leave it. Tons of fancy facilities, lots of delicious foods... Aww damn that’s endless afterstate.</p>
-					<p className="font-semibold text-xl mt-8">Melvin Chia, Creator of Cruisegator</p>
+					<p className="text-lg xl:text-xl w-full !leading-[155.5%]">You can never doubt about the fact that most of the cruiseship are too luxury until you never wanna leave it. Tons of fancy facilities, lots of delicious foods... Aww damn that’s endless afterstate.</p>
+					<p className="font-semibold text-xl mt-8">Melvin Chia, Founder of CG</p>
 				</div>
 			</div>
-			<div className="px-16 md:px-32 py-28 w-100 flex justify-between">
-				<div className="bg-blue-800 shadow-default px-4 w-full rounded-lg contact relative z-10">
-					<div className="bg-[#FDFDFD] w-full h-[104%] absolute bottom-4 left-4 shadow-default rounded-lg p-12">
+			<div className="px-8 sm:px-16 md:px-32 py-28 w-100 flex justify-between flex-col xl:flex-row">
+				<div className="flex flex-col items-center xl:hidden lg:px-32 mb-12">
+					<h1 className="text-4xl md:text-5xl font-semibold !leading-[129%] mb-8 mt-8 text-center xl:text-left" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
+						Wanna make <span className="text-blue-800">projects</span> with me?
+					</h1>
+					<p className="text-lg md:text-xl mt-6 !leading-[155.5%] text-center">I’ll be really glad if somebody is willing to learn with me and make amazing projects at the mean time</p>
+				</div>
+				<div className="xl:bg-blue-800 xl:shadow-default xl:px-4 w-full rounded-lg contact relative z-10">
+					<div className="bg-gray-100 w-full xl:h-[104%] xl:absolute xl:bottom-4 xl:left-4 xl:shadow-default rounded-lg xl:p-12">
 						<form className="flex flex-col h-full">
-							<label htmlFor="email" className="text-blue-800 font-semibold text-lg" style={{textShadow: "0px 2px 2px rgba(0, 0, 0, 0.25)"}}>Email</label>
-							<input className="w-full bg-gray-100 shadow-form p-4 rounded-sm mt-1 text-xl" id="email" type="text" name="email" placeholder="johndoe@gmail.com"/>
-							<label htmlFor="name" className="text-blue-800 font-semibold text-lg mt-8" style={{textShadow: "0px 2px 2px rgba(0, 0, 0, 0.25)"}}>Full Name</label>
-							<input className="w-full bg-gray-100 shadow-form p-4 rounded-sm mt-1 text-xl" id="email" type="text" name="email" placeholder="John Doe"/>
-							<label htmlFor="message" className="text-blue-800 font-semibold text-lg mt-8" style={{textShadow: "0px 2px 2px rgba(0, 0, 0, 0.25)"}}>Messages</label>
-							<textarea className="w-full bg-gray-100 shadow-form p-4 rounded-sm mt-1 text-xl h-full" id="message" name="message" placeholder="Say something here"/>
+							<label htmlFor="email" className="text-blue-800 font-semibold text-md xl:text-lg">Email</label>
+							<input className="w-full bg-[#FDFDFD] shadow-form p-4 rounded-md mt-1 text-lg xl:text-xl" id="email" type="text" name="email" placeholder="johndoe@gmail.com"/>
+							<label htmlFor="name" className="text-blue-800 font-semibold text-md xl:text-lg mt-8">Full Name</label>
+							<input className="w-full bg-[#FDFDFD] shadow-form p-4 rounded-md mt-1 text-lg xl:text-xl" id="email" type="text" name="email" placeholder="John Doe"/>
+							<label htmlFor="message" className="text-blue-800 font-semibold text-md xl:text-lg mt-8">Messages</label>
+							<textarea className="w-full bg-[#FDFDFD] shadow-form p-4 rounded-md mt-1 text-lg xl:text-xl h-full min-h-[12rem] xl:min-h-auto" id="message" name="message" placeholder="Say something here"/>
 							<button className='bg-blue-800 rounded-full text-white px-12 shadow-default inline-block mt-12 font-medium btn-anim2 whitespace-nowrap !w-full' data-text="SEND">{"LET'S GO".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</button>
 						</form>
 					</div>
 				</div>
-				<div className="w-min ml-32">
-					<h1 className="text-5xl font-semibold leading-[129%] whitespace-nowrap mb-8 mt-8" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
-						Wanna make <span className="text-blue-800">projects</span><br/>with me?
+				<div className="ml-32 max-w-[36rem] hidden xl:flex flex-col">
+					<h1 className="text-4xl md:text-5xl font-semibold !leading-[129%] mb-8 mt-8" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
+						Wanna make <span className="text-blue-800">projects</span> with me?
 					</h1>
-					<p className="text-xl mt-6 leading-[155.5%]">I’ll be really glad if somebody is willing to learn with me and make amazing projects at the mean time</p>
+					<p className="text-lg md:text-xl mt-6 !leading-[155.5%]">I’ll be really glad if somebody is willing to learn with me and make amazing projects at the mean time</p>
 					<img src={illu4} className="w-full"/>
 				</div>
 			</div>

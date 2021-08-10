@@ -5,6 +5,10 @@ import msc_cruises from "./msc cruises.png";
 import viking_cruises from "./viking cruises.png";
 import viking_ocean from "./viking ocean.png";
 import windstar_cruises from "./windstar cruises.png";
+import norwegian_cruise_line from "./norwegian cruise line.png";
+import celebrity_cruises from "./celebrity cruises.png";
+import costa_cruises from "./costa cruises.png";
+import princess_cruises from "./princess cruises.png";
 
 export {
 	royal_caribbean,
@@ -12,5 +16,9 @@ export {
 	msc_cruises,
 	viking_cruises,
 	viking_ocean,
-	windstar_cruises
+	windstar_cruises,
+	norwegian_cruise_line,
+	celebrity_cruises,
+	costa_cruises,
+	princess_cruises
 };

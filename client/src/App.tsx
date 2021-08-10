@@ -8,6 +8,7 @@ import Error404 from "./components/Error";
 import Database from "./components/Database";
 import Map from "./components/Map";
 import Ship from "./components/Ship";
+import DocumentTitle from "react-document-title";
 
 import "tailwindcss/tailwind.css";
 import "./style.scss";
@@ -19,6 +20,7 @@ export default function App(): JSX.Element {
 	return (
 		<>
 			<Nav className={pagename}/>
+			<DocumentTitle title={pagename[0] ? pagename[0].toUpperCase()+pagename.slice(1)+" - Cruisegator" : "Cruisegator"}/>
 			<main className={"container-fluid p-0 overflow-hidden "+pathname[pathname.length-1]} style={{
 				height: pagename==="map"?window.innerHeight:"auto", 
 				minHeight: pagename==="map"?"auto":"100vh"

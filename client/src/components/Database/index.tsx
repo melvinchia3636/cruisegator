@@ -35,14 +35,16 @@ export default function Database(): JSX.Element {
 			const data = await request && request?.data;
 			
 			setData(data);
-			setLoaded(true);
 
 			const local_exist: boolean[] = [];
 			for (let i = 0; i <= 1; i++) {
-				const request = await axios.get("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?page="+((page_num+i)*2+1)).catch(err => {throw err;});
+				const request = await axios.get("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?page="+((page_num+i)*2+1)).catch(err => console.log(err));
 				local_exist.push(request ? request.status !== 404 : false);
 			}
+			console.log(local_exist);
 			setExist(local_exist);
+
+			setLoaded(true);
 		}
 		fetchData();
 	}, [page_num]);
@@ -79,7 +81,7 @@ export default function Database(): JSX.Element {
                 Scroll Down
 				</a>
 			</div>
-			<div className="px-32 mt-[100vh] pb-24">
+			{loaded ? <div className="px-32 mt-[100vh] pb-24">
 				<div className="flex justify-between items-center">
 					<p className="text-2xl font-medium">Displaying 1-15 of 1465 result(s)</p>
 					<div className="flex gap-8">
@@ -95,7 +97,7 @@ export default function Database(): JSX.Element {
 						</button>
 					</div>
 				</div>
-				<div className='flex flex-col gap-6 mt-8'>
+				<div className='flex flex-col gap-6 mt-16'>
 					{data.map(e => <div className="p-8 rounded-lg flex justify-between relative" style={{ boxShadow: "0 2px 6px rgba(0, 0, 0, .25)" }} key={e.name}>
 						<div className="flex flex-col justify-between">
 							<div className="flex items-center gap-4">
@@ -121,7 +123,40 @@ export default function Database(): JSX.Element {
 						<a className="absolute top-0 left-0 w-full h-full" href={"./ship/"+e.link}></a>
 					</div>)}
 				</div>
-			</div>
+				<div className="flex items-center justify-center mt-12 text-xl">
+					<button className="w-10 h-10 flex justify-center items-center">
+						<svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M8 15L2 8.5L8 2" stroke="#4189DD" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"/>
+						</svg>
+					</button>
+					{page_num-2>1 ? 
+						<>
+							<a className='mx-2 flex items-center justify-center w-10 h-10' href={"/database?page=1"} key='1'>1</a>
+							<p className="w-10 h-10 flex items-center justify-center">...</p>
+						</>
+						: ""}
+					{Array(2).fill(0).map((_, i) => i).reverse().map(i => {
+						if (page_num-i-1 > 0) return <a className='mx-2 flex items-center justify-center w-10 h-10' href={`/database?page=${page_num-i-1}`} key={page_num-i-1}>{page_num-i-1}</a>;
+						return "";
+					})}
+					<a className='mx-4 bg-blue-800 text-white flex items-center justify-center rounded-md w-10 h-10' href={`/database?page=${page_num}`} key={page_num}>{page_num}</a>
+					{Array(2).fill(0).map((_, i) => {
+						if ((exist || [0, 0])[i]) return <a className='mx-2 flex items-center justify-center w-10 h-10' href={`/database?page=${page_num+i+1}`} key={page_num+i+1}>{page_num+i+1}</a>;
+						return "";
+					})}
+					{page_num+2<49 ? 
+						<>
+							<p className="w-10 h-10 flex items-center justify-center">...</p>
+							<a className='mx-2 flex items-center justify-center w-10 h-10' href={"/database?page=49"} key='49'>49</a>
+						</>
+						: ""}
+					<button className="w-10 h-10 flex justify-center items-center">
+						<svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M2 2L8 8.5L2 15" stroke="#4189DD" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"/>
+						</svg>
+					</button>
+				</div>
+			</div> : ""}
 		</>
 	);
 }

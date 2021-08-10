@@ -24,7 +24,7 @@ const Nav: React.FC<INavProps> = (): JSX.Element => {
 	console.log(pagename[0]+pagename.slice(1));
 
 	return <nav className="sticky top-0 left-0 z-[9999]">
-		<div className={"absolute top-0 left-0 w-screen h-screen transform overflow-hidden bg-white " + (!firstTime ? (isNavToggle ? "rounded-animation-on" : "rounded-animation-off") : "-translate-y-full")}>
+		<div className={`absolute top-0 left-0 w-screen h-screen transform overflow-hidden ${!firstTime ? (isNavToggle ? "rounded-animation-on" : "rounded-animation-off") : "-translate-y-full"} ${pagename === "database" ? "" : "bg-white"}`}>
 			{isNavToggle ? <Anime initial={[
 				{
 					targets: ".phone-nav li",

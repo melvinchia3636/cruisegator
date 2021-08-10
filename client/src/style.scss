@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-html, body, nav {
+html, body {
 	background: white
 }
 
@@ -113,7 +113,6 @@ $letters: 20;
 
 .btn-anim2 {
   padding: 18px;
-  width: 300px;
   text-align: center;
   cursor: pointer;
   position: relative;
@@ -171,7 +170,7 @@ textarea {
     resize:none;
 }
 
-input, textarea, button {
+input, textarea, button, select {
     &:is(:focus, :active) {
         outline: none;
         border: none

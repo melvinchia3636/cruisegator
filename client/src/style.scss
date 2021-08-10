@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 html, body, nav {
-	background: #f6f5f7
+	background: white
 }
 
 * {
@@ -9,18 +9,48 @@ html, body, nav {
 	font-family: Poppins;
 }
 
-nav .active {
-	position: relative;
+nav {
+    & > div > div > a {
+        position: relative;
 
-	&:after {
-		content: "";
-		background: #4189DD;
-		width: 100%;
-		height: 3px;
-		bottom: -2.3rem;
-		left: 0;
-		position: absolute
-	}
+        &:after {
+            content: "";
+            background: #4189DD;
+            width: 0;
+            height: 3px;
+            bottom: -2.3rem;
+            left: 0;
+            position: absolute;
+            transition: all 0.3s;
+        }
+
+        &.active, &:hover {
+            &:after {
+                width: 100%;
+            }
+        }
+    }
+
+    & li a {
+        position: relative;
+
+        &:after {
+            content: "";
+            background: #4189DD;
+            width: 0;
+            height: 3px;
+            bottom: -3px;
+            left: 0;
+            position: absolute;
+            transition: all 0.3s;
+        }
+
+        &.active, &:hover {
+            &:after {
+                width: 100%;
+            }
+        }
+    }
 }
 
 .btn:hover {
@@ -141,9 +171,69 @@ textarea {
     resize:none;
 }
 
-input, textarea {
+input, textarea, button {
     &:is(:focus, :active) {
         outline: none;
         border: none
     }
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+//1396:!flex-row 1170:!flex-col lg:!flex-row !flex-col
+
+.special {
+    flex-direction: row;
+}
+
+@media (max-width: 1396px) {
+    .special {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1170px) {
+    .special {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 1024px) {
+    .special {
+        flex-direction: column;
+    }
+}
+
+.rounded-animation-on {
+	animation: roundAnimationOn 1s cubic-bezier( 0.165, 0.84, 0.44, 1 )  0s forwards !important;
+}
+
+.rounded-animation-off {
+	animation: roundAnimationOff 1s cubic-bezier( 0.165, 0.84, 0.44, 1 )  0s forwards !important;
+}
+
+@keyframes roundAnimationOn {
+	0% {
+		transform: translateY(-100%)
+	}
+
+	100% {
+		transform: translateY(0)
+	}
+}
+
+@keyframes roundAnimationOff {
+	0% {
+		transform: translateY(0)
+	}
+
+	100% {
+		transform: translateY(-100%)
+	}
 }

@@ -18,8 +18,10 @@ module.exports = {
 				}
 			},
 			screens: {
+				"480": "480px",
 				"1170": "1170px",
 				"1396": "1396px",
+				"1440": "1440px",
 			},
 		},
 		fontFamily: {

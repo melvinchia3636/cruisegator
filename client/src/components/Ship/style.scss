@@ -1,56 +1,5 @@
 .ship {
 
-	& + footer {
-		margin-left: 25%
-	}
-	
-	& .sidebar {
-		box-shadow: 4px 0 4px -4px rgba(0, 0, 0, 0.3);
-
-		& a:before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: -4px;
-			width: 4px;
-			height: 100%;
-			background: white
-		}
-
-		& button {
-
-			&:hover {
-				background: rgba(0, 0, 0, 0.05) !important;
-				&:before {
-					height: 100%
-				}
-			}
-
-			&:before {
-				content: '';
-				position: absolute;
-				top: 0;
-				right: 0;
-				background: rgba(30, 64, 175, 1);
-				height: 0;
-				width: 4px;
-				transition: .3s
-			}
-			
-			&.active {
-				background: rgba(0, 0, 0, 0.05) !important;
-
-				&:before {
-					height: 100%
-				}
-			}
-		}
-	}
-
-	& h1 {
-		font-size: 2.4em;
-	}
-
 	& span {
 		width: .88em;
 		height: .88em;

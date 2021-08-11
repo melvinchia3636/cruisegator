@@ -28,7 +28,7 @@ export interface HomeportProps {
 }
 
 export interface ShipProps {
-	shipraw_data: Document[];
+	shipraw_data: Document;
 	overview_data: OverviewData;
 }
 

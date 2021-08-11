@@ -9,6 +9,8 @@ import norwegian_cruise_line from "./norwegian cruise line.png";
 import celebrity_cruises from "./celebrity cruises.png";
 import costa_cruises from "./costa cruises.png";
 import princess_cruises from "./princess cruises.png";
+import disney_cruise_line from "./disney cruise line.png";
+import cunard from "./cunard.png";
 
 export {
 	royal_caribbean,
@@ -20,5 +22,7 @@ export {
 	norwegian_cruise_line,
 	celebrity_cruises,
 	costa_cruises,
-	princess_cruises
+	princess_cruises,
+	disney_cruise_line,
+	cunard
 };

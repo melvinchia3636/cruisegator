@@ -10,11 +10,12 @@ const getData  = (): void => {
 		return "red";
 	};
 	if (overview_data.name) return;
-	const html: Document = shipraw_data[0];
-	const raw: string = (html.querySelectorAll("head script")[1].textContent?.match(/{.+}/) || ["{}"])[0].replaceAll("'", "\"");
+	const html: Document = shipraw_data;
+	const raw: string = (html.querySelectorAll("head script")[1]?.textContent?.match(/{.+}/) || ["{}"])[0].replaceAll("'", "\"");
 	const parser = require("really-relaxed-json").createParser();
 	const obj: string = parser.stringToJson(raw);
 	const json: RawJsonData = JSON.parse(obj);
+	if (!json.widgets) return;
 	const position_info: string = (html.querySelector(".currentItineraryInfo")?.textContent || "").replace(/\s+/gm, " ");
 	const currentLocation: string[] = position_info.match(/location (?:is|was) at (.*?)\(/) || [];
 	const currentCoordinates: string[] = position_info.match(/\(coordinates\s*((?:\d|\.|-)+\s*[N|E|S|W]\s*\/\s*(?:\d|\.|-)+\s*[N|E|S|W])\)/) || [];

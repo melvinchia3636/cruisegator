@@ -6,7 +6,7 @@ import { GalleryData } from "components/Ship/gallery/interface";
 
 export interface StateProps {
 	current_tab: number;
-	shipraw_data: Document[],
+	shipraw_data: Document,
 	overview_data: OverviewData,
 	specification_data: SpecificationData,
 	itineraries_data: ItinerariesData[] | "no data",

@@ -98,7 +98,7 @@ export default function Database(): JSX.Element {
 					</div>
 				</div>
 				<div className='flex flex-col gap-6 mt-16'>
-					{data.map(e => <div className="p-8 rounded-lg flex justify-between relative" style={{ boxShadow: "0 2px 6px rgba(0, 0, 0, .25)" }} key={e.name}>
+					{data.map(e => <div className="p-8 rounded-lg flex justify-between h-72 relative" style={{ boxShadow: "0 2px 6px rgba(0, 0, 0, .25)" }} key={e.name}>
 						<div className="flex flex-col justify-between">
 							<div className="flex items-center gap-4">
 								<img src={assetsMap[e.lines?.toLowerCase().replace(/\s/g, "_")||"royal_caribbean"]} className="w-12 h-12"/>
@@ -111,15 +111,23 @@ export default function Database(): JSX.Element {
 								<p className="flex items-center gap-3 text-2xl font-medium"><Icon icon={calendarMonthOutline} width="36"/>{e.cruise}</p>
 								<div className="flex gap-8">
 									<div className="flex items-center gap-3">
-										<Icon icon={timerSand} width="36"/>
+										<Icon icon={clockTimeEightOutline} width="36"/>
 										<div><p className="font-semibold text-gray-400 text-sm mb-1">Year built</p><p className="text-xl font-medium">{e.year}</p></div>
 									</div>
 									<div className="h-full w-[1px] bg-gray-200"></div>
-									<div><p className="font-semibold text-gray-400 text-sm mb-1">Age</p><p className="text-xl font-medium">{e.age?.split(" ")[2] || "0"} years old</p></div>
+									<div className="flex items-center gap-3">
+										<Icon icon={timerSand} width="36"/>
+										<div><p className="font-semibold text-gray-400 text-sm mb-1">Age</p><p className="text-xl font-medium">{e.age?.split(" ")[2] || "0"} years old</p></div>
+									</div>
+									<div className="h-full w-[1px] bg-gray-200"></div>
+									<div className="flex items-center gap-3">
+										<Icon icon={accountGroupOutline} width="36"/>
+										<div><p className="font-semibold text-gray-400 text-sm mb-1">Passengers</p><p className="text-xl font-medium">{e.passenger}</p></div>
+									</div>
 								</div>
 							</div>
 						</div>
-						<img src={e.image || ""} className="w-96 rounded-xl"/>
+						<img src={e.image || ""} className="w-96 rounded-xl object-cover"/>
 						<a className="absolute top-0 left-0 w-full h-full" href={"./ship/"+e.link}></a>
 					</div>)}
 				</div>

@@ -4,7 +4,7 @@ import { AnyAction } from "redux";
 
 const initialState: StateProps = {
 	current_tab: 0,
-	shipraw_data: [new Document()],
+	shipraw_data: new Document(),
 	overview_data: {
 		is_new: false,
 		name: "",

@@ -111,7 +111,7 @@ class Map extends React.Component<MapProps> {
 const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data }: ShipProps ) => {
 	const data = overview_data;
 
-	if (shipraw_data[0].querySelector("body")) getData();
+	if (shipraw_data.querySelector("body")) getData();
 	
 	return (
 		<div className='p-20 w-full h-screen overflow-hidden flex flex-col overview ml-1/4'>

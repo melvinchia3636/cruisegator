@@ -137,6 +137,16 @@ const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab, isTo
 const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, shipraw_data, ...props}: ShipRouteProps): JSX.Element => {
 	const [isToggleOn, setToggleOn] = useState(true);
 	const [data, setData] = useState<ShipHeaderProps>();
+
+	const options: string[] = [
+		"overview",
+		"specifications",
+		"itineraries",
+		"deckplans",
+		"cabins",
+		"reviews",
+		"gallery"
+	];
 	
 	const id = props.match.params.id;
 	const splitted_id: string[] = id.split("-");
@@ -186,6 +196,13 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, sh
 				<div className="bg-blue-800 px-8 py-6 absolute -bottom-8 left-32 min-w-[24rem] max-w-[28rem]">
 					<h2 className="mb-24 text-white text-3xl font-medium leading-[139%]">{data?.company}</h2>
 					<p className="text-xl text-white text-right"><span className={data?.country?.flag}></span>{data?.country?.name}</p>
+				</div>
+			</div>
+			<div className="flex justify-end mt-[100vh] mb-32 overflow-visible">
+				<div className="py-5 pl-0 pr-12 border-b-2 w-[90%] border-gray-200 overflow-visible">
+					<div className="flex justify-between gap-16 font-medium text-xl overflow-visible navbar">
+						{options.map((e, i) => <a className={active_tab === i ? "active" : ""} key={e}>{e[0].toUpperCase()+e.slice(1)}</a>)}
+					</div>
 				</div>
 			</div>
 			<div className={"w-full min-h-[90%] transition-all duration-500 overflow-hidden hidden "+(isToggleOn ? "xl:ml-[25%]" : "ml-0")}>

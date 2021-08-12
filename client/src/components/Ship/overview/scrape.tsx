@@ -9,7 +9,7 @@ const getData  = (): void => {
 		if (text.includes("hour")) return "yellow";
 		return "red";
 	};
-	if (overview_data.name) return;
+	if (overview_data.rating) return;
 	const html: Document = shipraw_data;
 	const raw: string = (html.querySelectorAll("head script")[1]?.textContent?.match(/{.+}/) || ["{}"])[0].replaceAll("'", "\"");
 	const parser = require("really-relaxed-json").createParser();
@@ -29,9 +29,6 @@ const getData  = (): void => {
 	const result: OverviewData = {
 		is_new: json.widgets?.shipNewsButton?.state || false,
 		rating: json.widgets.rating?.stars || 0,
-		name: html.querySelector("h1[itemprop=\"name\"]")?.textContent || "N/A",
-		company: html.querySelector("a.shipCompanyLink")?.textContent || "N/A",
-		image: "https://www.cruisemapper.com/"+(html.querySelector("img[itemprop=\"image\"]") as HTMLImageElement)?.src.replace(window.origin, "") || "",
 		homeports: [...html.querySelectorAll(".homeports a")].map(e => {
 			const content = e.textContent || "";
 			const bracket = content.match(/\(.*?\)/) || [];

@@ -34,9 +34,6 @@ export interface ShipProps {
 
 export interface OverviewData extends HomeportProps, RatingProps {
 	is_new: boolean,
-	name: string,
-	company: string,
-	image: string,
 	location: string,
 	coordinates: string,
 	destination: string,

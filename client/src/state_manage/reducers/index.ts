@@ -7,9 +7,6 @@ const initialState: StateProps = {
 	shipraw_data: new Document(),
 	overview_data: {
 		is_new: false,
-		name: "",
-		company: "",
-		image: "",
 		location: "",
 		coordinates: "",
 		destination: "",

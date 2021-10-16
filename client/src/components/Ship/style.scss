@@ -75,10 +75,10 @@
 
 	& .st {
 		& > div {
-			border-bottom: 2px solid #eeeeee;
+			border-bottom: 2px solid #CACFD5;
 	
-			& > div {
-				color: #555555;
+			& > div:first-child {
+				color: #8E959E;
 				font-size: 1.1em;
 			}
 		}

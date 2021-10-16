@@ -1,6 +1,4 @@
 import "./style.scss";
-import Icon from "@iconify/react";
-import { IconifyIcon } from "@iconify/types";
 import { RouteComponentProps } from "react-router-dom";
 import { changeTab, setShiprawData } from  "../../state_manage/actions";
 import { connect } from "react-redux";
@@ -8,14 +6,6 @@ import { Dispatch } from "redux";
 import axios, { AxiosResponse } from "axios";
 import React, { useEffect, useState } from "react";
 
-import { ChevronRight } from "react-feather";
-import appsList20Regular from "@iconify-icons/fluent/apps-list-20-regular";
-import settings28Regular from "@iconify-icons/fluent/settings-28-regular";
-import conferenceRoom28Regular from "@iconify-icons/fluent/conference-room-28-regular";
-import calendarLtr28Regular from "@iconify-icons/fluent/calendar-ltr-28-regular";
-import commentMultiple20Regular from "@iconify-icons/fluent/comment-multiple-20-regular";
-import layer20Regular from "@iconify-icons/fluent/layer-20-regular";
-import imageMultiple20Regular from "@iconify-icons/fluent/image-multiple-20-regular";
 import "flag-icon-css/sass/flag-icon.scss";
 
 import Overview from "./overview";
@@ -27,22 +17,15 @@ import DeckPlans from "./deckplans";
 
 import { StateProps } from "../../state_manage/interface";
 
-interface SidebarProps {
-	active_tab: number;
-	changeTab: (newtab: number) => {
-		type: string;
-		payload: number;
-	},
-	isToggleOn: any,
-	setToggleOn: any
-}
-
 interface ShipRouteProps extends RouteComponentProps<{id: string}> {
-	shipraw_data: Document;
 	active_tab: number;
 	setShiprawData: (shipraw_data: Document) => {
 		type: string;
 		payload: Document;
+	},
+	changeTab: (newtab: number) => {
+		type: string;
+		payload: number;
 	}
 }
 
@@ -80,62 +63,14 @@ const mapStateToProps = (state: StateProps) => {
 	};
 };
 
-const SidebarMapDispatchToProps = (dispatch: Dispatch) => {
+const MainMapDispatchToProps = (dispatch: Dispatch) => {
 	return {
+		setShiprawData: (shipraw_data: Document) => dispatch(setShiprawData(shipraw_data)),
 		changeTab: (newtab: number) => dispatch(changeTab(newtab))
 	};
 };
 
-const MainMapDispatchToProps = (dispatch: Dispatch) => {
-	return {
-		setShiprawData: (shipraw_data: Document) => dispatch(setShiprawData(shipraw_data))
-	};
-};
-
-const ConnectedSidebar: React.FC<SidebarProps> = ( { active_tab, changeTab, isToggleOn, setToggleOn }: SidebarProps ): JSX.Element => {
-
-	const options: [IconifyIcon, string, boolean?][] = [
-		[appsList20Regular, "overview"],
-		[settings28Regular, "specifications"],
-		[calendarLtr28Regular, "itineraries"],
-		[layer20Regular, "deck plans"],
-		[conferenceRoom28Regular, "cabins"],
-		[commentMultiple20Regular, "reviews"],
-		[imageMultiple20Regular, "gallery"]
-	];
-
-	useEffect(() => {
-		window.onresize = () => {
-			if (window.innerWidth >= 1280) {
-				setToggleOn(true);
-				return;
-			}
-			setToggleOn(false);
-		};
-	}, []);
-
-	options[active_tab].push(true);
-	
-	return (
-		<div className={`flex flex-col justify-center text-xl ${isToggleOn ? "w-[350px] xl:w-1/4" : "!w-0"} transition-all duration-500 bg-white z-[10] xl:w-1/4 sidebar h-full fixed`}>
-			<a className="absolute cursor-pointer xl:hidden bg-white top-50 right-0 transform -translate-y-1/2 translate-x-full py-6 rounded-r-md" style={{boxShadow: "0 0 4px rgba(0, 0, 0, 0.3), -6px 0 4px #FFFFFF"}} onClick={() => setToggleOn(!isToggleOn)}>
-				<ChevronRight />
-			</a>
-			<div className="overflow-hidden">
-				{options.map(
-					([icon, text, is_active], index) => 
-						<button key={text} className={"w-full transition-all duration-300 relative uppercase bg-white border-0 pl-20 flex items-center text-lg font-medium py-6 whitespace-nowrap "+(is_active ? "active": "")} data-tabid={index} onClick={(e) => {changeTab(parseInt((e.target as HTMLAnchorElement).dataset.tabid || "0"));}}>
-							<Icon icon={icon} width="28" className='mr-3 min-w-[28px]'/>
-							{text}
-						</button>
-				)}
-			</div>
-		</div>
-	);
-};
-
-const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, shipraw_data, ...props}: ShipRouteProps): JSX.Element => {
-	const [isToggleOn, setToggleOn] = useState(true);
+const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, changeTab, ...props}: ShipRouteProps): JSX.Element => {
 	const [data, setData] = useState<ShipHeaderProps>();
 
 	const options: string[] = [
@@ -201,7 +136,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, sh
 			<div className="flex justify-end mt-[100vh] mb-12 overflow-visible">
 				<div className="py-5 pl-0 pr-12 border-b-2 w-[90%] border-gray-200 overflow-visible">
 					<div className="flex justify-between gap-16 font-medium text-xl overflow-visible navbar">
-						{options.map((e, i) => <a className={active_tab === i ? "active" : ""} key={e}>{e[0].toUpperCase()+e.slice(1)}</a>)}
+						{options.map((e, i) => <a className={active_tab === i ? "active" : ""} key={e} onClick={() => changeTab(i)}>{e[0].toUpperCase()+e.slice(1)}</a>)}
 					</div>
 				</div>
 			</div>
@@ -224,7 +159,6 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, sh
 	);
 };
 
-const Sidebar = connect(null, SidebarMapDispatchToProps)(ConnectedSidebar);
 const Ship = connect(mapStateToProps, MainMapDispatchToProps)(ConnectedShip);
 
 export default Ship;

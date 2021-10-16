@@ -49,7 +49,7 @@
     "worker-loader": "^3.0.8"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "set PORT=80 && craco start",
     "build": "set \"GENERATE_SOURCEMAP=false\" && craco build",
     "test": "craco test",
     "eject": "react-scripts eject"

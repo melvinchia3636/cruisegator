@@ -76,7 +76,7 @@ export default function Homepage(): JSX.Element {
 				</h1>
 				<p className="text-center text-xl md:text-2xl mt-6">A not really small project made by a normal guy... Yeah pretty normal</p>
 				<div className="mt-16 md:mt-24 grid gap-8 1396:gap-16 sm:grid-cols-[repeat(auto-fit,minmax(350px,1fr))]">
-					<div className="shadow-gridbox flex p-12 flex-col items-center justify-center">
+					<div className="shadow-gridbox flex p-12 flex-col items-center justify-center bg-white">
 						<div className="bg-blue-600 rounded-full p-4 w-min">
 							<svg width="59" height="59" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M47.9375 3.6875H11.0625C10.0427 3.6875 9.21875 4.51143 9.21875 5.53125V53.4688C9.21875 54.4886 10.0427 55.3125 11.0625 55.3125H47.9375C48.9573 55.3125 49.7812 54.4886 49.7812 53.4688V5.53125C49.7812 4.51143 48.9573 3.6875 47.9375 3.6875ZM13.3672 7.83594H45.6328V19.8203H13.3672V7.83594ZM45.6328 35.4922H13.3672V23.5078H45.6328V35.4922ZM45.6328 51.1641H13.3672V39.1797H45.6328V51.1641ZM17.5156 13.8281C17.5156 14.4394 17.7584 15.0256 18.1907 15.4578C18.6229 15.89 19.2091 16.1328 19.8203 16.1328C20.4316 16.1328 21.0178 15.89 21.45 15.4578C21.8822 15.0256 22.125 14.4394 22.125 13.8281C22.125 13.2169 21.8822 12.6307 21.45 12.1985C21.0178 11.7663 20.4316 11.5234 19.8203 11.5234C19.2091 11.5234 18.6229 11.7663 18.1907 12.1985C17.7584 12.6307 17.5156 13.2169 17.5156 13.8281ZM17.5156 29.5C17.5156 30.1112 17.7584 30.6974 18.1907 31.1297C18.6229 31.5619 19.2091 31.8047 19.8203 31.8047C20.4316 31.8047 21.0178 31.5619 21.45 31.1297C21.8822 30.6974 22.125 30.1112 22.125 29.5C22.125 28.8888 21.8822 28.3026 21.45 27.8703C21.0178 27.4381 20.4316 27.1953 19.8203 27.1953C19.2091 27.1953 18.6229 27.4381 18.1907 27.8703C17.7584 28.3026 17.5156 28.8888 17.5156 29.5ZM17.5156 45.1719C17.5156 45.7831 17.7584 46.3693 18.1907 46.8015C18.6229 47.2337 19.2091 47.4766 19.8203 47.4766C20.4316 47.4766 21.0178 47.2337 21.45 46.8015C21.8822 46.3693 22.125 45.7831 22.125 45.1719C22.125 44.5606 21.8822 43.9744 21.45 43.5422C21.0178 43.11 20.4316 42.8672 19.8203 42.8672C19.2091 42.8672 18.6229 43.11 18.1907 43.5422C17.7584 43.9744 17.5156 44.5606 17.5156 45.1719Z" fill="#4189DD"/>
@@ -85,7 +85,7 @@ export default function Homepage(): JSX.Element {
 						<h2 className="font-medium mt-9 text-2xl">Well Formed Data</h2>
 						<p className="mt-6 text-lg text-center">Presenting data scraped from other websites in a good way</p>
 					</div>
-					<div className="shadow-gridbox inline-flex p-12 flex-col items-center justify-center">
+					<div className="shadow-gridbox inline-flex p-12 flex-col items-center justify-center bg-white">
 						<div className="bg-blue-600 rounded-full p-4 w-min">
 							<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M35 11.3667C29.8248 11.3647 24.7921 13.0614 20.6745 16.1963C16.5568 19.3313 13.5821 23.7312 12.2069 28.7204C10.8318 33.7096 11.1324 39.0122 13.0625 43.8141C14.9926 48.6159 18.4455 52.6515 22.891 55.3011L23.1969 55.4833L23.3246 55.151L27.6413 43.9248L27.7169 43.7281L27.5576 43.5903C25.8048 42.0736 24.5578 40.0571 23.9838 37.8115C23.4097 35.5658 23.5361 33.1983 24.346 31.0265C25.1559 28.8547 26.6106 26.9825 28.5149 25.6611C30.4191 24.3396 32.682 23.6321 34.9999 23.6334L35.0003 23.6334C37.3184 23.6315 39.5817 24.3386 41.4864 25.6598C43.3911 26.9811 44.8462 28.8532 45.6565 31.0252C46.4667 33.1971 46.5934 35.5648 46.0194 37.8108C45.4455 40.0567 44.1983 42.0734 42.4454 43.5903L42.2863 43.728L42.3616 43.9245C43.5489 47.0221 44.6288 49.8306 45.5978 52.3508C45.9738 53.3285 46.333 54.2629 46.6754 55.1539L46.8031 55.4862L47.109 55.304C51.556 52.6551 55.0103 48.6194 56.9413 43.817C58.8724 39.0145 59.1734 33.7109 57.7982 28.7208C56.4229 23.7307 53.4474 19.3301 49.3287 16.195C45.2101 13.0599 40.1761 11.3636 35 11.3667ZM35 11.3667C35 11.3667 34.9999 11.3667 34.9999 11.3667L35 11.6667L35.0002 11.3667C35.0001 11.3667 35.0001 11.3667 35 11.3667ZM43.8839 62.4716L35.6601 41.0909C37.0836 40.9271 38.4109 40.2728 39.4097 39.2335C40.5036 38.0951 41.1203 36.5812 41.1334 35.0025V35.0001C41.1335 33.7978 40.7804 32.622 40.1178 31.6189C39.4551 30.6157 38.5123 29.8294 37.4064 29.3577C36.3006 28.886 35.0805 28.7497 33.8978 28.9658C32.7151 29.1818 31.622 29.7407 30.7544 30.5729C29.8867 31.4052 29.2828 32.4741 29.0177 33.6467C28.7526 34.8194 28.8379 36.0441 29.2632 37.1686C29.6884 38.2932 30.4348 39.2679 31.4095 39.9717C32.2722 40.5947 33.2801 40.981 34.3332 41.0962L26.1134 62.4713L25.731 62.3455C25.7306 62.3454 25.7302 62.3453 25.7298 62.3451C20.0156 60.407 15.0522 56.727 11.5373 51.8225C8.02211 46.9176 6.13227 41.0345 6.13337 35.0001V35C6.13337 19.057 19.057 6.13337 35 6.13337C50.9431 6.13337 63.8667 19.057 63.8667 35C63.8667 47.7004 55.6668 58.4849 44.2707 62.345C44.2702 62.3451 44.2697 62.3453 44.2692 62.3455L43.8839 62.4716Z" fill="#4189DD" stroke="#C0D3EA" strokeWidth="0.6"/>
@@ -94,7 +94,7 @@ export default function Homepage(): JSX.Element {
 						<h2 className="font-medium mt-9 text-2xl">Fully Open Source</h2>
 						<p className="mt-6 text-lg text-center">Explore the source code, do contribution to make it better</p>
 					</div>
-					<div className="shadow-gridbox inline-flex p-12 flex-col items-center justify-center">
+					<div className="shadow-gridbox inline-flex p-12 flex-col items-center justify-center bg-white">
 						<div className="bg-blue-600 rounded-full p-4 w-min">
 							<svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M49.8438 6.34375H8.15625C7.15371 6.34375 6.34375 7.15371 6.34375 8.15625V49.8438C6.34375 50.8463 7.15371 51.6562 8.15625 51.6562H49.8438C50.8463 51.6562 51.6562 50.8463 51.6562 49.8438V8.15625C51.6562 7.15371 50.8463 6.34375 49.8438 6.34375ZM10.4219 10.4219H18.125V47.5781H10.4219V10.4219ZM47.5781 47.5781H21.75V21.75H47.5781V47.5781ZM21.75 18.125V10.4219H47.5781V18.125H21.75Z" fill="#4189DD"/>
@@ -169,7 +169,7 @@ export default function Homepage(): JSX.Element {
 						<span className="text-blue-800">Technologies</span> used<br/>in this project
 					</h1>
 					<p className="text-xl text-center xl:text-left w-full xl:w-8/12">A total of 4 different technologies and languages has been used for this project.</p>
-					<a className='bg-blue-800 rounded-full text-white px-12 shadow-default inline-block mt-12 font-medium btn-anim2 whitespace-nowrap w-max' data-text="VIEW REPOSITORY" href="https://github.com/melvinchia3636/cruisegator">{"GOTO GITHUB".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</a>
+					<a className='bg-blue-800 rounded-full text-white shadow-default mt-12 font-medium btn-anim2 !px-24 whitespace-nowrap' data-text="VIEW REPOSITORY" href="https://github.com/melvinchia3636/cruisegator">{"GOTO GITHUB".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</a>
 				</div>
 				<div className="grid w-full sm:w-auto sm:grid-cols-2 items-center gap-4 mt-4 xl:mt-0" style={{gridAutoRows: "1fr"}}>
 					<div className="shadow-gridbox rounded-[4px] bg-white p-6 h-full flex flex-col justify-between">
@@ -227,8 +227,8 @@ export default function Homepage(): JSX.Element {
 				Upgrade to <span className="text-blue-800">Premium</span> with affordable price
 				</h1>
 				<p className="text-center text-xl md:text-2xl mt-12">This is just a decoration. I don’t want your money.</p>
-				<div className="mt-12 xl:mt-24 flex items-center justify-center flex-col xl:flex-row gap-6 xl:gap-0">
-					<div className="rounded-r-lg xl:rounded-r-none rounded-l-lg p-6 w-full xl:w-96 shadow-default">
+				<div className="mt-12 xl:mt-24 flex items-center justify-center flex-col xl:flex-row gap-6 xl:gap-0 ">
+					<div className="rounded-r-lg xl:rounded-r-none rounded-l-lg bg-white p-6 w-full xl:w-96 shadow-default">
 						<p className="font-medium text-2xl mt-4">Basic</p>
 						<h2 className="text-blue-800 font-semibold text-7xl my-6">$9 <span className="text-blue-800 text-2xl">/ month</span></h2>
 						<p className="text-lg">Wanna buy me a coffee in order for me to more projects?</p>
@@ -283,7 +283,7 @@ export default function Homepage(): JSX.Element {
 						</div>
 						<a className="w-full py-4 bg-white rounded-lg flex justify-center text-center font-semibold text-xl text-blue-800 shadow-default">Get started</a>
 					</div>
-					<div className="rounded-l-lg xl:rounded-l-none rounded-r-lg p-6 w-full xl:w-96 shadow-default">
+					<div className="rounded-l-lg xl:rounded-l-none bg-white rounded-r-lg p-6 w-full xl:w-96 shadow-default">
 						<p className="font-medium text-2xl mt-4">Enterprise</p>
 						<h2 className="text-blue-800 font-semibold text-7xl my-6">$59 <span className="text-blue-800 text-2xl">/ month</span></h2>
 						<p className="text-lg">Are you still finding a way to spend your money? XD</p>
@@ -342,7 +342,7 @@ export default function Homepage(): JSX.Element {
 			<div className="px-8 sm:px-16 md:px-32 py-28 w-100 flex justify-between flex-col xl:flex-row">
 				<div className="flex flex-col items-center xl:hidden lg:px-32 mb-12">
 					<h1 className="text-4xl md:text-5xl font-semibold !leading-[129%] mb-8 mt-8 text-center xl:text-left" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
-						Wanna make <span className="text-blue-800">projects</span> with me?
+						Wanna build <span className="text-blue-800">projects</span> with me?
 					</h1>
 					<p className="text-lg md:text-xl mt-6 !leading-[155.5%] text-center">I’ll be really glad if somebody is willing to learn with me and make amazing projects at the mean time</p>
 				</div>

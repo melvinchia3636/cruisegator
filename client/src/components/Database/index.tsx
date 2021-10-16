@@ -86,19 +86,19 @@ export default function Database(): JSX.Element {
 					<p className="text-2xl font-medium">Displaying 1-15 of 1465 result(s)</p>
 					<div className="flex gap-8">
 						<button className="bg-blue-800 rounded-md shadow-default p-2">
-							<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<svg width="32" height="32" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M5.25 8.75V33.25H36.75V8.75H5.25ZM12.25 12.25V15.75H8.75V12.25H12.25ZM8.75 22.75V19.25H12.25V22.75H8.75ZM8.75 26.25H12.25V29.75H8.75V26.25ZM33.25 29.75H15.75V26.25H33.25V29.75ZM33.25 22.75H15.75V19.25H33.25V22.75ZM33.25 15.75H15.75V12.25H33.25V15.75Z" fill="#F6F5F7"/>
 							</svg>
 						</button>
 						<button>
-							<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M5 5V18.3333H18.3333V5H5ZM15 15H8.33333V8.33333H15V15ZM5 21.6667V35H18.3333V21.6667H5ZM15 31.6667H8.33333V25H15V31.6667ZM21.6667 5V18.3333H35V5H21.6667ZM31.6667 15H25V8.33333H31.6667V15ZM21.6667 21.6667V35H35V21.6667H21.6667ZM31.6667 31.6667H25V25H31.6667V31.6667Z" fill="#4189DD"/>
 							</svg>
 						</button>
 					</div>
 				</div>
-				<div className='flex flex-col gap-6 mt-16'>
-					{data.map(e => <div className="p-8 rounded-lg flex justify-between h-72 relative" style={{ boxShadow: "0 2px 6px rgba(0, 0, 0, .25)" }} key={e.name}>
+				<div className='flex flex-col gap-4 mt-16'>
+					{data.map(e => <div className="p-8 rounded-lg flex justify-between h-72 bg-white relative" style={{ boxShadow: "0 2px 8px rgba(0, 0, 0, .15)" }} key={e.name}>
 						<div className="flex flex-col justify-between">
 							<div className="flex items-center gap-4">
 								<img src={assetsMap[e.lines?.toLowerCase().replace(/\s/g, "_")||"royal_caribbean"]} className="w-12 h-12"/>

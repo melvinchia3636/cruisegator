@@ -47,7 +47,7 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 	};
 
 	useEffect(() => {
-		axios.get("https://api.cruisegator.thecodeblog.net/ship/specifications/"+id).then(res => {
+		if (!specification_data) axios.get("https://api.cruisegator.thecodeblog.net/ship/specifications/"+id).then(res => {
 			const data = res && res?.data;
 			setSpecificationData(data || {});
 		}).catch(() => null);

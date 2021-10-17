@@ -36,17 +36,17 @@ const CabinDiagram: React.FC<{ diagram: CabinsData["diagram"] }> = ({ diagram }:
 	return <LazyLoad 
 		debounce={10}
 		placeholder={<img src="https://via.placeholder.com/250x150/FFFFFF/666666?text=%20"/>}
-		style={{ width: "50%" }}
+		style={{ height: "200px" }}
 	>
-		<img src={diagram.thumb} className="w-full" onError={(e)=>{
+		<img src={diagram.thumb} style={{height: "200px"}} onError={(e)=>{
 			(e.target as HTMLImageElement).onerror = null; 
-			(e.target as HTMLImageElement).src="https://via.placeholder.com/250x150/FFFFFF/666666?text=N/A";
+			(e.target as HTMLImageElement).src="https://via.placeholder.com/200x150/FFFFFF/666666?text=N/A";
 		}}/>
 	</LazyLoad>;
 };
 
 const CabinCategories: React.FC<{ categories: CabinsData["categories"] }> = ({ categories }: { categories: CabinsData["categories"]}): JSX.Element => {
-	return <div className="flex pt-3 pb-9 flex-wrap">
+	return <div className="flex mb-6 flex-wrap justify-center w-full">
 		{categories.map(e => <span key={e.name} style={{background: e.background.replace("..", "https://www.cruisedeckplans.com/DP") }} className="ctg px-5 mr-2 mb-2 text-white rounded-full whitespace-nowrap py-1 shadow-inner text-sm">
 			{e.name}
 		</span>)}
@@ -70,12 +70,12 @@ const CabinImages: React.FC<{ image: CabinsData["image"] }> = ({ image }: { imag
 
 const MetaTable: React.FC<{e: CabinsData}> = ({e}: {e: CabinsData}): JSX.Element => {
 	return <div className="text-left grid grid-cols-2 whitespace-nowrap">
-		<div className='pr-64 text-gray-600 font-medium border-b-2 py-2 pl-2'>Sleep up to</div>
-		<div className="border-b-2 py-2 text-right pr-2">{e.capacity}</div>
-		<div className="text-gray-600 font-medium border-b-2 py-2 pl-2">Amount</div>
-		<div className="border-b-2 py-2 text-right pr-2">{e.amount}</div>
-		<div className="text-gray-600 font-medium border-b-2 py-2 pl-2">Cabin</div>
-		<div className="border-b-2 py-2 text-right pr-2">{e.room_sqft} sqft ({e.room_m2} m<sup>2</sup>)</div>
+		<div className='pr-64 text-gray-600 font-medium border-b-2 border-gray-300 py-2 pl-2'>Sleep up to</div>
+		<div className="border-b-2 border-gray-300 py-2 text-right pr-2">{e.capacity}</div>
+		<div className="text-gray-600 font-medium border-b-2 border-gray-300 py-2 pl-2">Amount</div>
+		<div className="border-b-2 border-gray-300 py-2 text-right pr-2">{e.amount}</div>
+		<div className="text-gray-600 font-medium border-b-2 border-gray-300 py-2 pl-2">Cabin</div>
+		<div className="border-b-2 border-gray-300 py-2 text-right pr-2">{e.room_sqft} sqft ({e.room_m2} m<sup>2</sup>)</div>
 		<div className="text-gray-600 font-medium py-2 pl-2">Balcony</div>
 		<div className="py-2 text-right pr-2">{e.balcony_sqft} sqft ({e.balcony_m2} m<sup>2</sup>)</div>
 	</div>;
@@ -151,7 +151,7 @@ const Perks: React.FC<{ perks: CabinsData["perks"] }> = ({ perks: perks }: { per
 
 const MoreDetails: React.FC<{ e: CabinsData, i: number }> = ({ e, i }: { e: CabinsData, i: number }): JSX.Element => {
 	return <div className="overflow-hidden transition-all duration-300 mb-10 md:mb-0" style={{height: e.state}}>
-		<div className="w-100 p-4 pt-8 md:p-8 mt-3 mb-12 flex flex-col justify-center" id={"c-"+i}>
+		<div className="w-full p-4 pt-8 md:p-8 mt-3 mb-12 flex flex-col justify-center" id={"c-"+i}>
 			<Location location={e.location}/>
 			<Features features={e.features}/>
 			<SizeInfo size_info={ e.important_size_info }/>
@@ -162,23 +162,22 @@ const MoreDetails: React.FC<{ e: CabinsData, i: number }> = ({ e, i }: { e: Cabi
 };
 
 const CabinCard: React.FC<{e: CabinsData, i: number}> = ({e, i}: {e: CabinsData, i: number}): JSX.Element => {
-	return <div key={i} className="w-100 pb-4 my-3 flex flex-col justify-center rounded-xl" style={{boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.3)"}}>
-		<div className="flex flex-col lg:flex-row items-center p-8">
+	return <div key={i} className="w-full flex bg-white flex-col justify-center rounded-xl" style={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}}>
+		<div className="flex flex-col items-center p-8">
 			<CabinDiagram diagram={e.diagram}/>
 			<div className="flex flex-col md:flex-row h-100 mt-6 lg:mt-0">
-				<div className="flex items-start h-100 flex-col justify-start lg:ml-12 pt-5">
-					<h2 className="font-medium text-3xl text-blue-800">{e.name}</h2>
+				<div className="flex items-start h-100 flex-col justify-start pt-5">
+					<h2 className="font-medium text-3xl mt-9 mb-3 text-blue-800 text-center w-full">{e.name}</h2>
 					<CabinCategories categories={ e.categories }/> 
 					<MetaTable e={e}/>
 				</div>
-				<CabinImages image={ e.image }/>
 			</div>
 		</div>
-		<MoreDetails e={e} i={i}/>
+		{/*<MoreDetails e={e} i={i}/>
 		<button className="flex flex-col items-center text-medium text-center text-gray-600" onClick={() => e.setState(e.state ? 0 : document.querySelector("#c-"+i)?.clientHeight)}>
 			{(e.state ? "Hide" : "More") + " Details"}
 			<ChevronDown width={18} style={{marginTop: -5}} className={"transition-all transform " + (e.state ? "rotate-180" : "")}/>
-		</button>
+		</button>*/}
 	</div>;
 };
 
@@ -194,11 +193,7 @@ const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, id, setCabinsData
 	data.forEach(e => [e.state, e.setState] = useState(0));
 
 	return (
-		<div className='p-10 md:p-20 !pt-32 w-full flex flex-col'>
-			<div className='mb-10'>
-				<h1 className='uppercase !text-[2.4em]'>Staterooms and Suites</h1>
-				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
-			</div>
+		<div className='p-10 md:px-32 w-full grid grid-cols-3 gap-4'>
 			{data ? data.map((e, i) => <CabinCard e={e} i={i} key={i}/>) : ""}
 		</div>
 	);

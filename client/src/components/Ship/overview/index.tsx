@@ -1,19 +1,15 @@
 import mapboxgl from "mapbox-gl";
-import Icon from "@iconify/react";
 import { connect } from "react-redux";
-import React from "react";
+import React, { useEffect } from "react";
 
-import briefcaseLine from "@iconify/icons-clarity/briefcase-line";
-import anchorIcon from "@iconify/icons-simple-line-icons/anchor";
-import locationIcon from "@iconify/icons-carbon/location";
-import crossroadsIcon from "@iconify/icons-carbon/crossroads";
-import topSpeed24Regular from "@iconify-icons/fluent/top-speed-24-regular";
-import { setOverviewData } from "state_manage/actions";
+import { changeTab, setOverviewData, setSpecificationData } from "state_manage/actions";
 import { getData } from "./scrape";
 
-import { ShipProps, MapProps, RatingProps, HomeportProps, OverviewData } from "./interface";
+import { ShipProps, MapProps, OverviewData } from "./interface";
 import { StateProps } from "../../../state_manage/interface";
 import { Dispatch } from "redux";
+import { SpecificationData } from "../specifications/interface";
+import axios from "axios";
 
 const colorMap = {
 	red: "#EF4444",
@@ -23,6 +19,7 @@ const colorMap = {
 
 const mapStateToProps = (state: StateProps) => {
 	return {
+		specification_data: state.specification_data,
 		overview_data: state.overview_data,
 		shipraw_data: state.shipraw_data
 	};
@@ -30,38 +27,10 @@ const mapStateToProps = (state: StateProps) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
 	return {
-		setOverviewData: (data: OverviewData) => dispatch(setOverviewData(data))
+		setSpecificationData: (data: SpecificationData) => dispatch(setSpecificationData(data)),
+		setOverviewData: (data: OverviewData) => dispatch(setOverviewData(data)),
+		changeTab: (newtab: number) => dispatch(changeTab(newtab))
 	};
-};
-
-const Rating: React.FC<RatingProps> = ( { rating }: RatingProps ): JSX.Element => {
-	return (
-		<div className='flex' >
-			{[...Array(rating)].map(()=><span className='border-blue-800 block border-2 rounded-full bg-blue-800 mx-1' key={Math.random()}></span>)}
-			{[...Array(5-(rating || 5))].map(()=><span className='border-blue-800 border-2 block rounded-full mx-1' key={Math.random()}></span>)}
-		</div>
-	);
-};
-
-const Homeport: React.FC<HomeportProps> = ( { homeports }: HomeportProps ): JSX.Element => {
-	return (
-		<div style={{marginTop: "2em"}}>
-			<h2 className='text-xl flex items-center'><Icon icon={anchorIcon} style={{fontSize: "20px"}} className='mr-2'/>Homeport</h2>
-			{homeports.length > 0 ? 
-				homeports.slice(0, 2).map(
-					({icon, text}) => 
-						<div className='flex items-end mb-2' key={text[0]}>
-							<div className='flex items-center'>
-								<span className={icon}></span>
-								<h3 className='text-2xl flex items-end m-0'>{text[1]}</h3>
-							</div>
-							<h6 className='ml-2 font-poppins'>{text[0]}</h6>
-						</div>
-				) 
-				:<h3 className='fs-4 fw-normal d-flex align-items-end m-0 mt-3'>N/A</h3>
-			}
-		</div>
-	);
 };
 
 class Map extends React.Component<MapProps> {
@@ -108,10 +77,21 @@ class Map extends React.Component<MapProps> {
 	}
 }
 
-const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data }: ShipProps ) => {
+const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, changeTab, id, specification_data, setSpecificationData }: ShipProps ) => {
 	const data = overview_data;
 
+	useEffect(() => {
+		axios.get("https://api.cruisegator.thecodeblog.net/ship/specifications/"+id).then(res => {
+			const data = res && res?.data;
+			console.log(data);
+			setSpecificationData(data || {});
+		}).catch(() => null);
+	}, []);
+
 	if (shipraw_data.querySelector("body")) getData();
+
+	const rows = shipraw_data.querySelector(".specificationTable table")?.querySelectorAll("tr") || [];
+	const size_data = Array.from(rows).slice(rows.length-3, rows.length).map(e => e.querySelector("td:last-child")?.textContent?.split("/")[0].trim());
 	
 	return (
 		<div className='px-32 mb-32 mt-16 w-full overflow-hidden flex flex-col overview'>
@@ -121,7 +101,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data }
 						Some <span className="text-blue-800">size information</span><br/>about the ship
 					</h1>
 					<p className="text-xl w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-					<a className="font-semibold text-xl xl:text-2xl text-blue-800 flex items-center mt-10">See specifications
+					<a onClick={() => changeTab(1)} className="font-semibold text-xl xl:text-2xl cursor-pointer text-blue-800 flex items-center mt-10">See specifications
 						<svg className="ml-4 mt-0.5 hidden xl:block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 							<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
@@ -135,16 +115,16 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data }
 				<div className="flex flex-col items-center gap-20">
 					<div className="flex gap-24">
 						<div>
-							<p className="font-semibold text-7xl text-center">49m</p>
+							<p className="font-semibold text-7xl text-center">{specification_data.specification_data["Beam (width)"]?.split("/")[0]?.trim() || "N/A"}</p>
 							<p className="font-semibold text-xl text-blue-800 mt-2 text-center">Height</p>
 						</div>
 						<div>
-							<p className="font-semibold text-7xl text-center">348m</p>
+							<p className="font-semibold text-7xl text-center">{specification_data.specification_data["Length (LOA)"]?.split("/")[0]?.trim() || "N/A"}</p>
 							<p className="font-semibold text-xl text-blue-800 mt-2 text-center">Width</p>
 						</div>
 					</div>
 					<div>
-						<p className="font-semibold text-7xl text-center">167,800 gt</p>
+						<p className="font-semibold text-7xl text-center">{parseInt(specification_data.specification_data["Gross Tonnage"]|| "")?.toLocaleString()+" gt" || "N/A"}</p>
 						<p className="font-semibold text-xl text-blue-800 mt-2 text-center">Gross tonnage</p>
 					</div>
 				</div>

@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
 	const page_num = parseInt(req.params.page);
 	
 	for (let i = page_num*2-1; i <= page_num*2; i++) {
-		const request = await axios.get("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?page="+i).catch(() => null);
+		const request = await axios.get("https://www.cruisemapper.com/ships?page="+i).catch(() => null);
 		if (request && request.status === 404) break;
 		const data = await request && request?.data;
 		const dom = new jsdom.JSDOM(data);

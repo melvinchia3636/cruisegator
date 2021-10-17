@@ -1,3 +1,5 @@
+import { SpecificationData } from "../specifications/interface";
+
 export interface RawJsonData {
 	widgets: {
 		shipNewsButton?: {
@@ -30,6 +32,16 @@ export interface HomeportProps {
 export interface ShipProps {
 	shipraw_data: Document;
 	overview_data: OverviewData;
+	specification_data: SpecificationData;
+	setSpecificationData: (data: SpecificationData) => {
+		type: string;
+		payload: SpecificationData;
+	};
+	id: string;
+	changeTab: (newtab: number) => {
+		type: string;
+		payload: number;
+	}
 }
 
 export interface OverviewData extends HomeportProps, RatingProps {

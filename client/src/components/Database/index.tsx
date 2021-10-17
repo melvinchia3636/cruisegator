@@ -56,7 +56,7 @@ export default function Database(): JSX.Element {
 				Search for your desired <span className="text-blue-800">cruiseship</span>
 				</h1>
 				<p className="text-xl xl:text-[1.6rem] !leading-[139%] my-8">We have data records for over 1400+ cruiseships in our database. Type the name of the cruiseship below to search for them.</p>
-				<div className="bg-white p-6 flex items-center mt-4 shadow-default rounded-md">
+				<div className="bg-white p-6 flex items-center mt-4 rounded-md" style={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}}>
 					<svg width="30" height="30" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path fillRule="evenodd" clipRule="evenodd" d="M24.4874 22.3485L32.5574 30.4185C32.841 30.7023 33.0003 31.0872 33.0002 31.4885C33 31.8898 32.8405 32.2746 32.5566 32.5582C32.2728 32.8419 31.8879 33.0012 31.4866 33.001C31.0853 33.0009 30.7005 32.8413 30.4169 32.5575L22.3469 24.4875C19.9344 26.356 16.9008 27.2353 13.8631 26.9465C10.8253 26.6577 8.01173 25.2225 5.9946 22.9329C3.97748 20.6433 2.90837 17.6712 3.00476 14.6213C3.10115 11.5714 4.35581 8.67277 6.51349 6.51509C8.67117 4.35741 11.5698 3.10275 14.6197 3.00636C17.6696 2.90997 20.6417 3.97908 22.9313 5.99621C25.2209 8.01333 26.6561 10.8269 26.9449 13.8647C27.2337 16.9024 26.3544 19.9361 24.4859 22.3485H24.4874ZM14.9999 24C17.3868 24 19.676 23.0518 21.3638 21.3639C23.0517 19.6761 23.9999 17.3869 23.9999 15C23.9999 12.613 23.0517 10.3238 21.3638 8.63602C19.676 6.94819 17.3868 5.99998 14.9999 5.99998C12.6129 5.99998 10.3237 6.94819 8.63592 8.63602C6.94809 10.3238 5.99988 12.613 5.99988 15C5.99988 17.3869 6.94809 19.6761 8.63592 21.3639C10.3237 23.0518 12.6129 24 14.9999 24Z" fill="#4189DD"/>
 					</svg>
@@ -72,7 +72,7 @@ export default function Database(): JSX.Element {
 						<option value="Any cruise company">Any cruise company</option>
 					</select>
 				</div>
-				<a className='bg-blue-800 rounded-md text-white text-lg px-12 shadow-default inline-block mt-4 font-medium btn-anim2 whitespace-nowrap' data-text="FIND THE SHIP" href="https://github.com/melvinchia3636/cruisegator">{"WHERE IS THAT?".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</a>
+				<a className='bg-blue-800 rounded-md text-white text-lg px-12 inline-block mt-4 font-medium btn-anim2 whitespace-nowrap' style={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}} data-text="FIND THE SHIP" href="https://github.com/melvinchia3636/cruisegator">{"WHERE IS THAT?".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</a>
 				<a className="absolute bottom-6 left-32 font-medium text-lg hidden 1170:flex">
 					<svg className="mr-2 transform rotate-90" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>

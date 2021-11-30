@@ -97,7 +97,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ch
 			const dom_parser: DOMParser = new DOMParser();
 			const request: void | AxiosResponse<any> = await axios({
 				method: "GET",
-				url: "https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships/"+id, 
+				url: "https://cors-anywhere.thecodeblog.net/www.cruisemapper.com/ships/"+id, 
 				headers: {
 					"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
 				}
@@ -130,7 +130,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ch
 				<h1 className="text-8xl ml-32 mt-56 text-white font-bold w-1/2 leading-[117%]" style={{textShadow: "0 4px 6px rgba(0, 0, 0, .55)"}}>{data?.name}</h1>
 				<div className="bg-blue-800 px-8 py-6 absolute -bottom-8 left-32 min-w-[24rem] max-w-[28rem]">
 					<h2 className="mb-24 text-white text-3xl font-medium leading-[139%]">{data?.company}</h2>
-					<p className="text-xl text-white text-right flex items-center gap-2 w-full justify-end"><span className={data?.country?.flag}></span>{data?.country?.name}</p>
+					<p className="text-xl text-white text-right flex items-center gap-2 w-full justify-end"><span className={`!w-6 !h-6 rounded-sm ${data?.country?.flag}`}></span>{data?.country?.name}</p>
 				</div>
 			</div>
 			<div className="flex justify-end mt-[100vh] mb-12 overflow-visible">

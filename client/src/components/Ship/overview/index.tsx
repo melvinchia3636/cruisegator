@@ -136,7 +136,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, 
 				<p className="text-2xl w-full text-center">The port from which a ship hails or from which it is documented.</p>
 				<div className="gap-x-44 gap-y-16 flex mt-20 flex-wrap items-center justify-center">
 					{data.homeports.map(e => <div className="flex flex-col items-center justify-center" key={e.text[0]}>
-						<span className={"!w-32 !h-24 "+e.icon}></span>
+						<span className={"!w-32 !h-24 rounded-lg "+e.icon}></span>
 						<p className="text-3xl font-medium text-center whitespace-nowrap mt-4">{e.text[1]}</p>
 						<p className="text-blue-800 font-medium mt-2">{(e.text[0].match(/\((.+)\)/) || [])[1]}</p>
 					</div>)}
@@ -149,7 +149,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, 
 						Where is the current<br/><span className="text-blue-800">location</span> of the ship?
 					</h1>
 					<p className="text-xl w-full leading-[139%]">The current location of this ship is at <span className="text-blue-800 font-medium">{data.location}</span> (coordinates {data.coordinates}) cruising at speed of <span className="text-blue-800 font-medium">{data.speed.knot}</span> ({typeof data.speed.kmph === "object" ? (data.speed.kmph as Array<string>).join(" / ") : ""}) en route to <span className="text-blue-800 font-medium">{data.destination}</span>. The AIS position was reported <span className="font-medium" style={{color: colorMap[data.last_ais_report.status]}}>{data.last_ais_report.text}</span> ago.</p>
-					<a className="font-semibold text-xl xl:text-2xl text-blue-800 flex items-center mt-10">Explore the map
+					<a href="/map" className="font-semibold text-xl xl:text-2xl text-blue-800 flex items-center mt-10">Explore the map
 						<svg className="ml-4 mt-0.5 hidden xl:block" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 							<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>

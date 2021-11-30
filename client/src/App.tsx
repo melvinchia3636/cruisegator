@@ -18,13 +18,10 @@ export default function App(): JSX.Element {
 	const pathname = (location.pathname.match(/\/(.*?)(?:\/|$)/) || ["home"]);
 	const pagename = pathname[pathname.length-1];
 	return (
-		<>
+		<div className="flex flex-col">
 			<Nav className={pagename}/>
 			<DocumentTitle title={pagename[0] ? pagename[0].toUpperCase()+pagename.slice(1)+" - Cruisegator" : "Cruisegator"}/>
-			<main className={"container-fluid p-0 overflow-hidden "+pathname[pathname.length-1]} style={{
-				height: pagename==="map"?window.innerHeight:"auto", 
-				minHeight: pagename==="map"?"auto":"100vh"
-			}}>
+			<main className={"container-fluid p-0 overflow-hidden h-full "+pathname[pathname.length-1]}>
 				<Route>
 					<Switch>
 						<Route exact path='/'><Homepage/></Route>
@@ -37,6 +34,6 @@ export default function App(): JSX.Element {
 				</Route>
 			</main>
 			{!(pagename==="map")?<Footer />:""}
-		</>
+		</div>
 	);
 }

@@ -25,11 +25,11 @@ const Nav: React.FC<INavProps> = (): JSX.Element => {
 
 	useEffect(() => {
 		document.addEventListener("scroll", () => {
-			setDown((document.querySelector("html")?.scrollTop || false) > 200);
+			setDown((document.querySelector("html")?.scrollTop || false) > 100);
 		});
 	}, []);
 
-	return <nav className={"sticky top-0 left-0 z-[9999] transition-all " + (isDown ? "bg-white" : "")}>
+	return <nav className={"sticky top-0 left-0 z-[9999] transition-all " + (pagename === "map" || isDown ? "bg-white shadow-form" : "")}>
 		<div className={`absolute top-0 left-0 w-screen h-screen transform overflow-hidden ${!firstTime ? (isNavToggle ? "rounded-animation-on" : "rounded-animation-off") : "-translate-y-full"} ${pagename === "database" ? "" : "bg-white"}`}>
 			{isNavToggle ? <Anime initial={[
 				{

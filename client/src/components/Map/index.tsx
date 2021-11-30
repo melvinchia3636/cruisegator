@@ -128,8 +128,9 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 		index = index-1<0?names.length-1:index-1;
 		newNames[index][3] = !this.state.names[index][3];
 		this.setState({"names": newNames});
+		document.cookie = "mapZoom=2";
 		currentSelected = newNames.filter(e => e[3]).map(e => e[0]) as (number | boolean)[];
-		fetch("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/map/ships.json?minLat=-90&maxLat=90&minLon=-180&maxLon=180&filter="+encodeURIComponent(currentSelected.join(",")), {
+		fetch("https://cors-anywhere.thecodeblog.net/www.cruisemapper.com/map/ships.json?minLat=-90&maxLat=90&minLon=-180&maxLon=180&t="+Date.now()+"&filter="+encodeURIComponent(currentSelected.join(",")), {
 			headers: {
 				"X-Requested-With": "XMLHttpRequest",
 				"Accept": "application/json; charset=UTF-8",
@@ -175,7 +176,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 		this.setState({map: map});
 		
 		map.on("load", function() {
-			fetch("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/map/ships.json?minLat=-90&maxLat=90&minLon=-180&maxLon=180&filter="+encodeURIComponent(currentSelected.join(",")), {
+			fetch("https://cors-anywhere.thecodeblog.net/www.cruisemapper.com/map/ships.json?minLat=-90&maxLat=90&minLon=-180&maxLon=180&t="+Date.now()+"&filter="+encodeURIComponent(currentSelected.join(",")), {
 				headers: {
 					"X-Requested-With": "XMLHttpRequest",
 					"Accept": "application/json; charset=UTF-8",
@@ -265,23 +266,19 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 		const { lng, lat, zoom } = this.state;
 		return (
 			<React.Fragment>
-				<div className='flex'>
-					
+				<div className='flex h-screen absolute top-0 left-0 w-full'>
 					<div ref={this.mapContainer} className="map-container w-full" style={{
 						position: "absolute",
-						top: 88,
+						top: 0,
 						bottom: 0,
 					}}>
 						<div className='longlat whitespace-nowrap py-1 px-2'>Lon:{lng.toFixed(4)} | Lat:{lat.toFixed(4)} | Zoom:{zoom}</div>
 					</div>
-					<div className={"sb bg-white relative "+(this.state.sidebarOpened ? "sb-expand" : "sb-collapse")} style={{"zIndex": 30, marginTop: 88}}>
-						<Scrollbar className='nc m-3 overflow-hidden' alwaysShowTracks={true} style={{"height": this.state.height-30}}>
-							<div className='w-100 overflow-auto h-100 bg-whtie'>{
+					<div className={"sb bg-white relative flex h-full "+(this.state.sidebarOpened ? "sb-expand" : "sb-collapse")}>
+						<Scrollbar className='nc m-6 overflow-hidden flex h-full mt-32' alwaysShowTracks={true} style={{"height": this.state.height - 80}}>
+							<div className='w-100 overflow-auto bg-whtie flex flex-col'>{
 								names.map(([index, id, name]) => 
-									<div className='flex mb-2 items-center whitespace-nowrap mr-3 overflow-hidden' key={Math.random()} style={{
-										fontFamily: "Public Sans",
-										fontSize: 14
-									}}>
+									<div className='flex mb-3 items-center whitespace-nowrap mr-3 overflow-hidden text-base' key={Math.random()}>
 										<button id={index.toString()} className='p-0 border-0 flex items-center justify-center bg-white' onClick={() => {
 											this.toggleSelector(index as number);
 										}}><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="1.2em" height="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -293,7 +290,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 									</div>)
 							}</div>
 						</Scrollbar>
-						<button className='absolute translate-middle-y p-0 py-3 border-0 bg-white rounded-end' style={{left: "98%", top: "45%"}} onClick={this.toggleSidebar.bind(this)}><Icon icon={arrowLeftSLine} color='#606060' width='1.2em' height='1.2em'/></button>
+						<button className='absolute translate-middle-y p-0 py-6 px-1 border-0 bg-white rounded-r-md' style={{left: "98%", top: "45%"}} onClick={this.toggleSidebar.bind(this)}><Icon icon={arrowLeftSLine} color='#606060' width='1.2em' height='1.2em'/></button>
 					</div>
 				</div>
 			</React.Fragment>

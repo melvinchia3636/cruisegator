@@ -94,7 +94,7 @@ const ConnectedItinerariess: React.FC<ItinerariesProps> = ({ itineraries_data, i
 									<p className="text-gray-700 text-lg whitespace-nowrap">{i.port}</p>
 								</div>)}
 							</div>
-							<img className="rounded-lg hidden md:!block" src={`https://img.cruisecritic.net/img-cc/map/${e.id}/itinerary_540x405_.png`}/>
+							<img className="rounded-lg object-scale-down hidden md:!block" src={`https://img.cruisecritic.net/img-cc/map/${e.id}/itinerary_540x405_.png`}/>
 						</div>
 					</div>
 				</div>

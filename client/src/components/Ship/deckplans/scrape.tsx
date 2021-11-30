@@ -5,7 +5,7 @@ import { setDeckPlansData } from "state_manage/actions";
 import axios from "axios";
 
 const getData  = async (id: string): Promise<void> => {
-	const response = await axios.get(`https://codeblog-corsanywhere.herokuapp.com/https://www.cruisedeckplans.com/DP/deckplans/deckbydeck.php?ship=${id}&deck=8`); //&deck=${firstdeck}
+	const response = await axios.get(`https://cors-anywhere.thecodeblog.net/www.cruisedeckplans.com/DP/deckplans/deckbydeck.php?ship=${id}&deck=8`); //&deck=${firstdeck}
 	const raw = response.data;
 	const parser = new DOMParser();
 	const html = parser.parseFromString(raw, "text/html");

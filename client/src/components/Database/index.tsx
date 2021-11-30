@@ -38,7 +38,7 @@ export default function Database(): JSX.Element {
 
 			const local_exist: boolean[] = [];
 			for (let i = 0; i <= 1; i++) {
-				const request = await axios.get("https://codeblog-corsanywhere.herokuapp.com/https://www.cruisemapper.com/ships?page="+((page_num+i)*2+1)).catch(err => console.log(err));
+				const request = await axios.get("https://cors-anywhere.thecodeblog.net/www.cruisemapper.com/ships?page="+((page_num+i)*2+1)).catch(err => console.log(err));
 				local_exist.push(request ? request.status !== 404 : false);
 			}
 			console.log(local_exist);
@@ -68,8 +68,8 @@ export default function Database(): JSX.Element {
 						<path d="M20.1562 21.5H22.8438V24.1875H20.1562V21.5Z" fill="#4189DD"/>
 						<path d="M20.1562 16.125H22.8438V18.8125H20.1562V16.125Z" fill="#4189DD"/>
 					</svg>
-					<select className="w-full text-[1.4rem] flex-shrink-[9999] ml-4">
-						<option value="Any cruise company">Any cruise company</option>
+					<select className="w-full text-[1.4rem] flex-shrink-[9999] ml-4 bg-white">
+						<option value="Any cruise company ">Any cruise company</option>
 					</select>
 				</div>
 				<a className='bg-blue-800 rounded-md text-white text-lg px-12 inline-block mt-4 font-medium btn-anim2 whitespace-nowrap' style={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}} data-text="FIND THE SHIP" href="https://github.com/melvinchia3636/cruisegator">{"WHERE IS THAT?".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</a>

@@ -112,7 +112,7 @@ span.it:not(:first-child) {
 .itc div:first-child span.it::before {
 	content: "";
 	width: 2px;
-	transform: translate(-50%, 98%);
+	transform: translate(-50%, 100%);
 	background: #4189DD;
 	position: absolute;
 	left: 50%;

@@ -15,6 +15,9 @@ import Cabin from "./cabins";
 import Gallery from "./gallery";
 import DeckPlans from "./deckplans";
 
+import Lottie from "react-lottie";
+const loadingAnimation = require("../Utils/assets/loading-anim.json");
+
 import { StateProps } from "../../state_manage/interface";
 
 interface ShipRouteProps extends RouteComponentProps<{id: string}> {
@@ -38,6 +41,15 @@ interface ShipHeaderProps {
 	};
 	company: string
 }
+
+const defaultOptions = {
+	loop: true,
+	autoplay: true, 
+	animationData: loadingAnimation,
+	rendererSettings: {
+		preserveAspectRatio: "xMidYMid slice"
+	}
+};
 
 const getItiID = (id: string): {id: number, name: string}|undefined => {
 	const ids = require("./id.json");
@@ -72,6 +84,7 @@ const MainMapDispatchToProps = (dispatch: Dispatch) => {
 
 const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, changeTab, ...props}: ShipRouteProps): JSX.Element => {
 	const [data, setData] = useState<ShipHeaderProps>();
+	const [loaded, setLoaded] = useState<boolean>(false);
 
 	const options: string[] = [
 		"overview",
@@ -90,6 +103,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ch
 	const ItiID: number | undefined = cruiseCriticID?.id;
 	const cruiseCriticName: string | undefined = cruiseCriticID?.name?.replace(/\(|\)/g, "").replaceAll(" ", "-").toLowerCase();
 	const cruiseCriticURI = `${cruiseCriticName}-${ItiID}`;
+
 	useEffect(() => {
 		//const text_data = require("./itineraries/test2.json");
 		//console.log(text_data.filter((e: string) => !e.includes("icebreaker")).map((e: any) => [e, getItiID(e)]).filter((e: any) => !e).length);
@@ -121,6 +135,10 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ch
 		fetchRawData();
 	}, []);
 
+	useEffect(() => {
+		document.documentElement.setAttribute("style", "overflow-y: " + (loaded ? "auto" : "hidden"));
+	}, [loaded]);
+
 	return (
 		<div className='w-full pb-0'>
 			<div className="absolute top-0 left-0 w-full h-screen bg-no-repeat bg-cover bg-blend-darken" style={{
@@ -144,17 +162,28 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ch
 				{(()=>{
 					let tab: JSX.Element;
 					switch (active_tab) {
-					case 0: tab = <Overview id={id}/>; break;
+					case 0: tab = <Overview id={id} setLoaded={setLoaded}/>; break;
 					case 1: tab = <Specifications id={id}/>; break;
-					case 2: tab = <Itinerariess id={ItiID}/>; break;
+					case 2: tab = <Itinerariess id={ItiID} setLoaded={setLoaded}/>; break;
 					case 3: tab = <DeckPlans id={splitted_id_nonum}/>; break;
-					case 4: tab = <Cabin id={splitted_id_nonum}/>; break;
+					case 4: tab = <Cabin id={splitted_id_nonum} setLoaded={setLoaded}/>; break;
 					case 6: tab = <Gallery id={id} ccid={cruiseCriticURI}/>; break;
 					default: tab = <></>;
 					}
 					return tab;
 				})()}
 			</div>
+			{!loaded ? 
+				<div className="fixed top-0 left-0 flex items-center justify-center w-full h-screen bg-black bg-opacity-30 z-[9999]">
+					<div className="bg-white rounded-md p-2 shadow-gridbox">
+						<Lottie options={defaultOptions}
+							height={80}
+							width={80}
+							isStopped={false}
+							isPaused={false}/>
+					</div>
+				</div> 
+				: ""}
 		</div>
 	);
 };

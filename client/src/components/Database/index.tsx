@@ -3,11 +3,13 @@ import axios from "axios";
 import * as assets from "./assets";
 
 import { Icon } from "@iconify/react";
-import baselineSearch from "@iconify-icons/ic/baseline-search";
 import calendarMonthOutline from "@iconify-icons/mdi/calendar-month-outline";
 import clockTimeEightOutline from "@iconify-icons/mdi/clock-time-eight-outline";
 import timerSand from "@iconify-icons/mdi/timer-sand";
 import accountGroupOutline from "@iconify-icons/mdi/account-group-outline";
+
+import Lottie from "react-lottie";
+const loadingAnimation = require("../Utils/assets/loading-anim.json");
 
 const assetsMap = Object.fromEntries(Object.entries(assets));
 
@@ -21,6 +23,15 @@ export interface CruiseShipQuery {
 	age:       string | null | undefined;
 	passenger: string | null | undefined;
 }
+
+const defaultOptions = {
+	loop: true,
+	autoplay: true, 
+	animationData: loadingAnimation,
+	rendererSettings: {
+		preserveAspectRatio: "xMidYMid slice"
+	}
+};
 
 export default function Database(): JSX.Element {
 	const [data, setData] = useState<CruiseShipQuery[]>([]);
@@ -41,7 +52,6 @@ export default function Database(): JSX.Element {
 				const request = await axios.get("https://cors-anywhere.thecodeblog.net/www.cruisemapper.com/ships?page="+((page_num+i)*2+1)).catch(err => console.log(err));
 				local_exist.push(request ? request.status !== 404 : false);
 			}
-			console.log(local_exist);
 			setExist(local_exist);
 
 			setLoaded(true);
@@ -78,7 +88,7 @@ export default function Database(): JSX.Element {
 						<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 						<path d="M13 5L20 12L13 19" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
 					</svg>
-                Scroll Down
+				Scroll Down
 				</a>
 			</div>
 			{loaded ? <div className="px-32 mt-[100vh] pb-24">
@@ -165,6 +175,17 @@ export default function Database(): JSX.Element {
 					</button>
 				</div>
 			</div> : ""}
+			{!loaded ? 
+				<div className="fixed top-0 left-0 flex items-center justify-center w-full h-screen bg-black bg-opacity-30 z-[9999]">
+					<div className="bg-white rounded-md p-2 shadow-gridbox">
+						<Lottie options={defaultOptions}
+							height={80}
+							width={80}
+							isStopped={false}
+							isPaused={false}/>
+					</div>
+				</div> 
+				: ""}
 		</>
 	);
 }

@@ -5,8 +5,11 @@ html, body {
 }
 
 * {
-	color: #2A3036;
 	font-family: Poppins;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, div, span {
+	color: #2A3036;
 }
 
 nav {
@@ -189,6 +192,16 @@ a {
 
 .special {
     flex-direction: row;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 @media (max-width: 1396px) {

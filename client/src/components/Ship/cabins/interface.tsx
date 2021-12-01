@@ -1,7 +1,8 @@
 export interface CabinsProps {
 	id: string;
 	cabins_data: CabinsData[],
-	setCabinsData: any
+	setCabinsData: any,
+	setLoaded: any,
 }
 
 export interface CabinsData extends Metadata {

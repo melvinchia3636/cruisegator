@@ -181,12 +181,14 @@ const CabinCard: React.FC<{e: CabinsData, i: number}> = ({e, i}: {e: CabinsData,
 	</div>;
 };
 
-const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, id, setCabinsData }: CabinsProps): JSX.Element => {
+const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, id, setCabinsData, setLoaded }: CabinsProps): JSX.Element => {
 
 	if (cabins_data.length === 0) {
+		setLoaded(false);
 		axios.get("https://api.cruisegator.thecodeblog.net/ship/cabins/"+id).catch(() => null).then(res => {
 			const data = res && res?.data;
 			setCabinsData(data);
+			setLoaded(true);
 		}).catch(() => null);
 	}
 	const data = cabins_data;

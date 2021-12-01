@@ -34,14 +34,14 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 
 const IconMap: {[key: string]: JSX.Element} = {
-	"Restaurants And Bars": <Icon icon={outlineBrunchDining} width={30} className="text-blue-800"/>,
-	"Family": <Icon icon={pedestrianFamily} width={30} className="text-blue-800" style={{stroke: "rgba(0, 85, 185)", strokeWidth: ".5px"}}/>,
-	"The Ship": <Icon icon={vehicleShip24Regular} width={30} className="text-blue-800" style={{stroke: "rgba(0, 85, 185)", strokeWidth: ".5px"}}/>,
-	"Activities And Events": <Icon icon={shiftsActivity24Filled} width={30} className="text-blue-800"/>,
-	"Spa And Fitness": <Icon icon={spaIcon} width={30} className="text-blue-800" style={{stroke: "rgba(0, 85, 185)", strokeWidth: "8px"}}/>,
-	"Pools And Sun Decks": <Icon icon={poolIcon} width={30} className="text-blue-800" style={{stroke: "rgba(0, 85, 185)", strokeWidth: "12px"}}/>,
-	"Cabins": <Icon icon={bed16Regular} width={30} className="text-blue-800" style={{stroke: "rgba(0, 85, 185)", strokeWidth: "0.5px"}}/>,
-	"Ports": <Icon icon={outlineAnchor} width={30} className="text-blue-800"/>,
+	"Restaurants And Bars": <Icon icon={outlineBrunchDining} width={36} className="text-blue-800"/>,
+	"Family": <Icon icon={pedestrianFamily} width={36} className="text-blue-800" style={{strokeWidth: ".5px"}}/>,
+	"The Ship": <Icon icon={vehicleShip24Regular} width={36} className="text-blue-800" style={{strokeWidth: ".5px"}}/>,
+	"Activities And Events": <Icon icon={shiftsActivity24Filled} width={36} className="text-blue-800"/>,
+	"Spa And Fitness": <Icon icon={spaIcon} width={36} className="text-blue-800" style={{strokeWidth: "8px"}}/>,
+	"Pools And Sun Decks": <Icon icon={poolIcon} width={36} className="text-blue-800" style={{strokeWidth: "12px"}}/>,
+	"Cabins": <Icon icon={bed16Regular} width={36} className="text-blue-800" style={{strokeWidth: "0.5px"}}/>,
+	"Ports": <Icon icon={outlineAnchor} width={36} className="text-blue-800"/>,
 };
 
 const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalleryData }: GalleryProps): JSX.Element => {
@@ -66,20 +66,16 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalle
 	const data = gallery_data === "no data" ? [] : gallery_data;
 
 	return (
-		<div className='p-10 md:p-20 !pt-32 w-full flex flex-col'>
-			<div className='mb-10'>
-				<h1 className='uppercase !text-[2.4em]'>Photos & Images</h1>
-				<div className='w-20 h-1 mt-1 bg-blue-800'></div>
-			</div>
-			<div>
-				{data.map((e: GalleryData) => <div key={e.name} className="mb-24">
-					<div className="flex items-center mb-5">
-						{IconMap[e.name]}
-						<h2 className="text-blue-800 text-[1.8em] font-medium ml-3 leading-tight">{e.name}</h2>
-					</div>
-					<div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4">
+		<div className='p-10 w-full flex flex-col'>
+			{data.map((e: GalleryData) => <div key={e.name} className="mb-24">
+				<div className="flex items-center mb-5 w-full justify-center">
+					{IconMap[e.name]}
+					<h2 className="text-blue-800 text-[1.8em] font-medium ml-3 leading-tight">{e.name}</h2>
+				</div>
+				<div className="flex items-center">
+					<div className="flex items-center gl w-full overflow-y-scroll no-scrollbar">
 						{e.list.map(e => 
-							<div key={e?.id} className="rounded-lg overflow-hidden relative">
+							<div key={e?.id} className="rounded-lg mx-2 w-96 flex-shrink-0 overflow-hidden relative">
 								<LazyLoad 
 									debounce={300}
 									placeholder={<img src="https://via.placeholder.com/1000x800/BBBBBB/666666?text=%20"/>}
@@ -88,7 +84,7 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalle
 										className="w-full"/>
 								</LazyLoad>
 								<div className="w-full h-full absolute top-0 left-0 ic">
-									<div className={"absolute bottom-0 left-0 bg-black bg-opacity-70 w-full p-4 flex items-center transition-all duration-300 cursor-pointer justify-between h-16"} onClick={() => {
+									<div className={"w-full bg-black bg-opacity-0 p-4 flex items-center transition-all duration-300 cursor-pointer justify-between h-16"} onClick={() => {
 										setShowImage(true);
 										fetchAndShowImage(e.name.toLowerCase().replaceAll(" ", "-"), e.id, e.coverImage.id);
 										setCurrentImageIndex(0);
@@ -100,8 +96,8 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalle
 							</div>
 						)}
 					</div>
-				</div>)}
-			</div>
+				</div>
+			</div>)}
 			{showImage ? <div className="w-full h-full bg-black bg-opacity-90 fixed top-0 left-0 flex flex-col items-center justify-center z-[9999]" onClick={e => (e.target as HTMLElement).classList.contains("bg-black") ? (() => {
 				setShowImage(false);
 				setImageURL([]);

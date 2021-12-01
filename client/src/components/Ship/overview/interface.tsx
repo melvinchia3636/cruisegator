@@ -41,7 +41,8 @@ export interface ShipProps {
 	changeTab: (newtab: number) => {
 		type: string;
 		payload: number;
-	}
+	},
+	setLoaded: any
 }
 
 export interface OverviewData extends HomeportProps, RatingProps {

@@ -1,6 +1,10 @@
 import mapboxgl from "mapbox-gl";
 import { connect } from "react-redux";
 import React, { useEffect } from "react";
+import axios from "axios";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import ReactAnime from "react-animejs";
 
 import { changeTab, setOverviewData, setSpecificationData } from "state_manage/actions";
 import { getData } from "./scrape";
@@ -9,7 +13,6 @@ import { ShipProps, MapProps, OverviewData } from "./interface";
 import { StateProps } from "../../../state_manage/interface";
 import { Dispatch } from "redux";
 import { SpecificationData } from "../specifications/interface";
-import axios from "axios";
 
 const colorMap = {
 	red: "#EF4444",
@@ -65,7 +68,7 @@ class Map extends React.Component<MapProps> {
 			const map = this.map;
 
 			map.on("load", function(){
-				new mapboxgl.Marker({ color: "rgba(0, 85, 185, 1)" })
+				new mapboxgl.Marker({ color: "#4189DD" })
 					.setLngLat([position.lon, position.lat])
 					.addTo(map as mapboxgl.Map);
 			});
@@ -77,21 +80,20 @@ class Map extends React.Component<MapProps> {
 	}
 }
 
-const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, changeTab, id, specification_data, setSpecificationData }: ShipProps ) => {
+const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, changeTab, id, specification_data, setSpecificationData, setLoaded }: ShipProps ) => {
 	const data = overview_data;
+	const {Anime, stagger} = ReactAnime;
 
 	useEffect(() => {
 		axios.get("https://api.cruisegator.thecodeblog.net/ship/specifications/"+id).then(res => {
 			const data = res && res?.data;
 			console.log(data);
 			setSpecificationData(data || {});
+			setLoaded(true);
 		}).catch(() => null);
+		if (shipraw_data.querySelector("body")) getData();
 	}, []);
 
-	if (shipraw_data.querySelector("body")) getData();
-
-	const rows = shipraw_data.querySelector(".specificationTable table")?.querySelectorAll("tr") || [];
-	const size_data = Array.from(rows).slice(rows.length-3, rows.length).map(e => e.querySelector("td:last-child")?.textContent?.split("/")[0].trim());
 	
 	return (
 		<div className='px-32 mb-32 mt-16 w-full overflow-hidden flex flex-col overview'>
@@ -115,16 +117,37 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, 
 				<div className="flex flex-col items-center gap-20">
 					<div className="flex gap-24">
 						<div>
-							<p className="font-semibold text-7xl text-center">{specification_data.specification_data["Beam (width)"]?.split("/")[0]?.trim() || "N/A"}</p>
+							{specification_data.specification_data["Beam (width)"] ? <Anime initial={[{
+								targets: ".height",
+								innerHTML: ["0m", parseInt(specification_data.specification_data["Beam (width)"]?.split("/")[0]?.trim())+"m"],
+								easing: "linear",
+								round: 1 // Will round the animated value to 1 decimal
+							}]}>
+								<p className="font-semibold height text-7xl text-center"></p>
+							</Anime> : <p className="font-semibold text-7xl text-center">N/A</p>}
 							<p className="font-semibold text-xl text-blue-800 mt-2 text-center">Height</p>
 						</div>
 						<div>
-							<p className="font-semibold text-7xl text-center">{specification_data.specification_data["Length (LOA)"]?.split("/")[0]?.trim() || "N/A"}</p>
+							{specification_data.specification_data["Beam (width)"] ? <Anime initial={[{
+								targets: ".width",
+								innerHTML: ["0m", parseInt(specification_data.specification_data["Length (LOA)"]?.split("/")[0]?.trim())+"m"],
+								easing: "linear",
+								round: 1 // Will round the animated value to 1 decimal
+							}]}>
+								<p className="font-semibold width text-7xl text-center"></p>
+							</Anime> : <p className="font-semibold text-7xl text-center">N/A</p>}
 							<p className="font-semibold text-xl text-blue-800 mt-2 text-center">Width</p>
 						</div>
 					</div>
 					<div>
-						<p className="font-semibold text-7xl text-center">{parseInt(specification_data.specification_data["Gross Tonnage"]|| "")?.toLocaleString()+" gt" || "N/A"}</p>
+						{specification_data.specification_data["Beam (width)"] ? <Anime initial={[{
+							targets: ".gross-tonnage",
+							innerHTML: ["0m", parseInt(specification_data.specification_data["Gross Tonnage"]?.split("/")[0]?.trim()).toLocaleString()+"gt"],
+							easing: "linear",
+							round: 1 // Will round the animated value to 1 decimal
+						}]}>
+							<p className="font-semibold gross-tonnage text-7xl text-center"></p>
+						</Anime> : <p className="font-semibold text-7xl text-center">N/A</p>}
 						<p className="font-semibold text-xl text-blue-800 mt-2 text-center">Gross tonnage</p>
 					</div>
 				</div>

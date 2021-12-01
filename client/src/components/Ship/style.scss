@@ -103,6 +103,14 @@
 			width: 100%
 		}
 	}
+
+	& .gl {
+		scroll-snap-type: x mandatory;
+
+		& > div {
+			scroll-snap-align: center;
+		}
+	}
 }
 
 span.it:not(:first-child) {
@@ -123,6 +131,7 @@ div.ic:hover > div {
 	height: 100%;
 	justify-content: center;
 	flex-direction: column;
+	--tw-bg-opacity: 50%;
 
 	& h3 {
 		max-width: 90%;
@@ -130,4 +139,8 @@ div.ic:hover > div {
 		text-align: center;
 		margin-bottom: .75em
 	}
+}
+
+.overscroll-contain {
+	overscroll-behavior: contain;
 }

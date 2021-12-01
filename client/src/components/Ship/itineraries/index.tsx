@@ -14,13 +14,14 @@ const mapStateToProps = (state: StateProps) => {
 	};
 };
 
-const ConnectedItinerariess: React.FC<ItinerariesProps> = ({ itineraries_data, id }: ItinerariesProps): JSX.Element => {
+const ConnectedItinerariess: React.FC<ItinerariesProps> = ({ itineraries_data, id, setLoaded }: ItinerariesProps): JSX.Element => {
 	const getData  = (itiID: number | undefined): void => {
+		setLoaded(false);
 		axios.get("https://api.cruisegator.thecodeblog.net/ship/itineraries/"+itiID).then(res => {
 			const data = res && res?.data;
 			store.dispatch(setItinerariesData(data.length > 0 ? data : "no data"));
+			setLoaded(true);
 		}).catch(() => null);
-		
 	};
 
 	const toTitleCase = (str: string) => {

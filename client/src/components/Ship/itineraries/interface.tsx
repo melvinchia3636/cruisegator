@@ -21,5 +21,6 @@ export interface Itinerary {
 
 export interface ItinerariesProps {
 	id: number | undefined;
-	itineraries_data: ItinerariesData[] | "no data"
+	itineraries_data: ItinerariesData[] | "no data",
+	setLoaded: any,
 }

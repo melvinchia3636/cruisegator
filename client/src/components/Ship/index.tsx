@@ -95,6 +95,10 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ch
 		"reviews",
 		"gallery"
 	];
+
+	const special_id: {[key: string]: string} = {
+		"Queen Mary 2": "Queen Mary"
+	};
 	
 	const id = props.match.params.id;
 	const splitted_id: string[] = id.split("-");
@@ -161,13 +165,14 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ch
 			<div className="w-full min-h-[90%] transition-all duration-500 overflow-hidden ">
 				{(()=>{
 					let tab: JSX.Element;
+					console.log(special_id[splitted_id_nonum] || splitted_id_nonum);
 					switch (active_tab) {
 					case 0: tab = <Overview id={id} setLoaded={setLoaded}/>; break;
-					case 1: tab = <Specifications id={id}/>; break;
+					case 1: tab = <Specifications id={id} setLoaded={setLoaded}/>; break;
 					case 2: tab = <Itinerariess id={ItiID} setLoaded={setLoaded}/>; break;
-					case 3: tab = <DeckPlans id={splitted_id_nonum}/>; break;
-					case 4: tab = <Cabin id={splitted_id_nonum} setLoaded={setLoaded}/>; break;
-					case 6: tab = <Gallery id={id} ccid={cruiseCriticURI}/>; break;
+					case 3: tab = <DeckPlans id={special_id[splitted_id_nonum] || splitted_id_nonum}/>; break;
+					case 4: tab = <Cabin id={special_id[splitted_id_nonum] || splitted_id_nonum} setLoaded={setLoaded}/>; break;
+					case 6: tab = <Gallery id={id} ccid={cruiseCriticURI} setLoaded={setLoaded}/>; break;
 					default: tab = <></>;
 					}
 					return tab;

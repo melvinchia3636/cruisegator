@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { connect } from "react-redux";
-import Icon from "@iconify/react";
-import settings28Regular from "@iconify-icons/fluent/settings-28-regular";
-import searchVisual24Regular from "@iconify-icons/fluent/search-visual-24-regular";
-import info24Regular from "@iconify-icons/fluent/info-24-regular";
 import { SpecificationsProps, SpecificationData } from "./interface";
 import { StateProps } from "../../../state_manage/interface";
 import React, { useEffect, useState } from "react";
@@ -24,7 +20,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 	};
 };
 
-const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specification_data, setSpecificationData }: SpecificationsProps): JSX.Element => {
+const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specification_data, setSpecificationData, setLoaded }: SpecificationsProps): JSX.Element => {
 	const [active_tab, changeTab] = useState(0);
 	const options: string[] = [
 		"specifications",
@@ -45,13 +41,6 @@ const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specificat
 		}
 		return result;
 	};
-
-	useEffect(() => {
-		if (!specification_data) axios.get("https://api.cruisegator.thecodeblog.net/ship/specifications/"+id).then(res => {
-			const data = res && res?.data;
-			setSpecificationData(data || {});
-		}).catch(() => null);
-	}, []);
 
 	return (
 		<div className='p-10 md:px-32 w-full flex flex-col'>

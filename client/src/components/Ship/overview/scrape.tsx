@@ -50,6 +50,7 @@ const getData  = (): void => {
 		},
 		position: json.widgets.shipCurrentPositionMap
 	};
+	console.log(result);
 
 	store.dispatch(setOverviewData(result));
 };

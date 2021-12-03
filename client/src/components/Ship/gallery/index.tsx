@@ -44,22 +44,26 @@ const IconMap: {[key: string]: JSX.Element} = {
 	"Ports": <Icon icon={outlineAnchor} width={36} className="text-blue-800"/>,
 };
 
-const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalleryData }: GalleryProps): JSX.Element => {
+const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalleryData, setLoaded }: GalleryProps): JSX.Element => {
 
 	const [imageURL, setImageURL] = useState<{ url: string | string[]; id: number; type: any; }[]>([]);
 	const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 	const [showImage, setShowImage] = useState<boolean>(false);
 
 	const fetchAndShowImage = async (name: string, album_id: number, image_id: number): Promise<void> => {
+		setLoaded(false);
 		const request = await axios.get(`https://api.cruisegator.thecodeblog.net/ship/gallery/image/${ccid}/${name}-${album_id}/${name}--v${image_id}`).catch(() => null);
 		const data = request && request?.data;
 		setImageURL(data || {});
+		setLoaded(true);
 	};
 
 	if (gallery_data.length === 0) {
+		setLoaded(false);
 		axios.get("https://api.cruisegator.thecodeblog.net/ship/gallery/index/"+ccid).then(res => {
 			const data = res && res?.data;
 			setGalleryData(data || {});
+			setLoaded(true);
 		}).catch(() => null);
 	}
 
@@ -73,7 +77,7 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalle
 					<h2 className="text-blue-800 text-[1.8em] font-medium ml-3 leading-tight">{e.name}</h2>
 				</div>
 				<div className="flex items-center">
-					<div className="flex items-center gl w-full overflow-y-scroll no-scrollbar">
+					<div className="flex items-center gl w-full overflow-y-scroll no-scrollbar justify-center">
 						{e.list.map(e => 
 							<div key={e?.id} className="rounded-lg mx-2 w-96 flex-shrink-0 overflow-hidden relative">
 								<LazyLoad 
@@ -84,7 +88,7 @@ const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalle
 										className="w-full"/>
 								</LazyLoad>
 								<div className="w-full h-full absolute top-0 left-0 ic">
-									<div className={"w-full bg-black bg-opacity-0 p-4 flex items-center transition-all duration-300 cursor-pointer justify-between h-16"} onClick={() => {
+									<div className={"w-full bg-black bg-opacity-0 py-4 px-5 flex items-center transition-all duration-300 cursor-pointer justify-between h-16"} onClick={() => {
 										setShowImage(true);
 										fetchAndShowImage(e.name.toLowerCase().replaceAll(" ", "-"), e.id, e.coverImage.id);
 										setCurrentImageIndex(0);

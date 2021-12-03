@@ -89,9 +89,9 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, 
 			const data = res && res?.data;
 			console.log(data);
 			setSpecificationData(data || {});
+			getData();
 			setLoaded(true);
 		}).catch(() => null);
-		if (shipraw_data.querySelector("body")) getData();
 	}, []);
 
 	
@@ -152,7 +152,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, 
 					</div>
 				</div>
 			</div>
-			<div className="mt-32 w-full flex flex-col items-center">
+			{data.homeports.length ? <div className="mt-32 w-full flex flex-col items-center">
 				<h1 className="text-4xl text-center xl:text-5xl font-semibold !leading-[129%] w-min 480:whitespace-nowrap mb-8" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
 					The <span className="text-blue-800">homeports</span> where<br/>the ship stays
 				</h1>
@@ -164,7 +164,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, 
 						<p className="text-blue-800 font-medium mt-2">{(e.text[0].match(/\((.+)\)/) || [])[1]}</p>
 					</div>)}
 				</div>
-			</div>
+			</div> : ""}
 			<div className="mt-32 flex justify-between items-center pb-4">
 				<Map position={data.position}/>
 				<div className="w-min">

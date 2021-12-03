@@ -118,7 +118,7 @@ export default function Database(): JSX.Element {
 								</div>
 							</div>
 							<div className="flex flex-col gap-8">
-								<p className="flex items-center gap-3 text-2xl font-medium"><Icon icon={calendarMonthOutline} width="36"/>{e.cruise}</p>
+								<p className="text-2xl font-medium w-[42rem] truncate overflow-hidden overflow-ellipsis whitespace-nowrap"><Icon className="inline-block -mt-2 mr-3" icon={calendarMonthOutline} width="36"/>{e.cruise}</p>
 								<div className="flex gap-8">
 									<div className="flex items-center gap-3">
 										<Icon icon={clockTimeEightOutline} width="36"/>

@@ -13,4 +13,5 @@ export interface SpecificationsProps {
 	id: string;
 	specification_data: SpecificationData;
 	setSpecificationData: any,
+	setLoaded: any
 }

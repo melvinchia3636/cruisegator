@@ -2,7 +2,8 @@ export interface GalleryProps {
 	id: string;
 	ccid: string;
 	gallery_data: GalleryData[] | "no data",
-	setGalleryData: any
+	setGalleryData: any;
+	setLoaded: any;
 }
 
 export interface GalleryData {

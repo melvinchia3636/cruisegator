@@ -8,14 +8,8 @@ interface INavProps {
 	className: string
 }
 
-interface INavState {
-	isToggleOn: boolean;
-	hideNav: boolean;
-	isDone: boolean;
-}
-
 const Nav: React.FC<INavProps> = (): JSX.Element => {
-	const page = ["Home", "Database", "Map", "News"];
+	const page = [["Home"], ["Database", "ship"], ["Map"], ["News"]];
 	const pathname = location.pathname.match(/\/(.*?)(?:\/|$)/) || [];
 	const pagename = pathname[pathname.length-1] || "Home";
 	const {Anime, stagger} = ReactAnime;
@@ -41,8 +35,8 @@ const Nav: React.FC<INavProps> = (): JSX.Element => {
 			]} className="h-full">
 				<ul className="font-medium text-xl phone-nav flex flex-col justify-center items-center h-full gap-24">
 					{page.map((e, i) => 
-						<li key={e}>
-							<a href={`/${e}`} className={`${page.indexOf(pagename[0].toUpperCase()+pagename.slice(1)) === i ? "active": ""}`}>{e}</a>
+						<li key={e[0]}>
+							<a href={`/${e[0]}`} className={`${e.map(e => e.toLowerCase()).includes(pagename) ? "active": ""}`}>{e[0]}</a>
 						</li>)}
 				</ul>
 			</Anime> : ""}
@@ -56,7 +50,7 @@ const Nav: React.FC<INavProps> = (): JSX.Element => {
 				</svg>
 			</a>
 			<div className="hidden xl:flex">
-				{page.map((e, i) => <a key={i} href={"/"+e.toLowerCase()} className={`text-xl font-medium ml-24 ${pagename==="ship" && !isDown ? "text-white" : ""} ${page.indexOf(pagename[0].toUpperCase()+pagename.slice(1)) === i ? "active": ""}`}>{e}</a>)}
+				{page.map((e, i) => <a key={i} href={`/${e[0].toLowerCase()}`} className={`text-xl font-medium ml-24 ${pagename==="ship" && !isDown ? "text-white" : ""} ${e.map(e => e.toLowerCase()).includes(pagename) ? "active": ""}`}>{e[0]}</a>)}
 			</div>
 			<button onClick={() => {setNavToggle(!isNavToggle); setFirstTime(false);}} className="flex items-center justify-center xl:hidden"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2.6em" height="2.6em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 16"><g fill="none"><path d="M4 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1z" fill="#4189DD"/><path d="M11 11a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2h-8z" fill="#4189DD"/></g></svg></button>
 		</div>

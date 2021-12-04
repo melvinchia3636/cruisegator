@@ -46,7 +46,7 @@ const IconMap: {[key: string]: JSX.Element} = {
 
 const ConnectedGallery: React.FC<GalleryProps> = ({ gallery_data, ccid, setGalleryData, setLoaded }: GalleryProps): JSX.Element => {
 
-	const [imageURL, setImageURL] = useState<{ url: string | string[]; id: number; type: any; }[]>([]);
+	const [imageURL, setImageURL] = useState<{ url: string | string[]; id: number; type: string; }[]>([]);
 	const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 	const [showImage, setShowImage] = useState<boolean>(false);
 

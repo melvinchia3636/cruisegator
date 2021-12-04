@@ -4,6 +4,7 @@ import { SpecificationData } from "components/Ship/specifications/interface";
 import { ItinerariesData } from "components/Ship/itineraries/interface";
 import { CabinsData } from "components/Ship/cabins/interface";
 import { GalleryData } from "components/Ship/gallery/interface";
+import { DeckPlansData } from "components/Ship/deckplans/interface";
 
 export function changeTab(payload: number): {
     type: string;
@@ -54,9 +55,9 @@ export function setGalleryData(payload: GalleryData[] | "no data"): {
 	return {type: constants.SET_GALLERY_DATA, payload};
 }
 
-export function setDeckPlansData(payload: any): {
+export function setDeckPlansData(payload: DeckPlansData): {
     type: string;
-    payload: any
+    payload: DeckPlansData
 } {
 	return {type: constants.SET_DECK_PLANS_DATA, payload};
 }

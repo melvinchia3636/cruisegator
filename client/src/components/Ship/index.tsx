@@ -3,7 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { changeTab, setShiprawData } from  "../../state_manage/actions";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import "flag-icon-css/sass/flag-icon.scss";
@@ -61,7 +61,7 @@ const getItiID = (id: string): {id: number, name: string}|undefined => {
 	});
 	if (result.length <= 1) return result[0];
 
-	const result2 = result.map((e: any) => {
+	const result2 = result.map((e: {name: string}) => {
 		const id3 = id2.split(" ");
 		return id3.map(i => e.name.toLowerCase().split(" ").includes(i)).filter((e: boolean) => e).length;
 	});
@@ -109,11 +109,9 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({active_tab, setShiprawData, ch
 	const cruiseCriticURI = `${cruiseCriticName}-${ItiID}`;
 
 	useEffect(() => {
-		//const text_data = require("./itineraries/test2.json");
-		//console.log(text_data.filter((e: string) => !e.includes("icebreaker")).map((e: any) => [e, getItiID(e)]).filter((e: any) => !e).length);
 		const fetchRawData = async () => {
 			const dom_parser: DOMParser = new DOMParser();
-			const request: void | AxiosResponse<any> = await axios({
+			const request = await axios({
 				method: "GET",
 				url: "https://cors-anywhere.thecodeblog.net/www.cruisemapper.com/ships/"+id, 
 				headers: {

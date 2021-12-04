@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Logo } from "./assets";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
 import ReactAnime from "react-animejs";
@@ -34,7 +33,7 @@ const Nav: React.FC<INavProps> = (): JSX.Element => {
 				}
 			]} className="h-full">
 				<ul className="font-medium text-xl phone-nav flex flex-col justify-center items-center h-full gap-24">
-					{page.map((e, i) => 
+					{page.map(e => 
 						<li key={e[0]}>
 							<a href={`/${e[0]}`} className={`${e.map(e => e.toLowerCase()).includes(pagename) ? "active": ""}`}>{e[0]}</a>
 						</li>)}

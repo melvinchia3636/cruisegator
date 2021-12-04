@@ -16,8 +16,8 @@ const getData  = async (id: string): Promise<void> => {
 	const staterooms_inner_raw = staterooms_inner.split("<br>").filter(e => e.trim()).map(e => parser.parseFromString(e, "text/html"));
 	const staterooms_inner_raw_group = [...Array(Math.ceil(staterooms_inner_raw.length / 2))].map(_ => staterooms_inner_raw.splice(0, 2));
 	const staterooms = staterooms_inner_raw_group.map(([title, categories]) => ({
-		name: title.querySelector("div")?.textContent,
-		img: title.querySelector("img")?.src.replace(window.location.origin, ""),
+		name: title.querySelector("div")?.textContent || "",
+		img: title.querySelector("img")?.src.replace(window.location.origin, "") || "",
 		categories: Array.from(categories.querySelectorAll("p > a")).map(e => {
 			return {
 				name: e.textContent || "",

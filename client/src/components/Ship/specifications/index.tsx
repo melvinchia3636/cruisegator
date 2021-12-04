@@ -2,8 +2,7 @@
 import { connect } from "react-redux";
 import { SpecificationsProps, SpecificationData } from "./interface";
 import { StateProps } from "../../../state_manage/interface";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Dispatch } from "redux";
 import { setSpecificationData } from "state_manage/actions";
 
@@ -20,7 +19,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 	};
 };
 
-const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ id, specification_data, setSpecificationData, setLoaded }: SpecificationsProps): JSX.Element => {
+const ConnectedSpecifications: React.FC<SpecificationsProps> = ({ specification_data }: SpecificationsProps): JSX.Element => {
 	const [active_tab, changeTab] = useState(0);
 	const options: string[] = [
 		"specifications",

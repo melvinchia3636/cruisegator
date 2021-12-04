@@ -1,24 +1,21 @@
-export interface GalleryProps {
-	id: string;
-	ccid: string;
-	gallery_data: GalleryData[] | "no data"
+export interface Decks {
+    firstdeck: number;
+    lastdeck: number;
 }
 
-export interface GalleryData {
-	name: 		string;
-	list: 		Array<List>;
+export interface Category {
+    name: string;
+    description: string;
+    background: string;
 }
 
-export interface List {
-	id:         number;
-	name:       string;
-	totalMedia: number;
-	coverImage: CoverImage;
-	state?: 	any;
-	setState?: 	any
+export interface Stateroom {
+    name: string;
+    img: string;
+    categories: Category[];
 }
 
-export interface CoverImage {
-	id:     number;
-	format: string;
+export interface DeckPlansData {
+    decks: Decks;
+    staterooms: Stateroom[];
 }

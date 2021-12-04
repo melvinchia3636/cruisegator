@@ -80,9 +80,9 @@ class Map extends React.Component<MapProps> {
 	}
 }
 
-const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, shipraw_data, changeTab, id, specification_data, setSpecificationData, setLoaded }: ShipProps ) => {
+const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, changeTab, id, specification_data, setSpecificationData, setLoaded }: ShipProps ) => {
 	const data = overview_data;
-	const {Anime, stagger} = ReactAnime;
+	const {Anime} = ReactAnime;
 
 	useEffect(() => {
 		axios.get("https://api.cruisegator.thecodeblog.net/ship/specifications/"+id).then(res => {

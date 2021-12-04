@@ -3,6 +3,7 @@ import React from "react";
 import { StateProps } from "state_manage/interface";
 import { getData } from "./scrape";
 import { connect } from "react-redux";
+import { DeckPlansData } from "./interface";
 
 const mapStateToProps = (state: StateProps) => {
 	return {
@@ -11,7 +12,7 @@ const mapStateToProps = (state: StateProps) => {
 	};
 };
 
-const ConnectedDeckPlans: React.FC<any> = ({ deck_plans_data, id }: any): JSX.Element => {
+const ConnectedDeckPlans = ({ deck_plans_data, id }: { deck_plans_data: DeckPlansData, id: string }): JSX.Element => {
 	
 	if (JSON.stringify(deck_plans_data) === "{}") {
 		getData(id.split(" ").join("-"));

@@ -16,8 +16,10 @@ import mapboxgl from "mapbox-gl";
 // @ts-ignore
 mapboxgl.workerClass = MapboxWorker;
 
-const circles = Array(13).fill(null).map((_, i) => require(`./assets/circle/circle${Math.pow(2, i)}.png`).default);
-const arrows = Array(13).fill(null).map((_, i) => require(`./assets/arrow/arrow${Math.pow(2, i)}.png`).default);
+const circles = Array(13).fill(null).map((_, i) => require(`./assets/circle/circle${Math.pow(2, i)}.png`).slice(1));
+const arrows = Array(13).fill(null).map((_, i) => require(`./assets/arrow/arrow${Math.pow(2, i)}.png`).slice(1));
+
+console.log(circles);
 
 const colors: [number, number[]][] = [
 	[1, [197, 181, 174, 255]],
@@ -138,7 +140,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 		}).then(res => res.json()).then(data=>{
 			((this.state.map as mapboxgl.Map).getSource("places") as mapboxgl.GeoJSONSource).setData({
 				"type": "FeatureCollection",
-				"features": data.map((row:any) => {
+				"features": data.map((row: any) => {
 					return {
 						"type": "Feature",
 						"properties": {  

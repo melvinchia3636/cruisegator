@@ -10,18 +10,16 @@ import accountGroupOutline from "@iconify-icons/mdi/account-group-outline";
 
 import Lottie from "react-lottie";
 const loadingAnimation = require("../Utils/assets/loading-anim.json");
-
-const assetsMap = Object.fromEntries(Object.entries(assets));
-
 export interface CruiseShipQuery {
-	link:      string | null | undefined;
-	image:     string | null | undefined;
-	name:      string | null | undefined;
-	lines:     string | null | undefined;
-	cruise:    string | null | undefined;
-	year:      string | null | undefined;
-	age:       string | null | undefined;
-	passenger: string | null | undefined;
+	link:      string | null;
+	image:     string | null;
+	name:      string | null;
+	lines:     string | null;
+	line_id:   string | null;
+	cruise:    string | null;
+	year:      string | null;
+	age:       string | null;
+	passenger: string | null;
 }
 
 const defaultOptions = {
@@ -37,12 +35,26 @@ export default function Database(): JSX.Element {
 	const [data, setData] = useState<CruiseShipQuery[]>([]);
 	const [loaded, setLoaded] = useState<boolean>(false);
 	const [exist, setExist] = useState<boolean[]>();
+	const [query, setQuery] = useState<string>("");
+	const [searchResult, setSearchResult] = useState<{
+		id:      string;
+		name:    string;
+		url:     string;
+		line_id: string;
+	}[]>([]);
 	const query_params = new URLSearchParams(window.location.search);
 	const page_num = parseInt(query_params.get("page") || "1");
 
+	const fetchQuery = (e: React.FormEvent<HTMLFormElement>): void => {
+		e.preventDefault();
+		axios({
+			url: "http://localhost:3001/database/search?q="+encodeURIComponent(query),
+		}).then(res => setSearchResult(res.data)).catch(err => console.log(err));
+	};
+
 	useEffect(() => {
 		async function fetchData() {
-			const request = await axios.get("https://api.cruisegator.thecodeblog.net/database/list/"+page_num).catch(() => null);
+			const request = await axios.get("http://localhost:3001/database/list/"+page_num).catch(() => null);
 			const data = await request && request?.data;
 			
 			setData(data);
@@ -61,7 +73,7 @@ export default function Database(): JSX.Element {
 
 	return (
 		<>
-			<div className="w-full h-screen bg-blue-700 absolute top-0 left-0 px-32 flex-col flex justify-center">
+			<form onSubmit={fetchQuery} className="w-full h-screen bg-blue-700 absolute top-0 left-0 px-32 flex-col flex justify-center">
 				<h1 className="text-5xl xl:text-6xl font-semibold !leading-[129%]" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
 				Search for your desired <span className="text-blue-800">cruiseship</span>
 				</h1>
@@ -70,7 +82,7 @@ export default function Database(): JSX.Element {
 					<svg width="30" height="30" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path fillRule="evenodd" clipRule="evenodd" d="M24.4874 22.3485L32.5574 30.4185C32.841 30.7023 33.0003 31.0872 33.0002 31.4885C33 31.8898 32.8405 32.2746 32.5566 32.5582C32.2728 32.8419 31.8879 33.0012 31.4866 33.001C31.0853 33.0009 30.7005 32.8413 30.4169 32.5575L22.3469 24.4875C19.9344 26.356 16.9008 27.2353 13.8631 26.9465C10.8253 26.6577 8.01173 25.2225 5.9946 22.9329C3.97748 20.6433 2.90837 17.6712 3.00476 14.6213C3.10115 11.5714 4.35581 8.67277 6.51349 6.51509C8.67117 4.35741 11.5698 3.10275 14.6197 3.00636C17.6696 2.90997 20.6417 3.97908 22.9313 5.99621C25.2209 8.01333 26.6561 10.8269 26.9449 13.8647C27.2337 16.9024 26.3544 19.9361 24.4859 22.3485H24.4874ZM14.9999 24C17.3868 24 19.676 23.0518 21.3638 21.3639C23.0517 19.6761 23.9999 17.3869 23.9999 15C23.9999 12.613 23.0517 10.3238 21.3638 8.63602C19.676 6.94819 17.3868 5.99998 14.9999 5.99998C12.6129 5.99998 10.3237 6.94819 8.63592 8.63602C6.94809 10.3238 5.99988 12.613 5.99988 15C5.99988 17.3869 6.94809 19.6761 8.63592 21.3639C10.3237 23.0518 12.6129 24 14.9999 24Z" fill="#4189DD"/>
 					</svg>
-					<input type="text" placeholder="Type the ship name here" className="text-[1.4rem] ml-4 w-7/12"/>
+					<input onChange={e => setQuery(e.target.value)} type="text" placeholder="Type the ship name here" className="text-[1.4rem] ml-4 w-7/12"/>
 					<div className="h-full w-[1px] bg-gray-400 mx-4"></div>
 					<svg width="38" height="38" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M21.5 40.3125L10.1641 26.9435C10.0066 26.7428 9.85075 26.5408 9.69652 26.3375C7.76015 23.7868 6.71407 20.6712 6.71877 17.4688C6.71877 13.5485 8.27607 9.78885 11.0481 7.01683C13.8201 4.24481 17.5798 2.6875 21.5 2.6875C25.4202 2.6875 29.1799 4.24481 31.9519 7.01683C34.724 9.78885 36.2813 13.5485 36.2813 17.4688C36.286 20.6698 35.2404 23.7839 33.3049 26.3335L33.3035 26.3375C33.3035 26.3375 32.9004 26.8669 32.8399 26.9382L21.5 40.3125ZM11.8411 24.7183C11.8438 24.7183 12.1556 25.1322 12.2268 25.2208L21.5 36.1576L30.7853 25.2061C30.8444 25.1322 31.1589 24.7156 31.1602 24.7143C32.742 22.6302 33.5969 20.0851 33.5938 17.4688C33.5938 14.2613 32.3196 11.1852 30.0516 8.91718C27.7836 6.64916 24.7075 5.375 21.5 5.375C18.2926 5.375 15.2165 6.64916 12.9484 8.91718C10.6804 11.1852 9.40627 14.2613 9.40627 17.4688C9.40345 20.0867 10.2592 22.6333 11.8425 24.7183H11.8411Z" fill="#4189DD"/>
@@ -82,7 +94,7 @@ export default function Database(): JSX.Element {
 						<option value="Any cruise company ">Any cruise company</option>
 					</select>
 				</div>
-				<a className='bg-blue-800 rounded-md text-white text-lg px-12 inline-block mt-4 font-medium btn-anim2 whitespace-nowrap' style={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}} data-text="FIND THE SHIP" href="https://github.com/melvinchia3636/cruisegator">{"WHERE IS THAT?".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</a>
+				<button type="submit" className='bg-blue-800 rounded-md text-white text-lg px-12 inline-block mt-4 font-medium btn-anim2 whitespace-nowrap' style={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}} data-text="FIND THE SHIP">{"WHERE IS THAT?".split("").map(e => <span className="text-white" key={e}>{e}</span>)}</button>
 				<a className="absolute bottom-6 left-32 font-medium text-lg hidden 1170:flex">
 					<svg className="mr-2 transform rotate-90" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M4 12H20" stroke="#4189DD" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
@@ -90,7 +102,7 @@ export default function Database(): JSX.Element {
 					</svg>
 				Scroll Down
 				</a>
-			</div>
+			</form>
 			{loaded ? <div className="px-32 mt-[100vh] pb-24">
 				<div className="flex justify-between items-center">
 					<p className="text-2xl font-medium">Displaying 1-15 of 1465 result(s)</p>
@@ -111,7 +123,7 @@ export default function Database(): JSX.Element {
 					{data.map(e => <div className="p-8 rounded-lg flex justify-between h-72 bg-white relative" style={{ boxShadow: "0 2px 8px rgba(0, 0, 0, .15)" }} key={e.name}>
 						<div className="flex flex-col justify-between">
 							<div className="flex items-center gap-4">
-								<img src={assetsMap[e.lines?.toLowerCase().replace(/\s/g, "_")||"royal_caribbean"]} className="w-12 h-12"/>
+								<img src={`https://www.cruisemapper.com/images/lines/icons/${e.line_id}.png`} className="w-12 h-12"/>
 								<div>
 									<h2 className="text-3xl font-medium">{e.name}</h2>
 									<p className="font-semibold text-blue-800">{e.lines}</p>
@@ -184,8 +196,20 @@ export default function Database(): JSX.Element {
 							isStopped={false}
 							isPaused={false}/>
 					</div>
-				</div> 
+				</div>
 				: ""}
+			{searchResult.length && <>
+				<div className="top-0 left-0 w-full h-screen z-[9999] fixed bg-black opacity-20 cursor-pointer" onClick={() => setSearchResult([])} />	
+			</>}
+			<div className={`${searchResult.length ? "top-1/2" : "-top-1/2"} transition-all p-8 duration-500 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[calc(50vw)] h-[calc(100vh-8rem)] overflow-auto shadow-[0_0_20px_rgba(0,0,0,.25)] rounded-xl z-[9999] fixed bg-white`}>
+				<h2 className="font-medium tracking-wide text-3xl">Search results for &quot;{query}&quot;</h2>
+				<div className="mt-6 flex flex-col">
+					{searchResult.map(e => <a key={e.id} className="tracking-wide text-lg py-4 px-2 border-t border-b border-t-gray-100 border-b-gray-100 flex items-center gap-2" href={"/ship/"+e.url.split("/")[4]}>
+						<img src={`https://cruisemapper.com/images/lines/icons/${e.line_id}.png`} className="w-8 h-8" />
+						{e.name}
+					</a>)}
+				</div>
+			</div>
 		</>
 	);
 }

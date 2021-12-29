@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; 
-import * as assets from "./assets";
+import axios from "axios";
 
 import { Icon } from "@iconify/react";
 import calendarMonthOutline from "@iconify-icons/mdi/calendar-month-outline";
@@ -48,13 +47,13 @@ export default function Database(): JSX.Element {
 	const fetchQuery = (e: React.FormEvent<HTMLFormElement>): void => {
 		e.preventDefault();
 		axios({
-			url: "http://localhost:3001/database/search?q="+encodeURIComponent(query),
+			url: "https://api.cruisegator.thecodeblog.net/database/search?q="+encodeURIComponent(query),
 		}).then(res => setSearchResult(res.data)).catch(err => console.log(err));
 	};
 
 	useEffect(() => {
 		async function fetchData() {
-			const request = await axios.get("http://localhost:3001/database/list/"+page_num).catch(() => null);
+			const request = await axios.get("https://api.cruisegator.thecodeblog.net/database/list/"+page_num).catch(() => null);
 			const data = await request && request?.data;
 			
 			setData(data);

@@ -12,7 +12,8 @@ import arrowLeftSLine from "@iconify-icons/ri/arrow-left-s-line";
 // eslint-disable-next-line
 // @ts-ignore
 import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
-import mapboxgl from "mapbox-gl";
+import mapboxgl, { MapLayerMouseEvent, MapMouseEvent } from "mapbox-gl";
+import { Point } from "geojson";
 // @ts-ignore
 mapboxgl.workerClass = MapboxWorker;
 
@@ -140,7 +141,15 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 		}).then(res => res.json()).then(data=>{
 			((this.state.map as mapboxgl.Map).getSource("places") as mapboxgl.GeoJSONSource).setData({
 				"type": "FeatureCollection",
-				"features": data.map((row: any) => {
+				"features": data.map((row: {
+					ship_line_title: string;
+					hover: string;
+					icon: string
+					heading: string;
+					sog: number;
+					lon: string;
+					lat: string;
+				}) => {
 					return {
 						"type": "Feature",
 						"properties": {  
@@ -199,7 +208,15 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 						"type": "geojson",
 						"data": {
 							"type": "FeatureCollection",
-							"features": data.map((row: any) => {
+							"features": data.map((row: {
+								ship_line_title: string;
+								hover: string;
+								icon: string
+								heading: string;
+								sog: number;
+								lon: string;
+								lat: string;
+							}) => {
 								return {
 									"type": "Feature",
 									"properties": {  
@@ -241,11 +258,14 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 						closeButton: false,
 						closeOnClick: false
 					});
-					map.on("mouseenter", "places", (e: any) => {
+					map.on("mouseenter", "places", (e: MapLayerMouseEvent) => {
 						map.getCanvas().style.cursor = "pointer";
-						const coordinates = e.features[0].geometry.coordinates.slice();
-						const description = e.features[0].properties.description;
-						popup.setLngLat(coordinates).setHTML(description).addTo(map);
+						if ((e.features || [])[0].geometry.type === "Point") {
+							const g: Point = (e.features || [])[0].geometry as unknown as Point;
+							const coordinates = g.coordinates.slice() as [number, number];
+							const description = (e.features || [])[0].properties?.description;
+							popup.setLngLat(coordinates).setHTML(description).addTo(map);
+						}
 					});
 					map.on("mouseleave", "places", function() {
 						map.getCanvas().style.cursor = "";
@@ -254,7 +274,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
 				});
 		}
 		);
-		map.on("mousemove", (e: any) => {
+		map.on("mousemove", (e: MapMouseEvent) => {
 			this.setState({...e.lngLat});
 		});
 		map.on("move", () => {

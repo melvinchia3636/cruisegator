@@ -15,10 +15,9 @@ module.exports = {
 			const html = dom.window.document;
 			
 			result.push(Array.from(html.querySelector(".shipList")?.querySelectorAll(".shipListItem") || []).map(data => {
-			const raw = data.querySelectorAll("table td:last-child");
-			const second = Array(2).fill(0).map((_, i) => (raw[i].textContent || "/").split("/").map(e => e.trim())).flat();
-			const line_id_raw = data.querySelector(".labelCategory")?.href.split("-")
-			console.log(line_id_raw)
+				const raw = data.querySelectorAll("table td:last-child");
+				const second = Array(2).fill(0).map((_, i) => (raw[i].textContent || "/").split("/").map(e => e.trim())).flat();
+				const line_id_raw = data.querySelector(".labelCategory")?.href.split("-")
 				return {
 					link: (()=>{const a=data.querySelector("a")?.href.split("/"); return a[a.length-1];})(),
 					image: "https://www.cruisemapper.com/"+data.querySelector("img")?.src,

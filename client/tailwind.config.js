@@ -1,7 +1,5 @@
 module.exports = {
-	mode: "jit",
-	purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-	darkMode: false, // or 'media' or 'class'
+	content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
 	theme: {
 		extend: {
 			colors: {
@@ -33,9 +31,6 @@ module.exports = {
 			"gridbox": "0px 13px 12px rgba(0, 0, 0, 0.09)",
 			"form": "0px 4px 6px rgba(0, 0, 0, 0.11)"
 		}
-	},
-	variants: {
-		extend: {},
 	},
 	plugins: [],
 };

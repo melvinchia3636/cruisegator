@@ -10,7 +10,8 @@ interface INavProps {
 const Nav: React.FC<INavProps> = (): JSX.Element => {
 	const page = [["Home"], ["Database", "ship"], ["Map"], ["News"]];
 	const pathname = location.pathname.match(/\/(.*?)(?:\/|$)/) || [];
-	const pagename = pathname[pathname.length-1] || "Home";
+	const pagename = pathname[pathname.length-1] || "home";
+	console.log(pagename);
 	const {Anime, stagger} = ReactAnime;
 	const [isNavToggle, setNavToggle] = useState(false);
 	const [firstTime, setFirstTime] = useState(true);

@@ -226,7 +226,7 @@ export default function Homepage(): JSX.Element {
 				<h1 className="text-4xl md:text-5xl 2xl:px-72 font-semibold !leading-[129%] mb-8 mt-8 text-center" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
 				Upgrade to <span className="text-blue-800">Premium</span> with affordable price
 				</h1>
-				<p className="text-center text-xl md:text-2xl mt-12">This is just a decoration. I don’t want your money.</p>
+				<p className="text-center text-xl md:text-2xl mt-12">This is just a decoration. This site is completely free to use.</p>
 				<div className="mt-12 xl:mt-24 flex items-center justify-center flex-col xl:flex-row gap-6 xl:gap-0 ">
 					<div className="rounded-r-lg xl:rounded-r-none rounded-l-lg bg-white p-6 w-full xl:w-96 shadow-default">
 						<p className="font-medium text-2xl mt-4">Basic</p>

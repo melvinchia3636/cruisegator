@@ -195,9 +195,11 @@ const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, id, setCabinsData
 	data.forEach(e => [e.state, e.setState] = useState(0));
 
 	return (
-		<div className='p-10 md:px-32 w-full grid grid-cols-3 gap-4'>
-			{data ? data.map((e, i) => <CabinCard e={e} i={i} key={i}/>) : ""}
-		</div>
+		<>
+			<div className='p-10 md:px-32 w-full grid grid-cols-3 gap-4'>
+				{data ? data.map((e, i) => <CabinCard e={e} i={i} key={i}/>) : ""}
+			</div>
+		</>
 	);
 };
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { CabinsProps, CabinsData } from "./interface";
 import { StateProps } from "state_manage/interface";
 import { connect } from "react-redux";
-import { ChevronDown } from "react-feather";
 import LazyLoad from "react-lazyload";
 import Location28Regular from "@iconify-icons/fluent/location-28-regular";
 import Resize20Regular from "@iconify-icons/fluent/resize-20-regular";
@@ -28,7 +27,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
 const ListItem: React.FC<{str: string}> = ({ str }: { str: string }): JSX.Element => {
 	return <div className="bg-gray-100 text-gray-600 m-1 rounded-md overflow-hidden">
-		<div className="px-3 py-2 lb" style={{ borderLeft: "4.5px solid rgba(0, 85, 185, 1)" }}>{str}</div>
+		<div className="px-3 py-2 lb" style={{ borderLeft: "4.5px solid rgba(0, 85, 185, 1)" }}>{str.replace(/&amp;/g, "&")}</div>
 	</div>;
 };
 
@@ -149,36 +148,38 @@ const Perks: React.FC<{ perks: CabinsData["perks"] }> = ({ perks: perks }: { per
 	</>;
 };
 
-const MoreDetails: React.FC<{ e: CabinsData, i: number }> = ({ e, i }: { e: CabinsData, i: number }): JSX.Element => {
-	return <div className="overflow-hidden transition-all duration-300 mb-10 md:mb-0" style={{height: e.state}}>
-		<div className="w-full p-4 pt-8 md:p-8 mt-3 mb-12 flex flex-col justify-center" id={"c-"+i}>
-			<Location location={e.location}/>
-			<Features features={e.features}/>
-			<SizeInfo size_info={ e.important_size_info }/>
-			<Perks perks={ e.perks }/>
-			<OtherData others={e.others}/>
-		</div> 
+const MoreDetails: React.FC<{ e: CabinsData, i: number }> = ({ e, i }: { e: CabinsData, i: number}): JSX.Element => {
+	return <div className="w-full overflow-auto p-4 pt-8 md:p-8 my-3 flex flex-col justify-center" id={"c-"+i}>
+		<Location location={ e.location }/>
+		<Features features={ e.features }/>
+		<SizeInfo size_info={ e.important_size_info }/>
+		<Perks perks={ e.perks }/>
+		<OtherData others={ e.others }/>
 	</div>;
 };
 
-const CabinCard: React.FC<{e: CabinsData, i: number}> = ({e, i}: {e: CabinsData, i: number}): JSX.Element => {
-	return <div key={i} className="w-full flex bg-white flex-col justify-center rounded-xl" style={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}}>
-		<div className="flex flex-col items-center p-8">
-			<CabinDiagram diagram={e.diagram}/>
-			<div className="flex flex-col md:flex-row h-100 mt-6 lg:mt-0">
-				<div className="flex items-start h-100 flex-col justify-start pt-5">
-					<h2 className="font-medium text-3xl mt-9 mb-3 text-blue-800 text-center w-full">{e.name}</h2>
-					<CabinCategories categories={ e.categories }/> 
-					<MetaTable e={e}/>
+const CabinCard: React.FC<{e: CabinsData, i: number }> = ({e, i}: {e: CabinsData, i: number }): JSX.Element => {
+	const [show, setShow] = useState(false);
+	return <>
+		<div key={i} className="w-full flex bg-white flex-col justify-center rounded-xl cursor-pointer transition-all transform hover:-translate-y-1" style={{boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"}} onClick={() => setShow(true)}>
+			<div className="flex flex-col items-center p-8">
+				<CabinDiagram diagram={e.diagram}/>
+				<div className="flex flex-col md:flex-row h-100 mt-6 lg:mt-0">
+					<div className="flex items-start h-100 flex-col justify-start pt-5">
+						<h2 className="font-medium text-3xl mt-9 mb-3 text-blue-800 text-center w-full">{e.name}</h2>
+						<CabinCategories categories={ e.categories }/> 
+						<MetaTable e={e}/>
+					</div>
 				</div>
 			</div>
 		</div>
-		{/*<MoreDetails e={e} i={i}/>
-		<button className="flex flex-col items-center text-medium text-center text-gray-600" onClick={() => e.setState(e.state ? 0 : document.querySelector("#c-"+i)?.clientHeight)}>
-			{(e.state ? "Hide" : "More") + " Details"}
-			<ChevronDown width={18} style={{marginTop: -5}} className={"transition-all transform " + (e.state ? "rotate-180" : "")}/>
-		</button>*/}
-	</div>;
+		{show && <>
+			<div className="top-0 left-0 w-full h-screen z-[9999] fixed bg-black opacity-20 cursor-pointer" onClick={() => setShow(false)} />	
+		</>}
+		<div className={`${show ? "top-1/2" : "-top-1/2"} transition-all duration-500 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[calc(100vw-8rem)] h-[calc(100vh-8rem)] overflow-auto shadow-[0_0_20px_rgba(0,0,0,.25)] rounded-xl z-[9999] fixed bg-white`}>
+			<MoreDetails e={e} i={i} />
+		</div>
+	</>;
 };
 
 const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, id, setCabinsData, setLoaded }: CabinsProps): JSX.Element => {
@@ -197,7 +198,7 @@ const ConnectedCabins: React.FC<CabinsProps> = ({ cabins_data, id, setCabinsData
 	return (
 		<>
 			<div className='p-10 md:px-32 w-full grid grid-cols-3 gap-4'>
-				{data ? data.map((e, i) => <CabinCard e={e} i={i} key={i}/>) : ""}
+				{data ? data.map((e, i) => <CabinCard e={e} i={i} key={i} />) : ""}
 			</div>
 		</>
 	);

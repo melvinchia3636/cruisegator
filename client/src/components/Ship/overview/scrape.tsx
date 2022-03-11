@@ -3,13 +3,12 @@ import { setOverviewData } from "state_manage/actions";
 import { RawJsonData, OverviewData } from "./interface";
 
 const getData  = (): void => {
-	const { shipraw_data, overview_data } = store.getState();
+	const { shipraw_data } = store.getState();
 	const check_status = ( text: string ): "green" | "yellow" | "red" => {
 		if (text.includes("minute") || text.includes("second")) return "green";
 		if (text.includes("hour")) return "yellow";
 		return "red";
 	};
-	if (overview_data.rating) return;
 	const html: Document = shipraw_data;
 	const raw: string = (html.querySelectorAll("head script")[1]?.textContent?.match(/{.+}/) || ["{}"])[0].replaceAll("'", "\"");
 	const parser = require("really-relaxed-json").createParser();
@@ -50,7 +49,6 @@ const getData  = (): void => {
 		},
 		position: json.widgets.shipCurrentPositionMap
 	};
-	console.log(result);
 
 	store.dispatch(setOverviewData(result));
 };

@@ -165,7 +165,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, changeTab, id,
 					</div>)}
 				</div>
 			</div> : ""}
-			<div className="mt-32 flex justify-between items-center pb-4">
+			{data.position.lon !== 0 && data.position.lat !== 0 && <div className="mt-32 flex justify-between items-center pb-4">
 				<Map position={data.position}/>
 				<div className="w-min">
 					<h1 className="text-4xl xl:text-5xl font-semibold !leading-[129%] w-min 480:whitespace-nowrap mb-8" style={{textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"}}>
@@ -183,7 +183,7 @@ const ConnectedOverview: React.FC<ShipProps> = ( { overview_data, changeTab, id,
 						</svg>
 					</a>
 				</div>
-			</div>
+			</div>}
 		</div>
 	);
 };

@@ -18,7 +18,7 @@ export default function App(): JSX.Element {
 	const pathname = (location.pathname.match(/\/(.*?)(?:\/|$)/) || ["home"]);
 	const pagename = pathname[pathname.length-1];
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col bg-white">
 			<Nav className={pagename}/>
 			<DocumentTitle title={pagename[0] ? pagename[0].toUpperCase()+pagename.slice(1)+" - Cruisegator" : "Cruisegator"}/>
 			<main className={"container-fluid p-0 overflow-hidden h-full "+pathname[pathname.length-1]}>

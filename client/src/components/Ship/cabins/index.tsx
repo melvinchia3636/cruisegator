@@ -46,7 +46,7 @@ const CabinDiagram: React.FC<{ diagram: CabinsData["diagram"] }> = ({ diagram }:
 
 const CabinCategories: React.FC<{ categories: CabinsData["categories"] }> = ({ categories }: { categories: CabinsData["categories"]}): JSX.Element => {
 	return <div className="flex mb-6 flex-wrap justify-center w-full">
-		{categories.map(e => <span key={e.name} style={{background: e.background.replace("..", "https://www.cruisedeckplans.com/DP") }} className="ctg px-5 mr-2 mb-2 text-white rounded-full whitespace-nowrap py-1 shadow-inner text-sm">
+		{categories.map(e => <span key={e.name} style={{background: e.background.replace("..", "https://www.cruisedeckplans.com/DP") }} className="ctg px-5 mr-2 mb-2 text-white rounded-full whitespace-nowrap py-1 text-sm">
 			{e.name}
 		</span>)}
 	</div>;
@@ -107,7 +107,7 @@ const Location: React.FC<{ location: CabinsData["location"] }> = ({ location }: 
 		<div className="grid gap-y-8 gap-x-16 mt-8 grid-cols-[repeat(2,auto)]">
 			{location.map(({ deck, categories }) => <>
 				<h4 className="whitespace-nowrap text-lg text-gray-600">{deck}</h4>
-				<div className="flex flex-wrap">{categories.map(e => <span key={e.name} style={{background: e.background?.replace("..", "https://www.cruisedeckplans.com/DP") }} className="ctg px-5 mr-1 mb-1 text-white rounded-full whitespace-nowrap py-1 shadow-inner text-sm">{e.name}</span>)}</div>
+				<div className="flex flex-wrap">{categories.map(e => <span key={e.name} style={{background: e.background?.replace("..", "https://www.cruisedeckplans.com/DP") }} className="ctg px-5 mr-1 mb-1 text-white rounded-full whitespace-nowrap py-1 text-sm">{e.name}</span>)}</div>
 			</>)}
 		</div>
 	</>;
@@ -176,7 +176,7 @@ const CabinCard: React.FC<{e: CabinsData, i: number }> = ({e, i}: {e: CabinsData
 		{show && <>
 			<div className="top-0 left-0 w-full h-screen z-[9999] fixed bg-black opacity-20 cursor-pointer" onClick={() => setShow(false)} />	
 		</>}
-		<div className={`${show ? "top-1/2" : "-top-1/2"} transition-all duration-500 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[calc(100vw-8rem)] h-[calc(100vh-8rem)] overflow-auto shadow-[0_0_20px_rgba(0,0,0,.25)] rounded-xl z-[9999] fixed bg-white`}>
+		<div className={`${show ? "top-1/2" : "-top-1/2"} transition-all duration-500 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[calc(100vw-8rem)] h-[calc(100vh-8rem)] overflow-auto rounded-xl z-[9999] fixed bg-white`}>
 			<MoreDetails e={e} i={i} />
 		</div>
 	</>;

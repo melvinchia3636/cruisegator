@@ -26,11 +26,6 @@ module.exports = {
 		fontFamily: {
 			"poppins": ["Poppins"]
 		},
-		boxShadow: {
-			"default": "0px 4px 4px rgba(0, 0, 0, 0.25)",
-			"gridbox": "0px 13px 12px rgba(0, 0, 0, 0.09)",
-			"form": "0px 4px 6px rgba(0, 0, 0, 0.11)"
-		}
 	},
 	plugins: [],
 };

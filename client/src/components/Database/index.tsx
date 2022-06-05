@@ -106,7 +106,7 @@ export default function Database(): JSX.Element {
 				<div className="flex justify-between items-center">
 					<p className="text-2xl font-medium">Displaying 1-15 of 1465 result(s)</p>
 					<div className="flex gap-8">
-						<button className="bg-blue-800 rounded-md shadow-default p-2">
+						<button className="bg-blue-800 rounded-md p-2">
 							<svg width="32" height="32" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M5.25 8.75V33.25H36.75V8.75H5.25ZM12.25 12.25V15.75H8.75V12.25H12.25ZM8.75 22.75V19.25H12.25V22.75H8.75ZM8.75 26.25H12.25V29.75H8.75V26.25ZM33.25 29.75H15.75V26.25H33.25V29.75ZM33.25 22.75H15.75V19.25H33.25V22.75ZM33.25 15.75H15.75V12.25H33.25V15.75Z" fill="#F6F5F7"/>
 							</svg>
@@ -200,7 +200,7 @@ export default function Database(): JSX.Element {
 			{searchResult.length && <>
 				<div className="top-0 left-0 w-full h-screen z-[9999] fixed bg-black opacity-20 cursor-pointer" onClick={() => setSearchResult([])} />	
 			</>}
-			<div className={`${searchResult.length ? "top-1/2" : "-top-1/2"} transition-all p-8 duration-500 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[calc(50vw)] h-[calc(100vh-8rem)] overflow-auto shadow-[0_0_20px_rgba(0,0,0,.25)] rounded-xl z-[9999] fixed bg-white`}>
+			<div className={`${searchResult.length ? "top-1/2" : "-top-1/2"} transition-all p-8 duration-500 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[calc(50vw)] h-[calc(100vh-8rem)] overflow-auto rounded-xl z-[9999] fixed bg-white`}>
 				<h2 className="font-medium tracking-wide text-3xl">Search results for &quot;{query}&quot;</h2>
 				<div className="mt-6 flex flex-col">
 					{searchResult.map(e => <a key={e.id} className="tracking-wide text-lg py-4 px-2 border-t border-b border-t-gray-100 border-b-gray-100 flex items-center gap-2" href={"/ship/"+e.url.split("/")[4]}>

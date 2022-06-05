@@ -2,18 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
 html, body {
 	background: #F6F5F7
 }
 
 * {
-	font-family: Poppins;
+	font-family: "Work Sans";
 }
 
 h1, h2, h3, h4, h5, h6, p, a, div, span {
-	color: #2A3036;
+	@apply text-zinc-600;
 }
 
 nav {
@@ -25,7 +25,7 @@ nav {
             background: #4189DD;
             width: 0;
             height: 3px;
-            bottom: -2.3rem;
+            bottom: -2.1rem;
             left: 0;
             position: absolute;
             transition: all 0.3s;

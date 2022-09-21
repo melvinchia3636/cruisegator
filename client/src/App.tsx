@@ -1,39 +1,49 @@
-import { Route, Switch } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import React from "react";
+import { Route, Routes, useLocation } from 'react-router-dom';
+import React from 'react';
 
-import Homepage from "./components/Homepage";
-import { Nav, Footer } from "./components/Utils";
-import Error404 from "./components/Error";
-import Database from "./components/Database";
-import Map from "./components/Map";
-import Ship from "./components/Ship";
-import DocumentTitle from "react-document-title";
+import DocumentTitle from 'react-document-title';
+import Homepage from './components/Homepage';
+import { Nav, Footer } from './components/Utils';
+import Error404 from './components/Error';
+import Database from './components/Database';
+import Map from './components/Map';
+import Ship from './components/Ship';
 
-import "tailwindcss/tailwind.css";
-import "./style.scss";
+import 'tailwindcss/tailwind.css';
+import './style.scss';
 
 export default function App(): JSX.Element {
-	const location = useLocation();
-	const pathname = (location.pathname.match(/\/(.*?)(?:\/|$)/) || ["home"]);
-	const pagename = pathname[pathname.length-1];
-	return (
-		<div className="flex flex-col bg-white">
-			<Nav className={pagename}/>
-			<DocumentTitle title={pagename[0] ? pagename[0].toUpperCase()+pagename.slice(1)+" - Cruisegator" : "Cruisegator"}/>
-			<main className={"container-fluid p-0 overflow-hidden h-full "+pathname[pathname.length-1]}>
-				<Route>
-					<Switch>
-						<Route exact path='/'><Homepage/></Route>
-						<Route exact path='/home'><Homepage/></Route>
-						<Route exact path='/database'><Database/></Route>
-						<Route path='/map'><Map/></Route>
-						<Route path='/ship/:id' component={Ship}></Route>
-						<Route><Error404/></Route>
-					</Switch>
-				</Route>
-			</main>
-			{!(pagename==="map")?<Footer />:""}
-		</div>
-	);
+  const location = useLocation();
+  const pathname = location.pathname.match(/\/(.*?)(?:\/|$)/);
+  const pagename = pathname != null ? pathname[pathname.length - 1] : 'home';
+
+  console.log(pagename[0]);
+
+  return (
+    <div className="flex flex-col bg-white">
+      <Nav className={pagename} />
+      <DocumentTitle
+        title={
+          pagename[0] !== undefined
+            ? `${pagename[0].toUpperCase() + pagename.slice(1)} - Cruisegator`
+            : 'Cruisegator'
+        }
+      />
+      <main
+        className={`container-fluid p-0 overflow-hidden h-full ${
+          pathname !== null ? pathname[pathname.length - 1] : ''
+        }`}
+      >
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/home" element={<Homepage />} />
+          <Route path="/database" element={<Database />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/ship/:id" element={<Ship />} />
+          <Route element={<Error404 />} />
+        </Routes>
+      </main>
+      {!(pagename === 'map') ? <Footer /> : ''}
+    </div>
+  );
 }

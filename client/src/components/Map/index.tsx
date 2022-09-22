@@ -25,8 +25,6 @@ const arrows = Array(13)
   .fill(null)
   .map((_, i) => `./assets/arrow/arrow${2 ** i}.png`);
 
-console.log(circles);
-
 const colors: [number, number[]][] = [
   [1, [197, 181, 174, 255]],
   [2, [224, 77, 126, 255]],
@@ -164,7 +162,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
             for (const icon of sets) {
               map.loadImage(`/${icon}`, (error, image) => {
                 if (error) throw error;
-                const name = icon.match(/.+\/(.*?)\./);
+                const name = icon.match(/.+\/(.*?)\./)!;
                 map.addImage(name[name.length - 1], image as HTMLImageElement);
               });
             }

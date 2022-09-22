@@ -54,9 +54,7 @@ export default function Database(): JSX.Element {
     e.preventDefault();
     axios({
       url: `https://api.cruisegator.thecodeblog.net/database/search?q=${encodeURIComponent(query)}`,
-    })
-      .then((res) => setSearchResult(res.data))
-      .catch((err) => console.log(err));
+    }).then((res) => setSearchResult(res.data));
   };
 
   useEffect(() => {
@@ -70,13 +68,11 @@ export default function Database(): JSX.Element {
 
       const localExist: boolean[] = [];
       for (let i = 0; i <= 1; i++) {
-        const request = await axios
-          .get(
-            `https://cors-anywhere.thecodeblog.net/www.cruisemapper.com/ships?page=${
-              (pageNum + i) * 2 + 1
-            }`,
-          )
-          .catch((err) => console.log(err));
+        const request = await axios.get(
+          `https://cors-anywhere.thecodeblog.net/www.cruisemapper.com/ships?page=${
+            (pageNum + i) * 2 + 1
+          }`,
+        );
         localExist.push(request ? request.status !== 404 : false);
       }
       setExist(localExist);

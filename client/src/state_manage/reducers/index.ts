@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/default-param-last */
 import { AnyAction } from 'redux';
 import * as constants from '../constants';
 import { StateProps } from '../interface';
@@ -36,7 +37,7 @@ const initialState: StateProps = {
   deck_plans_data: {},
 };
 
-function Reducer(action: AnyAction, state = initialState): StateProps {
+function Reducer(state = initialState, action: AnyAction): StateProps {
   if (action.type === constants.CHANGE_TAB) {
     return { ...state, current_tab: action.payload };
   }

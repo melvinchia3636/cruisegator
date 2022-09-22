@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-wrap-multilines */
@@ -84,7 +86,7 @@ function ConnectedGallery({ gallery_data, ccid, setGalleryData, setLoaded }: Gal
     setLoaded(false);
     const request = await axios
       .get(
-        `https://api.cruisegator.thecodeblog.net/ship/gallery/image/${ccid}/${name}-${album_id}/${name}--v${image_id}`,
+        `http://localhost:3001/ship/gallery/image/${ccid}/${name}-${album_id}/${name}--v${image_id}`,
       )
       .catch(() => null);
     const data = request && request?.data;
@@ -138,8 +140,7 @@ function ConnectedGallery({ gallery_data, ccid, setGalleryData, setLoaded }: Gal
                     />
                   </LazyLoad>
                   <div className="w-full h-full absolute top-0 left-0 ic">
-                    <button
-                      type="button"
+                    <div
                       className="w-full bg-black bg-opacity-0 py-4 px-5 flex items-center transition-all duration-300 cursor-pointer justify-between h-16"
                       onClick={() => {
                         setShowImage(true);
@@ -155,7 +156,7 @@ function ConnectedGallery({ gallery_data, ccid, setGalleryData, setLoaded }: Gal
                         {e?.name}
                       </h3>
                       <p className="!text-white text-sm">{e.totalMedia} photos</p>
-                    </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -178,7 +179,7 @@ function ConnectedGallery({ gallery_data, ccid, setGalleryData, setLoaded }: Gal
         >
           {imageURL.length > 0 ? (
             <>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center w-full justify-between">
                 <button
                   type="button"
                   className="p-5"
@@ -186,7 +187,7 @@ function ConnectedGallery({ gallery_data, ccid, setGalleryData, setLoaded }: Gal
                     currentImageIndex > 0 ? setCurrentImageIndex(currentImageIndex - 1) : ''
                   }
                 >
-                  <ChevronLeft color="white" />
+                  <ChevronLeft color="white" size={36} />
                 </button>
                 {(() => {
                   const image = imageURL[currentImageIndex];
@@ -195,7 +196,7 @@ function ConnectedGallery({ gallery_data, ccid, setGalleryData, setLoaded }: Gal
                     case 'panorama':
                       component = (
                         <ReactPannellum
-                          id="panorama"
+                          id={`pannellum-${image.id}`}
                           className="!w-[75vw] !h-[75vh]"
                           autoLoad
                           type="cubemap"
@@ -212,7 +213,13 @@ function ConnectedGallery({ gallery_data, ccid, setGalleryData, setLoaded }: Gal
                       );
                       break;
                     case 'image':
-                      component = <img alt="" src={imageURL[currentImageIndex].url as string} />;
+                      component = (
+                        <img
+                          key={`image${imageURL[currentImageIndex].id}`}
+                          alt=""
+                          src={imageURL[currentImageIndex].url as string}
+                        />
+                      );
                       break;
                     default:
                       break;
@@ -228,7 +235,7 @@ function ConnectedGallery({ gallery_data, ccid, setGalleryData, setLoaded }: Gal
                       : ''
                   }
                 >
-                  <ChevronRight color="white" />
+                  <ChevronRight color="white" size={36} />
                 </button>
               </div>
               <p className="text-white mt-4">

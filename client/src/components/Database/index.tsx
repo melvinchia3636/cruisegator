@@ -261,7 +261,7 @@ export default function Database(): JSX.Element {
                       </div>
                       <div className="h-full w-[1px] bg-gray-200" />
                       <div className="flex items-center gap-3">
-                        <Icon icon="mdi:time-sand" width="36" />
+                        <Icon icon="mdi:timer-sand" width="36" />
                         <div>
                           <p className="font-semibold text-gray-400 text-sm mb-1">Age</p>
                           <p className="text-xl font-medium">

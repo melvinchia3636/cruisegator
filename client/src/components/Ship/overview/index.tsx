@@ -93,16 +93,12 @@ function ConnectedOverview({
   const { Anime } = ReactAnime;
 
   useEffect(() => {
-    axios
-      .get(`https://api.cruisegator.thecodeblog.net/ship/specifications/${id}`)
-      .then((res) => {
-        const data = res && res?.data;
-        console.log(data);
-        setSpecificationData(data || {});
-        getData();
-        setLoaded(true);
-      })
-      .catch(() => null);
+    axios.get(`https://api.cruisegator.thecodeblog.net/ship/specifications/${id}`).then((res) => {
+      const data = res && res?.data;
+      setSpecificationData(data || {});
+      getData();
+      setLoaded(true);
+    });
   }, []);
 
   return (
@@ -304,16 +300,15 @@ function ConnectedOverview({
               <span className="text-blue-800">location</span> of the ship?
             </h1>
             <p className="text-xl w-full leading-[139%]">
-              The current location of this ship is at
-              <span className="text-blue-800 font-medium">{data.location}</span> (coordinates
-              {data.coordinates}) cruising at speed of
+              The current location of this ship is at{' '}
+              <span className="text-blue-800 font-medium">{data.location}</span> (coordinates{' '}
+              {data.coordinates}) cruising at speed of{' '}
               <span className="text-blue-800 font-medium">{data.speed.knot}</span> (
               {typeof data.speed.kmph === 'object'
                 ? (data.speed.kmph as Array<string>).join(' / ')
                 : ''}
-              ) en route to
-              <span className="text-blue-800 font-medium">{data.destination}</span>. The AIS
-              position was reported
+              ) en route to <span className="text-blue-800 font-medium">{data.destination}</span>.
+              The AIS position was reported{' '}
               <span
                 className="font-medium"
                 style={{ color: colorMap[data.last_ais_report.status] }}

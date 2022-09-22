@@ -15,13 +15,8 @@ import Scrollbar from 'react-smooth-scrollbar';
 
 import { Icon } from '@iconify/react';
 
-// eslint-disable-next-line
-// @ts-ignore
-import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker';
 import mapboxgl, { MapLayerMouseEvent, MapMouseEvent } from 'mapbox-gl';
 import { Point } from 'geojson';
-// @ts-ignore
-mapboxgl.workerClass = MapboxWorker;
 
 const circles = Array(13)
   .fill(null)
@@ -167,7 +162,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
         .then((data) => {
           for (const sets of [arrows, circles]) {
             for (const icon of sets) {
-              map.loadImage(`./${icon}`, (error, image) => {
+              map.loadImage(`/${icon}`, (error, image) => {
                 if (error) throw error;
                 const name = icon.match(/.+\/(.*?)\./);
                 map.addImage(name[name.length - 1], image as HTMLImageElement);

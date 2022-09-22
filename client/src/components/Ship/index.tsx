@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable react/jsx-no-useless-fragment */
 import './style.scss';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteProps, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import axios from 'axios';
@@ -19,8 +21,9 @@ import DeckPlans from './deckplans';
 import { StateProps } from '../../state_manage/interface';
 
 import loadingAnimation from '../Utils/assets/loading-anim.json';
+import ids from './id.json';
 
-interface ShipRouteProps extends RouteComponentProps<{ id: string }> {
+interface ShipRouteProps extends RouteProps {
   active_tab: number;
   setShiprawData: (shipraw_data: Document) => {
     type: string;
@@ -52,7 +55,6 @@ const defaultOptions = {
 };
 
 const getItiID = (id: string): { id: number; name: string } | undefined => {
-  const ids = require('./id.json');
   const id2 = id.toLowerCase();
 
   const result = ids.filter((e: { id: number; name: string }) => {
@@ -79,12 +81,7 @@ const MainMapDispatchToProps = (dispatch: Dispatch) => ({
   changeTab: (newtab: number) => dispatch(changeTab(newtab)),
 });
 
-const ConnectedShip: React.FC<ShipRouteProps> = ({
-  active_tab,
-  setShiprawData,
-  changeTab,
-  ...props
-}: ShipRouteProps): JSX.Element => {
+function ConnectedShip({ active_tab, setShiprawData, changeTab }: ShipRouteProps) {
   const [data, setData] = useState<ShipHeaderProps>();
   const [loaded, setLoaded] = useState<boolean>(false);
 
@@ -98,17 +95,17 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({
     'gallery',
   ];
 
-  const special_id: { [key: string]: string } = {
+  const specialID: { [key: string]: string } = {
     'Queen Mary 2': 'Queen Mary',
   };
 
-  const { id } = props.match.params;
-  const splitted_id: string[] = id.split('-');
-  const splitted_id_nonum: string = splitted_id
-    .slice(0, splitted_id.length - 1)
+  const { id } = useParams() as { id: string };
+  const splittedID: string[] = id.split('-');
+  const splittedIDNoNum: string = splittedID
+    .slice(0, splittedID.length - 1)
     .join(' ')
     .replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-  const cruiseCriticID = getItiID(splitted_id_nonum);
+  const cruiseCriticID = getItiID(splittedIDNoNum);
   const ItiID: number | undefined = cruiseCriticID?.id;
   const cruiseCriticName: string | undefined = cruiseCriticID?.name
     ?.replace(/\(|\)/g, '')
@@ -118,7 +115,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({
 
   useEffect(() => {
     const fetchRawData = async () => {
-      const dom_parser: DOMParser = new DOMParser();
+      const domParser: DOMParser = new DOMParser();
       const request = await axios({
         method: 'GET',
         url: `https://cors-anywhere.thecodeblog.net/www.cruisemapper.com/ships/${id}`,
@@ -129,9 +126,9 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({
       }).catch((err) => console.log(err));
 
       const rdata: string = request ? request.data : '<p>none</p>';
-      const html: Document = dom_parser.parseFromString(rdata, 'text/html');
+      const html: Document = domParser.parseFromString(rdata, 'text/html');
       setShiprawData(html);
-      const country_raw = html
+      const countryRaw = html
         .querySelectorAll('.specificationTable')[0]
         .querySelector('tr:nth-child(2) td:last-child');
       setData({
@@ -142,8 +139,8 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({
         company: html.querySelector('a.shipCompanyLink')?.textContent || 'N/A',
         name: html.querySelector('h1[itemprop="name"]')?.textContent || 'N/A',
         country: {
-          name: country_raw?.textContent?.trim(),
-          flag: country_raw?.querySelector('span')?.className,
+          name: countryRaw?.textContent?.trim(),
+          flag: countryRaw?.querySelector('span')?.className,
         },
       });
     };
@@ -182,9 +179,14 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({
         <div className="py-5 pl-0 pr-12 border-b-2 w-[90%] border-gray-200 overflow-visible">
           <div className="flex justify-between gap-16 font-medium text-xl overflow-visible navbar">
             {options.map((e, i) => (
-              <a className={active_tab === i ? 'active' : ''} key={e} onClick={() => changeTab(i)}>
+              <button
+                type="button"
+                className={active_tab === i ? 'active' : ''}
+                key={e}
+                onClick={() => changeTab(i)}
+              >
                 {e[0].toUpperCase() + e.slice(1)}
-              </a>
+              </button>
             ))}
           </div>
         </div>
@@ -192,7 +194,6 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({
       <div className="w-full min-h-[90%] transition-all duration-500 overflow-hidden ">
         {(() => {
           let tab: JSX.Element;
-          console.log(special_id[splitted_id_nonum] || splitted_id_nonum);
           switch (active_tab) {
             case 0:
               tab = <Overview id={id} setLoaded={setLoaded} />;
@@ -204,14 +205,11 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({
               tab = <Itinerariess id={ItiID} setLoaded={setLoaded} />;
               break;
             case 3:
-              tab = <DeckPlans id={special_id[splitted_id_nonum] || splitted_id_nonum} />;
+              tab = <DeckPlans id={specialID[splittedIDNoNum] || splittedIDNoNum} />;
               break;
             case 4:
               tab = (
-                <Cabin
-                  id={special_id[splitted_id_nonum] || splitted_id_nonum}
-                  setLoaded={setLoaded}
-                />
+                <Cabin id={specialID[splittedIDNoNum] || splittedIDNoNum} setLoaded={setLoaded} />
               );
               break;
             case 6:
@@ -240,7 +238,7 @@ const ConnectedShip: React.FC<ShipRouteProps> = ({
       )}
     </div>
   );
-};
+}
 
 const Ship = connect(mapStateToProps, MainMapDispatchToProps)(ConnectedShip);
 

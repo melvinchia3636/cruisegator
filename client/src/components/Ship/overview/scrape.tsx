@@ -1,5 +1,7 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable global-require */
+// @ts-ignore
+import reallyRelaxedJSON from 'really-relaxed-json';
 import { setOverviewData } from '../../../state_manage/actions';
 import store from '../../../state_manage/store';
 import { RawJsonData, OverviewData } from './interface';
@@ -15,7 +17,7 @@ const getData = (): void => {
   const raw: string = (html.querySelectorAll('head script')[1]?.textContent?.match(/{.+}/) || [
     '{}',
   ])[0].replaceAll("'", '"');
-  const parser = require('really-relaxed-json').createParser();
+  const parser = reallyRelaxedJSON.createParser();
   const obj: string = parser.stringToJson(raw);
   const json: RawJsonData = JSON.parse(obj);
   if (!json.widgets) return;

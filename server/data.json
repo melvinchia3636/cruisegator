@@ -1,0 +1,3561 @@
+{
+  "props": {
+    "pageProps": {
+      "apolloState": {
+        "Ships:984": {
+          "name": "Symphony of the Seas",
+          "id": 984,
+          "hasItineraries": true,
+          "__typename": "Ships"
+        },
+        "ROOT_QUERY": {
+          "ship({\"id\":984})": {
+            "type": "id",
+            "generated": false,
+            "id": "Ships:984",
+            "typename": "Ships"
+          },
+          "itineraries({\"filters\":{\"fields\":[\"stats\"],\"shipId\":[984]},\"ipCountry\":\"US\"})": {
+            "type": "id",
+            "generated": true,
+            "id": "$ROOT_QUERY.itineraries({\"filters\":{\"fields\":[\"stats\"],\"shipId\":[984]},\"ipCountry\":\"US\"})",
+            "typename": "ItinerariesResult"
+          },
+          "itineraries({\"filters\":{\"shipId\":[984]},\"ipCountry\":\"US\"})": {
+            "type": "id",
+            "generated": true,
+            "id": "$ROOT_QUERY.itineraries({\"filters\":{\"shipId\":[984]},\"ipCountry\":\"US\"})",
+            "typename": "ItinerariesResult"
+          }
+        },
+        "$ROOT_QUERY.itineraries({\"filters\":{\"fields\":[\"stats\"],\"shipId\":[984]},\"ipCountry\":\"US\"}).stats.pricing": {
+          "minPriceFormatted": "$424",
+          "__typename": "PricingStats"
+        },
+        "$ROOT_QUERY.itineraries({\"filters\":{\"fields\":[\"stats\"],\"shipId\":[984]},\"ipCountry\":\"US\"}).stats": {
+          "pricing": {
+            "type": "id",
+            "generated": true,
+            "id": "$ROOT_QUERY.itineraries({\"filters\":{\"fields\":[\"stats\"],\"shipId\":[984]},\"ipCountry\":\"US\"}).stats.pricing",
+            "typename": "PricingStats"
+          },
+          "__typename": "ItineraryStats"
+        },
+        "$ROOT_QUERY.itineraries({\"filters\":{\"fields\":[\"stats\"],\"shipId\":[984]},\"ipCountry\":\"US\"})": {
+          "stats": {
+            "type": "id",
+            "generated": true,
+            "id": "$ROOT_QUERY.itineraries({\"filters\":{\"fields\":[\"stats\"],\"shipId\":[984]},\"ipCountry\":\"US\"}).stats",
+            "typename": "ItineraryStats"
+          },
+          "__typename": "ItinerariesResult"
+        },
+        "$ROOT_QUERY.itineraries({\"filters\":{\"shipId\":[984]},\"ipCountry\":\"US\"})": {
+          "filters": null,
+          "__typename": "ItinerariesResult"
+        }
+      },
+      "locale": "en_US",
+      "shipSlug": "symphony-of-the-seas-984",
+      "shipId": 984,
+      "albumId": 412097,
+      "ship": {
+        "name": "Symphony of the Seas",
+        "id": 984,
+        "status": 1,
+        "seo_name": "Royal Caribbean Symphony of the Seas",
+        "sales_name": "symphony_of_the_seas",
+        "is_luxury": false,
+        "is_river": null,
+        "slug": "symphony-of-the-seas",
+        "average_member_rating": 3.94627,
+        "professional_overall_rating": "4.50",
+        "total_member_reviews": 335,
+        "member_love_percentage": 70.3072,
+        "cruiseLine": {
+          "id": 32,
+          "seo_name": "Royal Caribbean",
+          "sales_name": "royal_caribbean",
+          "name": "Royal Caribbean International",
+          "mainUrl": "/cruiseto/cruiseitineraries.cfm?cl=32",
+          "short_name": "royal_caribbean",
+          "__typename": "CruiseLines"
+        },
+        "__typename": "Ships"
+      },
+      "isMember": false,
+      "album": {
+        "id": 412097,
+        "name": "Suite Lounge & Bar",
+        "slug": "suite-lounge-and-bar",
+        "totalMedia": 45,
+        "primaryImage": {
+          "id": 18420780,
+          "format": "//images.cruisecritic.com/image/18420780/image_{width}x{height}_{ratio}.jpg",
+          "__typename": "ImageServiceImage"
+        },
+        "media": {
+          "results": [
+            {
+              "id": 18420780,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18418343,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18421936,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18423061,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18418182,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422749,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18421346,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18423021,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422446,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18421332,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18419726,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18418942,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422021,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422875,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422856,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422137,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18419693,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18420535,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18419545,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18423073,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18418536,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18420118,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18419182,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18421145,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18423370,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18420986,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18419758,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422808,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422100,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18419772,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18421948,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18418880,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18418873,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18421977,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18420277,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18418987,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422974,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18421192,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18418249,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18422166,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18420681,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18418856,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 18420029,
+              "title": "Suite Lounge & Bar on Symphony of the Seas",
+              "mediaType": {
+                "type": "image",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "image",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 484547,
+              "title": "Panorama of Suite Lounge on Symphony of the Seas",
+              "mediaType": {
+                "type": "panorama",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "//panoramas.cruisecritic.com/484547/",
+              "__typename": "ImageServiceImage"
+            },
+            {
+              "id": 484435,
+              "title": "Panorama of Suite Lounge on Symphony of the Seas",
+              "mediaType": {
+                "type": "panorama",
+                "__typename": "ImsMediaType"
+              },
+              "prefix": "//panoramas.cruisecritic.com/484435/",
+              "__typename": "ImageServiceImage"
+            }
+          ],
+          "__typename": "ImageServiceImages"
+        },
+        "__typename": "Album"
+      },
+      "albumMedia": [
+        {
+          "id": 18420780,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18418343,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18421936,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18423061,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18418182,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422749,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18421346,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18423021,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422446,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18421332,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18419726,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18418942,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422021,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422875,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422856,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422137,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18419693,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18420535,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18419545,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18423073,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18418536,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18420118,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18419182,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18421145,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18423370,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18420986,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18419758,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422808,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422100,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18419772,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18421948,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18418880,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18418873,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18421977,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18420277,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18418987,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422974,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18421192,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18418249,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18422166,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18420681,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18418856,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 18420029,
+          "title": "Suite Lounge & Bar on Symphony of the Seas",
+          "mediaType": {
+            "type": "image",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "image",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 484547,
+          "title": "Panorama of Suite Lounge on Symphony of the Seas",
+          "mediaType": {
+            "type": "panorama",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "//panoramas.cruisecritic.com/484547/",
+          "__typename": "ImageServiceImage"
+        },
+        {
+          "id": 484435,
+          "title": "Panorama of Suite Lounge on Symphony of the Seas",
+          "mediaType": {
+            "type": "panorama",
+            "__typename": "ImsMediaType"
+          },
+          "prefix": "//panoramas.cruisecritic.com/484435/",
+          "__typename": "ImageServiceImage"
+        }
+      ],
+      "albumSection": {
+        "id": 813,
+        "name": "Restaurants And Bars",
+        "albums": {
+          "results": [
+            {
+              "id": 412028,
+              "name": "Johnny Rockets",
+              "slug": "johnny-rockets",
+              "totalMedia": 10,
+              "primaryImage": {
+                "id": 18423080,
+                "format": "//images.cruisecritic.com/image/18423080/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412037,
+              "name": "Sand Bar",
+              "slug": "sand-bar",
+              "totalMedia": 9,
+              "primaryImage": {
+                "id": 18421188,
+                "format": "//images.cruisecritic.com/image/18421188/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412042,
+              "name": "Boleros",
+              "slug": "boleros",
+              "totalMedia": 48,
+              "primaryImage": {
+                "id": 18418477,
+                "format": "//images.cruisecritic.com/image/18418477/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412043,
+              "name": "Hooked Seafood",
+              "slug": "hooked-seafood",
+              "totalMedia": 69,
+              "primaryImage": {
+                "id": 18422084,
+                "format": "//images.cruisecritic.com/image/18422084/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412046,
+              "name": "150 Central Park",
+              "slug": "150-central-park",
+              "totalMedia": 24,
+              "primaryImage": {
+                "id": 18422599,
+                "format": "//images.cruisecritic.com/image/18422599/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412047,
+              "name": "Jamie's Italian",
+              "slug": "jamies-italian",
+              "totalMedia": 20,
+              "primaryImage": {
+                "id": 18422582,
+                "format": "//images.cruisecritic.com/image/18422582/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412048,
+              "name": "Boardwalk Dog House",
+              "slug": "boardwalk-dog-house",
+              "totalMedia": 4,
+              "primaryImage": {
+                "id": 18421930,
+                "format": "//images.cruisecritic.com/image/18421930/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412051,
+              "name": "Rising Tide Bar",
+              "slug": "rising-tide-bar",
+              "totalMedia": 44,
+              "primaryImage": {
+                "id": 18420002,
+                "format": "//images.cruisecritic.com/image/18420002/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412059,
+              "name": "Main Dining Room",
+              "slug": "main-dining-room",
+              "totalMedia": 196,
+              "primaryImage": {
+                "id": 18421549,
+                "format": "//images.cruisecritic.com/image/18421549/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412061,
+              "name": "Vintages",
+              "slug": "vintages",
+              "totalMedia": 11,
+              "primaryImage": {
+                "id": 18420930,
+                "format": "//images.cruisecritic.com/image/18420930/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412062,
+              "name": "Playmakers Sports Bar & Arcade",
+              "slug": "playmakers-sports-bar-and-arcade",
+              "totalMedia": 28,
+              "primaryImage": {
+                "id": 18419045,
+                "format": "//images.cruisecritic.com/image/18419045/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412068,
+              "name": "Trellis Bar",
+              "slug": "trellis-bar",
+              "totalMedia": 3,
+              "primaryImage": {
+                "id": 18418743,
+                "format": "//images.cruisecritic.com/image/18418743/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412070,
+              "name": "Schooner Bar",
+              "slug": "schooner-bar",
+              "totalMedia": 11,
+              "primaryImage": {
+                "id": 18421200,
+                "format": "//images.cruisecritic.com/image/18421200/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412073,
+              "name": "Solarium Bistro",
+              "slug": "solarium-bistro",
+              "totalMedia": 28,
+              "primaryImage": {
+                "id": 18418525,
+                "format": "//images.cruisecritic.com/image/18418525/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412075,
+              "name": "Wonderland",
+              "slug": "wonderland",
+              "totalMedia": 53,
+              "primaryImage": {
+                "id": 18421007,
+                "format": "//images.cruisecritic.com/image/18421007/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412087,
+              "name": "Bionic Bar",
+              "slug": "bionic-bar",
+              "totalMedia": 28,
+              "primaryImage": {
+                "id": 18419089,
+                "format": "//images.cruisecritic.com/image/18419089/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412090,
+              "name": "Ice Cream Machine",
+              "slug": "ice-cream-machine",
+              "totalMedia": 3,
+              "primaryImage": {
+                "id": 18420758,
+                "format": "//images.cruisecritic.com/image/18420758/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412091,
+              "name": "Sorrento's Pizzeria",
+              "slug": "sorrentos-pizzeria",
+              "totalMedia": 44,
+              "primaryImage": {
+                "id": 18422953,
+                "format": "//images.cruisecritic.com/image/18422953/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412093,
+              "name": "Coastal Kitchen",
+              "slug": "coastal-kitchen",
+              "totalMedia": 22,
+              "primaryImage": {
+                "id": 18422486,
+                "format": "//images.cruisecritic.com/image/18422486/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412097,
+              "name": "Suite Lounge & Bar",
+              "slug": "suite-lounge-and-bar",
+              "totalMedia": 45,
+              "primaryImage": {
+                "id": 18420780,
+                "format": "//images.cruisecritic.com/image/18420780/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": {
+                "results": [
+                  {
+                    "id": 18420780,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18418343,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18421936,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18423061,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18418182,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422749,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18421346,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18423021,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422446,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18421332,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18419726,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18418942,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422021,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422875,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422856,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422137,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18419693,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18420535,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18419545,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18423073,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18418536,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18420118,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18419182,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18421145,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18423370,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18420986,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18419758,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422808,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422100,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18419772,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18421948,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18418880,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18418873,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18421977,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18420277,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18418987,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422974,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18421192,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18418249,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18422166,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18420681,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18418856,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 18420029,
+                    "title": "Suite Lounge & Bar on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "image",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "image",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 484547,
+                    "title": "Panorama of Suite Lounge on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "panorama",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "//panoramas.cruisecritic.com/484547/",
+                    "__typename": "ImageServiceImage"
+                  },
+                  {
+                    "id": 484435,
+                    "title": "Panorama of Suite Lounge on Symphony of the Seas",
+                    "mediaType": {
+                      "type": "panorama",
+                      "__typename": "ImsMediaType"
+                    },
+                    "prefix": "//panoramas.cruisecritic.com/484435/",
+                    "__typename": "ImageServiceImage"
+                  }
+                ],
+                "__typename": "ImageServiceImages"
+              },
+              "__typename": "Album"
+            },
+            {
+              "id": 412101,
+              "name": "Vitality Cafe",
+              "slug": "vitality-cafe",
+              "totalMedia": 10,
+              "primaryImage": {
+                "id": 18419230,
+                "format": "//images.cruisecritic.com/image/18419230/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412104,
+              "name": "Chops Grille",
+              "slug": "chops-grille",
+              "totalMedia": 17,
+              "primaryImage": {
+                "id": 18423060,
+                "format": "//images.cruisecritic.com/image/18423060/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412106,
+              "name": "Mast Bar",
+              "slug": "mast-bar",
+              "totalMedia": 21,
+              "primaryImage": {
+                "id": 18422740,
+                "format": "//images.cruisecritic.com/image/18422740/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412120,
+              "name": "Pool Bar",
+              "slug": "pool-bar",
+              "totalMedia": 12,
+              "primaryImage": {
+                "id": 18420730,
+                "format": "//images.cruisecritic.com/image/18420730/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412126,
+              "name": "Windjammer Marketplace",
+              "slug": "windjammer-marketplace",
+              "totalMedia": 152,
+              "primaryImage": {
+                "id": 18418941,
+                "format": "//images.cruisecritic.com/image/18418941/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412154,
+              "name": "Sugar Beach",
+              "slug": "sugar-beach",
+              "totalMedia": 5,
+              "primaryImage": {
+                "id": 18418777,
+                "format": "//images.cruisecritic.com/image/18418777/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412155,
+              "name": "Wipeout Bar",
+              "slug": "wipeout-bar",
+              "totalMedia": 9,
+              "primaryImage": {
+                "id": 18421889,
+                "format": "//images.cruisecritic.com/image/18421889/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412169,
+              "name": "Copper & Kettle Pub",
+              "slug": "copper-and-kettle-pub",
+              "totalMedia": 34,
+              "primaryImage": {
+                "id": 18420230,
+                "format": "//images.cruisecritic.com/image/18420230/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412175,
+              "name": "Cafe Promenade",
+              "slug": "cafe-promenade",
+              "totalMedia": 30,
+              "primaryImage": {
+                "id": 18420655,
+                "format": "//images.cruisecritic.com/image/18420655/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412183,
+              "name": "Izumi",
+              "slug": "izumi",
+              "totalMedia": 14,
+              "primaryImage": {
+                "id": 18422745,
+                "format": "//images.cruisecritic.com/image/18422745/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412185,
+              "name": "Starbucks",
+              "slug": "starbucks",
+              "totalMedia": 34,
+              "primaryImage": {
+                "id": 18421439,
+                "format": "//images.cruisecritic.com/image/18421439/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412192,
+              "name": "El Loco Fresh",
+              "slug": "el-loco-fresh",
+              "totalMedia": 32,
+              "primaryImage": {
+                "id": 18423399,
+                "format": "//images.cruisecritic.com/image/18423399/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            },
+            {
+              "id": 412195,
+              "name": "Park Cafe",
+              "slug": "park-cafe",
+              "totalMedia": 16,
+              "primaryImage": {
+                "id": 18423091,
+                "format": "//images.cruisecritic.com/image/18423091/image_{width}x{height}_{ratio}.jpg",
+                "__typename": "ImageServiceImage"
+              },
+              "media": null,
+              "__typename": "Album"
+            }
+          ],
+          "__typename": "Albums"
+        },
+        "__typename": "Section"
+      },
+      "albumSlug": "suite-lounge-and-bar-412097",
+      "gallery": {
+        "totalMedia": 3403,
+        "sections": {
+          "totalResults": 8,
+          "results": [
+            {
+              "id": 813,
+              "name": "Restaurants And Bars",
+              "albums": {
+                "results": [
+                  {
+                    "id": 412028,
+                    "name": "Johnny Rockets",
+                    "slug": "johnny-rockets",
+                    "totalMedia": 10,
+                    "primaryImage": {
+                      "id": 18423080,
+                      "format": "//images.cruisecritic.com/image/18423080/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412037,
+                    "name": "Sand Bar",
+                    "slug": "sand-bar",
+                    "totalMedia": 9,
+                    "primaryImage": {
+                      "id": 18421188,
+                      "format": "//images.cruisecritic.com/image/18421188/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412042,
+                    "name": "Boleros",
+                    "slug": "boleros",
+                    "totalMedia": 48,
+                    "primaryImage": {
+                      "id": 18418477,
+                      "format": "//images.cruisecritic.com/image/18418477/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412043,
+                    "name": "Hooked Seafood",
+                    "slug": "hooked-seafood",
+                    "totalMedia": 69,
+                    "primaryImage": {
+                      "id": 18422084,
+                      "format": "//images.cruisecritic.com/image/18422084/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412046,
+                    "name": "150 Central Park",
+                    "slug": "150-central-park",
+                    "totalMedia": 24,
+                    "primaryImage": {
+                      "id": 18422599,
+                      "format": "//images.cruisecritic.com/image/18422599/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412047,
+                    "name": "Jamie's Italian",
+                    "slug": "jamies-italian",
+                    "totalMedia": 20,
+                    "primaryImage": {
+                      "id": 18422582,
+                      "format": "//images.cruisecritic.com/image/18422582/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412048,
+                    "name": "Boardwalk Dog House",
+                    "slug": "boardwalk-dog-house",
+                    "totalMedia": 4,
+                    "primaryImage": {
+                      "id": 18421930,
+                      "format": "//images.cruisecritic.com/image/18421930/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412051,
+                    "name": "Rising Tide Bar",
+                    "slug": "rising-tide-bar",
+                    "totalMedia": 44,
+                    "primaryImage": {
+                      "id": 18420002,
+                      "format": "//images.cruisecritic.com/image/18420002/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412059,
+                    "name": "Main Dining Room",
+                    "slug": "main-dining-room",
+                    "totalMedia": 196,
+                    "primaryImage": {
+                      "id": 18421549,
+                      "format": "//images.cruisecritic.com/image/18421549/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412061,
+                    "name": "Vintages",
+                    "slug": "vintages",
+                    "totalMedia": 11,
+                    "primaryImage": {
+                      "id": 18420930,
+                      "format": "//images.cruisecritic.com/image/18420930/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412062,
+                    "name": "Playmakers Sports Bar & Arcade",
+                    "slug": "playmakers-sports-bar-and-arcade",
+                    "totalMedia": 28,
+                    "primaryImage": {
+                      "id": 18419045,
+                      "format": "//images.cruisecritic.com/image/18419045/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412068,
+                    "name": "Trellis Bar",
+                    "slug": "trellis-bar",
+                    "totalMedia": 3,
+                    "primaryImage": {
+                      "id": 18418743,
+                      "format": "//images.cruisecritic.com/image/18418743/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412070,
+                    "name": "Schooner Bar",
+                    "slug": "schooner-bar",
+                    "totalMedia": 11,
+                    "primaryImage": {
+                      "id": 18421200,
+                      "format": "//images.cruisecritic.com/image/18421200/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412073,
+                    "name": "Solarium Bistro",
+                    "slug": "solarium-bistro",
+                    "totalMedia": 28,
+                    "primaryImage": {
+                      "id": 18418525,
+                      "format": "//images.cruisecritic.com/image/18418525/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412075,
+                    "name": "Wonderland",
+                    "slug": "wonderland",
+                    "totalMedia": 53,
+                    "primaryImage": {
+                      "id": 18421007,
+                      "format": "//images.cruisecritic.com/image/18421007/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412087,
+                    "name": "Bionic Bar",
+                    "slug": "bionic-bar",
+                    "totalMedia": 28,
+                    "primaryImage": {
+                      "id": 18419089,
+                      "format": "//images.cruisecritic.com/image/18419089/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412090,
+                    "name": "Ice Cream Machine",
+                    "slug": "ice-cream-machine",
+                    "totalMedia": 3,
+                    "primaryImage": {
+                      "id": 18420758,
+                      "format": "//images.cruisecritic.com/image/18420758/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412091,
+                    "name": "Sorrento's Pizzeria",
+                    "slug": "sorrentos-pizzeria",
+                    "totalMedia": 44,
+                    "primaryImage": {
+                      "id": 18422953,
+                      "format": "//images.cruisecritic.com/image/18422953/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412093,
+                    "name": "Coastal Kitchen",
+                    "slug": "coastal-kitchen",
+                    "totalMedia": 22,
+                    "primaryImage": {
+                      "id": 18422486,
+                      "format": "//images.cruisecritic.com/image/18422486/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412097,
+                    "name": "Suite Lounge & Bar",
+                    "slug": "suite-lounge-and-bar",
+                    "totalMedia": 45,
+                    "primaryImage": {
+                      "id": 18420780,
+                      "format": "//images.cruisecritic.com/image/18420780/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": {
+                      "results": [
+                        {
+                          "id": 18420780,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18418343,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18421936,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18423061,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18418182,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422749,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18421346,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18423021,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422446,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18421332,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18419726,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18418942,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422021,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422875,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422856,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422137,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18419693,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18420535,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18419545,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18423073,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18418536,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18420118,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18419182,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18421145,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18423370,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18420986,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18419758,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422808,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422100,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18419772,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18421948,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18418880,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18418873,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18421977,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18420277,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18418987,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422974,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18421192,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18418249,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18422166,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18420681,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18418856,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 18420029,
+                          "title": "Suite Lounge & Bar on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "image",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "image",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 484547,
+                          "title": "Panorama of Suite Lounge on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "panorama",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "//panoramas.cruisecritic.com/484547/",
+                          "__typename": "ImageServiceImage"
+                        },
+                        {
+                          "id": 484435,
+                          "title": "Panorama of Suite Lounge on Symphony of the Seas",
+                          "mediaType": {
+                            "type": "panorama",
+                            "__typename": "ImsMediaType"
+                          },
+                          "prefix": "//panoramas.cruisecritic.com/484435/",
+                          "__typename": "ImageServiceImage"
+                        }
+                      ],
+                      "__typename": "ImageServiceImages"
+                    },
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412101,
+                    "name": "Vitality Cafe",
+                    "slug": "vitality-cafe",
+                    "totalMedia": 10,
+                    "primaryImage": {
+                      "id": 18419230,
+                      "format": "//images.cruisecritic.com/image/18419230/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412104,
+                    "name": "Chops Grille",
+                    "slug": "chops-grille",
+                    "totalMedia": 17,
+                    "primaryImage": {
+                      "id": 18423060,
+                      "format": "//images.cruisecritic.com/image/18423060/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412106,
+                    "name": "Mast Bar",
+                    "slug": "mast-bar",
+                    "totalMedia": 21,
+                    "primaryImage": {
+                      "id": 18422740,
+                      "format": "//images.cruisecritic.com/image/18422740/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412120,
+                    "name": "Pool Bar",
+                    "slug": "pool-bar",
+                    "totalMedia": 12,
+                    "primaryImage": {
+                      "id": 18420730,
+                      "format": "//images.cruisecritic.com/image/18420730/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412126,
+                    "name": "Windjammer Marketplace",
+                    "slug": "windjammer-marketplace",
+                    "totalMedia": 152,
+                    "primaryImage": {
+                      "id": 18418941,
+                      "format": "//images.cruisecritic.com/image/18418941/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412154,
+                    "name": "Sugar Beach",
+                    "slug": "sugar-beach",
+                    "totalMedia": 5,
+                    "primaryImage": {
+                      "id": 18418777,
+                      "format": "//images.cruisecritic.com/image/18418777/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412155,
+                    "name": "Wipeout Bar",
+                    "slug": "wipeout-bar",
+                    "totalMedia": 9,
+                    "primaryImage": {
+                      "id": 18421889,
+                      "format": "//images.cruisecritic.com/image/18421889/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412169,
+                    "name": "Copper & Kettle Pub",
+                    "slug": "copper-and-kettle-pub",
+                    "totalMedia": 34,
+                    "primaryImage": {
+                      "id": 18420230,
+                      "format": "//images.cruisecritic.com/image/18420230/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412175,
+                    "name": "Cafe Promenade",
+                    "slug": "cafe-promenade",
+                    "totalMedia": 30,
+                    "primaryImage": {
+                      "id": 18420655,
+                      "format": "//images.cruisecritic.com/image/18420655/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412183,
+                    "name": "Izumi",
+                    "slug": "izumi",
+                    "totalMedia": 14,
+                    "primaryImage": {
+                      "id": 18422745,
+                      "format": "//images.cruisecritic.com/image/18422745/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412185,
+                    "name": "Starbucks",
+                    "slug": "starbucks",
+                    "totalMedia": 34,
+                    "primaryImage": {
+                      "id": 18421439,
+                      "format": "//images.cruisecritic.com/image/18421439/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412192,
+                    "name": "El Loco Fresh",
+                    "slug": "el-loco-fresh",
+                    "totalMedia": 32,
+                    "primaryImage": {
+                      "id": 18423399,
+                      "format": "//images.cruisecritic.com/image/18423399/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412195,
+                    "name": "Park Cafe",
+                    "slug": "park-cafe",
+                    "totalMedia": 16,
+                    "primaryImage": {
+                      "id": 18423091,
+                      "format": "//images.cruisecritic.com/image/18423091/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  }
+                ],
+                "__typename": "Albums"
+              },
+              "__typename": "Section"
+            },
+            {
+              "id": 801,
+              "name": "Activities And Events",
+              "albums": {
+                "results": [
+                  {
+                    "id": 412021,
+                    "name": "Zipline",
+                    "slug": "zipline",
+                    "totalMedia": 14,
+                    "primaryImage": {
+                      "id": 18418627,
+                      "format": "//images.cruisecritic.com/image/18418627/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412029,
+                    "name": "Studio B",
+                    "slug": "studio-b",
+                    "totalMedia": 35,
+                    "primaryImage": {
+                      "id": 18422028,
+                      "format": "//images.cruisecritic.com/image/18422028/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412050,
+                    "name": "The Ultimate Abyss",
+                    "slug": "the-ultimate-abyss",
+                    "totalMedia": 29,
+                    "primaryImage": {
+                      "id": 18419034,
+                      "format": "//images.cruisecritic.com/image/18419034/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412065,
+                    "name": "The Attic",
+                    "slug": "the-attic",
+                    "totalMedia": 28,
+                    "primaryImage": {
+                      "id": 18418652,
+                      "format": "//images.cruisecritic.com/image/18418652/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412066,
+                    "name": "Mini-Golf",
+                    "slug": "mini-golf",
+                    "totalMedia": 19,
+                    "primaryImage": {
+                      "id": 18422727,
+                      "format": "//images.cruisecritic.com/image/18422727/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412072,
+                    "name": "Boardwalk",
+                    "slug": "boardwalk",
+                    "totalMedia": 29,
+                    "primaryImage": {
+                      "id": 18423247,
+                      "format": "//images.cruisecritic.com/image/18423247/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412077,
+                    "name": "Casino Royale",
+                    "slug": "casino-royale",
+                    "totalMedia": 80,
+                    "primaryImage": {
+                      "id": 18419205,
+                      "format": "//images.cruisecritic.com/image/18419205/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412081,
+                    "name": "Royal Promenade",
+                    "slug": "royal-promenade",
+                    "totalMedia": 88,
+                    "primaryImage": {
+                      "id": 18421942,
+                      "format": "//images.cruisecritic.com/image/18421942/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412096,
+                    "name": "Royal Theater",
+                    "slug": "royal-theater",
+                    "totalMedia": 60,
+                    "primaryImage": {
+                      "id": 18422006,
+                      "format": "//images.cruisecritic.com/image/18422006/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412102,
+                    "name": "Rock Climbing Wall",
+                    "slug": "rock-climbing-wall",
+                    "totalMedia": 12,
+                    "primaryImage": {
+                      "id": 18418342,
+                      "format": "//images.cruisecritic.com/image/18418342/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412108,
+                    "name": "FlowRider",
+                    "slug": "flowrider",
+                    "totalMedia": 21,
+                    "primaryImage": {
+                      "id": 18422146,
+                      "format": "//images.cruisecritic.com/image/18422146/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412116,
+                    "name": "Dazzles",
+                    "slug": "dazzles",
+                    "totalMedia": 28,
+                    "primaryImage": {
+                      "id": 18422270,
+                      "format": "//images.cruisecritic.com/image/18422270/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412129,
+                    "name": "Entertainment Place",
+                    "slug": "entertainment-place",
+                    "totalMedia": 17,
+                    "primaryImage": {
+                      "id": 18421233,
+                      "format": "//images.cruisecritic.com/image/18421233/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412134,
+                    "name": "Art Auction",
+                    "slug": "art-auction",
+                    "totalMedia": 10,
+                    "primaryImage": {
+                      "id": 18422150,
+                      "format": "//images.cruisecritic.com/image/18422150/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412139,
+                    "name": "Central Park",
+                    "slug": "central-park",
+                    "totalMedia": 41,
+                    "primaryImage": {
+                      "id": 18418986,
+                      "format": "//images.cruisecritic.com/image/18418986/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412140,
+                    "name": "AquaTheater",
+                    "slug": "aquatheater",
+                    "totalMedia": 94,
+                    "primaryImage": {
+                      "id": 18422868,
+                      "format": "//images.cruisecritic.com/image/18422868/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412152,
+                    "name": "Laser Tag",
+                    "slug": "laser-tag",
+                    "totalMedia": 23,
+                    "primaryImage": {
+                      "id": 18421650,
+                      "format": "//images.cruisecritic.com/image/18421650/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412159,
+                    "name": "On Air Club",
+                    "slug": "on-air-club",
+                    "totalMedia": 50,
+                    "primaryImage": {
+                      "id": 18418947,
+                      "format": "//images.cruisecritic.com/image/18418947/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412279,
+                    "name": "Jazz on 4",
+                    "slug": "jazz-on-4",
+                    "totalMedia": 30,
+                    "primaryImage": {
+                      "id": 18420182,
+                      "format": "//images.cruisecritic.com/image/18420182/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  }
+                ],
+                "__typename": "Albums"
+              },
+              "__typename": "Section"
+            },
+            {
+              "id": 900,
+              "name": "The Ship",
+              "albums": {
+                "results": [
+                  {
+                    "id": 412084,
+                    "name": "Shops",
+                    "slug": "shops",
+                    "totalMedia": 112,
+                    "primaryImage": {
+                      "id": 18422327,
+                      "format": "//images.cruisecritic.com/image/18422327/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412094,
+                    "name": "Ship Exterior",
+                    "slug": "ship-exterior",
+                    "totalMedia": 20,
+                    "primaryImage": {
+                      "id": 18423293,
+                      "format": "//images.cruisecritic.com/image/18423293/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412124,
+                    "name": "Elevators",
+                    "slug": "elevators",
+                    "totalMedia": 1,
+                    "primaryImage": null,
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412136,
+                    "name": "Picture This",
+                    "slug": "picture-this",
+                    "totalMedia": 5,
+                    "primaryImage": {
+                      "id": 18418935,
+                      "format": "//images.cruisecritic.com/image/18418935/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412174,
+                    "name": "Card Room",
+                    "slug": "card-room",
+                    "totalMedia": 28,
+                    "primaryImage": {
+                      "id": 18418305,
+                      "format": "//images.cruisecritic.com/image/18418305/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412182,
+                    "name": "Guest Services",
+                    "slug": "guest-services",
+                    "totalMedia": 36,
+                    "primaryImage": {
+                      "id": 18420607,
+                      "format": "//images.cruisecritic.com/image/18420607/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412280,
+                    "name": "Hallways, Stairways and More",
+                    "slug": "hallways-stairways-and-more",
+                    "totalMedia": 63,
+                    "primaryImage": {
+                      "id": 18419783,
+                      "format": "//images.cruisecritic.com/image/18419783/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  }
+                ],
+                "__typename": "Albums"
+              },
+              "__typename": "Section"
+            },
+            {
+              "id": 799,
+              "name": "Spa And Fitness",
+              "albums": {
+                "results": [
+                  {
+                    "id": 412017,
+                    "name": "Sports Court",
+                    "slug": "sports-court",
+                    "totalMedia": 8,
+                    "primaryImage": {
+                      "id": 18421898,
+                      "format": "//images.cruisecritic.com/image/18421898/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412145,
+                    "name": "Running Track",
+                    "slug": "running-track",
+                    "totalMedia": 52,
+                    "primaryImage": {
+                      "id": 18419074,
+                      "format": "//images.cruisecritic.com/image/18419074/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412161,
+                    "name": "Fitness Center",
+                    "slug": "fitness-center",
+                    "totalMedia": 96,
+                    "primaryImage": {
+                      "id": 18422210,
+                      "format": "//images.cruisecritic.com/image/18422210/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412165,
+                    "name": "Vitality at Sea Spa",
+                    "slug": "vitality-at-sea-spa",
+                    "totalMedia": 82,
+                    "primaryImage": {
+                      "id": 18421521,
+                      "format": "//images.cruisecritic.com/image/18421521/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  }
+                ],
+                "__typename": "Albums"
+              },
+              "__typename": "Section"
+            },
+            {
+              "id": 864,
+              "name": "Cabins",
+              "albums": {
+                "results": [
+                  {
+                    "id": 412060,
+                    "name": "Interior Cabin with Virtual Balcony",
+                    "slug": "interior-cabin-with-virtual-balcony",
+                    "totalMedia": 43,
+                    "primaryImage": {
+                      "id": 18420540,
+                      "format": "//images.cruisecritic.com/image/18420540/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412079,
+                    "name": "Ultimate Family Suite",
+                    "slug": "ultimate-family-suite",
+                    "totalMedia": 126,
+                    "primaryImage": {
+                      "id": 18418488,
+                      "format": "//images.cruisecritic.com/image/18418488/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412115,
+                    "name": "Spacious Interior Cabin",
+                    "slug": "spacious-interior-cabin",
+                    "totalMedia": 43,
+                    "primaryImage": {
+                      "id": 18419885,
+                      "format": "//images.cruisecritic.com/image/18419885/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412138,
+                    "name": "Promenade-View Interior Cabin",
+                    "slug": "promenade-view-interior-cabin",
+                    "totalMedia": 43,
+                    "primaryImage": {
+                      "id": 18419415,
+                      "format": "//images.cruisecritic.com/image/18419415/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412146,
+                    "name": "Ocean-View Cabin with Large Balcony",
+                    "slug": "ocean-view-cabin-with-large-balcony",
+                    "totalMedia": 45,
+                    "primaryImage": {
+                      "id": 18422312,
+                      "format": "//images.cruisecritic.com/image/18422312/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412186,
+                    "name": "Boardwalk View Balcony Cabin",
+                    "slug": "boardwalk-view-balcony-cabin",
+                    "totalMedia": 64,
+                    "primaryImage": {
+                      "id": 18421710,
+                      "format": "//images.cruisecritic.com/image/18421710/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  }
+                ],
+                "__typename": "Albums"
+              },
+              "__typename": "Section"
+            },
+            {
+              "id": 948,
+              "name": "Ports",
+              "albums": {
+                "results": [
+                  {
+                    "id": 412119,
+                    "name": "Rome (Civitavecchia)",
+                    "slug": "rome-civitavecchia",
+                    "totalMedia": 13,
+                    "primaryImage": {
+                      "id": 18421944,
+                      "format": "//images.cruisecritic.com/image/18421944/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412158,
+                    "name": "Barcelona",
+                    "slug": "barcelona",
+                    "totalMedia": 4,
+                    "primaryImage": {
+                      "id": 18420125,
+                      "format": "//images.cruisecritic.com/image/18420125/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412164,
+                    "name": "Naples",
+                    "slug": "naples",
+                    "totalMedia": 19,
+                    "primaryImage": {
+                      "id": 18419323,
+                      "format": "//images.cruisecritic.com/image/18419323/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  }
+                ],
+                "__typename": "Albums"
+              },
+              "__typename": "Section"
+            },
+            {
+              "id": 802,
+              "name": "Family",
+              "albums": {
+                "results": [
+                  {
+                    "id": 412025,
+                    "name": "Kids Club",
+                    "slug": "kids-club",
+                    "totalMedia": 151,
+                    "primaryImage": {
+                      "id": 18422456,
+                      "format": "//images.cruisecritic.com/image/18422456/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412069,
+                    "name": "The Living Room",
+                    "slug": "the-living-room",
+                    "totalMedia": 16,
+                    "primaryImage": {
+                      "id": 18421241,
+                      "format": "//images.cruisecritic.com/image/18421241/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412095,
+                    "name": "Luckey Climbers",
+                    "slug": "luckey-climbers",
+                    "totalMedia": 3,
+                    "primaryImage": {
+                      "id": 18423356,
+                      "format": "//images.cruisecritic.com/image/18423356/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412144,
+                    "name": "Video Arcade",
+                    "slug": "video-arcade",
+                    "totalMedia": 8,
+                    "primaryImage": {
+                      "id": 18418675,
+                      "format": "//images.cruisecritic.com/image/18418675/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  }
+                ],
+                "__typename": "Albums"
+              },
+              "__typename": "Section"
+            },
+            {
+              "id": 815,
+              "name": "Pools And Sun Decks",
+              "albums": {
+                "results": [
+                  {
+                    "id": 412030,
+                    "name": "Main Pool",
+                    "slug": "main-pool",
+                    "totalMedia": 71,
+                    "primaryImage": {
+                      "id": 18421732,
+                      "format": "//images.cruisecritic.com/image/18421732/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412034,
+                    "name": "Beach Pool",
+                    "slug": "beach-pool",
+                    "totalMedia": 67,
+                    "primaryImage": {
+                      "id": 18420334,
+                      "format": "//images.cruisecritic.com/image/18420334/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412035,
+                    "name": "Splashaway Bay",
+                    "slug": "splashaway-bay",
+                    "totalMedia": 47,
+                    "primaryImage": {
+                      "id": 18420323,
+                      "format": "//images.cruisecritic.com/image/18420323/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412038,
+                    "name": "Sun Decks",
+                    "slug": "sun-decks",
+                    "totalMedia": 123,
+                    "primaryImage": {
+                      "id": 18421463,
+                      "format": "//images.cruisecritic.com/image/18421463/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412056,
+                    "name": "Sports Pool",
+                    "slug": "sports-pool",
+                    "totalMedia": 46,
+                    "primaryImage": {
+                      "id": 18419008,
+                      "format": "//images.cruisecritic.com/image/18419008/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412141,
+                    "name": "Solarium",
+                    "slug": "solarium",
+                    "totalMedia": 68,
+                    "primaryImage": {
+                      "id": 18420584,
+                      "format": "//images.cruisecritic.com/image/18420584/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412173,
+                    "name": "King of the World",
+                    "slug": "king-of-the-world",
+                    "totalMedia": 29,
+                    "primaryImage": {
+                      "id": 18419707,
+                      "format": "//images.cruisecritic.com/image/18419707/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412177,
+                    "name": "Water Slides",
+                    "slug": "water-slides",
+                    "totalMedia": 47,
+                    "primaryImage": {
+                      "id": 18421720,
+                      "format": "//images.cruisecritic.com/image/18421720/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  },
+                  {
+                    "id": 412189,
+                    "name": "Suite Sun Deck",
+                    "slug": "suite-sun-deck",
+                    "totalMedia": 30,
+                    "primaryImage": {
+                      "id": 18419973,
+                      "format": "//images.cruisecritic.com/image/18419973/image_{width}x{height}_{ratio}.jpg",
+                      "__typename": "ImageServiceImage"
+                    },
+                    "media": null,
+                    "__typename": "Album"
+                  }
+                ],
+                "__typename": "Albums"
+              },
+              "__typename": "Section"
+            }
+          ],
+          "__typename": "Sections"
+        },
+        "__typename": "Gallery"
+      },
+      "imageId": 18420780,
+      "imageIndex": 0,
+      "imageSlug": "suite-lounge-and-bar--v18420780"
+    },
+    "__N_SSP": true
+  },
+  "page": "/photos/ships/[shipSlug]/[albumSlug]/[imageSlug]",
+  "query": {
+    "shipSlug": "symphony-of-the-seas-984",
+    "imageSlug": "suite-lounge--bar--v18420780",
+    "albumSlug": "suite-lounge--bar-412097"
+  },
+  "buildId": "Mnlr819F-VVZfD93LSB6l",
+  "isFallback": false,
+  "gssp": true,
+  "scriptLoader": []
+}
